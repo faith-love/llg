@@ -1,0 +1,137 @@
+# 06-抽象类和接口
+
+## 抽象类是什么
+
+抽象类是不完整的类，不能直接创建对象。
+
+```java
+public abstract class Animal {
+    public abstract void eat();
+}
+```
+
+子类必须实现抽象方法：
+
+```java
+public class Dog extends Animal {
+    @Override
+    public void eat() {
+        System.out.println("狗吃东西");
+    }
+}
+```
+
+## 什么时候用抽象类
+
+适合抽象类：
+
+- 多个子类有共同字段。
+- 多个子类有共同方法。
+- 父类可以提供部分默认实现。
+
+例如：
+
+```java
+public abstract class BaseUser {
+    protected String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public abstract String role();
+}
+```
+
+## 接口是什么
+
+接口更像一组规则或能力。
+
+```java
+public interface Repository {
+    void save(Book book);
+    Book findByIsbn(String isbn);
+}
+```
+
+实现类必须实现接口方法：
+
+```java
+public class MemoryBookRepository implements Repository {
+    @Override
+    public void save(Book book) {
+        // 保存图书
+    }
+
+    @Override
+    public Book findByIsbn(String isbn) {
+        return null;
+    }
+}
+```
+
+## 什么时候用接口
+
+适合接口：
+
+- 定义一组能力。
+- 调用方只关心规则，不关心实现。
+- 后续可能替换实现。
+
+例如：
+
+- `BookRepository` 可以有内存实现、文件实现、数据库实现。
+- `Payment` 可以有支付宝、微信、银行卡实现。
+
+## 接口默认方法
+
+接口可以有默认方法：
+
+```java
+public interface Logger {
+    default void info(String message) {
+        System.out.println("[INFO] " + message);
+    }
+}
+```
+
+实现类可以直接使用，也可以重写。
+
+## 抽象类和接口怎么选
+
+简单规则：
+
+- 表达“是什么”，并且有共同状态：考虑抽象类。
+- 表达“能做什么”，并且希望灵活替换：考虑接口。
+
+例子：
+
+- `Animal` 可以是抽象类。
+- `Flyable` 更适合接口。
+
+## 知识点深挖
+
+| 知识点 | 作用 | 痛点或优点 | 技巧 | 难点和重点 |
+| --- | --- | --- | --- | --- |
+| 抽象类 | 表达“是什么”，并提供公共骨架 | 既能共享字段和方法，又能强制子类实现部分能力 | 抽象方法少而精，公共代码放父类 | 难点是是否该抽象，重点是有共同状态和部分共性时用 |
+| 接口 | 定义规则和能力 | 让调用方和实现方解耦 | 先从调用场景设计接口方法 | 难点是接口里不要塞实现细节，重点是契约 |
+| 默认方法 | 给接口加默认能力 | 避免改动所有实现类 | 默认方法只放通用且稳定的逻辑 | 重点是别让接口变成“半成品工具类” |
+| 实现类 | 落地具体行为 | 可以替换不同实现而不动调用方 | 让业务依赖接口，不依赖具体类 | 重点是实现类负责细节，接口负责约定 |
+
+## 本节练习
+
+完成：
+
+- `abstract class Animal`，抽象方法 `eat()`。
+- `Dog`、`Cat` 继承并实现。
+- `interface Payment`，方法 `pay(double amount)`。
+- `AliPay`、`WeChatPay` 实现。
+- `interface BookRepository`，定义 `save` 和 `findByIsbn`。
+
+## 本节通过标准
+
+- 能解释抽象类不能直接创建对象。
+- 能写抽象方法和实现类。
+- 能写接口和实现类。
+- 能说出接口和抽象类的区别。
+- 能理解接口适合隔离调用方和实现方。

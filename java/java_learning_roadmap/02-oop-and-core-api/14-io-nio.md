@@ -1,0 +1,146 @@
+# 14-IO 和 NIO
+
+## IO 是什么
+
+IO 是输入输出。常见场景：
+
+- 从文件读取数据。
+- 把数据写入文件。
+- 复制文件。
+- 遍历目录。
+
+基础阶段可以先用文件保存图书数据，后面再换成数据库。
+
+## 字节流和字符流
+
+字节流处理原始字节，适合图片、视频、任意二进制文件。
+
+字符流处理文本，适合 `.txt`、`.csv`、日志等。
+
+小白先记：
+
+- 文本文件优先用字符相关 API。
+- 二进制文件用字节流。
+
+## Files 读取文本
+
+```java
+Path path = Path.of("books.txt");
+List<String> lines = Files.readAllLines(path);
+
+for (String line : lines) {
+    System.out.println(line);
+}
+```
+
+## Files 写入文本
+
+```java
+List<String> lines = List.of("Java", "SQL", "Spring");
+Files.write(Path.of("courses.txt"), lines);
+```
+
+如果文件不存在，会创建文件。
+
+## BufferedReader
+
+适合逐行读取。
+
+```java
+try (BufferedReader reader = Files.newBufferedReader(Path.of("books.txt"))) {
+    String line;
+    while ((line = reader.readLine()) != null) {
+        System.out.println(line);
+    }
+}
+```
+
+## BufferedWriter
+
+适合逐行写入。
+
+```java
+try (BufferedWriter writer = Files.newBufferedWriter(Path.of("books.txt"))) {
+    writer.write("978711,Java 入门,张三");
+    writer.newLine();
+}
+```
+
+## 文件复制
+
+```java
+Files.copy(Path.of("source.txt"), Path.of("target.txt"), StandardCopyOption.REPLACE_EXISTING);
+```
+
+## 目录遍历
+
+```java
+try (Stream<Path> paths = Files.walk(Path.of("."))) {
+    paths.filter(Files::isRegularFile)
+            .forEach(System.out::println);
+}
+```
+
+## 保存图书数据
+
+简单格式：
+
+```text
+isbn,title,author
+978711,Java 入门,张三
+```
+
+写入时把对象转成字符串：
+
+```java
+String line = book.getIsbn() + "," + book.getTitle() + "," + book.getAuthor();
+```
+
+读取时再拆分：
+
+```java
+String[] parts = line.split(",");
+```
+
+注意：真实项目中 CSV 解析比这个复杂。基础阶段先理解文件持久化即可。
+
+## 大文件提醒
+
+`Files.readAllLines()` 会一次性把所有行读到内存。
+
+大文件更适合逐行读取：
+
+```java
+try (BufferedReader reader = Files.newBufferedReader(path)) {
+    // 逐行处理
+}
+```
+
+## 知识点深挖
+
+| 知识点 | 作用 | 痛点或优点 | 技巧 | 难点和重点 |
+| --- | --- | --- | --- | --- |
+| IO | 读写外部数据 | 程序关闭后数据还能保存 | 基础项目先用文本文件练持久化 | 重点是理解内存数据和文件数据的区别 |
+| 字节流 | 处理二进制数据 | 图片、压缩包等不能按文本处理 | 不确定内容类型时按字节处理更通用 | 难点是编码不可见 |
+| 字符流 | 处理文本数据 | 读写 `.txt`、日志更方便 | 文本优先用字符流或 `Files` | 重点是注意编码 |
+| `Path` 和 `Files` | 简化文件操作 | 比老 IO API 更直观 | 读小文件可用 `readAllLines`，大文件逐行读 | 难点是路径相对位置要搞清楚 |
+| 缓冲读写 | 提升读写效率 | 避免频繁访问底层文件 | 大文件、逐行处理优先用 | 重点是配合 try-with-resources 关闭资源 |
+
+## 本节练习
+
+完成：
+
+- 写入 3 行文本到文件。
+- 从文件逐行读取并打印。
+- 复制一个文本文件。
+- 遍历当前目录下所有 `.java` 文件。
+- 把 `List<Book>` 保存到文件。
+- 从文件加载 `List<Book>`。
+
+## 本节通过标准
+
+- 能区分字节流和字符流。
+- 能使用 `Path` 和 `Files`。
+- 能用 try-with-resources 关闭资源。
+- 能逐行读取文本。
+- 能把对象列表保存到文件并加载。

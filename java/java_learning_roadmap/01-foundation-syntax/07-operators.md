@@ -1,0 +1,169 @@
+# 07-运算符
+
+## 运算符是什么
+
+运算符就是对数据进行计算、比较或判断的符号。
+
+常见运算符：
+
+- 算术运算符。
+- 赋值运算符。
+- 比较运算符。
+- 逻辑运算符。
+- 三元运算符。
+
+## 算术运算符
+
+| 运算符 | 含义 | 示例 |
+| --- | --- | --- |
+| `+` | 加法 | `a + b` |
+| `-` | 减法 | `a - b` |
+| `*` | 乘法 | `a * b` |
+| `/` | 除法 | `a / b` |
+| `%` | 取余 | `a % b` |
+
+示例：
+
+```java
+int a = 10;
+int b = 3;
+
+System.out.println(a + b); // 13
+System.out.println(a - b); // 7
+System.out.println(a * b); // 30
+System.out.println(a / b); // 3
+System.out.println(a % b); // 1
+```
+
+`%` 常用于判断奇偶：
+
+```java
+int number = 9;
+boolean odd = number % 2 != 0;
+```
+
+## 赋值运算符
+
+```java
+int count = 10;
+count += 5; // 等价于 count = count + 5
+count -= 2;
+count *= 3;
+count /= 2;
+```
+
+小白先写清楚的形式也可以：
+
+```java
+count = count + 5;
+```
+
+## 自增自减
+
+```java
+int i = 0;
+i++;
+i--;
+```
+
+`i++` 表示加 1。
+
+初学阶段不要写复杂表达式：
+
+```java
+int result = i++ + ++i;
+```
+
+这种代码可读性差，工作中也不推荐。
+
+## 比较运算符
+
+比较结果是 `boolean`。
+
+| 运算符 | 含义 |
+| --- | --- |
+| `==` | 是否相等 |
+| `!=` | 是否不相等 |
+| `>` | 大于 |
+| `<` | 小于 |
+| `>=` | 大于等于 |
+| `<=` | 小于等于 |
+
+示例：
+
+```java
+int score = 75;
+boolean passed = score >= 60;
+System.out.println(passed);
+```
+
+## 逻辑运算符
+
+| 运算符 | 含义 | 示例 |
+| --- | --- | --- |
+| `&&` | 并且 | 两边都为 true 才是 true |
+| `||` | 或者 | 有一边为 true 就是 true |
+| `!` | 取反 | true 变 false |
+
+示例：
+
+```java
+int age = 20;
+boolean hasTicket = true;
+
+if (age >= 18 && hasTicket) {
+    System.out.println("可以入场");
+}
+```
+
+## 短路特性
+
+`&&` 和 `||` 有短路特性。
+
+```java
+int a = 10;
+int b = 0;
+
+if (b != 0 && a / b > 2) {
+    System.out.println("满足条件");
+}
+```
+
+因为 `b != 0` 是 false，后面的 `a / b` 不会执行，所以不会除以 0。
+
+## 三元运算符
+
+格式：
+
+```text
+条件 ? 条件成立的值 : 条件不成立的值
+```
+
+示例：
+
+```java
+int score = 80;
+String result = score >= 60 ? "及格" : "不及格";
+System.out.println(result);
+```
+
+如果逻辑复杂，用 `if` 更清楚。
+
+## 本节练习
+
+写 `OperatorDemo`：
+
+- 输入或定义两个整数。
+- 输出加减乘除和取余结果。
+- 判断一个数是否是偶数。
+- 判断一个成绩是否在 0 到 100 之间。
+- 用三元运算符输出是否及格。
+
+## 本节通过标准
+
+- 能使用 `+ - * / %`。
+- 能解释整数除法。
+- 能使用比较运算符得到 boolean。
+- 能使用 `&&`、`||`、`!`。
+- 能用三元运算符写简单判断。
+

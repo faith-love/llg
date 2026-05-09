@@ -1,0 +1,166 @@
+# 13-Lambda 和 Stream
+
+## Lambda 是什么
+
+Lambda 是一种更简洁地表示函数式接口实现的写法。
+
+匿名类写法：
+
+```java
+Runnable task = new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("执行任务");
+    }
+};
+```
+
+Lambda 写法：
+
+```java
+Runnable task = () -> System.out.println("执行任务");
+```
+
+## 函数式接口
+
+函数式接口是只有一个抽象方法的接口。
+
+```java
+@FunctionalInterface
+public interface Checker {
+    boolean check(int number);
+}
+```
+
+使用：
+
+```java
+Checker evenChecker = number -> number % 2 == 0;
+```
+
+## 常用函数式接口
+
+| 接口 | 含义 | 示例 |
+| --- | --- | --- |
+| `Predicate<T>` | 判断 | `book -> book.getPrice() > 50` |
+| `Function<T, R>` | 转换 | `book -> book.getTitle()` |
+| `Consumer<T>` | 消费 | `book -> System.out.println(book)` |
+| `Supplier<T>` | 提供 | `() -> new Book()` |
+
+## Stream 是什么
+
+Stream 用来表达集合数据处理流程。
+
+例如：找出价格大于 50 的图书标题。
+
+```java
+List<String> titles = books.stream()
+        .filter(book -> book.getPrice() > 50)
+        .map(Book::getTitle)
+        .toList();
+```
+
+## filter
+
+过滤数据。
+
+```java
+List<Book> expensiveBooks = books.stream()
+        .filter(book -> book.getPrice() > 50)
+        .toList();
+```
+
+## map
+
+把一种数据转换成另一种数据。
+
+```java
+List<String> titles = books.stream()
+        .map(Book::getTitle)
+        .toList();
+```
+
+## sorted
+
+排序。
+
+```java
+List<Book> sorted = books.stream()
+        .sorted(Comparator.comparing(Book::getPrice))
+        .toList();
+```
+
+## collect 和分组
+
+按作者分组：
+
+```java
+Map<String, List<Book>> byAuthor = books.stream()
+        .collect(Collectors.groupingBy(Book::getAuthor));
+```
+
+按是否借出分区：
+
+```java
+Map<Boolean, List<Book>> byBorrowed = books.stream()
+        .collect(Collectors.partitioningBy(Book::isBorrowed));
+```
+
+## toMap
+
+按 ISBN 转成 Map：
+
+```java
+Map<String, Book> bookMap = books.stream()
+        .collect(Collectors.toMap(Book::getIsbn, book -> book));
+```
+
+如果 key 可能重复，要指定冲突处理方式。
+
+## Stream 使用边界
+
+适合：
+
+- 过滤。
+- 映射。
+- 排序。
+- 分组。
+- 汇总。
+
+不适合：
+
+- 塞入复杂业务副作用。
+- 在 Stream 里到处修改外部变量。
+- 为了炫技写得很难读。
+
+代码清晰优先。
+
+## 知识点深挖
+
+| 知识点 | 作用 | 痛点或优点 | 技巧 | 难点和重点 |
+| --- | --- | --- | --- | --- |
+| Lambda | 简化函数式接口实现 | 减少匿名类样板代码 | 简短逻辑适合 Lambda，复杂逻辑抽方法 | 难点是参数和返回值省略规则 |
+| 函数式接口 | 承载一段可传递的行为 | 让行为可以像参数一样传入 | 自定义接口加 `@FunctionalInterface` | 重点是只能有一个抽象方法 |
+| `filter` | 过滤数据 | 不用手写临时列表和循环判断 | 条件要简单清晰 | 重点是保留满足条件的数据 |
+| `map` | 转换数据 | 把对象列表变成字段列表更方便 | 适合提取标题、ID、DTO | 难点是区分转换和过滤 |
+| `collect` | 汇总结果 | 把 Stream 结果转回集合或 Map | 分组用 `groupingBy`，分区用 `partitioningBy` | 重点是终止操作后 Stream 结束 |
+| Stream 边界 | 表达数据处理流程 | 代码更声明式 | 复杂业务别硬塞进链式调用 | 重点是可读性优先，不为炫技使用 |
+
+## 本节练习
+
+基于 `List<Book>` 完成：
+
+- 过滤已借出的图书。
+- 提取所有标题。
+- 按价格排序。
+- 按作者分组。
+- 按是否借出分区。
+- 转成 `Map<String, Book>`。
+
+## 本节通过标准
+
+- 能写简单 Lambda。
+- 能使用 `Predicate`、`Function`、`Consumer`。
+- 能使用 `filter`、`map`、`sorted`。
+- 能使用 `groupingBy` 和 `partitioningBy`。
+- 知道 Stream 适合表达数据转换，不适合塞复杂副作用。

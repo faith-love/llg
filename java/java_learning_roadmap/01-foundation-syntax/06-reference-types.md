@@ -1,0 +1,170 @@
+# 06-引用类型、对象、数组和字符串
+
+## 什么是引用类型
+
+基本类型保存简单值，引用类型保存对象的引用。
+
+你可以先简单理解：
+
+- 基本类型变量里直接放值。
+- 引用类型变量里放的是“对象地址”。
+
+常见引用类型：
+
+- `String`
+- 数组
+- 自定义类对象
+- 集合
+
+这一节先学字符串和数组，类和对象后面会深入。
+
+## String 字符串
+
+字符串表示一段文本，用双引号：
+
+```java
+String name = "小明";
+String message = "Hello Java";
+```
+
+字符串可以拼接：
+
+```java
+String name = "小明";
+int age = 18;
+
+System.out.println(name + "今年" + age + "岁");
+```
+
+输出：
+
+```text
+小明今年18岁
+```
+
+## String 常用方法
+
+```java
+String text = "Hello Java";
+
+System.out.println(text.length());
+System.out.println(text.contains("Java"));
+System.out.println(text.startsWith("Hello"));
+System.out.println(text.toUpperCase());
+```
+
+先不用背所有方法。用到时查文档即可。
+
+## 字符串比较
+
+不要用 `==` 比较字符串内容。
+
+错误示例：
+
+```java
+String a = new String("Java");
+String b = new String("Java");
+
+System.out.println(a == b); // false
+```
+
+正确示例：
+
+```java
+System.out.println(a.equals(b)); // true
+```
+
+小白先记住：
+
+- 基本类型比较值，用 `==`。
+- 字符串内容比较，用 `equals`。
+
+## 数组
+
+数组用来保存一组相同类型的数据。
+
+```java
+int[] scores = {90, 80, 70};
+```
+
+访问数组：
+
+```java
+System.out.println(scores[0]); // 90
+System.out.println(scores[1]); // 80
+```
+
+数组下标从 0 开始。
+
+## 对象
+
+对象是类创建出来的具体东西。
+
+先看一个简单例子：
+
+```java
+class Student {
+    String name;
+    int age;
+}
+
+public class StudentDemo {
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.name = "小明";
+        s.age = 18;
+
+        System.out.println(s.name);
+        System.out.println(s.age);
+    }
+}
+```
+
+这一阶段只需要知道：
+
+- `Student` 是类。
+- `new Student()` 创建对象。
+- `s` 是引用变量。
+
+面向对象阶段会系统学习。
+
+## null
+
+引用类型可以是 `null`，表示没有指向任何对象。
+
+```java
+String name = null;
+System.out.println(name.length()); // 会报错
+```
+
+这会出现空指针异常。
+
+安全写法：
+
+```java
+String name = null;
+
+if (name != null) {
+    System.out.println(name.length());
+}
+```
+
+## 本节练习
+
+写 `ReferenceTypeDemo`：
+
+1. 定义一个字符串姓名。
+2. 输出姓名长度。
+3. 定义一个成绩数组。
+4. 输出第一个成绩。
+5. 比较两个字符串内容是否相同。
+6. 故意写一个 `null` 示例，再加判断修复。
+
+## 本节通过标准
+
+- 能解释基本类型和引用类型的区别。
+- 能使用 `String` 保存文本。
+- 能使用 `equals` 比较字符串内容。
+- 能创建和访问数组。
+- 知道 `null` 可能导致空指针异常。
+

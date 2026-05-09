@@ -1,0 +1,55 @@
+# 01-MyBatis 与 MyBatis-Plus 的定位
+
+## MyBatis 是什么
+
+MyBatis 是持久层框架，核心作用是把 Java 方法和 SQL 语句映射起来。
+
+它解决 JDBC 痛点：
+
+- 少写连接和结果集处理模板代码。
+- SQL 可控。
+- 参数绑定更清晰。
+- 对象映射更方便。
+
+## MyBatis-Plus 是什么
+
+MyBatis-Plus 是 MyBatis 的增强工具。
+
+它提供：
+
+- 通用 CRUD。
+- 条件构造器 Wrapper。
+- 分页插件。
+- 逻辑删除。
+- 乐观锁。
+- 自动填充。
+- 代码生成器。
+
+## 关系
+
+```text
+JDBC -> MyBatis -> MyBatis-Plus
+```
+
+MyBatis-Plus 不是替代 MyBatis，而是在 MyBatis 基础上增强。
+
+## 知识点深挖
+
+| 知识点 | 作用 | 痛点或优点 | 技巧 | 难点和重点 |
+| --- | --- | --- | --- | --- |
+| MyBatis | SQL 和 Java 方法映射 | 少写 JDBC，但保留 SQL 控制 | 复杂 SQL 优先 MyBatis XML | 重点是 SQL 能力不能丢 |
+| MyBatis-Plus | 简化常见 CRUD | 单表操作更快 | 简单 CRUD 用 Plus，复杂查询手写 | 难点是别滥用 Wrapper |
+| 学习顺序 | 建立底层理解 | 只学 Plus 会看不懂复杂 SQL | 先 MyBatis，再 Plus | 重点是 Plus 建立在 MyBatis 上 |
+
+## 本节练习
+
+- 写出 JDBC、MyBatis、MyBatis-Plus 分别解决什么问题。
+- 找一个适合 Plus 的单表 CRUD 场景。
+- 找一个更适合手写 SQL 的复杂查询场景。
+
+## 本节通过标准
+
+- 能说清 MyBatis 和 MyBatis-Plus 的关系。
+- 能理解 Plus 不是逃避 SQL 的工具。
+- 能初步判断什么场景用什么。
+

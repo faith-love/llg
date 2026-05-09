@@ -1,0 +1,611 @@
+# 18-难点错误示例和避坑指南
+
+这一节专门收集 `02-面向对象和核心 API` 中小白最容易写错的代码。每个坑都包含错误示例、原因、正确写法和避坑口诀。
+
+学习方式：
+
+1. 先自己判断错误示例会发生什么。
+2. 再看原因说明。
+3. 手动敲一遍正确写法。
+4. 把类似错误加入自己的 `error-log.md`。
+
+## 坑 1：把所有字段都 public
+
+### 错误示例
+
+```java
+public class Book {
+    public String title;
+    public boolean borrowed;
+}
+
+public class App {
+    public static void main(String[] args) {
+        Book book = new Book();
+        book.title = null;
+        book.borrowed = false;
+    }
+}
+```
+
+### 为什么错
+
+外部代码可以随便改对象状态，甚至把标题改成 `null`。以后程序出问题时，很难知道是谁改坏了对象。
+
+### 正确写法
+
+```java
+public class Book {
+    private String title;
+    private boolean borrowed;
+
+    public Book(String title) {
+        setTitle(title);
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException("标题不能为空");
+        }
+        this.title = title;
+    }
+
+    public void borrow() {
+        if (borrowed) {
+            throw new IllegalStateException("图书已借出");
+        }
+        borrowed = true;
+    }
+}
+```
+
+### 避坑口诀
+
+字段先 `private`，修改走方法；对象状态要由对象自己保护。
+
+## 坑 2：构造器没有保证对象可用
+
+### 错误示例
+
+```java
+public class Book {
+    private String isbn;
+    private String title;
+
+    public Book() {
+    }
+}
+```
+
+### 为什么错
+
+对象创建后没有 ISBN 和标题，后面调用时很容易出现空值问题。小项目里还能靠人工记住，项目大了就会失控。
+
+### 正确写法
+
+```java
+public class Book {
+    private final String isbn;
+    private final String title;
+
+    public Book(String isbn, String title) {
+        if (isbn == null || isbn.isBlank()) {
+            throw new IllegalArgumentException("ISBN 不能为空");
+        }
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException("标题不能为空");
+        }
+        this.isbn = isbn;
+        this.title = title;
+    }
+}
+```
+
+### 避坑口诀
+
+必填字段进构造器，对象一创建就应该尽量可用。
+
+## 坑 3：用继承只是为了省几行代码
+
+### 错误示例
+
+```java
+public class FilePrinter {
+    public void print(String text) {
+        System.out.println(text);
+    }
+}
+
+public class BookService extends FilePrinter {
+    public void addBook(Book book) {
+        print("新增图书：" + book.getTitle());
+    }
+}
+```
+
+### 为什么错
+
+`BookService` 并不是一种 `FilePrinter`。这里继承只是为了复用 `print` 方法，关系不成立，后续扩展会越来越别扭。
+
+### 正确写法
+
+```java
+public class Logger {
+    public void info(String text) {
+        System.out.println(text);
+    }
+}
+
+public class BookService {
+    private final Logger logger = new Logger();
+
+    public void addBook(Book book) {
+        logger.info("新增图书：" + book.getTitle());
+    }
+}
+```
+
+### 避坑口诀
+
+继承表示“是什么”，组合表示“有什么”。只为复用代码时，优先考虑组合。
+
+## 坑 4：重写 equals 但不重写 hashCode
+
+### 错误示例
+
+```java
+public class Book {
+    private String isbn;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Book)) {
+            return false;
+        }
+        Book other = (Book) obj;
+        return isbn.equals(other.isbn);
+    }
+}
+```
+
+### 为什么错
+
+`HashSet`、`HashMap` 会先用 `hashCode` 定位，再用 `equals` 比较。如果只重写 `equals`，集合去重可能失效。
+
+### 正确写法
+
+```java
+public class Book {
+    private String isbn;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Book)) {
+            return false;
+        }
+        Book other = (Book) obj;
+        return isbn.equals(other.isbn);
+    }
+
+    @Override
+    public int hashCode() {
+        return isbn.hashCode();
+    }
+}
+```
+
+### 避坑口诀
+
+`equals` 和 `hashCode` 要成对出现，尤其对象要放进 `HashSet` 或当 `HashMap` 的 key 时。
+
+## 坑 5：对象放进 HashSet 后又修改参与 hashCode 的字段
+
+### 错误示例
+
+```java
+Set<Book> books = new HashSet<>();
+
+Book book = new Book("978711", "Java 入门");
+books.add(book);
+
+book.setIsbn("000000");
+
+System.out.println(books.contains(book)); // 可能是 false
+```
+
+### 为什么错
+
+对象加入 `HashSet` 时，集合根据当时的 `hashCode` 放到某个位置。后面修改 ISBN，`hashCode` 变了，集合可能找不到原来的对象。
+
+### 正确写法
+
+```java
+public class Book {
+    private final String isbn;
+    private String title;
+
+    public Book(String isbn, String title) {
+        this.isbn = isbn;
+        this.title = title;
+    }
+}
+```
+
+### 避坑口诀
+
+参与 `equals` 和 `hashCode` 的字段尽量不可变。
+
+## 坑 6：向下转型不做 instanceof 检查
+
+### 错误示例
+
+```java
+Animal animal = new Cat();
+Dog dog = (Dog) animal;
+dog.watchDoor();
+```
+
+### 为什么错
+
+真实对象是 `Cat`，强行转成 `Dog` 会抛出 `ClassCastException`。
+
+### 正确写法
+
+```java
+Animal animal = new Cat();
+
+if (animal instanceof Dog) {
+    Dog dog = (Dog) animal;
+    dog.watchDoor();
+}
+```
+
+更好的设计通常是把共同能力抽到父类或接口里，减少向下转型。
+
+### 避坑口诀
+
+向下转型先判断；频繁强转说明设计可能有问题。
+
+## 坑 7：接口设计成“大而全”
+
+### 错误示例
+
+```java
+public interface BookRepository {
+    void save(Book book);
+    void delete(String isbn);
+    Book findByIsbn(String isbn);
+    void exportExcel();
+    void sendEmail();
+    void printReport();
+}
+```
+
+### 为什么错
+
+这个接口同时包含存储、导出、发邮件、打印报表，职责混乱。实现类会被迫实现自己不需要的方法。
+
+### 正确写法
+
+```java
+public interface BookRepository {
+    void save(Book book);
+    void delete(String isbn);
+    Book findByIsbn(String isbn);
+}
+
+public interface BookExporter {
+    void export(List<Book> books);
+}
+
+public interface NotificationService {
+    void send(String message);
+}
+```
+
+### 避坑口诀
+
+接口要小而专，按能力拆，不按“我可能用到什么”乱塞。
+
+## 坑 8：遍历 List 时直接删除元素
+
+### 错误示例
+
+```java
+for (Book book : books) {
+    if (book.getTitle().isBlank()) {
+        books.remove(book);
+    }
+}
+```
+
+### 为什么错
+
+增强 `for` 底层使用迭代器，遍历时直接修改集合可能抛出 `ConcurrentModificationException`。
+
+### 正确写法 1：使用迭代器
+
+```java
+Iterator<Book> iterator = books.iterator();
+while (iterator.hasNext()) {
+    Book book = iterator.next();
+    if (book.getTitle().isBlank()) {
+        iterator.remove();
+    }
+}
+```
+
+### 正确写法 2：使用 removeIf
+
+```java
+books.removeIf(book -> book.getTitle().isBlank());
+```
+
+### 避坑口诀
+
+遍历时删除，用迭代器或 `removeIf`。
+
+## 坑 9：Map 查询结果不判空
+
+### 错误示例
+
+```java
+Book book = bookMap.get(isbn);
+System.out.println(book.getTitle());
+```
+
+### 为什么错
+
+如果 `isbn` 不存在，`get` 返回 `null`，继续调用 `getTitle()` 会抛出 `NullPointerException`。
+
+### 正确写法
+
+```java
+Book book = bookMap.get(isbn);
+if (book == null) {
+    throw new BookNotFoundException(isbn);
+}
+System.out.println(book.getTitle());
+```
+
+### 避坑口诀
+
+`Map.get()` 可能返回 `null`，用之前先处理不存在的情况。
+
+## 坑 10：catch 后什么都不做
+
+### 错误示例
+
+```java
+try {
+    repository.save(book);
+} catch (Exception e) {
+}
+```
+
+### 为什么错
+
+异常被吞掉后，程序表面继续运行，但数据可能没有保存成功。以后排查时没有任何线索。
+
+### 正确写法
+
+```java
+try {
+    repository.save(book);
+} catch (IOException e) {
+    throw new RuntimeException("保存图书失败：" + book.getIsbn(), e);
+}
+```
+
+### 避坑口诀
+
+异常不能静默消失，要么处理，要么带上下文继续抛出。
+
+## 坑 11：使用原始类型丢掉泛型检查
+
+### 错误示例
+
+```java
+List books = new ArrayList();
+books.add(new Book("978711", "Java"));
+books.add("不是图书");
+
+Book book = (Book) books.get(1);
+```
+
+### 为什么错
+
+原始类型绕过了泛型检查，错误数据能放进集合，运行时强转才报错。
+
+### 正确写法
+
+```java
+List<Book> books = new ArrayList<>();
+books.add(new Book("978711", "Java"));
+```
+
+### 避坑口诀
+
+集合必须写泛型，别用原始类型。
+
+## 坑 12：Stream 里做复杂副作用
+
+### 错误示例
+
+```java
+List<String> titles = new ArrayList<>();
+
+books.stream()
+        .filter(book -> book.getPrice() > 50)
+        .forEach(book -> {
+            book.setBorrowed(true);
+            titles.add(book.getTitle());
+            repository.save(book);
+        });
+```
+
+### 为什么错
+
+这段 Stream 同时修改对象、修改外部集合、保存文件，副作用太多，调试困难，也不容易看出真正目的。
+
+### 正确写法
+
+```java
+List<Book> expensiveBooks = books.stream()
+        .filter(book -> book.getPrice() > 50)
+        .toList();
+
+for (Book book : expensiveBooks) {
+    book.borrow();
+    repository.save(book);
+}
+
+List<String> titles = expensiveBooks.stream()
+        .map(Book::getTitle)
+        .toList();
+```
+
+### 避坑口诀
+
+Stream 适合表达数据转换，复杂业务流程用普通循环更清楚。
+
+## 坑 13：Files.readAllLines 读取大文件
+
+### 错误示例
+
+```java
+List<String> lines = Files.readAllLines(Path.of("huge-books.txt"));
+for (String line : lines) {
+    handle(line);
+}
+```
+
+### 为什么错
+
+`readAllLines` 会一次性把所有行读入内存。文件很大时可能导致内存占用过高。
+
+### 正确写法
+
+```java
+try (BufferedReader reader = Files.newBufferedReader(Path.of("huge-books.txt"))) {
+    String line;
+    while ((line = reader.readLine()) != null) {
+        handle(line);
+    }
+}
+```
+
+### 避坑口诀
+
+小文件可一次读，大文件要逐行读。
+
+## 坑 14：自定义注解忘记 RUNTIME
+
+### 错误示例
+
+```java
+public @interface TableName {
+    String value();
+}
+
+@TableName("books")
+public class Book {
+}
+
+TableName tableName = Book.class.getAnnotation(TableName.class);
+System.out.println(tableName.value());
+```
+
+### 为什么错
+
+没有指定 `@Retention(RetentionPolicy.RUNTIME)`，运行时可能读不到注解，`tableName` 为 `null`。
+
+### 正确写法
+
+```java
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface TableName {
+    String value();
+}
+```
+
+读取时也要判空：
+
+```java
+TableName tableName = Book.class.getAnnotation(TableName.class);
+if (tableName != null) {
+    System.out.println(tableName.value());
+}
+```
+
+### 避坑口诀
+
+运行时要读注解，保留策略必须是 `RUNTIME`。
+
+## 坑 15：图书管理系统职责混在一个类里
+
+### 错误示例
+
+```java
+public class App {
+    public static void main(String[] args) {
+        // 打印菜单
+        // 读取输入
+        // 校验 ISBN
+        // 修改图书状态
+        // 读写文件
+        // 处理异常
+    }
+}
+```
+
+### 为什么错
+
+一个类同时负责交互、业务、存储、异常处理。代码会越来越长，任何改动都可能影响其他逻辑。
+
+### 正确拆分
+
+```text
+App：程序入口
+BookMenu：菜单和输入输出
+BookService：业务规则
+BookRepository：存储接口
+FileBookRepository：文件存储实现
+Book：图书对象
+BookNotFoundException：业务异常
+```
+
+### 避坑口诀
+
+入口只启动，菜单管交互，Service 管业务，Repository 管存储。
+
+## 总结清单
+
+写完本阶段代码后，用这张清单自查：
+
+| 检查项 | 是否通过 |
+| --- | --- |
+| 字段是否默认 `private`？ |  |
+| 构造器是否初始化必填字段？ |  |
+| 是否为了省代码滥用继承？ |  |
+| 重写 `equals` 是否同步重写 `hashCode`？ |  |
+| `HashSet`/`HashMap` 的 key 字段是否稳定？ |  |
+| 向下转型前是否做了类型判断？ |  |
+| 接口是否职责单一？ |  |
+| 遍历集合时是否安全删除？ |  |
+| `Map.get()` 后是否处理不存在？ |  |
+| 是否吞掉了异常？ |  |
+| 集合是否写了泛型？ |  |
+| Stream 是否只做清晰的数据处理？ |  |
+| 大文件是否逐行读取？ |  |
+| 运行时注解是否设置了 `RUNTIME`？ |  |
+| 项目是否按职责拆类？ |  |
+

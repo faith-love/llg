@@ -1,0 +1,163 @@
+# import 语法
+
+Python 有多种导入写法。不同写法会影响命名空间、可读性和冲突风险。
+
+## `import module`
+
+```python
+import math
+
+print(math.sqrt(16))
+```
+
+优点：
+
+- 来源清晰。
+- 不容易命名冲突。
+- 推荐优先使用。
+
+## `import module as alias`
+
+```python
+import math as m
+
+print(m.sqrt(16))
+```
+
+别名适合模块名很长或社区有惯例时使用。
+
+常见惯例：
+
+```python
+import pandas as pd
+import numpy as np
+```
+
+基础阶段不需要为了短而乱起别名。
+
+## `from module import name`
+
+```python
+from math import sqrt
+
+print(sqrt(16))
+```
+
+优点：
+
+- 使用简短。
+
+缺点：
+
+- 来源不如 `math.sqrt` 清楚。
+- 容易和本地名字冲突。
+
+## `from module import name as alias`
+
+```python
+from math import sqrt as square_root
+```
+
+用于避免命名冲突或提高表达性。
+
+## 不推荐 `import *`
+
+```python
+from math import *
+```
+
+不推荐原因：
+
+- 不知道导入了哪些名字。
+- 容易覆盖本地变量。
+- 代码可读性差。
+
+除非在特殊场景或交互式探索，否则不要使用。
+
+## 导入多个名字
+
+```python
+from math import sqrt, ceil, floor
+```
+
+如果太长，可以换行：
+
+```python
+from math import (
+    ceil,
+    floor,
+    sqrt,
+)
+```
+
+## 导入顺序建议
+
+通常按三组：
+
+1. 标准库。
+2. 第三方库。
+3. 本地模块。
+
+示例：
+
+```python
+import json
+from pathlib import Path
+
+import requests
+
+from text_tools.cleaner import clean_text
+```
+
+本阶段先养成分组习惯。
+
+## 常见错误
+
+### 导入不存在名字
+
+```python
+from math import not_exists
+```
+
+会报 `ImportError`。
+
+### 导入模块后直接用函数名
+
+```python
+import math
+sqrt(16)
+```
+
+应该：
+
+```python
+math.sqrt(16)
+```
+
+或者：
+
+```python
+from math import sqrt
+sqrt(16)
+```
+
+### 使用 `import *` 导致名字冲突
+
+避免。
+
+## 练习
+
+1. 用 `import math` 调用 `sqrt`。
+2. 用 `from math import sqrt` 调用。
+3. 比较两种写法的可读性。
+4. 使用别名导入一个模块。
+5. 故意导入不存在名字，观察错误。
+6. 把一个 `import *` 改成明确导入。
+
+## 验收标准
+
+- 能区分 `import module` 和 `from module import name`。
+- 能使用别名。
+- 能解释为什么不推荐 `import *`。
+- 能按标准库、第三方、本地模块分组导入。
+

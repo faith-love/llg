@@ -1,0 +1,108 @@
+# 07-配置、Profile 和敏感信息管理
+
+## 配置解决什么问题
+
+项目在不同环境下参数不同：
+
+- 本地数据库地址。
+- 测试环境 Redis 地址。
+- 生产环境日志级别。
+- 第三方服务密钥。
+
+配置管理的目标是：代码不变，通过配置切换环境。
+
+## 常见配置文件
+
+```text
+application.yml
+application-dev.yml
+application-test.yml
+application-prod.yml
+```
+
+本地开发可以启用：
+
+```yaml
+spring:
+  profiles:
+    active: dev
+```
+
+生产环境通常通过启动参数或环境变量指定，不建议写死在代码里。
+
+## 环境变量
+
+示例：
+
+```yaml
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+```
+
+优点：
+
+- 不把密码提交到仓库。
+- 部署时由环境注入。
+- 不同环境使用不同值。
+
+## 配置类绑定
+
+```java
+@ConfigurationProperties(prefix = "app.upload")
+public class UploadProperties {
+    private long maxSize;
+    private String basePath;
+}
+```
+
+适合把一组相关配置集中管理。
+
+## 容易出错的示例
+
+### 错误示例：提交真实密码
+
+```yaml
+spring:
+  datasource:
+    password: MyRealPassword123
+```
+
+### 为什么错
+
+仓库历史会永久保留敏感信息。即使后面删除，别人仍可能从历史记录看到。
+
+### 正确做法
+
+```yaml
+spring:
+  datasource:
+    password: ${DB_PASSWORD}
+```
+
+并在本地用 `.env` 或启动环境变量提供。
+
+## 知识点深挖
+
+| 知识点 | 作用 | 痛点或优点 | 技巧 | 难点和重点 |
+| --- | --- | --- | --- | --- |
+| Profile | 区分环境配置 | 避免改代码切环境 | dev/test/prod 分开 | 重点是不要误用生产配置 |
+| 环境变量 | 注入敏感或环境差异值 | 防止密钥进仓库 | 使用 `${VAR}` | 难点是本地启动也要说明 |
+| 配置类 | 类型安全读取配置 | 避免到处写字符串 key | 使用 `@ConfigurationProperties` | 重点是集中管理 |
+| 敏感信息 | 密码、Token、密钥 | 泄露后风险很高 | 不提交，不打印 | 重点是仓库历史也算泄露 |
+
+## 本节练习
+
+- 创建 `application-dev.yml` 和 `application-test.yml`。
+- 把数据库密码改成环境变量。
+- 写一个配置类读取上传文件大小。
+- 检查项目是否提交了真实密钥。
+
+## 本节通过标准
+
+- 能解释 Profile 的作用。
+- 能用环境变量覆盖配置。
+- 能避免敏感信息进入仓库。
+- 能写清本地需要哪些配置。

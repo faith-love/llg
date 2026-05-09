@@ -1,0 +1,55 @@
+# UPDATE 更新数据
+
+## 用途
+
+UPDATE 用于修改表中已有行的数据。
+
+## 学习目标
+
+- 掌握单表 UPDATE、多字段 UPDATE、条件 UPDATE。
+- 了解 UPDATE JOIN 和 CASE 条件更新。
+- 建立更新前先 SELECT 验证的习惯。
+
+## 核心语法
+
+```sql
+UPDATE table_name
+SET column1 = value1, column2 = value2
+WHERE condition;
+```
+
+## 关键注意点
+
+- UPDATE 必须谨慎写 WHERE，否则可能更新整表。
+- 重要更新建议放在事务中执行。
+- 大批量更新建议分批处理。
+
+## 完整示例
+
+下面的 SQL 片段用于理解语法结构。涉及修改数据或对象的语句，建议先在测试库中执行。
+
+```sql
+USE sql_learning;
+
+START TRANSACTION;
+
+UPDATE products
+SET stock = stock - 1
+WHERE product_id = 1
+  AND stock >= 1;
+
+UPDATE employees AS e
+INNER JOIN departments AS d
+  ON e.department_id = d.department_id
+SET e.salary = e.salary + 500
+WHERE d.department_name = 'Engineering';
+
+UPDATE products
+SET price = CASE
+  WHEN category = 'Computer' THEN price * 0.95
+  WHEN category = 'Accessory' THEN price * 0.90
+  ELSE price
+END;
+
+ROLLBACK;
+```

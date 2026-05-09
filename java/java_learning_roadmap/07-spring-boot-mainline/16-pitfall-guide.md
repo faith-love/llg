@@ -1,0 +1,282 @@
+# 16-难点错误示例和避坑指南
+
+## 坑 1：把普通 new 出来的对象当成 Spring Bean
+
+### 错误示例
+
+```java
+BookService service = new BookService();
+service.borrowBook(1L);
+```
+
+### 为什么错
+
+普通 `new` 出来的对象不归 Spring 容器管理，依赖注入、AOP、事务等能力都不会自动生效。
+
+### 正确写法
+
+让 Spring 注入：
+
+```java
+@RestController
+public class BookController {
+    private final BookService bookService;
+
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
+    }
+}
+```
+
+### 避坑口诀
+
+想用 Spring 能力，对象必须交给容器管理。
+
+## 坑 2：字段注入隐藏依赖
+
+### 错误示例
+
+```java
+@Autowired
+private BookMapper bookMapper;
+```
+
+### 为什么错
+
+依赖不明显，测试不方便，也无法把字段设为 `final`。
+
+### 正确写法
+
+```java
+private final BookMapper bookMapper;
+
+public BookService(BookMapper bookMapper) {
+    this.bookMapper = bookMapper;
+}
+```
+
+### 避坑口诀
+
+依赖用构造器，字段尽量 `final`。
+
+## 坑 3：类不在组件扫描范围
+
+### 错误示例
+
+```text
+com.example.app.AppApplication
+com.other.service.BookService
+```
+
+`BookService` 不在启动类包及子包下。
+
+### 为什么错
+
+Spring Boot 默认从启动类所在包向下扫描，扫描不到就不会注册 Bean。
+
+### 正确做法
+
+把启动类放在根包：
+
+```text
+com.example.app.AppApplication
+com.example.app.service.BookService
+```
+
+### 避坑口诀
+
+启动类放根包，组件放子包。
+
+## 坑 4：@Transactional 内部方法自调用
+
+### 错误示例
+
+```java
+public void outer() {
+    inner();
+}
+
+@Transactional
+public void inner() {
+}
+```
+
+### 为什么错
+
+内部调用没有经过 Spring 代理，事务可能不生效。
+
+### 正确做法
+
+让事务方法由外部 Bean 调用，或把事务边界放在入口 Service 方法上。
+
+### 避坑口诀
+
+事务看代理路径，不只看有没有注解。
+
+## 坑 5：Controller 里写业务和事务
+
+### 错误示例
+
+```java
+@PostMapping("/borrow")
+public void borrow(Long bookId) {
+    // 查库存
+    // 插借阅记录
+    // 扣库存
+}
+```
+
+### 为什么错
+
+Controller 负责 HTTP，不应该承载业务规则和事务边界。
+
+### 正确分层
+
+```text
+Controller -> BookService.borrowBook -> Mapper
+```
+
+### 避坑口诀
+
+Controller 薄，Service 厚，事务进 Service。
+
+## 坑 6：配置文件混用环境
+
+### 错误示例
+
+```yaml
+spring:
+  profiles:
+    active: prod
+```
+
+本地开发直接连生产库。
+
+### 为什么错
+
+环境配置混用可能误操作生产数据。
+
+### 正确做法
+
+- 本地默认 dev。
+- 生产通过部署参数激活 prod。
+- 敏感配置使用环境变量或安全配置系统。
+
+### 避坑口诀
+
+环境必须隔离，生产配置不要写死。
+
+## 坑 7：JWT 永不过期
+
+### 错误示例
+
+```text
+token 永久有效
+```
+
+### 为什么错
+
+Token 一旦泄露，就可以长期冒用。
+
+### 正确做法
+
+- 设置过期时间。
+- 使用刷新机制。
+- 关键操作二次校验。
+
+### 避坑口诀
+
+Token 必须过期，泄露风险要可控。
+
+## 坑 8：缓存更新只改数据库不删缓存
+
+### 错误示例
+
+```java
+bookMapper.update(book);
+```
+
+缓存仍然保留旧数据。
+
+### 为什么错
+
+用户可能继续读到旧缓存。
+
+### 正确做法
+
+```java
+bookMapper.update(book);
+redisTemplate.delete("book:" + book.getId());
+```
+
+### 避坑口诀
+
+更新数据库后，删除相关缓存。
+
+## 坑 9：消息消费不做幂等
+
+### 错误示例
+
+```java
+public void consume(Message message) {
+    createBorrowRecord(message);
+}
+```
+
+### 为什么错
+
+消息可能重复投递，导致重复创建记录。
+
+### 正确做法
+
+使用业务唯一键或消费记录判断是否处理过。
+
+### 避坑口诀
+
+消息会重复，消费要幂等。
+
+## 坑 10：测试只测成功路径
+
+### 错误示例
+
+```java
+@Test
+void createBookSuccess() {
+}
+```
+
+没有测试参数错误、重复 ISBN、库存不足、未登录等场景。
+
+### 为什么错
+
+真实 bug 往往出现在失败分支。
+
+### 正确做法
+
+至少覆盖：
+
+- 成功。
+- 参数错误。
+- 业务冲突。
+- 无权限。
+- 事务回滚。
+
+### 避坑口诀
+
+只测成功不够，失败分支更值钱。
+
+## 总结清单
+
+| 检查项 | 是否通过 |
+| --- | --- |
+| 对象是否交给 Spring 容器管理？ |  |
+| 是否优先构造器注入？ |  |
+| 组件是否在扫描范围内？ |  |
+| 事务方法是否经过代理？ |  |
+| 事务是否放在 Service 层？ |  |
+| 环境配置是否隔离？ |  |
+| Token 是否有过期策略？ |  |
+| 更新数据库后是否处理缓存？ |  |
+| 消息消费是否幂等？ |  |
+| 测试是否覆盖失败分支？ |  |
+

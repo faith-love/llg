@@ -1,0 +1,202 @@
+# 16-难点错误示例和避坑指南
+
+## 坑 1：把 `${}` 当成参数绑定
+
+### 错误示例
+
+```xml
+where title like '%${keyword}%'
+```
+
+### 为什么错
+
+`${}` 是字符串拼接，用户输入可能造成 SQL 注入。
+
+### 正确写法
+
+```xml
+where title like concat('%', #{keyword}, '%')
+```
+
+### 避坑口诀
+
+普通参数用 `#{}`，`${}` 必须白名单。
+
+## 坑 2：XML namespace 写错
+
+### 错误示例
+
+```xml
+<mapper namespace="BookMapper">
+```
+
+### 为什么错
+
+namespace 没有对应 Mapper 接口全限定名，方法找不到 SQL。
+
+### 正确写法
+
+```xml
+<mapper namespace="com.example.app.mapper.BookMapper">
+```
+
+### 避坑口诀
+
+namespace 对接口全名，id 对方法名。
+
+## 坑 3：resultMap 列名冲突
+
+### 错误示例
+
+```sql
+select b.id, c.id, b.title, c.name
+from books b
+join categories c on b.category_id = c.id
+```
+
+### 为什么错
+
+两个 `id` 列名冲突，映射可能混乱。
+
+### 正确写法
+
+```sql
+select b.id as book_id, c.id as category_id
+```
+
+### 避坑口诀
+
+多表查询列起别名，映射才清楚。
+
+## 坑 4：动态 SQL 生成空 where
+
+### 错误示例
+
+```xml
+where
+<if test="title != null">
+  title = #{title}
+</if>
+```
+
+如果 title 为空，SQL 可能非法。
+
+### 正确写法
+
+```xml
+<where>
+  <if test="title != null and title != ''">
+    and title = #{title}
+  </if>
+</where>
+```
+
+### 避坑口诀
+
+动态条件用 `<where>`，别手拼残缺 SQL。
+
+## 坑 5：foreach 空集合
+
+### 错误示例
+
+```xml
+where id in
+<foreach collection="ids" item="id" open="(" separator="," close=")">
+  #{id}
+</foreach>
+```
+
+ids 为空时可能生成非法 SQL。
+
+### 正确做法
+
+在 Java 代码里先判断空集合，直接返回空结果。
+
+### 避坑口诀
+
+集合参数先判空，别让 SQL 猜。
+
+## 坑 6：Plus UpdateWrapper 不加条件
+
+### 错误示例
+
+```java
+bookMapper.update(null, Wrappers.<BookEntity>lambdaUpdate()
+    .set(BookEntity::getTitle, "新标题"));
+```
+
+### 为什么错
+
+可能更新全表。
+
+### 正确写法
+
+```java
+bookMapper.update(null, Wrappers.<BookEntity>lambdaUpdate()
+    .eq(BookEntity::getId, id)
+    .set(BookEntity::getTitle, "新标题"));
+```
+
+### 避坑口诀
+
+更新删除必须有条件。
+
+## 坑 7：逻辑删除和唯一索引冲突
+
+### 场景
+
+`isbn` 唯一，逻辑删除一本书后，再新增同 ISBN 失败。
+
+### 为什么
+
+旧记录还在表里，唯一约束仍然生效。
+
+### 处理思路
+
+- 业务上不允许重复恢复。
+- 或设计联合唯一索引时考虑删除字段。
+- 或使用归档策略。
+
+### 避坑口诀
+
+逻辑删除不是真删除，唯一约束仍然看得见。
+
+## 坑 8：Controller 直接调用 BaseMapper
+
+### 错误示例
+
+```java
+@GetMapping("/{id}")
+public BookEntity get(@PathVariable Long id) {
+    return bookMapper.selectById(id);
+}
+```
+
+### 为什么错
+
+绕过 Service，业务规则、权限、事务、DTO 转换都容易丢。
+
+### 正确链路
+
+```text
+Controller -> Service -> Mapper
+```
+
+### 避坑口诀
+
+Mapper 不进 Controller，业务必须过 Service。
+
+## 总结清单
+
+| 检查项 | 是否通过 |
+| --- | --- |
+| 用户输入是否使用 `#{}`？ |  |
+| `${}` 是否做了白名单？ |  |
+| namespace 和 id 是否正确？ |  |
+| 多表查询是否用了列别名？ |  |
+| 动态 SQL 是否使用 `<where>`、`<set>`？ |  |
+| foreach 空集合是否提前处理？ |  |
+| update/delete 是否有条件？ |  |
+| 逻辑删除是否考虑唯一索引？ |  |
+| Controller 是否没有直接调用 Mapper？ |  |
+

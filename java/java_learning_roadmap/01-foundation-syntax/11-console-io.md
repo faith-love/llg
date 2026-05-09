@@ -1,0 +1,157 @@
+# 11-控制台输入输出
+
+## 输出
+
+最常用输出：
+
+```java
+System.out.println("Hello");
+```
+
+`println` 输出后换行。
+
+```java
+System.out.print("Hello");
+System.out.print("Java");
+```
+
+`print` 输出后不换行。
+
+## 格式化输出
+
+```java
+String name = "小明";
+int age = 18;
+
+System.out.printf("姓名：%s，年龄：%d%n", name, age);
+```
+
+常用占位符：
+
+- `%s`：字符串。
+- `%d`：整数。
+- `%f`：小数。
+- `%n`：换行。
+
+控制小数位：
+
+```java
+double price = 19.987;
+System.out.printf("%.2f%n", price); // 19.99
+```
+
+## 输入 Scanner
+
+使用 `Scanner` 读取控制台输入。
+
+```java
+import java.util.Scanner;
+
+public class ScannerDemo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("请输入姓名：");
+        String name = scanner.nextLine();
+
+        System.out.print("请输入年龄：");
+        int age = scanner.nextInt();
+
+        System.out.println("姓名：" + name);
+        System.out.println("年龄：" + age);
+    }
+}
+```
+
+## 常用读取方法
+
+| 方法 | 说明 |
+| --- | --- |
+| `next()` | 读取一个单词，遇到空格结束 |
+| `nextLine()` | 读取一整行 |
+| `nextInt()` | 读取整数 |
+| `nextDouble()` | 读取小数 |
+| `nextBoolean()` | 读取布尔值 |
+
+## nextInt 和 nextLine 的坑
+
+示例：
+
+```java
+Scanner scanner = new Scanner(System.in);
+
+System.out.print("请输入年龄：");
+int age = scanner.nextInt();
+
+System.out.print("请输入姓名：");
+String name = scanner.nextLine();
+```
+
+你可能发现姓名没有机会输入。这是因为 `nextInt()` 后面的换行还留在输入缓冲里。
+
+简单解决：
+
+```java
+int age = scanner.nextInt();
+scanner.nextLine(); // 吃掉换行
+String name = scanner.nextLine();
+```
+
+或者统一用 `nextLine()` 读取，再转换。
+
+## 菜单程序
+
+```java
+import java.util.Scanner;
+
+public class MenuDemo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
+
+        while (running) {
+            System.out.println("1. 查询余额");
+            System.out.println("2. 存款");
+            System.out.println("3. 退出");
+            System.out.print("请选择：");
+
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.println("余额：100");
+                    break;
+                case 2:
+                    System.out.println("执行存款");
+                    break;
+                case 3:
+                    running = false;
+                    break;
+                default:
+                    System.out.println("无效选择");
+                    break;
+            }
+        }
+    }
+}
+```
+
+菜单程序是后面做 ATM、图书管理系统的基础。
+
+## 本节练习
+
+完成：
+
+- 输入姓名和年龄并输出。
+- 输入两个整数，输出加减乘除。
+- 输入成绩，输出等级。
+- 写一个简单菜单，能循环显示，选择退出后结束。
+- 改造计算器，让数字来自用户输入。
+
+## 本节通过标准
+
+- 能使用 `println`、`print`、`printf`。
+- 能使用 `Scanner` 读取字符串、整数、小数。
+- 知道 `nextInt()` 和 `nextLine()` 混用的坑。
+- 能写一个循环菜单。
+
