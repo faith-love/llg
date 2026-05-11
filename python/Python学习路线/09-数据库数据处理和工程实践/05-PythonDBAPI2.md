@@ -1,0 +1,143 @@
+# Python DB-API 2.0
+
+DB-API 2.0 是 Python 数据库驱动的通用接口规范。不同数据库驱动有差异，但 connection、cursor、execute、fetch、commit、rollback 这些概念基本一致。
+
+## 核心对象
+
+| 对象 | 职责 |
+| --- | --- |
+| connection | 数据库连接、事务边界 |
+| cursor | 执行 SQL、读取结果 |
+| parameter | SQL 参数 |
+| transaction | 一组提交或回滚的操作 |
+
+## connection
+
+```python
+import sqlite3
+
+
+conn = sqlite3.connect("app.db")
+```
+
+连接负责：
+
+- 打开数据库会话。
+- 管理事务。
+- 创建 cursor。
+- 提交或回滚。
+- 关闭连接。
+
+连接用完必须关闭。
+
+## cursor
+
+```python
+cursor = conn.cursor()
+cursor.execute("SELECT * FROM users")
+rows = cursor.fetchall()
+```
+
+cursor 负责：
+
+- 执行 SQL。
+- 绑定参数。
+- 获取结果。
+- 提供行数等信息。
+
+## execute
+
+```python
+cursor.execute(
+    "SELECT id, name FROM users WHERE email = ?",
+    ("alice@example.com",),
+)
+```
+
+注意单个参数也要写成元组：
+
+```python
+("alice@example.com",)
+```
+
+## fetch
+
+常用方法：
+
+| 方法 | 说明 |
+| --- | --- |
+| `fetchone()` | 读取一行 |
+| `fetchmany(size)` | 读取多行 |
+| `fetchall()` | 读取全部 |
+
+大结果集不要直接 `fetchall()`，应分批读取。
+
+## commit 和 rollback
+
+```python
+try:
+    conn.execute(...)
+    conn.commit()
+except Exception:
+    conn.rollback()
+    raise
+```
+
+写操作需要提交。出错时回滚。
+
+## 上下文管理器
+
+```python
+with sqlite3.connect("app.db") as conn:
+    conn.execute(...)
+```
+
+不同驱动上下文行为可能不同，必须查看对应驱动文档。学习阶段要明确：连接关闭和事务提交不是一回事。
+
+## 参数占位符差异
+
+不同驱动占位符可能不同：
+
+| 风格 | 示例 |
+| --- | --- |
+| qmark | `WHERE id = ?` |
+| named | `WHERE id = :id` |
+| pyformat | `WHERE id = %(id)s` |
+
+不要自己拼接值。
+
+## 常见错误
+
+### 忘记关闭连接
+
+连接泄漏会耗尽数据库资源。
+
+### 忘记提交
+
+写操作没有持久化。
+
+### 直接 fetchall 大结果
+
+可能占用大量内存。
+
+### 混淆 cursor 和 connection
+
+connection 管事务，cursor 执行 SQL。
+
+## 练习
+
+1. 用 connection 创建 cursor。
+2. 用 cursor 执行 SELECT。
+3. 使用 `fetchone()`。
+4. 使用 `fetchmany()`。
+5. 使用 `fetchall()` 并说明风险。
+6. 写一个成功提交事务。
+7. 写一个异常回滚事务。
+8. 用命名参数执行查询。
+
+## 验收标准
+
+- 能解释 connection 和 cursor。
+- 能使用 execute 和 fetch。
+- 能正确提交和回滚。
+- 能说明参数占位符差异。

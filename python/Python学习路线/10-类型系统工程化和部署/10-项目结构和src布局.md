@@ -1,0 +1,149 @@
+# 项目结构和src布局
+
+项目结构决定代码边界。`src` 布局是 Python 包项目中常见的推荐结构，它可以避免测试时误导入当前目录中的源码，帮助你更接近真实安装后的运行方式。
+
+## 推荐结构
+
+```text
+my_project/
+  README.md
+  pyproject.toml
+  src/
+    my_project/
+      __init__.py
+      cli.py
+      config.py
+      services/
+        __init__.py
+        report_service.py
+  tests/
+    test_report_service.py
+```
+
+## 为什么使用 src
+
+没有 `src` 时：
+
+```text
+my_project/
+  my_project/
+  tests/
+```
+
+测试可能直接导入工作目录中的源码，而不是安装后的包，掩盖打包配置问题。
+
+`src` 布局让你更容易发现：
+
+- 包没有正确安装。
+- 包数据没有包含。
+- 导入路径错误。
+- pyproject 配置不完整。
+
+## 包和模块
+
+包：
+
+```text
+my_project/
+  __init__.py
+```
+
+模块：
+
+```text
+config.py
+cli.py
+```
+
+模块不要过大。一个文件超过几百行且职责混杂时，应考虑拆分。
+
+## 分层建议
+
+常见：
+
+```text
+routers/
+services/
+repositories/
+schemas/
+models/
+settings.py
+```
+
+或工具包：
+
+```text
+io/
+parsers/
+reporters/
+validators/
+cli.py
+```
+
+结构应服务于业务，不要机械套模板。
+
+## 导入规则
+
+推荐绝对导入：
+
+```python
+from my_project.services.report_service import build_report
+```
+
+包内部可适度使用相对导入，但不要形成复杂循环。
+
+## __init__.py
+
+作用：
+
+- 标记包。
+- 暴露公共 API。
+
+不要在 `__init__.py` 做重型初始化，例如读配置、连接数据库、启动线程。
+
+## tests 结构
+
+```text
+tests/
+  unit/
+  integration/
+  conftest.py
+```
+
+测试名称应表达行为，不只对应文件。
+
+## 常见错误
+
+### 所有代码放 main.py
+
+难测试、难复用、难维护。
+
+### 循环导入
+
+通常说明模块职责和依赖方向不清晰。
+
+### 导入依赖当前工作目录
+
+换目录执行就失败。
+
+### __init__.py 做副作用
+
+导入包就执行网络请求或读取环境，会导致测试和工具运行不稳定。
+
+## 练习
+
+1. 创建一个 `src` 布局项目。
+2. 把脚本拆成 `cli.py` 和 service。
+3. 创建 tests 目录。
+4. 使用绝对导入。
+5. 本地安装包后运行测试。
+6. 找出一个循环导入并修复。
+7. 清理 `__init__.py` 中的副作用。
+8. 画出模块依赖方向。
+
+## 验收标准
+
+- 能创建 `src` 布局项目。
+- 能区分包、模块、测试目录。
+- 能控制导入方向。
+- 能避免工作目录导入陷阱。
