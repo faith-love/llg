@@ -1,0 +1,163 @@
+# 04-依赖注入方式和选择标准
+
+## 三种常见注入方式
+
+Spring 常见依赖注入方式：
+
+- 构造器注入。
+- Setter 注入。
+- 字段注入。
+
+实际项目里优先使用构造器注入。
+
+## 构造器注入
+
+示例：
+
+```java
+@Service
+public class OrderService {
+
+    private final PaymentService paymentService;
+
+    public OrderService(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+}
+```
+
+优点：
+
+- 依赖关系一眼可见。
+- 字段可以声明为 `final`。
+- 对象创建完成后就是可用状态。
+- 单元测试可以直接 new。
+- 缺少依赖时启动阶段就失败。
+
+推荐作为默认选择。
+
+## Setter 注入
+
+示例：
+
+```java
+@Service
+public class ReportService {
+
+    private MailClient mailClient;
+
+    @Autowired
+    public void setMailClient(MailClient mailClient) {
+        this.mailClient = mailClient;
+    }
+}
+```
+
+适合：
+
+- 可选依赖。
+- 后续允许替换的配置型依赖。
+- 某些框架兼容场景。
+
+不适合关键业务依赖。关键依赖如果没有注入，业务对象可能处于半可用状态。
+
+## 字段注入
+
+示例：
+
+```java
+@Service
+public class OrderService {
+
+    @Autowired
+    private PaymentService paymentService;
+}
+```
+
+它看起来最短，但缺点明显：
+
+- 依赖隐藏在字段上，不看实现细节不知道类需要什么。
+- 不方便单元测试。
+- 不能声明为真正构造期必需依赖。
+- 容易让类依赖越来越多却没人察觉。
+
+初学时可以看懂字段注入，但新代码不建议作为默认写法。
+
+## 多实现注入
+
+当一个接口有多个实现时，Spring 不知道该注入哪个。
+
+示例：
+
+```java
+public interface PaymentService {
+    void pay();
+}
+
+@Service
+public class AliPayService implements PaymentService {
+    public void pay() {
+    }
+}
+
+@Service
+public class WechatPayService implements PaymentService {
+    public void pay() {
+    }
+}
+```
+
+直接注入：
+
+```java
+public OrderService(PaymentService paymentService) {
+    this.paymentService = paymentService;
+}
+```
+
+可能报错，因为候选 Bean 不止一个。
+
+解决方式：
+
+```java
+public OrderService(@Qualifier("aliPayService") PaymentService paymentService) {
+    this.paymentService = paymentService;
+}
+```
+
+或给默认实现加：
+
+```java
+@Primary
+@Service
+public class AliPayService implements PaymentService {
+}
+```
+
+## 注入集合
+
+如果你就是需要拿到所有实现，可以注入 List：
+
+```java
+public PaymentRouter(List<PaymentService> paymentServices) {
+    this.paymentServices = paymentServices;
+}
+```
+
+这种方式适合策略模式、插件式处理器、责任链。
+
+## 本节练习
+
+1. 写 `PaymentService` 接口。
+2. 写 `AliPayService` 和 `WechatPayService` 两个实现。
+3. 在 `OrderService` 中尝试直接注入接口，观察报错。
+4. 使用 `@Qualifier` 修复。
+5. 再使用 `@Primary` 修复。
+6. 注入 `List<PaymentService>`，打印所有实现类名。
+
+## 本节通过标准
+
+- 能说明为什么构造器注入优先。
+- 能解释字段注入的问题。
+- 能处理多个实现类的注入冲突。
+- 能说出 `@Primary` 和 `@Qualifier` 的区别。

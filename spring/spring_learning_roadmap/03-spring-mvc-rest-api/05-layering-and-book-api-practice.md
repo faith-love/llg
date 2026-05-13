@@ -1,0 +1,71 @@
+# 05-分层边界和图书 API 实战
+
+## 推荐分层
+
+建议按下面边界组织：
+
+- Controller：协议适配。
+- DTO：输入输出对象。
+- Service：业务逻辑。
+- Repository/Mapper：数据访问。
+- Entity：数据库映射对象。
+
+## 图书 API 最小范围
+
+建议先做这些接口：
+
+- 创建图书。
+- 修改图书。
+- 图书详情。
+- 图书分页。
+- 删除图书。
+- 图书状态变更。
+
+分页查询支持：
+
+- 关键词。
+- 状态。
+- 作者。
+
+## 哪些逻辑放哪里
+
+Controller：
+
+- 收参数。
+- 调 Service。
+- 返回结果。
+
+Service：
+
+- 校验业务规则。
+- 判断状态流转。
+- 组装事务边界。
+
+Repository/Mapper：
+
+- 执行 SQL。
+- 完成分页和条件查询。
+
+## 本节练习
+
+创建一个图书模块，至少包含：
+
+- `BookController`
+- `BookService`
+- `BookMapper` 或 `BookRepository`
+- `CreateBookRequest`
+- `UpdateBookRequest`
+- `BookDetailResponse`
+
+再补上：
+
+- 参数校验。
+- 统一异常。
+- 分页接口。
+- 状态更新接口。
+
+## 本节通过标准
+
+- 能按分层写出一个完整的 CRUD API。
+- 能保持 Controller 不写复杂业务。
+- 能避免 Entity 直接透出到接口响应。
