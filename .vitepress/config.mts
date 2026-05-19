@@ -175,13 +175,33 @@ export default defineConfig({
     logo: '/logo.svg',
     nav: [
       { text: '总索引', link: '/说明' },
-      { text: 'Java', link: '/Java学习资料/说明' },
-      { text: 'Spring', link: '/Spring学习资料/说明' },
-      { text: 'Python', link: '/Python学习资料/说明' },
-      { text: 'SQL', link: '/SQL学习资料/说明' },
-      { text: 'Linux', link: '/Linux学习资料/说明' },
-      { text: 'Redis', link: '/Redis学习资料/说明' },
-      { text: 'Docker', link: '/Docker学习资料/说明' }
+      {
+        text: '编程语言',
+        items: [
+          { text: 'Java 学习资料', link: '/Java学习资料/说明' },
+          { text: 'Python 学习资料', link: '/Python学习资料/说明' }
+        ]
+      },
+      {
+        text: '后端框架',
+        items: [
+          { text: 'Spring 学习资料', link: '/Spring学习资料/说明' }
+        ]
+      },
+      {
+        text: '数据与缓存',
+        items: [
+          { text: 'SQL 学习资料', link: '/SQL学习资料/说明' },
+          { text: 'Redis 学习资料', link: '/Redis学习资料/说明' }
+        ]
+      },
+      {
+        text: '系统与交付',
+        items: [
+          { text: 'Linux 学习资料', link: '/Linux学习资料/说明' },
+          { text: 'Docker 学习资料', link: '/Docker学习资料/说明' }
+        ]
+      }
     ],
     sidebar: buildSidebar(),
     outline: {

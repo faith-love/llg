@@ -16,10 +16,10 @@
 | --- | --- |
 | 启动流程 | `示例-你好世界` |
 | MyBatis | `示例-ORM-MyBatis` |
-| 未译25173edis 缓存 | `未译75671` |
-| 未译25173abbitMQ | `示例-消息队列-RabbitMQ` |
+| Redis 缓存 | `示例-缓存-Redis` |
+| RabbitMQ | `示例-消息队列-RabbitMQ` |
 | Kafka | `示例-消息队列-Kafka` |
-| 未译25173ocketMQ | `示例-消息队列-RocketMQ` |
+| RocketMQ | `示例-消息队列-RocketMQ` |
 | 任务调度 | `示例-任务`、`示例-任务-Quartz` |
 | 权限控制 | `示例-RBAC-安全`、`示例-RBAC-Shiro` |
 | Docker | `示例-Docker` |
@@ -56,7 +56,7 @@
 
 - 选择 `示例-你好世界`，记录启动流程。
 - 选择 `示例-ORM-MyBatis`，记录 MyBatis 配置。
-- 选择 `未译75671`，记录 未译25173edis 使用方式。
+- 选择 `示例-缓存-Redis`，记录 Redis 使用方式。
 - 每个专题复写一个最小 demo。
 
 ## 本节通过标准
