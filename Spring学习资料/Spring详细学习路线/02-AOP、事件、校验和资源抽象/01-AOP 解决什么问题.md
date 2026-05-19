@@ -5,13 +5,13 @@
 假设很多 Service 方法都要记录耗时：
 
 ```java
-未译64029 未译27462id create订单() {
-    long start = 未译11490tem.currentTimeMillis();
+public void create订单() {
+    long start = System.currentTimeMillis();
     try {
         // 业务逻辑
     } finally {
-        long cost = 未译11490tem.currentTimeMillis() - start;
-        未译11490tem.out.println("cost=" + cost);
+        long cost = System.currentTimeMillis() - start;
+        System.out.println("cost=" + cost);
     }
 }
 ```

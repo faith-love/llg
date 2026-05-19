@@ -38,8 +38,8 @@ Starter 本质上是依赖组合和约定入口。例如：
 
 必须掌握：
 
-- `应用配置.yml` 和 `应用配置.属性`。
-- Profile 文件：`未译11013.yml`、`未译77079.yml`。
+- `application.yml` 和 `application.properties`。
+- Profile 文件：`application-dev.yml`、`application-prod.yml`。
 - 环境变量覆盖配置。
 - 命令行参数覆盖配置。
 - `@ConfigurationProperties` 绑定配置。

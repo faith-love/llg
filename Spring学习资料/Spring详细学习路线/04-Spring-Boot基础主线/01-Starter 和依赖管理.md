@@ -1,4 +1,4 @@
-﻿# 01-未译60247
+﻿# 01-Starter
 
 ## Starter 是什么
 
@@ -30,7 +30,7 @@ Boot 已经提供了一整套兼容版本组合。
 
 ## 依赖树是必看的
 
-学习 Boot 时不要只复制 `项目对象模型.xml`。
+学习 Boot 时不要只复制 `pom.xml`。
 
 至少要会看：
 
@@ -41,7 +41,7 @@ mvn dependency:tree
 你需要知道：
 
 - 一个 Starter 究竟带进来哪些依赖。
-- Web Starter 为什么会带嵌入式Docker。
+- Web Starter 为什么会带嵌入式服务器。
 - Validation 为什么能直接工作。
 
 ## 本节通过标准

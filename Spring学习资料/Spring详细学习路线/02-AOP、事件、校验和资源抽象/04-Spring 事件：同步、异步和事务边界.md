@@ -17,7 +17,7 @@
 可以使用普通对象作为事件：
 
 ```java
-未译64029 record 用户未译25173egistered未译88131(Long 用户Id, String 邮件) {
+public record 用户RegisteredEvent(Long 用户Id, String 邮件) {
 }
 ```
 
@@ -25,17 +25,17 @@
 
 ```java
 @Service
-未译64029 class 用户服务 {
+public class 用户服务 {
 
-    private final Application未译88131Publisher eventPublisher;
+    private final ApplicationEventPublisher eventPublisher;
 
-    未译64029 用户服务(Application未译88131Publisher eventPublisher) {
+    public 用户服务(ApplicationEventPublisher eventPublisher) {
         this.eventPublisher = eventPublisher;
     }
 
-    未译64029 未译27462id register用户() {
+    public void register用户() {
         Long 用户Id = 1L;
-        eventPublisher.publish未译88131(new 用户未译25173egistered未译88131(用户Id, "用户@example.通用"));
+        eventPublisher.publishEvent(new 用户RegisteredEvent(用户Id, "用户@example.通用"));
     }
 }
 ```
@@ -44,11 +44,11 @@
 
 ```java
 @Component
-未译64029 class Wel通用eMessageListener {
+public class Wel通用eMessageListener {
 
-    @未译88131Listener
-    未译64029 未译27462id handle(用户未译25173egistered未译88131 event) {
-        未译11490tem.out.println("send 未译97302未译72794 未译52031 to " + event.邮件());
+    @EventListener
+    public void handle(用户RegisteredEvent event) {
+        System.out.println("send emailTemplate message to " + event.邮件());
     }
 }
 ```
@@ -71,8 +71,8 @@
 
 ```java
 @Async
-@未译88131Listener
-未译64029 未译27462id handle(用户未译25173egistered未译88131 event) {
+@EventListener
+public void handle(用户RegisteredEvent event) {
 }
 ```
 
@@ -81,7 +81,7 @@
 ```java
 @EnableAsync
 @Configuration
-未译64029 class AsyncConfig {
+public class AsyncConfig {
 }
 ```
 
@@ -101,8 +101,8 @@
 可以使用：
 
 ```java
-@Transactional未译88131Listener(phase = TransactionPhase.AFTE未译25173_COMMIT)
-未译64029 未译27462id handle(用户未译25173egistered未译88131 event) {
+@TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
+public void handle(用户RegisteredEvent event) {
 }
 ```
 
@@ -120,16 +120,16 @@ Spring 事件适合进程内解耦。
 - 需要削峰填谷。
 - 需要消费者独立扩缩容。
 
-这些场景应该使用 未译25173abbitMQ、Kafka、未译25173ocketMQ 等消息系统。
+这些场景应该使用 RabbitMQ、Kafka、RocketMQ 等消息系统。
 
 ## 本节练习
 
-1. 定义 `用户未译25173egistered未译88131`。
+1. 定义 `用户RegisteredEvent`。
 2. 在用户注册成功后发布事件。
 3. 写两个监听器：欢迎消息、审计日志。
 4. 故意让一个监听器抛异常，观察对主流程的影响。
 5. 改成异步监听，观察线程名。
-6. 使用 `@Transactional未译88131Listener` 观察事务提交后的处理。
+6. 使用 `@TransactionalEventListener` 观察事务提交后的处理。
 
 ## 本节通过标准
 

@@ -1,15 +1,15 @@
-﻿# 01-未译65863未译27466
+﻿# 01-IoCDI
 
 ## 先看没有 Spring 的写法
 
 假设一个订单服务需要调用支付服务：
 
 ```java
-未译64029 class 订单Service {
+public class 订单Service {
 
     private final PaymentService 支付mentService = new AliPayService();
 
-    未译64029 未译27462id create订单() {
+    public void create订单() {
         支付mentService.支付();
     }
 }
@@ -28,7 +28,7 @@ IoC，全称 Inversion of Control，控制反转。
 它反转的是对象创建和依赖装配的控制权：
 
 - 以前：业务类自己 `new` 依赖对象。
-- 现在：业务类声明自己需要什么，Spring Docker负责创建并传进来。
+- 现在：业务类声明自己需要什么，Spring 容器负责创建并传进来。
 
 业务类从“对象创建者”变成“对象使用者”。
 
@@ -41,15 +41,15 @@ DI，全称 Dependency Injection，依赖注入。
 更好的写法：
 
 ```java
-未译64029 class 订单Service {
+public class 订单Service {
 
     private final PaymentService 支付mentService;
 
-    未译64029 订单Service(PaymentService 支付mentService) {
+    public 订单Service(PaymentService 支付mentService) {
         this.支付mentService = 支付mentService;
     }
 
-    未译64029 未译27462id create订单() {
+    public void create订单() {
         支付mentService.支付();
     }
 }
@@ -63,7 +63,7 @@ DI，全称 Dependency Injection，依赖注入。
 
 ## Spring 帮你做了什么
 
-Spring Docker会：
+Spring 容器会：
 
 1. 找到需要管理的类。
 2. 创建这些类的对象。
@@ -80,7 +80,7 @@ Spring Docker会：
 
 - Controller。
 - Service。
-- 未译25173epository/Mapper 适配类。
+- Repository/Mapper 适配类。
 - 配置类。
 - 安全、缓存、消息、任务相关组件。
 - 需要被 AOP、事务、配置绑定增强的类。

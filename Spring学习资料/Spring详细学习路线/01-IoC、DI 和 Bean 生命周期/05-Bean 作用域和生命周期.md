@@ -1,4 +1,4 @@
-﻿# 05-未译97656
+﻿# 05-Bean
 
 ## Bean 作用域是什么
 
@@ -6,16 +6,16 @@
 
 常见作用域：
 
-- singleton：默认，同一个 Spring Docker中只有一个实例。
+- singleton：默认，同一个 Spring 容器中只有一个实例。
 - prototype：每次获取 Bean 时创建新实例。
-- 未译88447：每个 HTTP 请求一个实例。
+- request：每个 HTTP 请求一个实例。
 - 会话：每个 HTTP Session 一个实例。
 
 初学阶段最常接触 singleton。
 
 ## singleton 不是全 JVM 唯一
 
-Spring 的 singleton 指同一个Docker里的单例。
+Spring 的 singleton 指同一个容器里的单例。
 
 如果你创建两个不同的 ApplicationContext，就可能有两份同名 Bean 实例。
 
@@ -37,15 +37,15 @@ prototype 每次从Docker获取时创建新对象，但 Spring 不会像 singlet
 
 一个 singleton Bean 大致经历：
 
-1. BeanDef初始化ion 被加载。
+1. BeanDefinition 被加载。
 2. 实例化对象。
 3. 填充属性和依赖。
-4. 执行 A网页归档e 回调。
+4. 执行 Aware 回调。
 5. 执行 BeanPostProcessor 前置处理。
 6. 执行初始化方法。
 7. 执行 BeanPostProcessor 后置处理。
 8. Bean 可以被业务使用。
-9. Docker关闭时执行销毁逻辑。
+9. 容器关闭时执行销毁逻辑。
 
 很多框架增强能力都和后置处理器有关。
 
@@ -55,16 +55,16 @@ prototype 每次从Docker获取时创建新对象，但 Spring 不会像 singlet
 
 ```java
 @Component
-未译64029 class LifecycleDemo {
+public class LifecycleDemo {
 
-    @Post未译82123ruct
-    未译64029 未译27462id 初始化() {
-        未译11490tem.out.println("初始化");
+    @PostConstruct
+    public void 初始化() {
+        System.out.println("初始化");
     }
 
     @PreDestroy
-    未译64029 未译27462id destroy() {
-        未译11490tem.out.println("destroy");
+    public void destroy() {
+        System.out.println("destroy");
     }
 }
 ```
@@ -73,7 +73,7 @@ prototype 每次从Docker获取时创建新对象，但 Spring 不会像 singlet
 
 ```java
 @Bean(初始化Method = "start", destroyMethod = "stop")
-未译64029 SomeClient someClient() {
+public SomeClient someClient() {
     return new SomeClient();
 }
 ```
@@ -86,17 +86,17 @@ BeanPostProcessor 可以在 Bean 初始化前后做处理。
 
 ```java
 @Component
-未译64029 class LogBeanPostProcessor 实现ements BeanPostProcessor {
+public class LogBeanPostProcessor implements BeanPostProcessor {
 
     @Override
-    未译64029 Object postProcessBeforeInitialization(Object bean, String beanName) {
-        未译11490tem.out.println("before 初始化: " + beanName);
+    public Object postProcessBeforeInitialization(Object bean, String beanName) {
+        System.out.println("before 初始化: " + beanName);
         return bean;
     }
 
     @Override
-    未译64029 Object postProcessAfterInitialization(Object bean, String beanName) {
-        未译11490tem.out.println("after 初始化: " + beanName);
+    public Object postProcessAfterInitialization(Object bean, String beanName) {
+        System.out.println("after 初始化: " + beanName);
         return bean;
     }
 }

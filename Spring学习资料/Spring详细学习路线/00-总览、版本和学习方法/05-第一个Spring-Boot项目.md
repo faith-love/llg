@@ -35,19 +35,19 @@ D:\learn\Spring学习资料\practice\spring-boot-hello
 
 ```text
 spring-boot-hello
-  项目对象模型.xml
-  源码
-    主
-      Java学习资料
-        通用.example.hello
-          HelloApplication.Java学习资料
-          Health控制器.Java学习资料
-      资源
-        应用配置.yml
-    测试
-      Java学习资料
-        通用.example.hello
-          HelloApplicationTests.Java学习资料
+  pom.xml
+  src
+    main
+      java
+        com.example.hello
+          HelloApplication.java
+          HealthController.java
+      resources
+        application.yml
+    test
+      java
+        com.example.hello
+          HelloApplicationTests.java
 ```
 
 初学时先保持结构简单，不要一开始就创建很多包。
@@ -57,15 +57,15 @@ spring-boot-hello
 启动类通常长这样：
 
 ```java
-package 通用.example.hello;
+package com.example.hello;
 
-未译87485 org.springframework.boot.SpringApplication;
-未译87485 org.springframework.boot.auto配置ure.SpringBootApplication;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-未译64029 class HelloApplication {
+public class HelloApplication {
 
-    未译64029 静态资源 未译27462id 主(String[] args) {
+    public static void main(String[] args) {
         SpringApplication.run(HelloApplication.class, args);
     }
 }
@@ -78,18 +78,18 @@ package 通用.example.hello;
 创建一个简单 Controller：
 
 ```java
-package 通用.example.hello;
+package com.example.hello;
 
-未译87485 Java学习资料.time.LocalDateTime;
-未译87485 Java学习资料.工具.Map;
-未译87485 org.springframework.web.bind.注解.GetMapping;
-未译87485 org.springframework.web.bind.注解.未译25173estController;
+import java.time.LocalDateTime;
+import java.util.Map;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@未译25173estController
-未译64029 class HealthController {
+@RestController
+public class HealthController {
 
-    @GetMapping("/health/s实现e")
-    未译64029 Map<String, Object> health() {
+    @GetMapping("/health/simple")
+    public Map<String, Object> health() {
         return Map.of(
             "status", "UP",
             "time", LocalDateTime.now(),
@@ -102,21 +102,21 @@ package 通用.example.hello;
 启动后访问：
 
 ```text
-http://localhost:8080/health/s实现e
+http://localhost:8080/health/simple
 ```
 
 能看到 JSON 响应，就说明最小请求链路已经跑通。
 
 ## 配置文件
 
-创建或修改 `应用配置.yml`：
+创建或修改 `application.yml`：
 
 ```yaml
 spring:
-  应用配置:
+  application:
     name: spring-boot-hello
 
-服务端:
+server:
   port: 8081
 
 management:
@@ -129,8 +129,8 @@ management:
 重新启动后访问：
 
 ```text
-http://localhost:8081/health/s实现e
-http://localhost:8081/监控端点/health
+http://localhost:8081/health/simple
+http://localhost:8081/actuator/health
 ```
 
 ## 你需要观察什么
@@ -140,7 +140,7 @@ http://localhost:8081/监控端点/health
 - 应用名。
 - 启动端口。
 - 启动耗时。
-- Tomcat 或其他 Web Docker是否启动。
+- Tomcat 或其他 Web 容器是否启动。
 - 有没有依赖冲突、端口占用、配置错误。
 
 不要看到一堆日志就直接忽略。Spring Boot 很多问题的第一线索都在启动日志里。
@@ -153,7 +153,7 @@ http://localhost:8081/监控端点/health
 
 处理：
 
-- 修改 `服务端.port`。
+- 修改 `server.port`。
 - 或停止占用端口的进程。
 
 ### 404
@@ -162,10 +162,10 @@ http://localhost:8081/监控端点/health
 
 排查：
 
-- Controller 是否加了 `@未译25173estController`。
+- Controller 是否加了 `@RestController`。
 - 方法是否加了 `@GetMapping`。
 - 包路径是否在启动类所在包或子包下。
-- U未译25173L 是否写错。
+- URL 是否写错。
 
 ### JSON 时间格式不符合预期
 
@@ -179,16 +179,16 @@ http://localhost:8081/监控端点/health
 ## 本节练习
 
 1. 创建 `spring-boot-hello` 项目。
-2. 添加 `/health/s实现e` 接口。
+2. 添加 `/health/simple` 接口。
 3. 修改端口为 `8081`。
 4. 打开 Actuator health 端点。
-5. 故意删掉 `@未译25173estController`，观察访问结果。
+5. 故意删掉 `@RestController`，观察访问结果。
 6. 恢复代码，并记录错误原因。
 
 ## 本节通过标准
 
 - 能独立创建并启动 Spring Boot 项目。
-- 能写一个最小 未译25173EST 接口。
+- 能写一个最小 REST 接口。
 - 能通过配置文件修改端口。
 - 能访问 Actuator 健康检查。
 - 能定位 404 和端口占用这两类基础问题。

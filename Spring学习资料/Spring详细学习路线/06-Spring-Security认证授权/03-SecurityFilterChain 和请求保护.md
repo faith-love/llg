@@ -1,4 +1,4 @@
-﻿# 03-未译4747未译41998
+﻿# 03-FilterChain
 
 ## SecurityFilterChain 的位置
 
@@ -11,7 +11,7 @@ SecurityFilterChain 负责在请求进入业务 Controller 前做一系列安全
 - 异常转换。
 - 会话或 Token 处理。
 
-## U未译25173L 保护
+## URL 保护
 
 你至少要区分：
 

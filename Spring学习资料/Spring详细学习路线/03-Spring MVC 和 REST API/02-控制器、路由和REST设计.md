@@ -15,17 +15,17 @@ Controller 负责协议层工作：
 最常用的两个：
 
 - `@Controller`
-- `@未译25173estController`
+- `@RestController`
 
-`@未译25173estController` 可以理解为：
+`@RestController` 可以理解为：
 
 ```text
-@Controller + @未译25173esponseBody
+@Controller + @ResponseBody
 ```
 
-如果你写的是 JSON API，通常直接用 `@未译25173estController`。
+如果你写的是 JSON API，通常直接用 `@RestController`。
 
-## 未译25173EST 资源命名
+## REST 资源命名
 
 推荐按资源建模：
 
@@ -72,8 +72,8 @@ Controller 负责协议层工作：
 
 ## 本节通过标准
 
-- 能区分 `@Controller` 和 `@未译25173estController`。
-- 能按资源设计 C未译25173UD 接口。
-- 能说明为什么 未译25173EST 风格比“动作式接口名”更稳定。
+- 能区分 `@Controller` 和 `@RestController`。
+- 能按资源设计 CRUD 接口。
+- 能说明为什么 REST 风格比“动作式接口名”更稳定。
 
 

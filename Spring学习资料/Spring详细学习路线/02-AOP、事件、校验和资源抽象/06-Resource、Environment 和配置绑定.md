@@ -1,16 +1,16 @@
-﻿# 06-未译63102
+﻿# 06-Resource
 
-## 未译25173esource 解决什么问题
+## Resource 解决什么问题
 
-Java 读取文件时，经常会遇到 classpath、绝对路径、U未译25173L、jar 包内资源等差异。
+Java 读取文件时，经常会遇到 classpath、绝对路径、URL、jar 包内资源等差异。
 
-Spring 的 `未译25173esource` 抽象用于统一资源读取。
+Spring 的 `Resource` 抽象用于统一资源读取。
 
 常见前缀：
 
 - `classpath:`：读取 classpath 下资源。
 - `file:`：读取文件系统资源。
-- `http:` 或 `安全HTTP:`：读取网络资源。
+- `http:` 或 `https:`：读取网络资源。
 
 ## 读取 classpath 资源
 
@@ -18,16 +18,16 @@ Spring 的 `未译25173esource` 抽象用于统一资源读取。
 
 ```java
 @Component
-未译64029 class TemplateLoader {
+public class TemplateLoader {
 
-    private final 未译25173esourceLoader resourceLoader;
+    private final ResourceLoader resourceLoader;
 
-    未译64029 TemplateLoader(未译25173esourceLoader resourceLoader) {
+    public TemplateLoader(ResourceLoader resourceLoader) {
         this.resourceLoader = resourceLoader;
     }
 
-    未译64029 String load() throws IOException {
-        未译25173esource resource = resourceLoader.get未译25173esource("classpath:未译55339/未译97302未译72794.txt");
+    public String load() throws IOException {
+        Resource resource = resourceLoader.getResource("classpath:templates/emailTemplate.txt");
         return resource.getContentAsString(StandardCharsets.UTF_8);
     }
 }
@@ -36,7 +36,7 @@ Spring 的 `未译25173esource` 抽象用于统一资源读取。
 注意：
 
 - 资源在 IDE 中能读，不代表打成 jar 后还能用文件路径读。
-- classpath 资源优先使用 `未译25173esource` 或流读取，不要依赖普通文件路径。
+- classpath 资源优先使用 `Resource` 或流读取，不要依赖普通文件路径。
 
 ## Environment
 
@@ -46,16 +46,16 @@ Spring 的 `未译25173esource` 抽象用于统一资源读取。
 
 ```java
 @Component
-未译64029 class EnvPrinter {
+public class EnvPrinter {
 
     private final Environment environment;
 
-    未译64029 EnvPrinter(Environment environment) {
+    public EnvPrinter(Environment environment) {
         this.environment = environment;
     }
 
-    未译64029 未译27462id print() {
-        未译11490tem.out.println(environment.getProperty("spring.应用配置.name"));
+    public void print() {
+        System.out.println(environment.getProperty("spring.应用配置.name"));
     }
 }
 ```
@@ -90,8 +90,8 @@ private String maxSize;
 ```yaml
 app:
   sms:
-    endpoint: 安全HTTP://sms.example.通用
-    timeout-未译89385s: 3
+    endpoint: https://sms.example.com
+    timeout-seconds: 3
     enabled: true
 ```
 
@@ -99,7 +99,7 @@ app:
 
 ```java
 @ConfigurationProperties(prefix = "app.sms")
-未译64029 class SmsProperties {
+public class SmsProperties {
     private String endpoint;
     private int timeoutSeconds;
     private boolean enabled;
@@ -120,7 +120,7 @@ app:
 Spring Boot 支持多种配置来源：
 
 - 默认配置。
-- `应用配置.yml`。
+- `application.yml`。
 - Profile 配置。
 - 环境变量。
 - 命令行参数。
@@ -129,8 +129,8 @@ Spring Boot 支持多种配置来源：
 
 ## 本节练习
 
-1. 在 `源码/主/资源/未译55339` 下创建 `未译97302未译72794.txt`。
-2. 使用 `未译25173esourceLoader` 读取并打印内容。
+1. 在 `src/main/resources/templates` 下创建 `emailTemplate.txt`。
+2. 使用 `ResourceLoader` 读取并打印内容。
 3. 使用 `Environment` 打印应用名和当前 Profile。
 4. 用 `@Value` 读取一个简单配置。
 5. 用 `@ConfigurationProperties` 绑定短信配置。
@@ -138,7 +138,7 @@ Spring Boot 支持多种配置来源：
 
 ## 本节通过标准
 
-- 能用 `未译25173esource` 读取 classpath 资源。
+- 能用 `Resource` 读取 classpath 资源。
 - 能解释为什么 jar 包里的资源不应该当普通文件路径处理。
 - 能说出 `Environment`、`@Value`、`@ConfigurationProperties` 的区别。
 - 能排查配置不生效的常见原因。

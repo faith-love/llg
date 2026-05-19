@@ -1,4 +1,4 @@
-﻿# 13-`@Value`、`Environment`、`未译25173esource`、`@ConfigurationProperties` 取舍
+﻿# 13-`@Value`、`Environment`、`Resource`、`@ConfigurationProperties` 取舍
 
 ## 这些能力不要混着用
 
@@ -12,9 +12,9 @@
 
 - 看环境和属性
 
-`未译25173esource`：
+`Resource`：
 
-- 读 classpath、文件、U未译25173L 资源
+- 读 classpath、文件、URL 资源
 
 `@ConfigurationProperties`：
 
@@ -32,7 +32,7 @@
 
 资源文件：
 
-- 用 `未译25173esource`
+- 用 `Resource`
 
 环境判断或临时调试：
 

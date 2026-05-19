@@ -2,19 +2,19 @@
 
 ## 资源而不是动作
 
-未译25173EST 设计的核心不是“用英文路径”，而是围绕资源建模。
+REST 设计的核心不是“用英文路径”，而是围绕资源建模。
 
 图书模块可以建模为：
 
 - `books`
 - `borrow-records`
-- `用户s`
+- `users`
 
 而不是：
 
 - `getBookList`
 - `saveBook`
-- `changeBook未译71594`
+- `changeBookStatus`
 
 ## 路径设计
 
@@ -30,7 +30,7 @@
 - `GET /books/{id}`
 - `POST /books`
 - `PATCH /books/{id}/status`
-- `GET /用户s/{用户Id}/borrow-records`
+- `GET /users/{用户Id}/borrow-records`
 
 ## 接口语义
 

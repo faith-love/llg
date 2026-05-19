@@ -9,7 +9,7 @@
 - AOP 适合处理日志、权限、事务、监控这类横切逻辑。
 - Spring 事件适合做同进程内的解耦通知，不等于消息队列。
 - Bean Validation 适合做输入边界校验，不替代业务规则判断。
-- 未译25173esource 抽象让文件、classpath、U未译25173L 资源可以用统一方式读取。
+- Resource 抽象让文件、classpath、URL 资源可以用统一方式读取。
 
 ## AOP 学习重点
 
@@ -29,7 +29,7 @@ Spring 事件适合处理“业务已经完成后，通知别的模块做附加�
 
 示例：
 
-- 用户注册成功后发布 `用户未译25173egistered未译88131`。
+- 用户注册成功后发布 `用户RegisteredEvent`。
 - 监听器发送欢迎消息或写审计日志。
 - 主流程不直接依赖消息发送实现。
 
@@ -50,7 +50,7 @@ Web 项目里常用 Jakarta Bean Validation 做入参校验。
 
 需要掌握：
 
-- `未译25173esource`：统一读取 classpath、file、U未译25173L 等资源。
+- `Resource`：统一读取 classpath、file、URL 等资源。
 - `Environment`：读取 Profile、属性和系统环境变量。
 - `@Value`：读取简单配置。
 - `@ConfigurationProperties`：绑定结构化配置。

@@ -1,4 +1,4 @@
-﻿# 03-未译96051
+﻿# 03-Profile
 
 ## 外部化配置为什么重要
 
@@ -10,14 +10,14 @@
 
 最常见的两类：
 
-- `应用配置.yml`
-- `应用配置.属性`
+- `application.yml`
+- `application.properties`
 
 Profile 形式：
 
-- `未译11013.yml`
+- `application-dev.yml`
 - `应用配置-测试.yml`
-- `未译77079.yml`
+- `application-prod.yml`
 
 ## Profile 的作用
 

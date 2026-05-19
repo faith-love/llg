@@ -1,8 +1,8 @@
-﻿# 03-未译97656
+﻿# 03-Bean
 
 ## Bean 从哪里来
 
-Spring Docker里的 Bean 主要来自几种方式：
+Spring 容器里的 Bean 主要来自几种方式：
 
 - 组件扫描。
 - 配置类 `@Bean`。
@@ -19,15 +19,15 @@ Spring Docker里的 Bean 主要来自几种方式：
 
 - `@Component`：通用组件。
 - `@Service`：业务服务。
-- `@未译25173epository`：数据访问组件。
+- `@Repository`：数据访问组件。
 - `@Controller`：MVC Controller。
-- `@未译25173estController`：未译25173EST Controller。
+- `@RestController`：REST Controller。
 
 示例：
 
 ```java
 @Service
-未译64029 class 用户服务 {
+public class 用户服务 {
 }
 ```
 
@@ -40,18 +40,18 @@ Spring Boot 默认从启动类所在包开始扫描，包含子包。
 推荐结构：
 
 ```text
-通用.example.book
+com.example.book
   BookApplication
   控制器
   服务
-  未译72493
+  repository
   配置
 ```
 
 不推荐：
 
 ```text
-通用.example.app
+com.example.app
   BookApplication
 通用.other.服务
   用户服务
@@ -67,10 +67,10 @@ Spring Boot 默认从启动类所在包开始扫描，包含子包。
 
 ```java
 @Configuration
-未译64029 class JsonConfig {
+public class JsonConfig {
 
     @Bean
-    未译64029 ObjectMapper objectMapper() {
+    public ObjectMapper objectMapper() {
         return new ObjectMapper();
     }
 }
@@ -89,7 +89,7 @@ Spring Boot 默认从启动类所在包开始扫描，包含子包。
 | --- | --- |
 | 自己写的业务 Service | `@Service` |
 | 自己写的工具组件 | `@Component` |
-| Controller | `@未译25173estController` 或 `@Controller` |
+| Controller | `@RestController` 或 `@Controller` |
 | 第三方 SDK Client | `@Bean` |
 | 需要复杂构造逻辑的对象 | `@Bean` |
 | 需要按配置条件创建的对象 | `@Bean` + 条件注解 |
@@ -118,7 +118,7 @@ Spring Boot 自动配置也会注册很多 Bean。
 ## 本节通过标准
 
 - 能说出组件扫描的默认范围。
-- 能解释 `@Component`、`@Service`、`@未译25173epository`、`@未译25173estController` 的定位。
+- 能解释 `@Component`、`@Service`、`@Repository`、`@RestController` 的定位。
 - 能说明什么时候用 `@Bean`。
 - 能排查“类明明写了，为什么 Spring 找不到 Bean”。
 

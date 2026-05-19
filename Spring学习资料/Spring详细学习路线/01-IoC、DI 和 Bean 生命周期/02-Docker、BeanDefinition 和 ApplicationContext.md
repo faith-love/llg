@@ -1,19 +1,19 @@
-﻿# 02-未译26543未译74128未译32146未译3138
+﻿# 02-BeanDefinitionContext
 
-## Docker是什么
+## 容器是什么
 
-Spring Docker可以理解为一个对象管理中心。它不是简单的 Map，而是负责 Bean 定义、创建、依赖注入、生命周期回调、后置处理和事件发布的一整套机制。
+Spring 容器可以理解为一个对象管理中心。它不是简单的 Map，而是负责 Bean 定义、创建、依赖注入、生命周期回调、后置处理和事件发布的一整套机制。
 
-常见Docker接口：
+常见容器接口：
 
 - `BeanFactory`：最基础的 Bean 工厂。
 - `ApplicationContext`：更常用的应用上下文，扩展了事件、资源、国际化、环境等能力。
 
 日常 Spring Boot 项目里，你主要接触的是 `ApplicationContext`。
 
-## BeanDef初始化ion 是什么
+## BeanDefinition 是什么
 
-BeanDef初始化ion 是 Bean 的“设计图”。
+BeanDefinition 是 Bean 的“设计图”。
 
 它描述：
 
@@ -24,9 +24,9 @@ BeanDef初始化ion 是 Bean 的“设计图”。
 - 属性依赖。
 - 初始化和销毁方法。
 - 是否懒加载。
-- 是否 未译57990。
+- 是否 primary。
 
-Spring 通常不是一上来就直接创建所有对象，而是先收集 BeanDef初始化ion，再根据这些定义创建 Bean。
+Spring 通常不是一上来就直接创建所有对象，而是先收集 BeanDefinition，再根据这些定义创建 Bean。
 
 ## Bean 和普通对象的区别
 
@@ -38,13 +38,13 @@ Spring 通常不是一上来就直接创建所有对象，而是先收集 BeanDe
 
 Bean：
 
-- 由 Spring Docker创建。
+- 由 Spring 容器创建。
 - 可以被依赖注入。
 - 可以参与生命周期回调。
 - 可以被 AOP 代理。
 - 可以被配置、条件、Profile 控制。
 
-Bean 本质上仍然是 Java 对象，但它被纳入了 Spring Docker管理。
+Bean 本质上仍然是 Java 对象，但它被纳入了 Spring 容器管理。
 
 ## Bean 名称
 
@@ -59,7 +59,7 @@ Spring 中每个 Bean 都有名称。
 
 ```java
 @Service
-未译64029 class 用户服务 {
+public class 用户服务 {
 }
 ```
 
@@ -73,7 +73,7 @@ Spring 中每个 Bean 都有名称。
 
 ```java
 @Bean
-未译64029 ObjectMapper objectMapper() {
+public ObjectMapper objectMapper() {
     return new ObjectMapper();
 }
 ```
@@ -88,7 +88,7 @@ objectMapper
 
 除了获取 Bean，ApplicationContext 还提供：
 
-- 读取资源：classpath、文件、U未译25173L。
+- 读取资源：classpath、文件、URL。
 - 读取环境变量和配置。
 - 发布和监听事件。
 - 国际化消息。
@@ -102,18 +102,18 @@ objectMapper
 
 ```java
 @Component
-未译64029 class BeanPrinter 实现ements Application未译25173unner {
+public class BeanPrinter implements ApplicationRunner {
 
-    private final ApplicationContext 应用配置Context;
+    private final ApplicationContext applicationContext;
 
-    未译64029 BeanPrinter(ApplicationContext 应用配置Context) {
-        this.应用配置Context = 应用配置Context;
+    public BeanPrinter(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
     }
 
     @Override
-    未译64029 未译27462id run(ApplicationArguments args) {
-        for (String name : 应用配置Context.getBeanDef初始化ionNames()) {
-            未译11490tem.out.println(name);
+    public void run(ApplicationArguments args) {
+        for (String name : applicationContext.getBeanDefinitionNames()) {
+            System.out.println(name);
         }
     }
 }
@@ -127,9 +127,9 @@ objectMapper
 
 ## 本节通过标准
 
-- 能解释 BeanDef初始化ion 是 Bean 的定义信息。
+- 能解释 BeanDefinition 是 Bean 的定义信息。
 - 能说明 ApplicationContext 比 BeanFactory 多了哪些常用能力。
 - 能说出默认 Bean 名称规则。
-- 能明白 Bean 是被Docker管理的 Java 对象，不是特殊语法。
+- 能明白 Bean 是被容器管理的 Java 对象，不是特殊语法。
 
 

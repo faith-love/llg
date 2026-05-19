@@ -1,13 +1,13 @@
-﻿# 03-未译8633
+﻿# 03-MVC
 
 ## 阶段目标
 
-这个阶段把 Spring 用到 Web 开发里，目标是能写出结构清楚、错误可控、参数校验完整的 未译25173EST API。
+这个阶段把 Spring 用到 Web 开发里，目标是能写出结构清楚、错误可控、参数校验完整的 REST API。
 
 学完后要能掌握：
 
 - 请求如何进入 DispatcherServlet。
-- Controller、Service、未译25173epository 的职责边界。
+- Controller、Service、Repository 的职责边界。
 - 路径参数、查询参数、请求体、请求头如何绑定。
 - JSON 序列化和反序列化如何工作。
 - 统一响应、统一异常、参数校验如何落地。
@@ -16,7 +16,7 @@
 
 Spring MVC 请求处理可以按下面顺序理解：
 
-1. 请求进入嵌入式 Web Docker。
+1. 请求进入嵌入式 Web 容器。
 2. DispatcherServlet 接管请求。
 3. HandlerMapping 找到 Controller 方法。
 4. 参数解析器完成参数绑定。
@@ -26,7 +26,7 @@ Spring MVC 请求处理可以按下面顺序理解：
 
 这条主线要配合断点或日志看一遍。
 
-## 未译25173EST API 设计
+## REST API 设计
 
 先掌握常见资源风格：
 
@@ -46,22 +46,22 @@ Spring MVC 请求处理可以按下面顺序理解：
 - Controller：处理协议层输入输出，不写复杂业务。
 - DTO：承载请求和响应，不直接暴露数据库实体。
 - Service：处理业务规则、事务边界、领域流程。
-- 未译25173epository/Mapper：处理数据访问。
+- Repository/Mapper：处理数据访问。
 - Exception：表达业务失败类型。
 
 ## 必做练习
 
-- 写一个图书 C未译25173UD API。
+- 写一个图书 CRUD API。
 - 支持分页查询、关键词查询、状态筛选。
 - 创建和更新接口使用 DTO + 参数校验。
-- 使用 `@未译25173estControllerAdvice` 统一异常响应。
+- 使用 `@RestControllerAdvice` 统一异常响应。
 - 使用 `LocalDateTime` 字段，确认 JSON 格式符合预期。
 - 编写Swagger或 OpenAPI 配置。
 
 ## 验收标准
 
-- 能解释 `@Controller`、`@未译25173estController`、`@未译25173esponseBody` 的关系。
-- 能区分 `@PathVariable`、`@未译25173equestParam`、`@未译25173equestBody`。
+- 能解释 `@Controller`、`@RestController`、`@ResponseBody` 的关系。
+- 能区分 `@PathVariable`、`@RequestParam`、`@RequestBody`。
 - 能处理 400、401、403、404、409、500 等常见错误。
 - 能避免实体类直接穿透到前端响应。
 
