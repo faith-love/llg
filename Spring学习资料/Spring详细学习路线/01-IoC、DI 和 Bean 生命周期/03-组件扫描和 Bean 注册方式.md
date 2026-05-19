@@ -1,8 +1,8 @@
-﻿# 03-组件扫描和 Bean 注册方式
+﻿# 03-未译97656
 
 ## Bean 从哪里来
 
-Spring 容器里的 Bean 主要来自几种方式：
+Spring Docker里的 Bean 主要来自几种方式：
 
 - 组件扫描。
 - 配置类 `@Bean`。
@@ -19,15 +19,15 @@ Spring 容器里的 Bean 主要来自几种方式：
 
 - `@Component`：通用组件。
 - `@Service`：业务服务。
-- `@Repository`：数据访问组件。
+- `@未译25173epository`：数据访问组件。
 - `@Controller`：MVC Controller。
-- `@RestController`：REST Controller。
+- `@未译25173estController`：未译25173EST Controller。
 
 示例：
 
-```java
+```Java学习资料
 @Service
-public class UserService {
+未译64029 class 用户服务 {
 }
 ```
 
@@ -40,24 +40,24 @@ Spring Boot 默认从启动类所在包开始扫描，包含子包。
 推荐结构：
 
 ```text
-com.example.book
+通用.example.book
   BookApplication
-  controller
-  service
-  repository
-  config
+  控制器
+  服务
+  未译72493
+  配置
 ```
 
 不推荐：
 
 ```text
-com.example.app
+通用.example.app
   BookApplication
-com.other.service
-  UserService
+通用.other.服务
+  用户服务
 ```
 
-如果 `UserService` 不在扫描范围内，注入时就可能找不到 Bean。
+如果 `用户服务` 不在扫描范围内，注入时就可能找不到 Bean。
 
 ## 配置类和 @Bean
 
@@ -65,12 +65,12 @@ com.other.service
 
 示例：
 
-```java
+```Java学习资料
 @Configuration
-public class JsonConfig {
+未译64029 class JsonConfig {
 
     @Bean
-    public ObjectMapper objectMapper() {
+    未译64029 ObjectMapper objectMapper() {
         return new ObjectMapper();
     }
 }
@@ -89,7 +89,7 @@ public class JsonConfig {
 | --- | --- |
 | 自己写的业务 Service | `@Service` |
 | 自己写的工具组件 | `@Component` |
-| Controller | `@RestController` 或 `@Controller` |
+| Controller | `@未译25173estController` 或 `@Controller` |
 | 第三方 SDK Client | `@Bean` |
 | 需要复杂构造逻辑的对象 | `@Bean` |
 | 需要按配置条件创建的对象 | `@Bean` + 条件注解 |
@@ -110,7 +110,7 @@ Spring Boot 自动配置也会注册很多 Bean。
 
 ## 本节练习
 
-1. 创建 `UserService`，使用 `@Service` 注册。
+1. 创建 `用户服务`，使用 `@Service` 注册。
 2. 创建 `PaymentClient`，用 `@Configuration` + `@Bean` 注册。
 3. 把一个 Service 移到启动类扫描范围之外，观察注入错误。
 4. 恢复包结构，确认项目能启动。
@@ -118,7 +118,7 @@ Spring Boot 自动配置也会注册很多 Bean。
 ## 本节通过标准
 
 - 能说出组件扫描的默认范围。
-- 能解释 `@Component`、`@Service`、`@Repository`、`@RestController` 的定位。
+- 能解释 `@Component`、`@Service`、`@未译25173epository`、`@未译25173estController` 的定位。
 - 能说明什么时候用 `@Bean`。
 - 能排查“类明明写了，为什么 Spring 找不到 Bean”。
 

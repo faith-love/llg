@@ -1,4 +1,4 @@
-﻿# 05-Bean 作用域和生命周期
+﻿# 05-未译97656
 
 ## Bean 作用域是什么
 
@@ -6,16 +6,16 @@
 
 常见作用域：
 
-- singleton：默认，同一个 Spring 容器中只有一个实例。
+- singleton：默认，同一个 Spring Docker中只有一个实例。
 - prototype：每次获取 Bean 时创建新实例。
-- request：每个 HTTP 请求一个实例。
-- session：每个 HTTP Session 一个实例。
+- 未译88447：每个 HTTP 请求一个实例。
+- 会话：每个 HTTP Session 一个实例。
 
 初学阶段最常接触 singleton。
 
 ## singleton 不是全 JVM 唯一
 
-Spring 的 singleton 指同一个容器里的单例。
+Spring 的 singleton 指同一个Docker里的单例。
 
 如果你创建两个不同的 ApplicationContext，就可能有两份同名 Bean 实例。
 
@@ -23,7 +23,7 @@ Spring 的 singleton 指同一个容器里的单例。
 
 ## prototype 注意点
 
-prototype 每次从容器获取时创建新对象，但 Spring 不会像 singleton 那样完整管理销毁。
+prototype 每次从Docker获取时创建新对象，但 Spring 不会像 singleton 那样完整管理销毁。
 
 更重要的是：如果 singleton Bean 依赖 prototype Bean，prototype 只会在 singleton 创建时注入一次。
 
@@ -37,15 +37,15 @@ prototype 每次从容器获取时创建新对象，但 Spring 不会像 singlet
 
 一个 singleton Bean 大致经历：
 
-1. BeanDefinition 被加载。
+1. BeanDef初始化ion 被加载。
 2. 实例化对象。
 3. 填充属性和依赖。
-4. 执行 Aware 回调。
+4. 执行 A网页归档e 回调。
 5. 执行 BeanPostProcessor 前置处理。
 6. 执行初始化方法。
 7. 执行 BeanPostProcessor 后置处理。
 8. Bean 可以被业务使用。
-9. 容器关闭时执行销毁逻辑。
+9. Docker关闭时执行销毁逻辑。
 
 很多框架增强能力都和后置处理器有关。
 
@@ -53,27 +53,27 @@ prototype 每次从容器获取时创建新对象，但 Spring 不会像 singlet
 
 常见方式：
 
-```java
+```Java学习资料
 @Component
-public class LifecycleDemo {
+未译64029 class LifecycleDemo {
 
-    @PostConstruct
-    public void init() {
-        System.out.println("init");
+    @Post未译82123ruct
+    未译64029 未译27462id 初始化() {
+        未译11490tem.out.println("初始化");
     }
 
     @PreDestroy
-    public void destroy() {
-        System.out.println("destroy");
+    未译64029 未译27462id destroy() {
+        未译11490tem.out.println("destroy");
     }
 }
 ```
 
 也可以在 `@Bean` 上指定：
 
-```java
-@Bean(initMethod = "start", destroyMethod = "stop")
-public SomeClient someClient() {
+```Java学习资料
+@Bean(初始化Method = "start", destroyMethod = "stop")
+未译64029 SomeClient someClient() {
     return new SomeClient();
 }
 ```
@@ -84,19 +84,19 @@ BeanPostProcessor 可以在 Bean 初始化前后做处理。
 
 示例：
 
-```java
+```Java学习资料
 @Component
-public class LogBeanPostProcessor implements BeanPostProcessor {
+未译64029 class LogBeanPostProcessor 实现ements BeanPostProcessor {
 
     @Override
-    public Object postProcessBeforeInitialization(Object bean, String beanName) {
-        System.out.println("before init: " + beanName);
+    未译64029 Object postProcessBeforeInitialization(Object bean, String beanName) {
+        未译11490tem.out.println("before 初始化: " + beanName);
         return bean;
     }
 
     @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName) {
-        System.out.println("after init: " + beanName);
+    未译64029 Object postProcessAfterInitialization(Object bean, String beanName) {
+        未译11490tem.out.println("after 初始化: " + beanName);
         return bean;
     }
 }

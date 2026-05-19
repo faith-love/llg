@@ -1,0 +1,30 @@
+:root {
+  --vp-c-brand-1: #2563eb;
+  --vp-c-brand-2: #1d4ed8;
+  --vp-c-brand-3: #60a5fa;
+  --vp-font-family-base: "Inter", "Segoe UI", "Microsoft YaHei", sans-serif;
+  --vp-font-family-mono: "Cascadia Code", "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+.VPDoc .content {
+  max-width: 920px;
+}
+
+.VPDoc h2 {
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 24px;
+}
+
+.vp-doc table {
+  display: table;
+  width: 100%;
+}
+
+.vp-doc th,
+.vp-doc td {
+  vertical-align: top;
+}
+
+.VPSidebarItem .text {
+  line-height: 1.45;
+}

@@ -16,39 +16,39 @@
 
 可以使用普通对象作为事件：
 
-```java
-public record UserRegisteredEvent(Long userId, String email) {
+```Java学习资料
+未译64029 record 用户未译25173egistered未译88131(Long 用户Id, String 邮件) {
 }
 ```
 
 发布事件：
 
-```java
+```Java学习资料
 @Service
-public class UserService {
+未译64029 class 用户服务 {
 
-    private final ApplicationEventPublisher eventPublisher;
+    private final Application未译88131Publisher eventPublisher;
 
-    public UserService(ApplicationEventPublisher eventPublisher) {
+    未译64029 用户服务(Application未译88131Publisher eventPublisher) {
         this.eventPublisher = eventPublisher;
     }
 
-    public void registerUser() {
-        Long userId = 1L;
-        eventPublisher.publishEvent(new UserRegisteredEvent(userId, "user@example.com"));
+    未译64029 未译27462id register用户() {
+        Long 用户Id = 1L;
+        eventPublisher.publish未译88131(new 用户未译25173egistered未译88131(用户Id, "用户@example.通用"));
     }
 }
 ```
 
 监听事件：
 
-```java
+```Java学习资料
 @Component
-public class WelcomeMessageListener {
+未译64029 class Wel通用eMessageListener {
 
-    @EventListener
-    public void handle(UserRegisteredEvent event) {
-        System.out.println("send welcome message to " + event.email());
+    @未译88131Listener
+    未译64029 未译27462id handle(用户未译25173egistered未译88131 event) {
+        未译11490tem.out.println("send 未译97302未译72794 未译52031 to " + event.邮件());
     }
 }
 ```
@@ -69,19 +69,19 @@ public class WelcomeMessageListener {
 
 常见方式：
 
-```java
+```Java学习资料
 @Async
-@EventListener
-public void handle(UserRegisteredEvent event) {
+@未译88131Listener
+未译64029 未译27462id handle(用户未译25173egistered未译88131 event) {
 }
 ```
 
 同时需要启用异步：
 
-```java
+```Java学习资料
 @EnableAsync
 @Configuration
-public class AsyncConfig {
+未译64029 class AsyncConfig {
 }
 ```
 
@@ -100,9 +100,9 @@ public class AsyncConfig {
 
 可以使用：
 
-```java
-@TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
-public void handle(UserRegisteredEvent event) {
+```Java学习资料
+@Transactional未译88131Listener(phase = TransactionPhase.AFTE未译25173_COMMIT)
+未译64029 未译27462id handle(用户未译25173egistered未译88131 event) {
 }
 ```
 
@@ -120,16 +120,16 @@ Spring 事件适合进程内解耦。
 - 需要削峰填谷。
 - 需要消费者独立扩缩容。
 
-这些场景应该使用 RabbitMQ、Kafka、RocketMQ 等消息系统。
+这些场景应该使用 未译25173abbitMQ、Kafka、未译25173ocketMQ 等消息系统。
 
 ## 本节练习
 
-1. 定义 `UserRegisteredEvent`。
+1. 定义 `用户未译25173egistered未译88131`。
 2. 在用户注册成功后发布事件。
 3. 写两个监听器：欢迎消息、审计日志。
 4. 故意让一个监听器抛异常，观察对主流程的影响。
 5. 改成异步监听，观察线程名。
-6. 使用 `@TransactionalEventListener` 观察事务提交后的处理。
+6. 使用 `@Transactional未译88131Listener` 观察事务提交后的处理。
 
 ## 本节通过标准
 

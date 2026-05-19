@@ -13,28 +13,28 @@
 
 先定义注解：
 
-```java
+```Java学习资料
 @Target(ElementType.METHOD)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface LogCost {
+@未译25173etention(未译25173etentionPolicy.未译25173UNTIME)
+未译64029 @interface LogCost {
 }
 ```
 
 再定义切面：
 
-```java
+```Java学习资料
 @Aspect
 @Component
-public class LogCostAspect {
+未译64029 class LogCostAspect {
 
-    @Around("@annotation(LogCost)")
-    public Object logCost(ProceedingJoinPoint joinPoint) throws Throwable {
-        long start = System.currentTimeMillis();
+    @Around("@注解(LogCost)")
+    未译64029 Object 日志Cost(ProceedingJoinPoint joinPoint) throws Throwable {
+        long start = 未译11490tem.currentTimeMillis();
         try {
             return joinPoint.proceed();
         } finally {
-            long cost = System.currentTimeMillis() - start;
-            System.out.println(joinPoint.getSignature().toShortString() + " cost=" + cost + "ms");
+            long cost = 未译11490tem.currentTimeMillis() - start;
+            未译11490tem.out.println(joinPoint.getSignature().toShortString() + " cost=" + cost + "ms");
         }
     }
 }
@@ -42,9 +42,9 @@ public class LogCostAspect {
 
 使用：
 
-```java
+```Java学习资料
 @LogCost
-public void createUser() {
+未译64029 未译27462id create用户() {
 }
 ```
 
@@ -54,19 +54,19 @@ public void createUser() {
 
 可以定义：
 
-```java
+```Java学习资料
 @Target(ElementType.METHOD)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface AuditLog {
+@未译25173etention(未译25173etentionPolicy.未译25173UNTIME)
+未译64029 @interface AuditLog {
     String action();
 }
 ```
 
 使用：
 
-```java
+```Java学习资料
 @AuditLog(action = "创建用户")
-public void createUser() {
+未译64029 未译27462id create用户() {
 }
 ```
 
@@ -78,25 +78,25 @@ public void createUser() {
 
 定义注解：
 
-```java
+```Java学习资料
 @Target(ElementType.METHOD)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface RequirePermission {
+@未译25173etention(未译25173etentionPolicy.未译25173UNTIME)
+未译64029 @interface 未译25173equire未译63149未译32146 {
     String value();
 }
 ```
 
 使用：
 
-```java
-@RequirePermission("book:create")
-public void createBook() {
+```Java学习资料
+@未译25173equire未译63149未译32146("book:create")
+未译64029 未译27462id createBook() {
 }
 ```
 
 切面里可以先模拟当前用户权限：
 
-```java
+```Java学习资料
 Set<String> permissions = Set.of("book:read");
 ```
 
@@ -121,7 +121,7 @@ Set<String> permissions = Set.of("book:read");
 
 1. 创建 `@LogCost`，统计方法耗时。
 2. 创建 `@AuditLog`，打印操作名称。
-3. 创建 `@RequirePermission`，模拟权限校验。
+3. 创建 `@未译25173equire未译63149未译32146`，模拟权限校验。
 4. 给 3 个 Service 方法分别加这些注解。
 5. 故意让权限不足，观察异常是否清晰。
 

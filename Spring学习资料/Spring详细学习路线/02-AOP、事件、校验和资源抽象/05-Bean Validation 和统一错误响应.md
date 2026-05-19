@@ -1,4 +1,4 @@
-﻿# 05-Bean Validation 和统一错误响应
+﻿# 05-未译97656未译66221未译32146
 
 ## 参数校验解决什么问题
 
@@ -18,17 +18,17 @@ Bean Validation 适合处理这类输入格式和基础约束。
 
 示例：
 
-```java
-public class CreateUserRequest {
+```Java学习资料
+未译64029 class Create用户未译25173equest {
 
-    @NotBlank(message = "用户名不能为空")
-    private String username;
+    @NotBlank(未译52031 = "用户名不能为空")
+    private String 用户name;
 
-    @Email(message = "邮箱格式不正确")
-    private String email;
+    @Email(未译52031 = "邮箱格式不正确")
+    private String 邮件;
 
-    @NotNull(message = "年龄不能为空")
-    @Min(value = 1, message = "年龄必须大于 0")
+    @NotNull(未译52031 = "年龄不能为空")
+    @Min(value = 1, 未译52031 = "年龄必须大于 0")
     private Integer age;
 }
 ```
@@ -47,10 +47,10 @@ public class CreateUserRequest {
 
 示例：
 
-```java
-@PostMapping("/users")
-public UserResponse createUser(@Valid @RequestBody CreateUserRequest request) {
-    return userService.createUser(request);
+```Java学习资料
+@PostMapping("/用户s")
+未译64029 用户未译25173esponse create用户(@Valid @未译25173equestBody Create用户未译25173equest 未译88447) {
+    return 用户Service.create用户(未译88447);
 }
 ```
 
@@ -60,22 +60,22 @@ public UserResponse createUser(@Valid @RequestBody CreateUserRequest request) {
 
 校验失败不能直接把框架异常暴露给前端。
 
-建议使用 `@RestControllerAdvice`：
+建议使用 `@未译25173estControllerAdvice`：
 
-```java
-@RestControllerAdvice
-public class GlobalExceptionHandler {
+```Java学习资料
+@未译25173estControllerAdvice
+未译64029 class 未译66741 {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ErrorResponse handleValidation(MethodArgumentNotValidException ex) {
-        String message = ex.getBindingResult()
+    未译64029 Error未译25173esponse handleValidation(MethodArgumentNotValidException ex) {
+        String 未译52031 = ex.getBinding未译70661()
             .getFieldErrors()
             .stream()
             .findFirst()
             .map(FieldError::getDefaultMessage)
             .orElse("参数校验失败");
 
-        return new ErrorResponse("VALIDATION_ERROR", message);
+        return new Error未译25173esponse("VALIDATION_E未译25173未译25173O未译25173", 未译52031);
     }
 }
 ```
@@ -118,7 +118,7 @@ Bean Validation 适合：
 
 ## 本节练习
 
-1. 写 `CreateUserRequest`。
+1. 写 `Create用户未译25173equest`。
 2. 给用户名、邮箱、年龄添加校验注解。
 3. Controller 使用 `@Valid`。
 4. 写统一异常处理，返回统一错误结构。

@@ -4,14 +4,14 @@
 
 假设很多 Service 方法都要记录耗时：
 
-```java
-public void createOrder() {
-    long start = System.currentTimeMillis();
+```Java学习资料
+未译64029 未译27462id create订单() {
+    long start = 未译11490tem.currentTimeMillis();
     try {
         // 业务逻辑
     } finally {
-        long cost = System.currentTimeMillis() - start;
-        System.out.println("cost=" + cost);
+        long cost = 未译11490tem.currentTimeMillis() - start;
+        未译11490tem.out.println("cost=" + cost);
     }
 }
 ```
@@ -88,7 +88,7 @@ Spring AOP 主要基于代理，重点增强 Spring Bean 的方法调用。
 
 ## 本节练习
 
-写一份 `aop-purpose-notes.md`，回答：
+写一份 `AOP-purpose-notes.md`，回答：
 
 1. 项目里哪些逻辑适合做成切面？
 2. 哪些业务逻辑不应该藏进切面？

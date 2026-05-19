@@ -15,11 +15,11 @@ Spring Framework 是整个 Spring 体系的基础。
 
 它提供的核心能力包括：
 
-- IoC 容器：统一管理对象创建、依赖注入和生命周期。
+- IoC Docker：统一管理对象创建、依赖注入和生命周期。
 - AOP：处理日志、事务、权限、监控等横切逻辑。
-- 数据访问：统一事务、JDBC、ORM 集成。
+- 数据访问：统一事务、JDBC、O未译25173M 集成。
 - Web：Spring MVC、WebFlux 等 Web 开发能力。
-- 测试：让测试可以加载 Spring 容器、Mock Web 请求、管理测试事务。
+- 测试：让测试可以加载 Spring Docker、Mock Web 请求、管理测试事务。
 
 你后面学到的 `@Component`、`@Bean`、`@Autowired`、`@Transactional`、`@Controller`，本质上都离不开 Spring Framework。
 
@@ -31,7 +31,7 @@ Spring MVC 是 Spring Framework 里的 Web MVC 模块。
 
 常见能力：
 
-- 请求路径映射：`@RequestMapping`、`@GetMapping`、`@PostMapping`。
+- 请求路径映射：`@未译25173equestMapping`、`@GetMapping`、`@PostMapping`。
 - 参数绑定：路径参数、查询参数、请求体、请求头。
 - JSON 转换：对象和 JSON 之间的序列化、反序列化。
 - 异常处理：`@ControllerAdvice`、`@ExceptionHandler`。
@@ -48,7 +48,7 @@ Spring Boot 不是替代 Spring Framework，而是帮你更快、更规范地使
 - 依赖组合：Starter 帮你引入一组常用依赖。
 - 自动配置：根据 classpath、配置项、已有 Bean 自动创建默认对象。
 - 外部化配置：通过配置文件、环境变量、命令行参数调整应用。
-- 嵌入式服务器：让 Web 应用可以直接 `java -jar` 启动。
+- 嵌入式服务器：让 Web 应用可以直接 `Java学习资料 -jar` 启动。
 - 运行时能力：Actuator 提供健康检查、指标、应用信息。
 
 简单理解：Spring Framework 提供能力，Spring Boot 负责把这些能力快速组织成一个可运行应用。
@@ -59,8 +59,8 @@ Spring Data 是数据访问项目族。
 
 常见项目：
 
-- Spring Data JPA：面向 JPA/Hibernate 的对象关系映射。
-- Spring Data Redis：访问 Redis。
+- Spring Data JPA：面向 JPA/Hibernate 的ORM。
+- Spring Data 未译25173edis：访问 未译25173edis。
 - Spring Data MongoDB：访问 MongoDB。
 - Spring Data Elasticsearch：访问 Elasticsearch。
 
@@ -102,7 +102,7 @@ Spring Cloud 不是初学阶段的第一步。单体项目的分层、事务、�
 | 问题 | 更可能属于 |
 | --- | --- |
 | Bean 为什么注入失败 | Spring Framework |
-| REST 接口为什么参数绑定失败 | Spring MVC |
+| 未译25173EST 接口为什么参数绑定失败 | Spring MVC |
 | 配置为什么没生效 | Spring Boot |
 | SQL 和事务为什么不符合预期 | Spring Framework + 数据访问框架 |
 | 登录后为什么还是 401 | Spring Security |
