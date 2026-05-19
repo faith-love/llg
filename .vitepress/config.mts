@@ -20,7 +20,8 @@ const topLevelSections = [
   'Python学习资料',
   'SQL学习资料',
   'Linux学习资料',
-  'Redis学习资料'
+  'Redis学习资料',
+  'Docker学习资料'
 ]
 
 function isMarkdown(file: string) {
@@ -179,7 +180,8 @@ export default defineConfig({
       { text: 'Python', link: '/Python学习资料/说明' },
       { text: 'SQL', link: '/SQL学习资料/说明' },
       { text: 'Linux', link: '/Linux学习资料/说明' },
-      { text: 'Redis', link: '/Redis学习资料/说明' }
+      { text: 'Redis', link: '/Redis学习资料/说明' },
+      { text: 'Docker', link: '/Docker学习资料/说明' }
     ],
     sidebar: buildSidebar(),
     outline: {

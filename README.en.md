@@ -9,6 +9,7 @@ This knowledge base aims to integrate practical case studies, troubleshooting ex
 ## Main Contents
 
 - **Redis Cases**: Real-world application scenarios and best practices for Redis
+- **Docker Knowledge Base**: Docker images, containers, Compose, production operations, and troubleshooting
 - **Troubleshooting Library**: Common issues and their solutions
 - **Interview Question Bank**: Essential knowledge for software engineering interviews
 - **Project Checklists**: Key checkpoints at each stage of project development

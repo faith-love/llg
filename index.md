@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: "学习知识库"
-  text: "Java / Spring / Python / SQL / Linux / Redis"
+  text: "Java / Spring / Python / SQL / Linux / Redis / Docker"
   tagline: "按主题归档，按阶段阅读，需要时快速检索。"
   image:
     src: /knowledge-hero.svg
@@ -18,7 +18,7 @@ hero:
 
 features:
   - title: 分类清晰
-    details: 六个主题统一入口，侧边栏自动按目录展开。
+    details: 七个主题统一入口，侧边栏自动按目录展开。
   - title: 快速检索
     details: 支持本地搜索，适合查命令、查语法、查排障记录。
   - title: 持续沉淀
@@ -35,6 +35,7 @@ features:
 | SQL | [SQL 学习资料](SQL学习资料/说明.md) | MySQL 语法参考、数据库表拆分方法论 |
 | Linux | [Linux 学习资料](Linux学习资料/说明.md) | Linux 运维、部署、网络、权限、日志和排障 |
 | Redis | [Redis 学习资料](Redis学习资料/说明.md) | Redis 知识库、命令速查、实战案例、面试与故障复盘 |
+| Docker | [Docker 学习资料](Docker学习资料/说明.md) | Docker 镜像、容器、卷、网络、Compose、交付、运维和排障 |
 
 ## 使用约定
 
