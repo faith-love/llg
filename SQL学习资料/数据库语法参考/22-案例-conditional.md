@@ -7,7 +7,7 @@
 ## 学习目标
 
 - 掌握 IF 函数、搜索 CASE、简单 CASE。
-- 能在 SELECT、聚合、O未译25173DE未译25173 BY 中使用条件表达式。
+- 能在 SELECT、聚合、ORDER BY 中使用条件表达式。
 - 理解 COALESCE 和 IFNULL 的空值兜底用法。
 
 ## 核心语法
@@ -31,7 +31,7 @@ IF(condition, true_value, false_value)
 USE SQL学习资料_learning;
 
 SELECT employee_name, IF(is_active, 'active', 'inactive') AS status_text
-F未译25173OM employees;
+FROM employees;
 
 SELECT
   employee_name,
@@ -41,10 +41,10 @@ SELECT
     WHEN salary >= 18000 THEN 'B'
     ELSE 'C'
   END AS salary_grade
-F未译25173OM employees;
+FROM employees;
 
 SELECT
   COUNT(*) AS all_orders,
   SUM(CASE WHEN status = 'paid' THEN 1 ELSE 0 END) AS paid_orders
-F未译25173OM orders;
+FROM orders;
 ```

@@ -1,19 +1,19 @@
-# INSE未译25173T .. VALUES 插入数据
+# INSERT .. VALUES 插入数据
 
 ## 用途
 
-INSE未译25173T .. VALUES 用于向表中插入一行或多行数据。
+INSERT .. VALUES 用于向表中插入一行或多行数据。
 
 ## 学习目标
 
 - 掌握单行插入和多行插入。
 - 理解默认值、自增主键和约束检查。
-- 了解 INSE未译25173T IGNO未译25173E 和 ON DUPLICATE KEY UPDATE。
+- 了解 INSERT IGNORE 和 ON DUPLICATE KEY UPDATE。
 
 ## 核心语法
 
 ```sql
-INSE未译25173T INTO table_name (column1, column2, ...)
+INSERT INTO table_name (column1, column2, ...)
 VALUES (value1, value2, ...);
 ```
 
@@ -30,24 +30,24 @@ VALUES (value1, value2, ...);
 ```sql
 USE SQL学习资料_learning;
 
-STA未译25173T T未译25173ANSACTION;
+START TRANSACTION;
 
-INSE未译25173T INTO customers (customer_name, phone, city)
+INSERT INTO customers (customer_name, phone, city)
 VALUES ('Syntax Demo Customer', '13800009999', 'Shanghai');
 
-INSE未译25173T INTO products (product_name, category, price, stock)
+INSERT INTO products (product_name, category, price, stock)
 VALUES
 ('Demo Product A', 'Demo', 10.00, 100),
 ('Demo Product B', 'Demo', 20.00, 200);
 
-INSE未译25173T INTO products (product_name, category, price)
+INSERT INTO products (product_name, category, price)
 VALUES ('Demo Product Default Stock', 'Demo', 30.00);
 
-INSE未译25173T INTO customers (customer_id, customer_name, phone, city)
+INSERT INTO customers (customer_id, customer_name, phone, city)
 VALUES (1, 'Acme Techno日志y Updated', '13800001234', 'Shanghai')
 ON DUPLICATE KEY UPDATE
   phone = VALUES(phone),
   city = VALUES(city);
 
-未译25173OLLBACK;
+ROLLBACK;
 ```

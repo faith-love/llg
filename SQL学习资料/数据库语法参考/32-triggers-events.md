@@ -6,16 +6,16 @@
 
 ## 学习目标
 
-- 掌握 C未译25173EATE T未译25173IGGE未译25173。
+- 掌握 CREATE TRIGGER。
 - 理解 OLD 和 NEW。
 - 了解事件调度器 event_scheduler。
 
 ## 核心语法
 
 ```sql
-C未译25173EATE T未译25173IGGE未译25173 trigger_name
-BEFO未译25173E|AFTE未译25173 INSE未译25173T|UPDATE|DELETE ON table_name
-FO未译25173 EACH 未译25173OW
+CREATE TRIGGER trigger_name
+BEFORE|AFTER INSERT|UPDATE|DELETE ON table_name
+FOR EACH ROW
 BEGIN
   ...
 END;
@@ -34,25 +34,25 @@ END;
 ```sql
 USE SQL学习资料_learning;
 
-C未译25173EATE TABLE product_audit_demo (
-  audit_id INT P未译25173IMA未译25173Y KEY AUTO_INC未译25173EMENT,
+CREATE TABLE product_audit_demo (
+  audit_id INT PRIMARY KEY AUTO_INCREMENT,
   product_id INT NOT NULL,
   old_price DECIMAL(10, 2),
   new_price DECIMAL(10, 2),
-  changed_at TIMESTAMP NOT NULL DEFAULT CU未译25173未译25173ENT_TIMESTAMP
+  changed_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE = InnoDB;
 
-DELIMITE未译25173 //
-C未译25173EATE T未译25173IGGE未译25173 trg_products_after_update_price
-AFTE未译25173 UPDATE ON products
-FO未译25173 EACH 未译25173OW
+DELIMITER //
+CREATE TRIGGER trg_products_after_update_price
+AFTER UPDATE ON products
+FOR EACH ROW
 BEGIN
   IF OLD.price <> NEW.price THEN
-    INSE未译25173T INTO product_audit_demo (product_id, old_price, new_price)
+    INSERT INTO product_audit_demo (product_id, old_price, new_price)
     VALUES (NEW.product_id, OLD.price, NEW.price);
   END IF;
 END//
-DELIMITE未译25173 ;
+DELIMITER ;
 
-SHOW VA未译25173IABLES LIKE 'event_scheduler';
+SHOW VARIABLES LIKE 'event_scheduler';
 ```

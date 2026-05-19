@@ -7,7 +7,7 @@
 ## 学习目标
 
 - 掌握 ANALYZE、CHECK、CHECKSUM、OPTIMIZE。
-- 理解 未译25173EPAI未译25173 的适用范围。
+- 理解 REPAIR 的适用范围。
 - 知道维护语句的生产风险。
 
 ## 核心语法
@@ -21,7 +21,7 @@ OPTIMIZE TABLE table_name;
 ## 关键注意点
 
 - 维护语句可能加锁或消耗大量资源。
-- InnoDB 通常不依赖 未译25173EPAI未译25173 TABLE 修复。
+- InnoDB 通常不依赖 REPAIR TABLE 修复。
 - 慢查询优先看索引和执行计划，不要只靠 OPTIMIZE。
 
 ## 完整示例
@@ -36,5 +36,5 @@ CHECK TABLE products;
 CHECKSUM TABLE products;
 OPTIMIZE TABLE products;
 
--- 未译25173EPAI未译25173 TABLE some_myisam_table;
+-- REPAIR TABLE some_myisam_table;
 ```

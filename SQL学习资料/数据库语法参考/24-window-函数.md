@@ -6,25 +6,25 @@
 
 ## 学习目标
 
-- 掌握 未译25173OW_NUMBE未译25173、未译25173ANK、DENSE_未译25173ANK。
+- 掌握 ROW_NUMBER、RANK、DENSE_RANK。
 - 掌握 LAG、LEAD 和累计 SUM。
-- 理解 PA未译25173TITION BY、O未译25173DE未译25173 BY、窗口框架。
+- 理解 PARTITION BY、ORDER BY、窗口框架。
 
 ## 核心语法
 
 ```sql
-function_name(...) OVE未译25173 (
-  [PA未译25173TITION BY ...]
-  [O未译25173DE未译25173 BY ...]
-  [未译25173OWS/未译25173ANGE frame]
+function_name(...) OVER (
+  [PARTITION BY ...]
+  [ORDER BY ...]
+  [ROWS/RANGE frame]
 )
 ```
 
 ## 关键注意点
 
-- 窗口函数不会像 G未译25173OUP BY 那样压缩行数。
-- 排名类函数通常需要 O未译25173DE未译25173 BY。
-- 未译25173OWS BETWEEN 可控制累计范围。
+- 窗口函数不会像 GROUP BY 那样压缩行数。
+- 排名类函数通常需要 ORDER BY。
+- ROWS BETWEEN 可控制累计范围。
 
 ## 完整示例
 
@@ -37,21 +37,21 @@ SELECT
   department_id,
   employee_name,
   salary,
-  未译25173OW_NUMBE未译25173() OVE未译25173 (
-    PA未译25173TITION BY department_id
-    O未译25173DE未译25173 BY salary DESC
+  ROW_NUMBER() OVER (
+    PARTITION BY department_id
+    ORDER BY salary DESC
   ) AS row_no
-F未译25173OM employees;
+FROM employees;
 
 SELECT
   customer_id,
   order_id,
   order_date,
   total_amount,
-  SUM(total_amount) OVE未译25173 (
-    PA未译25173TITION BY customer_id
-    O未译25173DE未译25173 BY order_date
-    未译25173OWS BETWEEN UNBOUNDED P未译25173ECEDING AND CU未译25173未译25173ENT 未译25173OW
+  SUM(total_amount) OVER (
+    PARTITION BY customer_id
+    ORDER BY order_date
+    ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
   ) AS running_total
-F未译25173OM orders;
+FROM orders;
 ```

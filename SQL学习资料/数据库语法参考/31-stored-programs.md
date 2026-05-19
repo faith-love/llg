@@ -6,25 +6,25 @@
 
 ## 学习目标
 
-- 掌握 P未译25173OCEDU未译25173E 和 FUNCTION。
-- 理解 BEGIN ... END、DECLA未译25173E、IF、HANDLE未译25173。
-- 知道 DELIMITE未译25173 的作用。
+- 掌握 PROCEDUREE 和 FUNCTION。
+- 理解 BEGIN ... END、DECLARE、IF、HANDLER。
+- 知道 DELIMITER 的作用。
 
 ## 核心语法
 
 ```sql
-DELIMITE未译25173 //
-C未译25173EATE P未译25173OCEDU未译25173E procedure_name(...)
+DELIMITER //
+CREATE PROCEDUREE procedure_name(...)
 BEGIN
   ...
 END//
-DELIMITE未译25173 ;
+DELIMITER ;
 ```
 
 ## 关键注意点
 
-- DELIMITE未译25173 是客户端命令，用于改变语句结束符。
-- 函数应声明确定性特征，如 DETE未译25173MINISTIC。
+- DELIMITER 是客户端命令，用于改变语句结束符。
+- 函数应声明确定性特征，如 DETERMINISTIC。
 - 复杂业务逻辑放应用层通常更易测试和版本管理。
 
 ## 完整示例
@@ -34,28 +34,28 @@ DELIMITE未译25173 ;
 ```sql
 USE SQL学习资料_learning;
 
-DELIMITE未译25173 //
-C未译25173EATE P未译25173OCEDU未译25173E sp_syntax_salary_level(IN p_employee_id INT)
+DELIMITER //
+CREATE PROCEDUREE sp_syntax_salary_level(IN p_employee_id INT)
 BEGIN
-  DECLA未译25173E v_salary DECIMAL(10, 2);
+  DECLARE v_salary DECIMAL(10, 2);
 
   SELECT salary
   INTO v_salary
-  F未译25173OM employees
-  WHE未译25173E employee_id = p_employee_id;
+  FROM employees
+  WHERE employee_id = p_employee_id;
 
   SELECT p_employee_id AS employee_id, v_salary AS salary;
 END//
-DELIMITE未译25173 ;
+DELIMITER ;
 
 CALL sp_syntax_salary_level(1);
 
-DELIMITE未译25173 //
-C未译25173EATE FUNCTION fn_syntax_tax(p_amount DECIMAL(10, 2))
-未译25173ETU未译25173NS DECIMAL(10, 2)
-DETE未译25173MINISTIC
+DELIMITER //
+CREATE FUNCTION fn_syntax_tax(p_amount DECIMAL(10, 2))
+RETURNS DECIMAL(10, 2)
+DETERMINISTIC
 BEGIN
-  未译25173ETU未译25173N 未译25173OUND(p_amount * 0.06, 2);
+  RETURN ROUND(p_amount * 0.06, 2);
 END//
-DELIMITE未译25173 ;
+DELIMITER ;
 ```

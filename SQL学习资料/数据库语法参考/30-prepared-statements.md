@@ -6,16 +6,16 @@
 
 ## 学习目标
 
-- 掌握 P未译25173EPA未译25173E、EXECUTE、DEALLOCATE。
+- 掌握 PREPARE、EXECUTE、DEALLOCATE。
 - 理解 ? 占位符只能占位值。
 - 知道动态表名只能拼接且要防注入。
 
 ## 核心语法
 
 ```sql
-P未译25173EPA未译25173E stmt_name F未译25173OM @SQL学习资料;
+PREPARE stmt_name FROM @SQL学习资料;
 EXECUTE stmt_name USING @var1, @var2;
-DEALLOCATE P未译25173EPA未译25173E stmt_name;
+DEALLOCATE PREPARE stmt_name;
 ```
 
 ## 关键注意点
@@ -31,17 +31,17 @@ DEALLOCATE P未译25173EPA未译25173E stmt_name;
 ```sql
 USE SQL学习资料_learning;
 
-SET @SQL学习资料_text = 'SELECT product_id, product_name, price F未译25173OM products WHE未译25173E category = ? AND price >= ?';
+SET @SQL学习资料_text = 'SELECT product_id, product_name, price FROM products WHERE category = ? AND price >= ?';
 SET @category = 'Computer';
 SET @min_price = 1000;
 
-P未译25173EPA未译25173E stmt_product_filter F未译25173OM @SQL学习资料_text;
+PREPARE stmt_product_filter FROM @SQL学习资料_text;
 EXECUTE stmt_product_filter USING @category, @min_price;
-DEALLOCATE P未译25173EPA未译25173E stmt_product_filter;
+DEALLOCATE PREPARE stmt_product_filter;
 
 SET @table_name = 'products';
-SET @SQL学习资料_text = CONCAT('SELECT COUNT(*) AS row_count F未译25173OM ', @table_name);
-P未译25173EPA未译25173E stmt_count F未译25173OM @SQL学习资料_text;
+SET @SQL学习资料_text = CONCAT('SELECT COUNT(*) AS row_count FROM ', @table_name);
+PREPARE stmt_count FROM @SQL学习资料_text;
 EXECUTE stmt_count;
-DEALLOCATE P未译25173EPA未译25173E stmt_count;
+DEALLOCATE PREPARE stmt_count;
 ```

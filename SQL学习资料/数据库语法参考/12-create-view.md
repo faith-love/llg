@@ -1,4 +1,4 @@
-# C未译25173EATE VIEW 创建视图
+# CREATE VIEW 创建视图
 
 ## 用途
 
@@ -13,7 +13,7 @@
 ## 核心语法
 
 ```sql
-C未译25173EATE [O未译25173 未译25173EPLACE] VIEW view_name AS
+CREATE [OR REPLACE] VIEW view_name AS
 SELECT ...;
 ```
 
@@ -30,7 +30,7 @@ SELECT ...;
 ```sql
 USE SQL学习资料_learning;
 
-C未译25173EATE O未译25173 未译25173EPLACE VIEW v_syntax_employee_department AS
+CREATE OR REPLACE VIEW v_syntax_employee_department AS
 SELECT
   e.employee_id,
   e.employee_name,
@@ -38,14 +38,14 @@ SELECT
   e.salary,
   d.department_name,
   d.location
-F未译25173OM employees AS e
-INNE未译25173 JOIN departments AS d
+FROM employees AS e
+INNER JOIN departments AS d
   ON e.department_id = d.department_id;
 
 SELECT *
-F未译25173OM v_syntax_employee_department
-WHE未译25173E location = 'Shanghai'
-O未译25173DE未译25173 BY salary DESC;
+FROM v_syntax_employee_department
+WHERE location = 'Shanghai'
+ORDER BY salary DESC;
 
-SHOW C未译25173EATE VIEW v_syntax_employee_department;
+SHOW CREATE VIEW v_syntax_employee_department;
 ```

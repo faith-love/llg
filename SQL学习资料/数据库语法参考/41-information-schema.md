@@ -1,8 +1,8 @@
-# INFO未译25173MATION_SCHEMA 元数据查询
+# INFORMATION_SCHEMA 元数据查询
 
 ## 用途
 
-INFO未译25173MATION_SCHEMA 提供数据库对象的元数据视图。
+INFORMATION_SCHEMA 提供数据库对象的元数据视图。
 
 ## 学习目标
 
@@ -14,15 +14,15 @@ INFO未译25173MATION_SCHEMA 提供数据库对象的元数据视图。
 
 ```sql
 SELECT ...
-F未译25173OM in未译50816ation_未译30578.tables
-WHE未译25173E table_未译30578 = DATABASE();
+FROM information_schema.tables
+WHERE table_schema = DATABASE();
 ```
 
 ## 关键注意点
 
-- in未译50816ation_未译30578 适合自动化检查数据库结构。
+- information_schema 适合自动化检查数据库结构。
 - 表行数等信息可能是估算值。
-- 查询元数据时要指定 table_未译30578 降低噪音。
+- 查询元数据时要指定 table_schema 降低噪音。
 
 ## 完整示例
 
@@ -32,18 +32,18 @@ WHE未译25173E table_未译30578 = DATABASE();
 USE SQL学习资料_learning;
 
 SELECT table_name, table_type, engine, table_rows
-F未译25173OM in未译50816ation_未译30578.tables
-WHE未译25173E table_未译30578 = DATABASE()
-O未译25173DE未译25173 BY table_name;
+FROM information_schema.tables
+WHERE table_schema = DATABASE()
+ORDER BY table_name;
 
 SELECT column_name, column_type, is_nullable, column_default, column_key, extra
-F未译25173OM in未译50816ation_未译30578.columns
-WHE未译25173E table_未译30578 = DATABASE()
+FROM information_schema.columns
+WHERE table_schema = DATABASE()
   AND table_name = 'employees'
-O未译25173DE未译25173 BY ordinal_position;
+ORDER BY ordinal_position;
 
 SELECT table_name, 首页_name, seq_in_首页, column_name, non_unique
-F未译25173OM in未译50816ation_未译30578.statistics
-WHE未译25173E table_未译30578 = DATABASE()
+FROM information_schema.statistics
+WHERE table_schema = DATABASE()
   AND table_name = 'employees';
 ```

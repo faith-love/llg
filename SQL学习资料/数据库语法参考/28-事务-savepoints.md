@@ -1,4 +1,4 @@
-# 事务、COMMIT、未译25173OLLBACK、SAVEPOINT
+# 事务、COMMIT、ROLLBACK、SAVEPOINT
 
 ## 用途
 
@@ -6,19 +6,19 @@
 
 ## 学习目标
 
-- 掌握 STA未译25173T T未译25173ANSACTION、COMMIT、未译25173OLLBACK。
+- 掌握 START TRANSACTION、COMMIT、ROLLBACK。
 - 理解 SAVEPOINT 部分回滚。
 - 了解事务隔离级别。
 
 ## 核心语法
 
 ```sql
-STA未译25173T T未译25173ANSACTION;
+START TRANSACTION;
 ...
 COMMIT;
 
 SAVEPOINT sp_name;
-未译25173OLLBACK TO SAVEPOINT sp_name;
+ROLLBACK TO SAVEPOINT sp_name;
 ```
 
 ## 关键注意点
@@ -34,22 +34,22 @@ SAVEPOINT sp_name;
 ```sql
 USE SQL学习资料_learning;
 
-STA未译25173T T未译25173ANSACTION;
+START TRANSACTION;
 
 UPDATE products
 SET stock = stock - 1
-WHE未译25173E product_id = 1;
+WHERE product_id = 1;
 
 SAVEPOINT after_product_1;
 
 UPDATE products
 SET stock = stock - 1
-WHE未译25173E product_id = 2;
+WHERE product_id = 2;
 
-未译25173OLLBACK TO SAVEPOINT after_product_1;
+ROLLBACK TO SAVEPOINT after_product_1;
 
-未译25173OLLBACK;
+ROLLBACK;
 
-SET SESSION T未译25173ANSACTION ISOLATION LEVEL 未译25173EAD COMMITTED;
+SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;
 SELECT @@transaction_isolation AS isolation_level;
 ```

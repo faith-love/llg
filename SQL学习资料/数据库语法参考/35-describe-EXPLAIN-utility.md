@@ -1,4 +1,4 @@
-# USE、DESC未译25173IBE、EXPLAIN 等工具语句
+# USE、DESCRIBE、EXPLAIN 等工具语句
 
 ## 用途
 
@@ -6,15 +6,15 @@
 
 ## 学习目标
 
-- 掌握 USE、DESC未译25173IBE、SHOW COLUMNS。
-- 掌握 EXPLAIN 和 EXPLAIN FO未译25173MAT=JSON。
+- 掌握 USE、DESCRIBE、SHOW COLUMNS。
+- 掌握 EXPLAIN 和 EXPLAIN FORMAT=JSON。
 - 理解 EXPLAIN 的关键字段。
 
 ## 核心语法
 
 ```sql
-USE 数据未译87073_name;
-DESC未译25173IBE table_name;
+USE database_name;
+DESCRIBE table_name;
 EXPLAIN SELECT ...;
 ```
 
@@ -31,20 +31,20 @@ EXPLAIN SELECT ...;
 ```sql
 USE SQL学习资料_learning;
 
-DESC未译25173IBE employees;
+DESCRIBE employees;
 DESC products;
-SHOW COLUMNS F未译25173OM orders;
+SHOW COLUMNS FROM orders;
 
 EXPLAIN
 SELECT o.order_id, c.customer_name, o.total_amount
-F未译25173OM orders AS o
-INNE未译25173 JOIN customers AS c
+FROM orders AS o
+INNER JOIN customers AS c
   ON o.customer_id = c.customer_id
-WHE未译25173E o.customer_id = 1;
+WHERE o.customer_id = 1;
 
-EXPLAIN FO未译25173MAT=JSON
+EXPLAIN FORMAT=JSON
 SELECT product_id, product_name, price
-F未译25173OM products
-WHE未译25173E category = 'Computer'
-O未译25173DE未译25173 BY price DESC;
+FROM products
+WHERE category = 'Computer'
+ORDER BY price DESC;
 ```

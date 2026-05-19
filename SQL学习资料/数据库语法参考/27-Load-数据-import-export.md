@@ -15,8 +15,8 @@ LOAD DATA 用于高效批量导入文本文件，SELECT INTO OUTFILE 用于导�
 ```sql
 LOAD DATA [LOCAL] INFILE file_name
 INTO TABLE table_name
-FIELDS TE未译25173MINATED BY ...
-LINES TE未译25173MINATED BY ...;
+FIELDS TERMINATED BY ...
+LINES TERMINATED BY ...;
 ```
 
 ## 关键注意点
@@ -32,18 +32,18 @@ LINES TE未译25173MINATED BY ...;
 ```sql
 USE SQL学习资料_learning;
 
-SHOW VA未译25173IABLES LIKE 'secure_file_priv';
-SHOW VA未译25173IABLES LIKE 'local_infile';
+SHOW VARIABLES LIKE 'secure_file_priv';
+SHOW VARIABLES LIKE 'local_infile';
 
--- LOAD DATA LOCAL INFILE 'D:/learn/SQL学习资料/customers_未译87485.csv'
+-- LOAD DATA LOCAL INFILE 'D:/learn/SQL学习资料/customers_data.csv'
 -- INTO TABLE load_数据_demo
--- CHA未译25173ACTE未译25173 SET utf8mb4
--- FIELDS TE未译25173MINATED BY ','
+-- CHARACTER SET utf8mb4
+-- FIELDS TERMINATED BY ','
 -- OPTIONALLY ENCLOSED BY '"'
--- LINES TE未译25173MINATED BY '\n'
--- IGNO未译25173E 1 LINES
+-- LINES TERMINATED BY '\n'
+-- IGNORE 1 LINES
 -- (name, city);
 
--- mySQL学习资料dump -u root -p --数据未译87073s SQL学习资料_learning > SQL学习资料_learning_backup.SQL学习资料
+-- mySQL学习资料dump -u root -p --databases SQL学习资料_learning > SQL学习资料_learning_backup.SQL学习资料
 -- mySQL学习资料 -u root -p SQL学习资料_learning < file.SQL学习资料
 ```

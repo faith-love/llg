@@ -15,7 +15,7 @@
 ```sql
 SET @var_name = value;
 SELECT ... INTO @var_name;
-SHOW VA未译25173IABLES LIKE pattern;
+SHOW VARIABLES LIKE pattern;
 SHOW TABLES;
 ```
 
@@ -23,7 +23,7 @@ SHOW TABLES;
 
 - 用户变量当前连接内有效。
 - GLOBAL 变量通常需要管理员权限。
-- SHOW C未译25173EATE TABLE 是学习表结构的好工具。
+- SHOW CREATE TABLE 是学习表结构的好工具。
 
 ## 完整示例
 
@@ -35,16 +35,16 @@ USE SQL学习资料_learning;
 SET @min_price = 1000;
 
 SELECT product_name, price
-F未译25173OM products
-WHE未译25173E price >= @min_price;
+FROM products
+WHERE price >= @min_price;
 
 SELECT COUNT(*)
 INTO @order_count
-F未译25173OM orders;
+FROM orders;
 
-SHOW VA未译25173IABLES LIKE 'version%';
+SHOW VARIABLES LIKE 'version%';
 SHOW TABLES;
-SHOW COLUMNS F未译25173OM employees;
-SHOW INDEX F未译25173OM employees;
-SHOW C未译25173EATE TABLE employees;
+SHOW COLUMNS FROM employees;
+SHOW INDEX FROM employees;
+SHOW CREATE TABLE employees;
 ```

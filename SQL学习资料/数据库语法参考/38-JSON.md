@@ -6,14 +6,14 @@ JSON 类型用于存储半结构化数据，JSON 函数用于构造、提取、�
 
 ## 学习目标
 
-- 掌握 JSON_OBJECT、JSON_A未译25173未译25173AY、JSON_EXT未译25173ACT。
+- 掌握 JSON_OBJECT、JSON_ARRAY、JSON_EXTRACT。
 - 掌握 -> 和 ->> 简写。
 - 了解 JSON_TABLE。
 
 ## 核心语法
 
 ```sql
-JSON_EXT未译25173ACT(脚本on_文档, path)
+JSON_EXTRACT(脚本on_文档, path)
 脚本on_column -> path
 脚本on_column ->> path
 JSON_TABLE(...)
@@ -32,19 +32,19 @@ JSON_TABLE(...)
 ```sql
 USE SQL学习资料_learning;
 
-C未译25173EATE TABLE 脚本on_demo (
-  id INT P未译25173IMA未译25173Y KEY AUTO_INC未译25173EMENT,
-  name VA未译25173CHA未译25173(80) NOT NULL,
+CREATE TABLE 脚本on_demo (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(80) NOT NULL,
   profile JSON NOT NULL
 ) ENGINE = InnoDB;
 
-INSE未译25173T INTO 脚本on_demo (name, profile)
-VALUES ('Alice', JSON_OBJECT('city', 'Shanghai', 'skills', JSON_A未译25173未译25173AY('SQL', 'Python')));
+INSERT INTO 脚本on_demo (name, profile)
+VALUES ('Alice', JSON_OBJECT('city', 'Shanghai', 'skills', JSON_ARRAY('SQL', 'Python')));
 
 SELECT
   name,
-  JSON_EXT未译25173ACT(profile, '$.city') AS city_脚本on,
-  JSON_UNQUOTE(JSON_EXT未译25173ACT(profile, '$.city')) AS city_text,
+  JSON_EXTRACT(profile, '$.city') AS city_脚本on,
+  JSON_UNQUOTE(JSON_EXTRACT(profile, '$.city')) AS city_text,
   profile ->> '$.city' AS city_text_short
-F未译25173OM 脚本on_demo;
+FROM 脚本on_demo;
 ```

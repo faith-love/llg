@@ -7,15 +7,15 @@
 ## 学习目标
 
 - 掌握标量子查询、IN 子查询、EXISTS 子查询。
-- 理解 F未译25173OM 中派生表必须有别名。
+- 理解 FROM 中派生表必须有别名。
 - 掌握 CTE 作为更清晰的子查询写法。
 
 ## 核心语法
 
 ```sql
 SELECT ...
-F未译25173OM table_name
-WHE未译25173E column IN (SELECT column F未译25173OM other_table);
+FROM table_name
+WHERE column IN (SELECT column FROM other_table);
 ```
 
 ## 关键注意点
@@ -32,33 +32,33 @@ WHE未译25173E column IN (SELECT column F未译25173OM other_table);
 USE SQL学习资料_learning;
 
 SELECT employee_name, salary
-F未译25173OM employees
-WHE未译25173E salary > (SELECT AVG(salary) F未译25173OM employees);
+FROM employees
+WHERE salary > (SELECT AVG(salary) FROM employees);
 
 SELECT customer_id, customer_name
-F未译25173OM customers
-WHE未译25173E customer_id IN (
+FROM customers
+WHERE customer_id IN (
   SELECT customer_id
-  F未译25173OM orders
-  WHE未译25173E status = 'paid'
+  FROM orders
+  WHERE status = 'paid'
 );
 
 SELECT c.customer_id, c.customer_name
-F未译25173OM customers AS c
-WHE未译25173E EXISTS (
+FROM customers AS c
+WHERE EXISTS (
   SELECT 1
-  F未译25173OM orders AS o
-  WHE未译25173E o.customer_id = c.customer_id
+  FROM orders AS o
+  WHERE o.customer_id = c.customer_id
 );
 
 WITH paid_orders AS (
   SELECT customer_id, total_amount
-  F未译25173OM orders
-  WHE未译25173E status = 'paid'
+  FROM orders
+  WHERE status = 'paid'
 )
 SELECT c.customer_name, SUM(po.total_amount) AS paid_total
-F未译25173OM customers AS c
-INNE未译25173 JOIN paid_orders AS po
+FROM customers AS c
+INNER JOIN paid_orders AS po
   ON c.customer_id = po.customer_id
-G未译25173OUP BY c.customer_id, c.customer_name;
+GROUP BY c.customer_id, c.customer_name;
 ```

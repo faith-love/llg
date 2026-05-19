@@ -80,6 +80,18 @@ function checkCodeFenceLanguages(rel, content) {
   }
 }
 
+function checkUntranslatedMarkers(rel, content) {
+  const matches = [...content.matchAll(/未译\d+/g)]
+  for (const match of matches) {
+    const line = content.slice(0, match.index).split('\n').length
+    issues.push({
+      file: rel,
+      type: 'untranslated_marker',
+      detail: `第 ${line} 行存在未译占位: ${match[0]}`
+    })
+  }
+}
+
 function checkFile(file) {
   const rel = path.relative(root, file)
   const content = fs.readFileSync(file, 'utf8').replace(/^\uFEFF/, '').replace(/\r\n/g, '\n')
@@ -95,6 +107,7 @@ function checkFile(file) {
   }
 
   checkCodeFenceLanguages(rel, content)
+  checkUntranslatedMarkers(rel, content)
 
   const currentDir = path.dirname(file)
   const sanitized = content.replace(/```[\s\S]*?```/g, '')

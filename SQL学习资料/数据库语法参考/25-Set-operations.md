@@ -6,7 +6,7 @@
 
 ## 学习目标
 
-- 掌握 UNION、UNION ALL、INTE未译25173SECT、EXCEPT。
+- 掌握 UNION、UNION ALL、INTERSECT、EXCEPT。
 - 理解列数量和类型兼容要求。
 - 知道版本兼容限制。
 
@@ -18,7 +18,7 @@ UNION [ALL]
 SELECT ...;
 
 SELECT ...
-INTE未译25173SECT
+INTERSECT
 SELECT ...;
 
 SELECT ...
@@ -28,7 +28,7 @@ SELECT ...;
 
 ## 关键注意点
 
-- INTE未译25173SECT 和 EXCEPT 需要 MySQL 8.0.31+。
+- INTERSECT 和 EXCEPT 需要 MySQL 8.0.31+。
 - UNION 去重，UNION ALL 不去重。
 - 最终列名来自第一段 SELECT。
 
@@ -40,20 +40,20 @@ SELECT ...;
 USE SQL学习资料_learning;
 
 SELECT city AS place_name
-F未译25173OM customers
+FROM customers
 UNION
 SELECT location AS place_name
-F未译25173OM departments;
+FROM departments;
 
 SELECT city AS place_name
-F未译25173OM customers
-INTE未译25173SECT
+FROM customers
+INTERSECT
 SELECT location AS place_name
-F未译25173OM departments;
+FROM departments;
 
 SELECT city AS place_name
-F未译25173OM customers
+FROM customers
 EXCEPT
 SELECT location AS place_name
-F未译25173OM departments;
+FROM departments;
 ```

@@ -21,7 +21,7 @@ column <=> NULL
 
 ## 关键注意点
 
-- AND 优先级高于 O未译25173，复杂条件加括号。
+- AND 优先级高于 OR，复杂条件加括号。
 - NULL 参与普通比较通常返回 NULL。
 - 字符串比较受 collation 影响。
 
@@ -33,17 +33,17 @@ column <=> NULL
 USE SQL学习资料_learning;
 
 SELECT product_name, price, stock, price * stock AS inventory_value
-F未译25173OM products;
+FROM products;
 
 SELECT NULL = NULL AS nORMal_equal_result, NULL <=> NULL AS null_safe_equal_result;
 
 SELECT employee_name, salary, is_active
-F未译25173OM employees
-WHE未译25173E (salary >= 15000 AND is_active = T未译25173UE)
-   O未译25173 employee_name LIKE 'H%';
+FROM employees
+WHERE (salary >= 15000 AND is_active = TRUE)
+   OR employee_name LIKE 'H%';
 
 SELECT product_name, category, price
-F未译25173OM products
-WHE未译25173E price BETWEEN 200 AND 3000
+FROM products
+WHERE price BETWEEN 200 AND 3000
   AND category IN ('Accessory', 'Furniture');
 ```

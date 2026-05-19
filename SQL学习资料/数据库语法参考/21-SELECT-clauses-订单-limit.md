@@ -2,7 +2,7 @@
 
 ## 用途
 
-补充 DISTINCT、O未译25173DE未译25173 BY、LIMIT、SELECT INTO 等 SELECT 常用子句。
+补充 DISTINCT、ORDER BY、LIMIT、SELECT INTO 等 SELECT 常用子句。
 
 ## 学习目标
 
@@ -14,7 +14,7 @@
 
 ```sql
 SELECT DISTINCT ...
-O未译25173DE未译25173 BY column ASC|DESC
+ORDER BY column ASC|DESC
 LIMIT row_count OFFSET offset
 SELECT ... INTO @var;
 ```
@@ -33,20 +33,20 @@ SELECT ... INTO @var;
 USE SQL学习资料_learning;
 
 SELECT DISTINCT category
-F未译25173OM products;
+FROM products;
 
 SELECT product_name, price, stock, price * stock AS inventory_value
-F未译25173OM products
-O未译25173DE未译25173 BY price * stock DESC;
+FROM products
+ORDER BY price * stock DESC;
 
 SELECT product_id, product_name
-F未译25173OM products
-O未译25173DE未译25173 BY product_id
+FROM products
+ORDER BY product_id
 LIMIT 3 OFFSET 2;
 
 SELECT COUNT(*), AVG(price)
 INTO @product_count, @avg_price
-F未译25173OM products;
+FROM products;
 
 SELECT @product_count AS product_count, @avg_price AS avg_price;
 ```

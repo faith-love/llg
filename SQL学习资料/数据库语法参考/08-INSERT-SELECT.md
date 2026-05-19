@@ -1,8 +1,8 @@
-# INSE未译25173T .. SELECT 查询结果插入
+# INSERT .. SELECT 查询结果插入
 
 ## 用途
 
-INSE未译25173T .. SELECT 用于把查询结果批量写入目标表。
+INSERT .. SELECT 用于把查询结果批量写入目标表。
 
 ## 学习目标
 
@@ -13,9 +13,9 @@ INSE未译25173T .. SELECT 用于把查询结果批量写入目标表。
 ## 核心语法
 
 ```sql
-INSE未译25173T INTO target_table (column1, column2, ...)
+INSERT INTO target_table (column1, column2, ...)
 SELECT expr1, expr2, ...
-F未译25173OM source_table;
+FROM source_table;
 ```
 
 ## 关键注意点
@@ -31,24 +31,24 @@ F未译25173OM source_table;
 ```sql
 USE SQL学习资料_learning;
 
-D未译25173OP TABLE IF EXISTS customer_sales_summary_demo;
+DROP TABLE IF EXISTS customer_sales_summary_demo;
 
-C未译25173EATE TABLE customer_sales_summary_demo (
-  customer_id INT P未译25173IMA未译25173Y KEY,
-  customer_name VA未译25173CHA未译25173(80) NOT NULL,
+CREATE TABLE customer_sales_summary_demo (
+  customer_id INT PRIMARY KEY,
+  customer_name VARCHAR(80) NOT NULL,
   order_count INT NOT NULL,
   total_amount DECIMAL(10, 2) NOT NULL
 ) ENGINE = InnoDB;
 
-INSE未译25173T INTO customer_sales_summary_demo
+INSERT INTO customer_sales_summary_demo
   (customer_id, customer_name, order_count, total_amount)
 SELECT
   c.customer_id,
   c.customer_name,
   COUNT(o.order_id),
   COALESCE(SUM(o.total_amount), 0)
-F未译25173OM customers AS c
+FROM customers AS c
 LEFT JOIN orders AS o
   ON c.customer_id = o.customer_id
-G未译25173OUP BY c.customer_id, c.customer_name;
+GROUP BY c.customer_id, c.customer_name;
 ```

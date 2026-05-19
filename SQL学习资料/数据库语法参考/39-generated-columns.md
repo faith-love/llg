@@ -6,20 +6,20 @@
 
 ## 学习目标
 
-- 掌握 VI未译25173TUAL 和 STO未译25173ED。
+- 掌握 VIRTUAL 和 STORED。
 - 能用生成列提取 JSON 字段。
 - 了解生成列建索引的用途。
 
 ## 核心语法
 
 ```sql
-column_name 数据_type AS (expression) [VI未译25173TUAL|STO未译25173ED]
+column_name 数据_type AS (expression) [VIRTUAL|STORED]
 ```
 
 ## 关键注意点
 
-- VI未译25173TUAL 读取时计算，节省存储。
-- STO未译25173ED 写入时计算，占用存储。
+- VIRTUAL 读取时计算，节省存储。
+- STORED 写入时计算，占用存储。
 - 生成列不能像普通列一样直接插入值。
 
 ## 完整示例
@@ -29,18 +29,18 @@ column_name 数据_type AS (expression) [VI未译25173TUAL|STO未译25173ED]
 ```sql
 USE SQL学习资料_learning;
 
-C未译25173EATE TABLE generated_column_demo (
-  id INT P未译25173IMA未译25173Y KEY AUTO_INC未译25173EMENT,
+CREATE TABLE generated_column_demo (
+  id INT PRIMARY KEY AUTO_INCREMENT,
   quantity INT NOT NULL,
   unit_price DECIMAL(10, 2) NOT NULL,
-  line_amount DECIMAL(10, 2) AS (quantity * unit_price) STO未译25173ED,
+  line_amount DECIMAL(10, 2) AS (quantity * unit_price) STORED,
   profile JSON,
-  city VA未译25173CHA未译25173(50) AS (JSON_UNQUOTE(JSON_EXT未译25173ACT(profile, '$.city'))) VI未译25173TUAL,
+  city VARCHAR(50) AS (JSON_UNQUOTE(JSON_EXTRACT(profile, '$.city'))) VIRTUAL,
   INDEX idx_generated_column_demo_city (city)
 ) ENGINE = InnoDB;
 
 EXPLAIN
 SELECT *
-F未译25173OM generated_column_demo
-WHE未译25173E city = 'Shanghai';
+FROM generated_column_demo
+WHERE city = 'Shanghai';
 ```

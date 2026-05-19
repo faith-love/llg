@@ -1,8 +1,8 @@
-# SELECT .. WHE未译25173E 条件筛选
+# SELECT .. WHERE 条件筛选
 
 ## 用途
 
-WHE未译25173E 用来在分组和聚合前过滤明细行，只保留满足条件的数据。
+WHERE 用来在分组和聚合前过滤明细行，只保留满足条件的数据。
 
 ## 学习目标
 
@@ -14,13 +14,13 @@ WHE未译25173E 用来在分组和聚合前过滤明细行，只保留满足条�
 
 ```sql
 SELECT column_list
-F未译25173OM table_name
-WHE未译25173E condition;
+FROM table_name
+WHERE condition;
 ```
 
 ## 关键注意点
 
-- 复杂 AND/O未译25173 条件建议显式加括号。
+- 复杂 AND/OR 条件建议显式加括号。
 - NULL 不能用 = 判断，必须使用 IS NULL 或 IS NOT NULL。
 - LIKE 的前置通配符如 %abc 通常难以使用普通 B-Tree 索引。
 
@@ -32,30 +32,30 @@ WHE未译25173E condition;
 USE SQL学习资料_learning;
 
 SELECT employee_name, salary
-F未译25173OM employees
-WHE未译25173E salary >= 18000;
+FROM employees
+WHERE salary >= 18000;
 
 SELECT product_name, category
-F未译25173OM products
-WHE未译25173E category IN ('Computer', 'Accessory');
+FROM products
+WHERE category IN ('Computer', 'Accessory');
 
 SELECT product_name, price
-F未译25173OM products
-WHE未译25173E price BETWEEN 200 AND 2000;
+FROM products
+WHERE price BETWEEN 200 AND 2000;
 
 SELECT customer_name
-F未译25173OM customers
-WHE未译25173E customer_name LIKE '%Tech%';
+FROM customers
+WHERE customer_name LIKE '%Tech%';
 
 SELECT customer_id, customer_name, phone
-F未译25173OM customers
-WHE未译25173E phone IS NULL;
+FROM customers
+WHERE phone IS NULL;
 
 SELECT c.customer_id, c.customer_name
-F未译25173OM customers AS c
-WHE未译25173E EXISTS (
+FROM customers AS c
+WHERE EXISTS (
   SELECT 1
-  F未译25173OM orders AS o
-  WHE未译25173E o.customer_id = c.customer_id
+  FROM orders AS o
+  WHERE o.customer_id = c.customer_id
 );
 ```

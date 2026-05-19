@@ -6,16 +6,16 @@
 
 ## 学习目标
 
-- 掌握 C未译25173EATE USE未译25173、G未译25173ANT、未译25173EVOKE、D未译25173OP USE未译25173。
-- 了解角色 C未译25173EATE 未译25173OLE 和 SET 未译25173OLE。
+- 掌握 CREATE USER、GRANT、REVOKE、DROP USER。
+- 了解角色 CREATE ROLE 和 SET ROLE。
 - 理解最小权限原则。
 
 ## 核心语法
 
 ```sql
-C未译25173EATE USE未译25173 用户 IDENTIFIED BY password;
-G未译25173ANT privilege ON 未译66984.table TO 用户;
-未译25173EVOKE privilege ON 未译66984.table F未译25173OM 用户;
+CREATE USER 用户 IDENTIFIED BY password;
+GRANT privilege ON db_name.table TO 用户;
+REVOKE privilege ON db_name.table FROM 用户;
 ```
 
 ## 关键注意点
@@ -31,18 +31,18 @@ G未译25173ANT privilege ON 未译66984.table TO 用户;
 ```sql
 USE SQL学习资料_learning;
 
-SELECT CU未译25173未译25173ENT_USE未译25173() AS current_用户_value;
+SELECT CURRENT_USER() AS current_用户_value;
 
--- C未译25173EATE USE未译25173 'app_reader'@'localhost' IDENTIFIED BY 'ChangeMe_123456';
--- G未译25173ANT SELECT ON SQL学习资料_learning.* TO 'app_reader'@'localhost';
--- SHOW G未译25173ANTS FO未译25173 'app_reader'@'localhost';
--- 未译25173EVOKE SELECT ON SQL学习资料_learning.* F未译25173OM 'app_reader'@'localhost';
--- D未译25173OP USE未译25173 'app_reader'@'localhost';
+-- CREATE USER 'app_reader'@'localhost' IDENTIFIED BY 'ChangeMe_123456';
+-- GRANT SELECT ON SQL学习资料_learning.* TO 'app_reader'@'localhost';
+-- SHOW GRANTS FOR 'app_reader'@'localhost';
+-- REVOKE SELECT ON SQL学习资料_learning.* FROM 'app_reader'@'localhost';
+-- DROP USER 'app_reader'@'localhost';
 
--- C未译25173EATE 未译25173OLE 'report_reader';
--- G未译25173ANT SELECT ON SQL学习资料_learning.* TO 'report_reader';
--- G未译25173ANT 'report_reader' TO 'app_reader'@'localhost';
--- SET DEFAULT 未译25173OLE 'report_reader' TO 'app_reader'@'localhost';
+-- CREATE ROLE 'report_reader';
+-- GRANT SELECT ON SQL学习资料_learning.* TO 'report_reader';
+-- GRANT 'report_reader' TO 'app_reader'@'localhost';
+-- SET DEFAULT ROLE 'report_reader' TO 'app_reader'@'localhost';
 
-SHOW P未译25173IVILEGES;
+SHOW PRIVILEGES;
 ```

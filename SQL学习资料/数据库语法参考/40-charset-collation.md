@@ -6,14 +6,14 @@
 
 ## 学习目标
 
-- 掌握 CHA未译25173ACTE未译25173 SET 和 COLLATE。
+- 掌握 CHARACTER SET 和 COLLATE。
 - 了解 utf8mb4 的推荐用法。
 - 理解 _ci、_cs、_bin 后缀含义。
 
 ## 核心语法
 
 ```sql
-CHA未译25173ACTE未译25173 SET utf8mb4
+CHARACTER SET utf8mb4
 COLLATE utf8mb4_0900_ai_ci
 ```
 
@@ -21,7 +21,7 @@ COLLATE utf8mb4_0900_ai_ci
 
 - MySQL 的 utf8 历史上常指 utf8mb3，建议使用 utf8mb4。
 - _ci 不区分大小写，_cs 区分大小写。
-- 排序规则会影响等值比较和 O未译25173DE未译25173 BY。
+- 排序规则会影响等值比较和 ORDER BY。
 
 ## 完整示例
 
@@ -30,15 +30,15 @@ COLLATE utf8mb4_0900_ai_ci
 ```sql
 USE SQL学习资料_learning;
 
-SHOW CHA未译25173ACTE未译25173 SET LIKE 'utf8mb4';
+SHOW CHARACTER SET LIKE 'utf8mb4';
 SHOW COLLATION LIKE 'utf8mb4%';
 
-C未译25173EATE TABLE charset_demo (
-  id INT P未译25173IMA未译25173Y KEY AUTO_INC未译25173EMENT,
-  name VA未译25173CHA未译25173(100)
-    CHA未译25173ACTE未译25173 SET utf8mb4
+CREATE TABLE charset_demo (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(100)
+    CHARACTER SET utf8mb4
     COLLATE utf8mb4_0900_ai_ci
 ) ENGINE = InnoDB
-DEFAULT CHA未译25173ACTE未译25173 SET utf8mb4
+DEFAULT CHARACTER SET utf8mb4
 DEFAULT COLLATE utf8mb4_0900_ai_ci;
 ```

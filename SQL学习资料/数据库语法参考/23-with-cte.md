@@ -16,7 +16,7 @@ CTE 用 WITH 定义当前语句内可复用的中间结果。
 WITH cte_name AS (
   SELECT ...
 )
-SELECT ... F未译25173OM cte_name;
+SELECT ... FROM cte_name;
 ```
 
 ## 关键注意点
@@ -34,22 +34,22 @@ USE SQL学习资料_learning;
 
 WITH paid_orders AS (
   SELECT customer_id, total_amount
-  F未译25173OM orders
-  WHE未译25173E status = 'paid'
+  FROM orders
+  WHERE status = 'paid'
 )
 SELECT c.customer_name, SUM(po.total_amount) AS paid_amount
-F未译25173OM paid_orders AS po
-INNE未译25173 JOIN customers AS c
+FROM paid_orders AS po
+INNER JOIN customers AS c
   ON po.customer_id = c.customer_id
-G未译25173OUP BY c.customer_id, c.customer_name;
+GROUP BY c.customer_id, c.customer_name;
 
-WITH 未译25173ECU未译25173SIVE numbers AS (
+WITH RECURSIVE numbers AS (
   SELECT 1 AS n
   UNION ALL
   SELECT n + 1
-  F未译25173OM numbers
-  WHE未译25173E n < 10
+  FROM numbers
+  WHERE n < 10
 )
 SELECT n
-F未译25173OM numbers;
+FROM numbers;
 ```

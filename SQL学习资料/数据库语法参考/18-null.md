@@ -32,19 +32,19 @@ COALESCE(expr1, expr2, ...)
 USE SQL学习资料_learning;
 
 SELECT customer_id, customer_name, phone
-F未译25173OM customers
-WHE未译25173E phone IS NULL;
+FROM customers
+WHERE phone IS NULL;
 
 SELECT customer_id, customer_name, phone
-F未译25173OM customers
-WHE未译25173E phone IS NOT NULL;
+FROM customers
+WHERE phone IS NOT NULL;
 
 SELECT
   customer_name,
   COALESCE(phone, 'no phone') AS phone_text,
   IFNULL(phone, 'no phone') AS phone_text_mySQL学习资料
-F未译25173OM customers;
+FROM customers;
 
 SELECT COUNT(*) AS all_rows, COUNT(phone) AS non_null_phone_count
-F未译25173OM customers;
+FROM customers;
 ```
