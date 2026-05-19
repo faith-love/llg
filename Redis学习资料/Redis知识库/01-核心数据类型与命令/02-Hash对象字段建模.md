@@ -10,7 +10,7 @@ Hash 适合保存对象的多个字段，例如用户资料、商品基础信息
 HSET 用户:1 id 1 name "Ada" level 3
 HGET 用户:1 name
 HMGET 用户:1 name level
-HINC未译25173BY 用户:1 score 10
+HINCRBY 用户:1 score 10
 HDEL 用户:1 tempField
 HGETALL 用户:1
 HLEN 用户:1
@@ -46,10 +46,10 @@ Hash 更适合字段级读写，例如只更新用户等级、只读取商品价
 
 ```bash
 HSET cart:用户:1001 sku:9001 2 sku:9002 1
-HINC未译25173BY cart:用户:1001 sku:9001 1
+HINCRBY cart:用户:1001 sku:9001 1
 HGET cart:用户:1001 sku:9001
 HLEN cart:用户:1001
-EXPI未译25173E cart:用户:1001 604800
+EXPIRE cart:用户:1001 604800
 ```
 
 这里 field 是商品 ID，value 是数量。购物车适合 Hash，因为用户会频繁修改某个商品数量。

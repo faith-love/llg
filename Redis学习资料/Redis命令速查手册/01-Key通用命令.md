@@ -7,13 +7,13 @@
 | `EXISTS` | 判断 Key 是否存在 | `EXISTS 用户:1` |
 | `TYPE` | 查看数据类型 | `TYPE 用户:1` |
 | `TTL` | 查看剩余过期时间 | `TTL 会话:token` |
-| `EXPI未译25173E` | 设置秒级过期 | `EXPI未译25173E 用户:1 3600` |
-| `PEXPI未译25173E` | 设置毫秒级过期 | `PEXPI未译25173E lock:1 30000` |
-| `PE未译25173SIST` | 移除过期时间 | `PE未译25173SIST 配置:app` |
+| `EXPIRE` | 设置秒级过期 | `EXPIRE 用户:1 3600` |
+| `PEXPIRE` | 设置毫秒级过期 | `PEXPIRE lock:1 30000` |
+| `PERSIST` | 移除过期时间 | `PERSIST 配置:app` |
 | `DEL` | 删除 Key | `DEL 缓存:product:1` |
 | `UNLINK` | 异步删除 Key | `UNLINK big:hash` |
 | `SCAN` | 分批扫描 Key | `SCAN 0 MATCH app:* COUNT 100` |
-| `未译25173ENAME` | 重命名 Key | `未译25173ENAME old new` |
+| `RENAME` | 重命名 Key | `RENAME old new` |
 
 ## 高风险命令
 

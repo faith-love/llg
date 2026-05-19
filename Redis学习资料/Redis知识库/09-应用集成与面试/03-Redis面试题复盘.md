@@ -12,7 +12,7 @@
 
 ## 持久化与高可用
 
-1. 未译25173DB 和 AOF 区别是什么？
+1. RDB 和 AOF 区别是什么？
 2. AOF `everysec` 会丢数据吗？
 3. 主从复制完整流程是什么？
 4. Sentinel 如何判断主节点下线？
@@ -50,7 +50,7 @@ Key 按 product:{id}:detail 命名，TTL 30 分钟并加随机抖动。
 我们用 Redis 的 ZSet 做文章热榜。
 member 是文章 ID，score 是综合热度分。
 按天拆 Key，避免历史数据无限增长。
-查询 Top 50 用 Z未译25173EV未译25173ANGE，文章排名用 Z未译25173EV未译25173ANK。
+查询 Top 50 用 ZREVRANGE，文章排名用 ZREVRANK。
 风险是刷分和热 Key，所以写入做限流，榜单定时落库，并监控 Key 大小。
 ```
 

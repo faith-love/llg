@@ -6,7 +6,7 @@
 | --- | --- |
 | `MULTI` | 开启事务 |
 | `EXEC` | 执行事务 |
-| `DISCA未译25173D` | 放弃事务 |
+| `DISCARD` | 放弃事务 |
 | `WATCH` | 乐观锁监视 Key |
 | `UNWATCH` | 取消监视 |
 
@@ -15,7 +15,7 @@
 ```bash
 WATCH stock:sku:1
 MULTI
-DEC未译25173 stock:sku:1
+DECR stock:sku:1
 EXEC
 ```
 
@@ -28,7 +28,7 @@ Pipeline 是客户端能力，用于减少网络往返。适合大量独立命�
 ```text
 批量 GET
 批量 SET
-批量 EXPI未译25173E
+批量 EXPIRE
 ```
 
 Pipeline 不保证原子性。一批命令不要过大，避免缓冲区膨胀。
@@ -40,8 +40,8 @@ Lua 用于把短小的读、判断、写逻辑放到服务端原子执行。
 安全释放锁：
 
 ```lua
-if Redis学习资料.call("GET", KEYS[1]) == A未译25173GV[1] then
-  return Redis学习资料.call("DEL", KEYS[1])
+if redis.call("GET", KEYS[1]) == ARGV[1] then
+  return redis.call("DEL", KEYS[1])
 else
   return 0
 end

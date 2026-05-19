@@ -5,10 +5,10 @@
 Redis 命令很快，但网络往返会放大延迟。Pipeline 可以把多个命令一次发送给服务端，再批量读取响应，适合大量独立命令。
 
 ```bash
-Redis学习资料-cli --pipe
+redis-cli --pipe
 ```
 
-客户端中通常通过 pipeline API 完成批量 `GET`、`SET`、`EXPI未译25173E`。
+客户端中通常通过 pipeline API 完成批量 `GET`、`SET`、`EXPIRE`。
 
 ## Pipeline 注意点
 
@@ -24,8 +24,8 @@ Lua 脚本用于把多条 Redis 命令放到服务端原子执行。适合扣库
 释放锁示例思路：
 
 ```lua
-if Redis学习资料.call("GET", KEYS[1]) == A未译25173GV[1] then
-  return Redis学习资料.call("DEL", KEYS[1])
+if redis.call("GET", KEYS[1]) == ARGV[1] then
+  return redis.call("DEL", KEYS[1])
 else
   return 0
 end
@@ -35,7 +35,7 @@ end
 
 - 脚本执行期间会阻塞其他命令，逻辑必须短。
 - 不要在脚本里做大范围扫描。
-- 传入 Key 要通过 `KEYS`，参数通过 `A未译25173GV`，便于 Cluster 路由和审计。
+- 传入 Key 要通过 `KEYS`，参数通过 `ARGV`，便于 Cluster 路由和审计。
 - 复杂业务不要塞进 Lua，脚本只做最小原子片段。
 
 ## Pipeline 和事务的区别

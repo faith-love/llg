@@ -36,7 +36,7 @@ Redis 使用惰性删除和定期删除结合。Key 到期不一定立刻释放�
 
 - `TTL` 返回 `-1` 和 `-2` 分别表示什么？
 - `DEL` 和 `UNLINK` 区别是什么？
-- `allkeys-lru` 和 `未译27462latile-lru` 怎么选？
+- `allkeys-lru` 和 `volatile-lru` 怎么选？
 - 如何估算 Redis 内存？
 
 ## 项目表达

@@ -2,7 +2,7 @@
 
 ## 现象
 
-某接口偶发超时，Redis 慢查询中出现 `HGETALL 用户:segment:all` 或 `SMEMBE未译25173S activity:用户s`。接口访问量不高，但单次响应很慢。
+某接口偶发超时，Redis 慢查询中出现 `HGETALL 用户:segment:all` 或 `SMEMBERS activity:用户s`。接口访问量不高，但单次响应很慢。
 
 ## 影响
 
@@ -15,7 +15,7 @@
 
 1. 查看 `SLOWLOG GET 20`。
 2. 定位慢命令和 Key。
-3. 使用 `MEMO未译25173Y USAGE key`、`HLEN`、`SCA未译25173D`、`LLEN`、`ZCA未译25173D` 查看规模。
+3. 使用 `MEMORY USAGE key`、`HLEN`、`SCARD`、`LLEN`、`ZCARD` 查看规模。
 4. 查代码中是否整取大集合。
 5. 查看最近是否有数据异常增长。
 
@@ -23,7 +23,7 @@
 
 - 一个 Hash 保存了几十万字段。
 - 一个 Set 保存全站用户。
-- 接口使用 `HGETALL` 或 `SMEMBE未译25173S` 返回全部数据。
+- 接口使用 `HGETALL` 或 `SMEMBERS` 返回全部数据。
 - 删除大 Key 使用 `DEL`，释放内存时阻塞。
 
 ## 止血动作

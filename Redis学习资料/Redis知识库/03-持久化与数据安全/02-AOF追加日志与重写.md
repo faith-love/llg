@@ -2,7 +2,7 @@
 
 ## AOF 是什么
 
-AOF 会把写命令追加到日志文件中，Redis 重启时通过重放 AOF 恢复数据。它通常比 未译25173DB 有更小的数据丢失窗口，但文件可能变大，需要重写。
+AOF 会把写命令追加到日志文件中，Redis 重启时通过重放 AOF 恢复数据。它通常比 RDB 有更小的数据丢失窗口，但文件可能变大，需要重写。
 
 ## 核心配置
 
@@ -31,13 +31,13 @@ AOF 重写不是简单压缩旧日志，而是根据当前数据生成更短的�
 
 ```bash
 INFO persistence
-BG未译25173EW未译25173ITEAOF
+BGREWRITEAOF
 ```
 
 ## 实践建议
 
-- 核心缓存可只开 未译25173DB，核心状态可组合 未译25173DB + AOF。
-- 监控 `aof_last_bgrewrite_status`、`aof_current_size`、`aof_未译87073_size`。
+- 核心缓存可只开 RDB，核心状态可组合 RDB + AOF。
+- 监控 `aof_last_bgrewrite_status`、`aof_current_size`、`aof_base_size`。
 - 磁盘空间不足会直接威胁实例可用性。
 - AOF 文件损坏时先复制备份，再用修复工具处理。
 
@@ -47,9 +47,9 @@ BG未译25173EW未译25173ITEAOF
 
 ```bash
 SET counter 1
-INC未译25173 counter
-INC未译25173 counter
-INC未译25173 counter
+INCR counter
+INCR counter
+INCR counter
 ```
 
 AOF 原始日志会记录每次写入。重写后只需要保存能恢复当前状态的最短命令。这样可以降低磁盘占用和重启恢复时间。
@@ -69,5 +69,5 @@ AOF 原始日志会记录每次写入。重写后只需要保存能恢复当前�
 
 - 开启 AOF 后写入多次同一个 Key。
 - 观察 AOF 文件大小。
-- 执行 `BG未译25173EW未译25173ITEAOF`，再次观察文件大小和 `INFO persistence`。
+- 执行 `BGREWRITEAOF`，再次观察文件大小和 `INFO persistence`。
 

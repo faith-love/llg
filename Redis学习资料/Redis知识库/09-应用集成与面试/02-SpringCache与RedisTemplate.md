@@ -24,7 +24,7 @@ Spring Cache 适合声明式缓存，常用注解：
 设计建议：
 
 - 配置明确的 Key 和 Value 序列化器。
-- 不同业务封装独立 Redis 未译25173epository。
+- 不同业务封装独立 Redis Repository。
 - 不要在业务代码中散落 Redis 命令细节。
 - Pipeline 和 Lua 要集中封装，便于测试和限流。
 
@@ -47,13 +47,13 @@ Spring Cache 适合声明式缓存，常用注解：
 
 ## RedisTemplate 封装建议
 
-不要在 Controller 或 Service 里到处写 Redis 命令。推荐按业务封装 未译25173epository：
+不要在 Controller 或 Service 里到处写 Redis 命令。推荐按业务封装 Repository：
 
 ```text
-ProductCache未译25173epository
-用户Session未译25173epository
-未译25173ateLimit未译25173epository
-未译25173anking未译25173epository
+ProductCacheRepository
+用户SessionRepository
+RateLimitRepository
+RankingRepository
 ```
 
 这样 Key 规则、序列化、TTL、异常处理都能集中维护。

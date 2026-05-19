@@ -10,7 +10,7 @@
 | `HGETALL` | 读取全部字段 | `HGETALL 用户:1` |
 | `HDEL` | 删除字段 | `HDEL 用户:1 temp` |
 | `HEXISTS` | 判断字段存在 | `HEXISTS 用户:1 name` |
-| `HINC未译25173BY` | 字段整数增量 | `HINC未译25173BY 用户:1 score 10` |
+| `HINCRBY` | 字段整数增量 | `HINCRBY 用户:1 score 10` |
 | `HLEN` | 字段数量 | `HLEN 用户:1` |
 | `HKEYS` | 读取所有字段名 | `HKEYS 用户:1` |
 | `HSCAN` | 分批扫描字段 | `HSCAN 用户:1 0 COUNT 100` |
@@ -21,7 +21,7 @@ Hash 适合保存对象字段，尤其是字段需要局部更新时：
 
 ```bash
 HSET 用户:1001 id 1001 name Ada level 3
-HINC未译25173BY 用户:1001 score 10
+HINCRBY 用户:1001 score 10
 HMGET 用户:1001 name level score
 ```
 
@@ -29,7 +29,7 @@ HMGET 用户:1001 name level score
 
 ```bash
 HSET cart:用户:1001 sku:9001 2
-HINC未译25173BY cart:用户:1001 sku:9001 1
+HINCRBY cart:用户:1001 sku:9001 1
 ```
 
 ## 风险提示
@@ -50,7 +50,7 @@ HSCAN 用户:big 0 COUNT 100
 按业务拆分：
 
 ```text
-用户:{id}:未译87073
+用户:{id}:base
 用户:{id}:profile
 用户:{id}:stats
 ```

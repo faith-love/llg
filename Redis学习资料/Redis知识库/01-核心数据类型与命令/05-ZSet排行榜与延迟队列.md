@@ -8,19 +8,19 @@ ZSet 是有序集合，每个成员都有一个 score。它适合排行榜、按
 
 ```bash
 ZADD rank:daily 100 用户:1 80 用户:2
-ZINC未译25173BY rank:daily 20 用户:2
-Z未译25173EV未译25173ANGE rank:daily 0 9 WITHSCO未译25173ES
-Z未译25173ANK rank:daily 用户:1
-Z未译25173EM未译25173ANGEBY未译25173ANK rank:daily 100 -1
-Z未译25173ANGEBYSCO未译25173E delay:order -inf 1710000000
+ZINCRBY rank:daily 20 用户:2
+ZREVRANGE rank:daily 0 9 WITHSCORES
+ZRANK rank:daily 用户:1
+ZREMRANGEBYRANK rank:daily 100 -1
+ZRANGEBYSCORE delay:order -inf 1710000000
 ```
 
 ## 排行榜模式
 
 - score 存分数，例如积分、销量、热度。
 - member 存唯一对象 ID。
-- 用 `Z未译25173EV未译25173ANGE` 取高分榜。
-- 用 `Z未译25173EV未译25173ANK` 查询某个对象排名。
+- 用 `ZREVRANGE` 取高分榜。
+- 用 `ZREVRANK` 查询某个对象排名。
 
 ## 延迟队列模式
 
@@ -28,8 +28,8 @@ Z未译25173ANGEBYSCO未译25173E delay:order -inf 1710000000
 
 ```bash
 ZADD delay:order 1710000000 order:1001
-Z未译25173ANGEBYSCO未译25173E delay:order -inf 1710000000 LIMIT 0 10
-Z未译25173EM delay:order order:1001
+ZRANGEBYSCORE delay:order -inf 1710000000 LIMIT 0 10
+ZREM delay:order order:1001
 ```
 
 消费者定时扫描到期任务。需要注意并发抢任务、重复执行和失败重试。
@@ -42,26 +42,26 @@ Z未译25173EM delay:order order:1001
 
 ## 排名查询细节
 
-`Z未译25173ANK` 按 score 从小到大排名，`Z未译25173EV未译25173ANK` 按 score 从大到小排名。排行榜通常使用 `Z未译25173EV未译25173ANGE` 和 `Z未译25173EV未译25173ANK`。
+`ZRANK` 按 score 从小到大排名，`ZREVRANK` 按 score 从大到小排名。排行榜通常使用 `ZREVRANGE` 和 `ZREVRANK`。
 
 ```bash
-Z未译25173EV未译25173ANK rank:daily 用户:1
-ZSCO未译25173E rank:daily 用户:1
-Z未译25173EV未译25173ANGE rank:daily 0 9 WITHSCO未译25173ES
+ZREVRANK rank:daily 用户:1
+ZSCORE rank:daily 用户:1
+ZREVRANGE rank:daily 0 9 WITHSCORES
 ```
 
 如果多个成员 score 相同，Redis 会按成员字典序排序。业务如果要求同分按更新时间排序，需要把 score 设计成复合值，或额外记录排序字段。
 
 ## 延迟任务并发处理
 
-消费者扫描到到期任务后，不能只 `Z未译25173ANGEBYSCO未译25173E`，还要抢占删除：
+消费者扫描到到期任务后，不能只 `ZRANGEBYSCORE`，还要抢占删除：
 
 ```bash
-Z未译25173ANGEBYSCO未译25173E delay:order -inf now LIMIT 0 1
-Z未译25173EM delay:order order:1001
+ZRANGEBYSCORE delay:order -inf now LIMIT 0 1
+ZREM delay:order order:1001
 ```
 
-只有 `Z未译25173EM` 返回 1 的消费者才真正拿到任务。失败重试时要考虑任务重新放回 ZSet 或进入失败队列。
+只有 `ZREM` 返回 1 的消费者才真正拿到任务。失败重试时要考虑任务重新放回 ZSet 或进入失败队列。
 
 ## 练习
 

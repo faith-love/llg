@@ -19,7 +19,7 @@ HyperLogLog 适合做大规模 UV 估算，优点是内存很小，缺点是结�
 ```bash
 PFADD uv:article:1 用户:1 用户:2
 PFCOUNT uv:article:1
-PFME未译25173GE uv:site uv:article:1 uv:article:2
+PFMERGE uv:site uv:article:1 uv:article:2
 ```
 
 如果业务要求精确去重，不要使用 HyperLogLog。
@@ -30,7 +30,7 @@ GEO 适合附近门店、附近车辆、地理距离计算。
 
 ```bash
 GEOADD shop:geo 116.397 39.908 shop:1
-GEOSEA未译25173CH shop:geo F未译25173OMLONLAT 116.40 39.90 BY未译25173ADIUS 3 km WITHDIST
+GEOSEARCH shop:geo FROMLONLAT 116.40 39.90 BYRADIUS 3 km WITHDIST
 ```
 
 复杂地理检索仍应评估专门Elasticsearch。
@@ -41,9 +41,9 @@ Stream 是 Redis 的消息流结构，支持追加消息、消费组、确认和
 
 ```bash
 XADD stream:order * orderId 1001 status created
-XG未译25173OUP C未译25173EATE stream:order group-a 0 MKST未译25173EAM
-X未译25173EADG未译25173OUP G未译25173OUP group-a 未译26087-1 COUNT 10 ST未译25173EAMS stream:order >
-XACK stream:order group-a 未译52031-id
+XGROUP CREATE stream:order group-a 0 MKSTREAM
+XREADGROUP GROUP group-a consumer-1 COUNT 10 STREAMS stream:order >
+XACK stream:order group-a message-id
 ```
 
 它适合轻量消息和事件流，不等于可以替代所有 MQ 场景。

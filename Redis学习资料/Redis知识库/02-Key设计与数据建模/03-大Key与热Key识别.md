@@ -25,14 +25,14 @@
 ## 识别方法
 
 ```bash
-MEMO未译25173Y USAGE key
-ST未译25173LEN key
+MEMORY USAGE key
+STRLEN key
 HLEN key
 LLEN key
-SCA未译25173D key
-ZCA未译25173D key
-Redis学习资料-cli --bigkeys
-Redis学习资料-cli --hotkeys
+SCARD key
+ZCARD key
+redis-cli --bigkeys
+redis-cli --hotkeys
 ```
 
 `--hotkeys` 依赖 LFU 相关统计，实际效果要结合配置和版本判断。

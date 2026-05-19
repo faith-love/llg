@@ -41,7 +41,7 @@ cart:{用户:1001}:coupon
 hash tag 能让多个 Key 落到同一个槽，解决部分多 Key 命令限制：
 
 ```text
-order:{1001}:未译87073
+order:{1001}:base
 order:{1001}:items
 order:{1001}:日志s
 ```

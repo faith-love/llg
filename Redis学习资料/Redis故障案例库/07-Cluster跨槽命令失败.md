@@ -2,7 +2,7 @@
 
 ## 现象
 
-应用在 Redis Cluster 环境报错：`C未译25173OSSSLOT Keys in 未译88447 don't hash to the same slot`。本地单机环境正常，生产集群失败。
+应用在 Redis Cluster 环境报错：`CROSSSLOT Keys in request don't hash to the same slot`。本地单机环境正常，生产集群失败。
 
 ## 影响
 
@@ -15,7 +15,7 @@
 
 1. 找到报错命令。
 2. 列出命令涉及的所有 Key。
-3. 使用 `CLUSTE未译25173 KEYSLOT key` 查看槽位。
+3. 使用 `CLUSTER KEYSLOT key` 查看槽位。
 4. 检查是否使用 hash tag。
 5. 检查客户端是否支持 Cluster。
 

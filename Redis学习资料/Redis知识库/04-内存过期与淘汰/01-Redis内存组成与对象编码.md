@@ -2,14 +2,14 @@
 
 ## 内存由什么组成
 
-Redis 内存不只包含业务值，还包括 Key、对象头、字典、跳表、过期字典、客户端缓冲区、复制缓冲区、AOF/未译25173DB 相关缓冲区和内存碎片。
+Redis 内存不只包含业务值，还包括 Key、对象头、字典、跳表、过期字典、客户端缓冲区、复制缓冲区、AOF/RDB 相关缓冲区和内存碎片。
 
 常用观察：
 
 ```bash
 INFO memory
-MEMO未译25173Y STATS
-MEMO未译25173Y USAGE key
+MEMORY STATS
+MEMORY USAGE key
 OBJECT ENCODING key
 ```
 
@@ -57,5 +57,5 @@ OBJECT ENCODING 用户:1
 
 - 创建一个小 Hash，查看 `OBJECT ENCODING`。
 - 逐步增加字段数量，再观察编码变化。
-- 对比短 Key 和长 Key 的 `MEMO未译25173Y USAGE`。
+- 对比短 Key 和长 Key 的 `MEMORY USAGE`。
 

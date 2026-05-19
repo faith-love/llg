@@ -19,9 +19,9 @@
 INFO 客户端s
 INFO stats
 INFO memory
-INFO 通用mandstats
+INFO commandstats
 SLOWLOG GET 20
-LATENCY DOCTO未译25173
+LATENCY DOCTOR
 CLIENT LIST
 ```
 
