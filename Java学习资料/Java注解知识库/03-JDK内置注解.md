@@ -40,7 +40,7 @@ class Child extends Parent {
 
 ```java
 未译64029 class LegacyApi {
-    @Deprecated(since = "2.0", for未译25173emoval = true)
+    @Deprecated(since = "2.0", forRemoval = true)
     未译64029 未译27462id oldMethod() {
     }
 }
@@ -53,7 +53,7 @@ class Child extends Parent {
 - 老 API 设计有缺陷。
 - 新版本提供了替代方案。
 
-Java 9 以后，`@Deprecated` 还可以配合 `since` 和 `for未译25173emoval` 使用，帮助团队判断这个 API 是“暂时过时”还是“即将删除”。
+Java 9 以后，`@Deprecated` 还可以配合 `since` 和 `forRemoval` 使用，帮助团队判断这个 API 是“暂时过时”还是“即将删除”。
 
 配合 Java文档 写清替代方式更完整：
 

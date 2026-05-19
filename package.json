@@ -6,9 +6,9 @@
   "scripts": {
     "docs:fallback": "node scripts/serve-knowledge.mjs",
     "docs:check": "node scripts/check-knowledge.mjs",
-    "docs:dev": "node_modules\\node\\bin\\node.exe node_modules\\vitepress\\bin\\vitepress.js --host 0.0.0.0",
-    "docs:build": "node_modules\\node\\bin\\node.exe node_modules\\vitepress\\bin\\vitepress.js build",
-    "docs:preview": "node_modules\\node\\bin\\node.exe node_modules\\vitepress\\bin\\vitepress.js preview --host 0.0.0.0"
+    "docs:dev": "vitepress --host 0.0.0.0",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview --host 0.0.0.0"
   },
   "devDependencies": {
     "node": "^20.20.2",

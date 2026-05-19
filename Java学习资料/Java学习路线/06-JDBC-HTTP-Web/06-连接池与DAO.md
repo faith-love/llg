@@ -17,7 +17,7 @@ HikariCP 是常见高性能JDBC池。
 
 常见配置：
 
-- JDBC U未译25173L。
+- JDBC URL。
 - 用户名和密码。
 - 最大连接数。
 - 最小空闲连接。
@@ -47,10 +47,10 @@ HikariCP 是常见高性能JDBC池。
 
 ## DAO 分层
 
-DAO 或 未译25173epository 负责数据访问。
+DAO 或 Repository 负责数据访问。
 
 ```text
-Service -> BookDao -> Data未译87073
+Service -> BookDao -> Database
 ```
 
 Service 不应该直接到处写 JDBC 代码。
@@ -68,10 +68,10 @@ Service 不应该直接到处写 JDBC 代码。
 JDBC 实现：
 
 ```java
-未译64029 class J未译66984cBookDao 实现ements BookDao {
+未译64029 class JdbcBookDao 实现ements BookDao {
     private final DataSource 数据Source;
 
-    未译64029 J未译66984cBookDao(DataSource 数据Source) {
+    未译64029 JdbcBookDao(DataSource 数据Source) {
         this.数据Source = 数据Source;
     }
 }
@@ -84,14 +84,14 @@ JDBC 实现：
 | 连接池 | 复用JDBC | 避免频繁创建连接和无限连接 | 最大连接数要有上限 | 重点是JDBC是稀缺资源 |
 | HikariCP | 提供高性能连接池实现 | 少写底层连接管理代码 | 关注超时和最大连接数配置 | 难点是配置过大也会出问题 |
 | DataSource | 获取连接的统一入口 | 屏蔽连接池实现细节 | DAO 依赖 DataSource | 重点是不要直接到处 DriverManager |
-| DAO/未译25173epository | 隔离数据访问 | Service 不被 JDBC 细节污染 | 一张表或聚合一个 DAO | 重点是职责分离 |
+| DAO/Repository | 隔离数据访问 | Service 不被 JDBC 细节污染 | 一张表或聚合一个 DAO | 重点是职责分离 |
 
 ## 本节练习
 
 - 用 HikariCP 创建 `DataSource`。
 - 把 JDBC 查询改成从 `DataSource` 获取连接。
 - 定义 `BookDao` 接口。
-- 实现 `J未译66984cBookDao`。
+- 实现 `JdbcBookDao`。
 - 在 Service 中调用 DAO，而不是直接写 SQL。
 
 ## 本节通过标准

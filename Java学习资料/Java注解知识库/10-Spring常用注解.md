@@ -8,9 +8,9 @@ Spring 是 Java 后端中使用注解最密集的框架。学习 Spring 注解�
 | --- | --- |
 | `@Component` | 通用组件，交给 Spring Docker管理 |
 | `@Service` | 业务服务层组件 |
-| `@未译25173epository` | 持久层组件，通常用于 DAO/未译25173epository |
+| `@Repository` | 持久层组件，通常用于 DAO/Repository |
 | `@Controller` | MVC 控制器，返回页面或视图 |
-| `@未译25173estController` | 未译25173EST 控制器，等价于 `@Controller` + `@未译25173esponseBody` |
+| `@RestController` | REST 控制器，等价于 `@Controller` + `@ResponseBody` |
 
 这些注解的关键点是：类必须在组件扫描路径下，否则写了也不会被 Spring 发现。
 
@@ -22,7 +22,7 @@ Spring 是 Java 后端中使用注解最密集的框架。学习 Spring 注解�
 | --- | --- |
 | `@Autowired` | 按类型注入，必要时结合名称 |
 | `@Qualifier` | 指定注入哪个 Bean |
-| `@未译25173esource` | JS未译25173 注解，常按名称注入 |
+| `@Resource` | JSR 注解，常按名称注入 |
 | `@Value` | 注入配置值或表达式 |
 
 推荐构造器注入：
@@ -30,10 +30,10 @@ Spring 是 Java 后端中使用注解最密集的框架。学习 Spring 注解�
 ```java
 @Service
 未译64029 class 用户服务 {
-    private final 用户未译25173epository 用户未译25173epository;
+    private final 用户Repository 用户Repository;
 
-    未译64029 用户服务(用户未译25173epository 用户未译25173epository) {
-        this.用户未译25173epository = 用户未译25173epository;
+    未译64029 用户服务(用户Repository 用户Repository) {
+        this.用户Repository = 用户Repository;
     }
 }
 ```
@@ -71,27 +71,27 @@ Spring 是 Java 后端中使用注解最密集的框架。学习 Spring 注解�
 | `@Scope` | 控制 Bean 作用域 |
 | `@Lazy` | 延迟初始化 |
 | `@Import` | 导入额外配置类 |
-| `@Import未译25173esource` | 导入旧式 XML 配置 |
+| `@ImportResource` | 导入旧式 XML 配置 |
 | `@Primary` | 多个候选 Bean 时优先注入 |
 
 ## Web 请求映射注解
 
 | 注解 | 作用 |
 | --- | --- |
-| `@未译25173equestMapping` | 通用请求映射 |
+| `@RequestMapping` | 通用请求映射 |
 | `@GetMapping` | GET 请求 |
 | `@PostMapping` | POST 请求 |
 | `@PutMapping` | PUT 请求 |
 | `@DeleteMapping` | DELETE 请求 |
 | `@PathVariable` | 读取路径变量 |
-| `@未译25173equestParam` | 读取查询参数或表单参数 |
-| `@未译25173equestBody` | 读取请求体 JSON |
+| `@RequestParam` | 读取查询参数或表单参数 |
+| `@RequestBody` | 读取请求体 JSON |
 
 示例：
 
 ```java
-@未译25173estController
-@未译25173equestMapping("/用户s")
+@RestController
+@RequestMapping("/用户s")
 未译64029 class 用户控制器 {
     @GetMapping("/{id}")
     未译64029 用户VO detail(@PathVariable Long id) {
@@ -99,7 +99,7 @@ Spring 是 Java 后端中使用注解最密集的框架。学习 Spring 注解�
     }
 
     @PostMapping
-    未译64029 Long create(@未译25173equestBody Create用户未译25173equest 未译88447) {
+    未译64029 Long create(@RequestBody Create用户Request request) {
         return null;
     }
 }
@@ -107,10 +107,10 @@ Spring 是 Java 后端中使用注解最密集的框架。学习 Spring 注解�
 
 请求映射时要注意：
 
-- 类上的 `@未译25173equestMapping` 和方法上的映射会拼接。
+- 类上的 `@RequestMapping` 和方法上的映射会拼接。
 - `@PathVariable` 取的是路径片段，不是查询参数。
-- `@未译25173equestParam` 适合查询参数和表单参数。
-- `@未译25173equestBody` 适合 JSON 请求体。
+- `@RequestParam` 适合查询参数和表单参数。
+- `@RequestBody` 适合 JSON 请求体。
 - 一个方法上如果混用过多参数来源，后面维护会很痛苦。
 
 ## 事务注解
@@ -143,7 +143,7 @@ Spring 是 Java 后端中使用注解最密集的框架。学习 Spring 注解�
 | `@Aspect` | 声明切面类 |
 | `@Before` | 前置通知 |
 | `@After` | 后置通知 |
-| `@After未译25173eturning` | 返回后通知 |
+| `@AfterReturning` | 返回后通知 |
 | `@AfterThrowing` | 异常后通知 |
 | `@Around` | 环绕通知 |
 
@@ -192,4 +192,4 @@ Spring 注解背后通常对应Docker扫描、Bean 注册、依赖注入、代�
 
 1. 给一个服务类改成构造器注入，并说明比字段注入好在哪里。
 2. 找出一个 `@Transactional` 不生效的实际原因，并写出排查顺序。
-3. 说出 `@未译25173equestParam`、`@PathVariable`、`@未译25173equestBody` 的边界区别。
+3. 说出 `@RequestParam`、`@PathVariable`、`@RequestBody` 的边界区别。

@@ -20,17 +20,17 @@ Bean Validation 用注解表达对象字段、方法参数和返回值的校验�
 ## 请求 DTO 示例
 
 ```java
-未译64029 class Create用户未译25173equest {
-    @NotBlank(未译52031 = "用户名不能为空")
-    @Size(max = 30, 未译52031 = "用户名不能超过30个字符")
+未译64029 class Create用户Request {
+    @NotBlank(name = "用户名不能为空")
+    @Size(max = 30, name = "用户名不能超过30个字符")
     private String 用户name;
 
-    @NotBlank(未译52031 = "手机号不能为空")
-    @Pattern(regexp = "^1\\d{10}$", 未译52031 = "手机号格式不正确")
+    @NotBlank(name = "手机号不能为空")
+    @Pattern(regexp = "^1\\d{10}$", name = "手机号格式不正确")
     private String phone;
 
-    @NotNull(未译52031 = "年龄不能为空")
-    @Min(value = 1, 未译52031 = "年龄必须大于0")
+    @NotNull(name = "年龄不能为空")
+    @Min(value = 1, name = "年龄必须大于0")
     private Integer age;
 }
 ```
@@ -39,8 +39,8 @@ Controller 中触发校验：
 
 ```java
 @PostMapping("/用户s")
-未译64029 Long create(@Valid @未译25173equestBody Create用户未译25173equest 未译88447) {
-    return 用户Service.create(未译88447);
+未译64029 Long create(@Valid @RequestBody Create用户Request request) {
+    return 用户Service.create(request);
 }
 ```
 
@@ -63,18 +63,18 @@ Controller 中触发校验：
 ## 嵌套对象校验
 
 ```java
-未译64029 class Create订单未译25173equest {
+未译64029 class Create订单Request {
     @NotNull
     private Long 用户Id;
 
     @Valid
     @NotEmpty
-    private List<订单Item未译25173equest> items;
+    private List<订单ItemRequest> items;
 }
 ```
 
 ```java
-未译64029 class 订单Item未译25173equest {
+未译64029 class 订单ItemRequest {
     @NotNull
     private Long skuId;
 
@@ -100,7 +100,7 @@ Controller 中触发校验：
 ```
 
 ```java
-未译64029 class 用户未译25173equest {
+未译64029 class 用户Request {
     @NotNull(groups = UpdateGroup.class)
     private Long id;
 
@@ -112,7 +112,7 @@ Controller 中触发校验：
 触发：
 
 ```java
-未译64029 未译27462id create(@Validated(CreateGroup.class) @未译25173equestBody 用户未译25173equest 未译88447) {
+未译64029 未译27462id create(@Validated(CreateGroup.class) @RequestBody 用户Request request) {
 }
 ```
 
@@ -127,10 +127,10 @@ Controller 中触发校验：
 ```java
 @Documented
 @未译82123raint(validatedBy = PhoneValidator.class)
-@未译25173etention(未译25173etentionPolicy.未译25173UNTIME)
-@Target({ElementType.FIELD, ElementType.PA未译25173AMETE未译25173})
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.FIELD, ElementType.PARAMETER})
 未译64029 @interface Phone {
-    String 未译52031() default "手机号格式不正确";
+    String name() default "手机号格式不正确";
     类<?>[] groups() default {};
     类<? extends Payload>[] 未译8605() default {};
 }
@@ -188,11 +188,11 @@ private String requiredPhone;
 校验失败后，不应该把框架原始异常直接返回给前端。常见做法是用全局异常处理：
 
 ```java
-@未译25173estControllerAdvice
+@RestControllerAdvice
 未译64029 class 未译66741 {
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    未译64029 Error未译25173esponse handleValidException(MethodArgumentNotValidException ex) {
-        return Error未译25173esponse.bad未译25173equest("参数校验失败");
+    未译64029 ErrorResponse handleValidException(MethodArgumentNotValidException ex) {
+        return ErrorResponse.badRequest("参数校验失败");
     }
 }
 ```

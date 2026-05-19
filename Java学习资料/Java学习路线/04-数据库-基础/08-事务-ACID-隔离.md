@@ -26,10 +26,10 @@
 
 | 隔离级别 | 大致特点 |
 | --- | --- |
-| 未译25173EAD UNCOMMITTED | 可能读到未提交数据 |
-| 未译25173EAD COMMITTED | 只能读已提交数据 |
-| 未译25173EPEATABLE 未译25173EAD | 同一事务内重复读更稳定 |
-| SE未译25173IALIZABLE | 最强隔离，并发最低 |
+| READ UNCOMMITTED | 可能读到未提交数据 |
+| READ COMMITTED | 只能读已提交数据 |
+| REPEATABLE READ | 同一事务内重复读更稳定 |
+| SERIALIZABLE | 最强隔离，并发最低 |
 
 ## 并发读问题
 

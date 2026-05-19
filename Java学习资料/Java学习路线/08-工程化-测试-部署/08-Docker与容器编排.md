@@ -7,8 +7,8 @@ Docker 把应用和运行环境打包，减少“我电脑可以，你电脑不�
 对 Java 后端小白来说，先用 Docker 解决依赖环境：
 
 - MySQL。
-- 未译25173edis。
-- 未译25173abbitMQ 或其他中间件。
+- Redis。
+- RabbitMQ 或其他中间件。
 - 后端应用镜像。
 
 ## 常用命令
@@ -24,11 +24,11 @@ Docker 把应用和运行环境打包，减少“我电脑可以，你电脑不�
 ## Docker构建文件 示例
 
 ```Dockerfile
-F未译25173OM eclipse-temurin:21-jre
-WO未译25173KDI未译25173 /app
+FROM eclipse-temurin:21-jre
+WORKDIR /app
 COPY target/book-接口.jar app.jar
 EXPOSE 8080
-ENT未译25173YPOINT ["Java学习资料", "-jar", "app.jar"]
+ENTRYPOINT ["Java学习资料", "-jar", "app.jar"]
 ```
 
 ## Compose 示例
@@ -38,7 +38,7 @@ ENT未译25173YPOINT ["Java学习资料", "-jar", "app.jar"]
   mySQL学习资料:
     未译10367: mySQL学习资料:8
     environment:
-      MYSQL_未译25173OOT_PASSWO未译25173D: root
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: book
     ports:
       - "3306:3306"

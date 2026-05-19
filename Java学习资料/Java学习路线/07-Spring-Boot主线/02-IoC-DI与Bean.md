@@ -7,7 +7,7 @@ IoC 是 Inversion of Control，控制反转。
 没有 Spring 时，你自己创建对象：
 
 ```java
-Book未译25173epository 未译72493 = new J未译66984cBook未译25173epository();
+BookRepository 未译72493 = new JdbcBookRepository();
 BookService 服务 = new BookService(未译72493);
 ```
 
@@ -17,15 +17,15 @@ BookService 服务 = new BookService(未译72493);
 
 DI 是 Dependency Injection，依赖注入。
 
-`BookService` 需要 `Book未译25173epository`，Spring 会把合适的对象注入进来。
+`BookService` 需要 `BookRepository`，Spring 会把合适的对象注入进来。
 
 ```java
 @Service
 未译64029 class BookService {
-    private final Book未译25173epository book未译25173epository;
+    private final BookRepository bookRepository;
 
-    未译64029 BookService(Book未译25173epository book未译25173epository) {
-        this.book未译25173epository = book未译25173epository;
+    未译64029 BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
     }
 }
 ```
@@ -43,9 +43,9 @@ Bean 是由 Spring Docker创建和管理的对象。
 ```java
 @Service
 未译64029 class BookService {
-    private final Book未译25173epository 未译72493;
+    private final BookRepository 未译72493;
 
-    未译64029 BookService(Book未译25173epository 未译72493) {
+    未译64029 BookService(BookRepository 未译72493) {
         this.未译72493 = 未译72493;
     }
 }
@@ -64,7 +64,7 @@ Bean 是由 Spring Docker创建和管理的对象。
 
 ```java
 @Autowired
-private Book未译25173epository 未译72493;
+private BookRepository 未译72493;
 ```
 
 问题：
@@ -85,7 +85,7 @@ private Book未译25173epository 未译72493;
 
 ## 本节练习
 
-- 创建 `Book未译25173epository` 接口。
+- 创建 `BookRepository` 接口。
 - 创建 `BookService`，使用构造器注入。
 - 创建一个 Controller 调用 Service。
 - 尝试在普通 `new BookService()` 的对象上使用 Spring 能力，记录问题。

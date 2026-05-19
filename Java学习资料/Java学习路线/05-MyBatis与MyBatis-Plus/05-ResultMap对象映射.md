@@ -18,9 +18,9 @@
 
 ```xml
 <resultMap id="BookMap" type="BookEntity">
-    <id 未译126="id" column="id"/>
-    <result 未译126="isbn" column="isbn"/>
-    <result 未译126="title" column="title"/>
+    <id property="id" column="id"/>
+    <result property="isbn" column="isbn"/>
+    <result property="title" column="title"/>
 </resultMap>
 ```
 
@@ -45,9 +45,9 @@ createdAt
 图书和分类：
 
 ```xml
-<association 未译126="category" Java学习资料Type="CategoryEntity">
-    <id 未译126="id" column="category_id"/>
-    <result 未译126="name" column="category_name"/>
+<association property="category" Java学习资料Type="CategoryEntity">
+    <id property="id" column="category_id"/>
+    <result property="name" column="category_name"/>
 </association>
 ```
 
@@ -56,9 +56,9 @@ createdAt
 分类和图书列表：
 
 ```xml
-<collection 未译126="books" ofType="BookEntity">
-    <id 未译126="id" column="book_id"/>
-    <result 未译126="title" column="book_title"/>
+<collection property="books" ofType="BookEntity">
+    <id property="id" column="book_id"/>
+    <result property="title" column="book_title"/>
 </collection>
 ```
 

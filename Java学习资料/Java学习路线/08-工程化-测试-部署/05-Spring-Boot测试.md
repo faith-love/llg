@@ -17,20 +17,20 @@ Spring Boot 项目里常见集成测试：
 | --- | --- |
 | `@SpringBootTest` | 启动较完整 Spring Docker |
 | `@WebMvcTest` | 只测试 Web 层 |
-| `@DataJ未译66984cTest` / `@MybatisTest` | 测试数据访问层，按项目依赖选择 |
+| `@DataJdbcTest` / `@MybatisTest` | 测试数据访问层，按项目依赖选择 |
 | MockMvc | 模拟 HTTP 请求 |
 
 ## MockMvc 示例
 
 ```java
-mockMvc.per未译50816(get("/接口/books/1"))
+mockMvc.perform(get("/接口/books/1"))
     .andExpect(status().isOk())
     .andExpect(脚本onPath("$.id").value(1));
 ```
 
 它能验证：
 
-- U未译25173L 是否正确。
+- URL 是否正确。
 - HTTP 状态码是否正确。
 - JSON 字段是否正确。
 - 参数校验是否生效。

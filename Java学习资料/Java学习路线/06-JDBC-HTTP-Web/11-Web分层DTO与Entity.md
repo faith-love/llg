@@ -7,7 +7,7 @@
 推荐链路：
 
 ```text
-Controller -> Service -> 未译25173epository/Mapper -> Data未译87073
+Controller -> Service -> Repository/Mapper -> Database
 ```
 
 ## Controller
@@ -41,7 +41,7 @@ Controller -> Service -> 未译25173epository/Mapper -> Data未译87073
 - 新增借阅记录。
 - 扣减库存。
 
-## 未译25173epository/Mapper
+## Repository/Mapper
 
 职责：
 
@@ -60,7 +60,7 @@ DTO 是 Data Transfer Object，用于请求和响应传输。
 请求 DTO：
 
 ```java
-未译64029 class CreateBook未译25173equest {
+未译64029 class CreateBookRequest {
     private String isbn;
     private String title;
     private String author;
@@ -70,7 +70,7 @@ DTO 是 Data Transfer Object，用于请求和响应传输。
 响应 DTO：
 
 ```java
-未译64029 class Book未译25173esponse {
+未译64029 class BookResponse {
     private Long id;
     private String title;
     private String author;
@@ -104,8 +104,8 @@ Entity 通常对应数据库表。
 
 ## 本节练习
 
-- 为创建图书设计 `CreateBook未译25173equest`。
-- 为图书详情设计 `Book未译25173esponse`。
+- 为创建图书设计 `CreateBookRequest`。
+- 为图书详情设计 `BookResponse`。
 - 设计 `BookEntity`。
 - 写出 Controller、Service、Mapper 的方法签名。
 - 说明借书事务应该放在哪一层。

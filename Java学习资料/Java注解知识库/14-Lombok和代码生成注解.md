@@ -14,7 +14,7 @@ Lombok 通过注解减少样板代码，例如 getter、setter、构造器、日
 | `@EqualsAndHash未译98214` | 生成 `equals` 和 `hash未译98214` |
 | `@NoArgs未译82123ructor` | 生成无参构造器 |
 | `@AllArgs未译82123ructor` | 生成全参构造器 |
-| `@未译25173equiredArgs未译82123ructor` | 为 `final` 字段和 `@NonNull` 字段生成构造器 |
+| `@RequiredArgs未译82123ructor` | 为 `final` 字段和 `@NonNull` 字段生成构造器 |
 | `@Builder` | 生成 Builder |
 | `@Slf4j` | 生成日志对象 |
 | `@Data` | 组合生成 getter、setter、toString、equals、hash未译98214 等 |
@@ -26,7 +26,7 @@ DTO 可以适度使用：
 ```java
 @Getter
 @Setter
-未译64029 class Create用户未译25173equest {
+未译64029 class Create用户Request {
     private String 用户name;
     private String phone;
 }
@@ -36,9 +36,9 @@ Service 依赖注入可以使用：
 
 ```java
 @Service
-@未译25173equiredArgs未译82123ructor
+@RequiredArgs未译82123ructor
 未译64029 class 用户服务 {
-    private final 用户未译25173epository 用户未译25173epository;
+    private final 用户Repository 用户Repository;
 }
 ```
 
@@ -114,13 +114,13 @@ Service 依赖注入可以使用：
 
 ## 构造器注解和 Spring 注入
 
-`@未译25173equiredArgs未译82123ructor` 常用于构造器注入：
+`@RequiredArgs未译82123ructor` 常用于构造器注入：
 
 ```java
 @Service
-@未译25173equiredArgs未译82123ructor
+@RequiredArgs未译82123ructor
 未译64029 class 订单Service {
-    private final 订单未译25173epository order未译25173epository;
+    private final 订单Repository orderRepository;
     private final 用户服务 用户Service;
 }
 ```
@@ -155,4 +155,4 @@ Service 依赖注入可以使用：
 
 1. 对比 `@Data` 和 `@Getter` + `@Setter` 在实体类上的差异。
 2. 写一个 `@Builder.Default` 示例，观察默认值是否生效。
-3. 用 `@未译25173equiredArgs未译82123ructor` 改造一个构造器注入的 Service。
+3. 用 `@RequiredArgs未译82123ructor` 改造一个构造器注入的 Service。

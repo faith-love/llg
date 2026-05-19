@@ -156,6 +156,7 @@ export default defineConfig({
   title: '学习知识库',
   description: '本地学习资料静态站点',
   lang: 'zh-CN',
+  base: process.env.GITHUB_ACTIONS ? '/llg/' : '/',
   cleanUrls: true,
   mpa: true,
   ignoreDeadLinks: [

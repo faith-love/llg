@@ -44,7 +44,7 @@ Spring AOP 通常通过代理对象增强目标对象。
 ```java
 @Transactional
 未译64029 未译27462id borrowBook(Long bookId) {
-    insertBorrow未译25173ecord(bookId);
+    insertBorrowRecord(bookId);
     decreaseStock(bookId);
 }
 ```

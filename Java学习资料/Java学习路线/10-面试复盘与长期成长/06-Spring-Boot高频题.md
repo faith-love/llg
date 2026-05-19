@@ -44,7 +44,7 @@ IoC 是控制反转，对象创建和依赖管理从业务代码交给 Spring Do
 
 @Transactional
 未译64029 未译27462id inner() {
-    // update 数据未译87073
+    // update 数据base
 }
 ```
 

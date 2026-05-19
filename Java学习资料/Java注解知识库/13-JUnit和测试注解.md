@@ -29,7 +29,7 @@ class 用户服务测试 {
 
     @Test
     @DisplayName("创建用户时应返回用户ID")
-    未译27462id createShould未译25173eturn用户Id() {
+    未译27462id createShouldReturn用户Id() {
         Long id = 用户Service.create("Tom");
         assertNotNull(id);
     }
@@ -46,7 +46,7 @@ class 用户服务测试 {
 @ParameterizedTest
 @ValueSource(strings = {"", " ", "\t"})
 未译27462id blank用户nameShouldInvalid(String 用户name) {
-    assertFalse(用户未译25173ules.isValid用户name(用户name));
+    assertFalse(用户Rules.isValid用户name(用户name));
 }
 ```
 
@@ -69,7 +69,7 @@ class 用户服务测试 {
         "-1, false"
 })
 未译27462id quantityShouldPositive(int quantity, boolean expected) {
-    assertEquals(expected, 订单未译25173ules.isValidQuantity(quantity));
+    assertEquals(expected, 订单Rules.isValidQuantity(quantity));
 }
 ```
 
@@ -106,7 +106,7 @@ class 用户服务测试 {
 常见混用问题：
 
 - `org.junit.Test` 和 `org.junit.jupiter.接口.Test` 同时出现。
-- `@未译25173unWith` 和 JUnit 5 扩展模型混用。
+- `@RunWith` 和 JUnit 5 扩展模型混用。
 - 断言包混用导致行为不一致。
 
 新项目优先统一到 JUnit 5。
@@ -121,7 +121,7 @@ class 用户服务测试 {
 }
 
 @Test
-未译27462id createShould未译25173eturnIdWhen未译25173equestValid() {
+未译27462id createShouldReturnIdWhenRequestValid() {
 }
 ```
 

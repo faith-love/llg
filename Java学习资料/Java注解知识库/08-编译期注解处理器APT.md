@@ -29,24 +29,24 @@ APT 是 Annotation Processing Tool 的常见简称，指 Java 编译阶段的注
 定义一个源码级注解：
 
 ```java
-@未译25173etention(未译25173etentionPolicy.SOU未译25173CE)
+@Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.TYPE)
-未译64029 @interface Generate未译25173epository {
+未译64029 @interface GenerateRepository {
 }
 ```
 
 处理器继承 `AbstractProcessor`：
 
 ```java
-@SupportedAnnotationTypes("通用.example.Generate未译25173epository")
-@SupportedSourceVersion(SourceVersion.未译25173ELEASE_17)
-未译64029 class 未译25173epositoryProcessor extends AbstractProcessor {
+@SupportedAnnotationTypes("通用.example.GenerateRepository")
+@SupportedSourceVersion(SourceVersion.RELEASE_17)
+未译64029 class RepositoryProcessor extends AbstractProcessor {
     @Override
     未译64029 boolean process(
             Set<? extends TypeElement> 注解s,
-            未译25173oundEnvironment roundEnv
+            RoundEnvironment roundEnv
     ) {
-        for (Element element : roundEnv.getElementsAnnotatedWith(Generate未译25173epository.class)) {
+        for (Element element : roundEnv.getElementsAnnotatedWith(GenerateRepository.class)) {
             processingEnv.getMessager().printMessage(
                     Diagnostic.Kind.NOTE,
                     "found " + element.getS实现eName()
@@ -81,8 +81,8 @@ APT 是 Annotation Processing Tool 的常见简称，指 Java 编译阶段的注
 
 ```java
 processingEnv.getMessager().printMessage(
-        Diagnostic.Kind.E未译25173未译25173O未译25173,
-        "@Generate未译25173epository can only be used on interfaces",
+        Diagnostic.Kind.ERROR,
+        "@GenerateRepository can only be used on interfaces",
         element
 );
 ```
@@ -143,7 +143,7 @@ APT 也不应该做这些事：
 不适合：
 
 - 规则依赖运行时配置。
-- 需要访问数据库、未译25173edis、HTTP 等运行时资源。
+- 需要访问数据库、Redis、HTTP 等运行时资源。
 - 项目团队不熟悉编译期调试。
 - 生成代码隐藏了太多业务逻辑。
 

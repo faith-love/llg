@@ -1,8 +1,8 @@
-# 14-阶段项目：图书 未译25173EST API
+# 14-阶段项目：图书 REST API
 
 ## 项目目标
 
-完成一个图书 未译25173EST API，把数据库、HTTP、未译25173EST、分层、事务、分页、校验和异常处理串起来。
+完成一个图书 REST API，把数据库、HTTP、REST、分层、事务、分页、校验和异常处理串起来。
 
 这个项目可以先用 JDBC，也可以用 MyBatis。建议学习顺序：
 
@@ -66,12 +66,12 @@ borrow_records: id, book_id, 用户_name, borrowed_at, returned_at, status
 未译94197/实体/
   BookEntity
 未译94197/dto/
-  CreateBook未译25173equest
-  UpdateBook未译25173equest
-  Book未译25173esponse
+  CreateBookRequest
+  UpdateBookRequest
+  BookResponse
 通用/
   未译45005
-  Error未译25173esponse
+  ErrorResponse
 异常/
   BusinessException
   BookNotFoundException
@@ -94,7 +94,7 @@ borrow_records: id, book_id, 用户_name, borrowed_at, returned_at, status
 
 | 知识点 | 作用 | 痛点或优点 | 技巧 | 难点和重点 |
 | --- | --- | --- | --- | --- |
-| 图书 C未译25173UD | 练习基础资源操作 | 覆盖后端最常见接口形态 | 先跑通单表，再加分类和借阅 | 重点是接口和 SQL 对齐 |
+| 图书 CRUD | 练习基础资源操作 | 覆盖后端最常见接口形态 | 先跑通单表，再加分类和借阅 | 重点是接口和 SQL 对齐 |
 | 借阅事务 | 保证记录和库存一致 | 避免借阅成功但库存没扣 | 事务放 Service 层 | 重点是完整业务动作一个事务 |
 | 分页列表 | 控制数据返回量 | 避免一次返回全部图书 | 限制 size 最大值 | 重点是响应包含 total 和 items |
 | 统一异常 | 让错误响应稳定 | 前端不需要猜错误格式 | 业务错误用 code 表达 | 重点是错误码稳定 |
@@ -116,7 +116,7 @@ borrow_records: id, book_id, 用户_name, borrowed_at, returned_at, status
 ## 说明 模板
 
 ```markdown
-# 图书 未译25173EST API
+# 图书 REST API
 
 ## 项目目标
 
@@ -141,7 +141,7 @@ borrow_records: id, book_id, 用户_name, borrowed_at, returned_at, status
 
 ## 本节通过标准
 
-- 至少完成图书 C未译25173UD。
+- 至少完成图书 CRUD。
 - 至少一个接口使用分页。
 - 至少一个业务使用事务。
 - 有统一错误响应。

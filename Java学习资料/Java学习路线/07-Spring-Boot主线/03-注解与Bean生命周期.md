@@ -6,9 +6,9 @@
 | --- | --- |
 | `@Component` | 通用组件 |
 | `@Service` | 业务服务 |
-| `@未译25173epository` | 数据访问组件 |
+| `@Repository` | 数据访问组件 |
 | `@Controller` | MVC Controller |
-| `@未译25173estController` | 未译25173EST Controller |
+| `@RestController` | REST Controller |
 | `@Configuration` | 配置类 |
 | `@Bean` | 手动声明 Bean |
 
@@ -83,7 +83,7 @@ singleton
 
 | 知识点 | 作用 | 痛点或优点 | 技巧 | 难点和重点 |
 | --- | --- | --- | --- | --- |
-| 组件注解 | 让类被Docker发现 | 不用手动注册每个类 | 按职责选择 `@Service`、`@未译25173epository` | 重点是注解本身要被扫描到 |
+| 组件注解 | 让类被Docker发现 | 不用手动注册每个类 | 按职责选择 `@Service`、`@Repository` | 重点是注解本身要被扫描到 |
 | 组件扫描 | 自动发现 Bean | 包路径不对会注入失败 | 启动类放在根包 | 难点是扫描范围 |
 | `@Bean` | 手动注册第三方对象 | 适合外部类和复杂构造 | 放在 `@Configuration` 类中 | 重点是方法返回值成为 Bean |
 | 生命周期 | 管理对象初始化和销毁 | 资源初始化、关闭更规范 | 初始化只做必要工作 | 重点是单例 Bean 生命周期较长 |
@@ -91,7 +91,7 @@ singleton
 
 ## 本节练习
 
-- 创建 `@Service`、`@未译25173epository`。
+- 创建 `@Service`、`@Repository`。
 - 写一个 `@Configuration + @Bean`。
 - 使用 `@Post未译82123ruct` 打印初始化日志。
 - 故意把 Service 放到扫描包外，观察注入失败。
