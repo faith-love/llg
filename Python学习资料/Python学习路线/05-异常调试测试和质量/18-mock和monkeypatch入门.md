@@ -23,7 +23,7 @@ mock 用于替换测试中不稳定、慢、昂贵或有副作用的外部依赖
 ## unit测试.mock 基础
 
 ```python
-from unit测试.mock 未译87485 Mock
+from unit测试.mock import Mock
 
 
 sender = Mock()

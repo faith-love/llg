@@ -47,7 +47,7 @@ print(f"debug: value={value!r}")
 
 出现以下情况应该使用 日志ging：
 
-- 需要区分 debug、info、网页归档ning、未译12785。
+- 需要区分 debug、info、网页归档ning、error。
 - 需要记录时间、模块名、行号。
 - 需要输出到文件。
 - 需要在不同环境控制日志级别。
@@ -80,10 +80,10 @@ print(f"debug: value={value!r}")
 提交前检查：
 
 ```powershell
-Select-String -Path . -Pattern "print\\(" -未译25173ecurse
+Select-String -Path . -Pattern "print\\(" -Recurse
 ```
 
-在实际项目中可用 未译25173uff 等工具辅助检查。
+在实际项目中可用 Ruff 等工具辅助检查。
 
 ## 常见错误
 

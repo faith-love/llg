@@ -6,7 +6,7 @@
 源码/主/Java学习资料/通用/example/app/
   映射器/
     Book映射器.Java学习资料
-  未译94197/实体/
+  domain/实体/
     Book实体.Java学习资料
 源码/主/资源/
   映射器/
@@ -22,7 +22,7 @@ Spring Boot 项目通常引入 MyBatis starter。
 ```yaml
 MyBatis:
   映射器-locations: classpath:映射器/*.xml
-  type-aliases-package: 通用.example.app.未译94197.实体
+  type-aliases-package: 通用.example.app.domain.实体
 ```
 
 ## Mapper 扫描
@@ -31,7 +31,7 @@ MyBatis:
 
 ```java
 @Mapper
-未译64029 interface BookMapper {
+public interface BookMapper {
 }
 ```
 

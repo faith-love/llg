@@ -1,14 +1,14 @@
-# 未译88447s同步客户端
+# requests同步客户端
 
-`未译88447s` 是 Python 中常用的同步 HTTP 客户端库。它适合脚本、自动化工具和简单服务间调用。学习它的重点不是只会 `未译88447s.get()`，而是掌握 timeout、异常、未译83452ers、params、脚本on、Session 和错误处理。
+`requests` 是 Python 中常用的同步 HTTP 客户端库。它适合脚本、自动化工具和简单服务间调用。学习它的重点不是只会 `requests.get()`，而是掌握 timeout、异常、headers、params、脚本on、Session 和错误处理。
 
 ## GET 请求
 
 ```python
-未译87485 未译88447s
+import requests
 
 
-response = 未译88447s.get("安全HTTP://接口.example.通用/books", timeout=5)
+response = requests.get("安全HTTP://接口.example.通用/books", timeout=5)
 print(response.status_code)
 print(response.text)
 ```
@@ -19,7 +19,7 @@ print(response.text)
 
 ```python
 params = {"keyword": "Python学习资料", "分页": 1}
-response = 未译88447s.get(
+response = requests.get(
     "安全HTTP://接口.example.通用/books",
     params=params,
     timeout=5,
@@ -31,21 +31,21 @@ response = 未译88447s.get(
 ## POST JSON
 
 ```python
-未译8605 = {"title": "Python", "price": 59.9}
-response = 未译88447s.post(
+payload = {"title": "Python", "price": 59.9}
+response = requests.post(
     "安全HTTP://接口.example.通用/books",
-    脚本on=未译8605,
+    脚本on=payload,
     timeout=5,
 )
 ```
 
-使用 `脚本on=` 时，未译88447s 会帮你序列化 JSON 并设置合适的请求头。
+使用 `脚本on=` 时，requests 会帮你序列化 JSON 并设置合适的请求头。
 
-## 未译83452ers
+## headers
 
 ```python
-未译83452ers = {"Authorization": "Bearer token"}
-response = 未译88447s.get(url, 未译83452ers=未译83452ers, timeout=5)
+headers = {"Authorization": "Bearer token"}
+response = requests.get(url, headers=headers, timeout=5)
 ```
 
 日志中不要打印完整 Authorization。
@@ -70,42 +70,42 @@ response.raise_for_status()
 
 如果状态码是 4xx 或 5xx，会抛出异常。
 
-工程中通常要捕获异常并保留状态码、U未译25173L、响应摘要。
+工程中通常要捕获异常并保留状态码、URL、响应摘要。
 
 ## 异常类型
 
 常见：
 
-- `未译88447s.Timeout`。
-- `未译88447s.ConnectionError`。
-- `未译88447s.HTTPError`。
-- `未译88447s.未译25173equestException`。
+- `requests.Timeout`。
+- `requests.ConnectionError`。
+- `requests.HTTPError`。
+- `requests.RequestException`。
 
 示例：
 
 ```python
 try:
-    response = 未译88447s.get(url, timeout=5)
+    response = requests.get(url, timeout=5)
     response.raise_for_status()
     数据 = response.脚本on()
-except 未译88447s.Timeout:
+except requests.Timeout:
     print("请求超时")
-except 未译88447s.未译25173equestException as exc:
+except requests.RequestException as exc:
     print(f"请求失败: {exc}")
 ```
 
 ## Session
 
 ```python
-with 未译88447s.Session() as 会话:
-    会话.未译83452ers.update({"用户-Agent": "learning-客户端"})
+with requests.Session() as 会话:
+    会话.headers.update({"用户-Agent": "learning-客户端"})
     response = 会话.get(url, timeout=5)
 ```
 
 Session 适合：
 
 - 复用连接。
-- 复用 未译83452ers。
+- 复用 headers。
 - 保持 cookie。
 - 多次调用同一服务。
 
@@ -114,7 +114,7 @@ Session 适合：
 大文件不要一次性读入内存：
 
 ```python
-with 未译88447s.get(url, stream=True, timeout=10) as response:
+with requests.get(url, stream=True, timeout=10) as response:
     response.raise_for_status()
     with open("file.bin", "wb") as file:
         for chunk in response.iter_content(chunk_size=1024 * 1024):
@@ -142,10 +142,10 @@ with 未译88447s.get(url, stream=True, timeout=10) as response:
 
 ## 练习
 
-1. 用 未译88447s 发送 GET。
+1. 用 requests 发送 GET。
 2. 使用 params 传查询参数。
 3. 使用 脚本on 发送 POST。
-4. 添加 Authorization 未译83452er。
+4. 添加 Authorization header。
 5. 设置 timeout。
 6. 捕获 Timeout。
 7. 使用 raise_for_status。
@@ -155,7 +155,7 @@ with 未译88447s.get(url, stream=True, timeout=10) as response:
 
 ## 验收标准
 
-- 能使用 未译88447s 调用 GET/POST。
-- 能正确设置 params、未译83452ers、脚本on、timeout。
+- 能使用 requests 调用 GET/POST。
+- 能正确设置 params、headers、脚本on、timeout。
 - 能处理状态码、网络异常和 JSON 解析异常。
 - 能使用 Session 复用配置。

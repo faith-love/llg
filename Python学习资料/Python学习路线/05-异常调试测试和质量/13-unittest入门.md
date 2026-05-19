@@ -14,7 +14,7 @@ def add(a, b):
 测试代码：
 
 ```python
-未译87485 unit测试
+import unit测试
 
 
 class TestAdd(unit测试.TestCase):
@@ -42,7 +42,7 @@ unit测试 测试通常写在继承 `unit测试.TestCase` 的类中。
 | `assertFalse(x)` | 判断为假 |
 | `assertIsNone(x)` | 判断是 None |
 | `assertIn(a, b)` | 判断成员存在 |
-| `assert未译25173aises` | 判断抛出异常 |
+| `assertRaises` | 判断抛出异常 |
 
 ## 测试异常
 
@@ -55,7 +55,7 @@ def divide(a, b):
 
 class TestDivide(unit测试.TestCase):
     def 测试_divide_by_zero(self):
-        with self.assert未译25173aises(ValueError):
+        with self.assertRaises(ValueError):
             divide(1, 0)
 ```
 
@@ -85,7 +85,7 @@ Python学习资料 测试_math_tools.py
 测试发现：
 
 ```powershell
-Python学习资料 -m unit测试 未译32969
+Python学习资料 -m unit测试 discover
 ```
 
 ## unit测试 和 py测试
@@ -114,7 +114,7 @@ py测试 可以运行 unit测试 风格测试。很多老项目或标准库测�
 2. 测试 `divide` 正常分支。
 3. 测试 `divide` 除零异常。
 4. 使用 `setUp` 创建购物车。
-5. 使用 `Python学习资料 -m unit测试 未译32969` 运行。
+5. 使用 `Python学习资料 -m unit测试 discover` 运行。
 6. 故意把测试方法名写错，观察是否被发现。
 
 ## 验收标准
@@ -122,5 +122,5 @@ py测试 可以运行 unit测试 风格测试。很多老项目或标准库测�
 - 能读写基础 unit测试。
 - 能使用常见断言。
 - 能测试异常。
-- 能用 unit测试 未译32969 运行测试。
+- 能用 unit测试 discover 运行测试。
 

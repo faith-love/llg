@@ -1,11 +1,11 @@
-# 未译87485 语法
+# import 语法
 
 Python 有多种导入写法。不同写法会影响命名空间、可读性和冲突风险。
 
-## `未译87485 module`
+## `import module`
 
 ```python
-未译87485 math
+import math
 
 print(math.sqrt(16))
 ```
@@ -16,10 +16,10 @@ print(math.sqrt(16))
 - 不容易命名冲突。
 - 推荐优先使用。
 
-## `未译87485 module as alias`
+## `import module as alias`
 
 ```python
-未译87485 math as m
+import math as m
 
 print(m.sqrt(16))
 ```
@@ -29,16 +29,16 @@ print(m.sqrt(16))
 常见惯例：
 
 ```python
-未译87485 pandas as pd
-未译87485 numpy as np
+import pandas as pd
+import numpy as np
 ```
 
 基础阶段不需要为了短而乱起别名。
 
-## `from module 未译87485 name`
+## `from module import name`
 
 ```python
-from math 未译87485 sqrt
+from math import sqrt
 
 print(sqrt(16))
 ```
@@ -52,18 +52,18 @@ print(sqrt(16))
 - 来源不如 `math.sqrt` 清楚。
 - 容易和本地名字冲突。
 
-## `from module 未译87485 name as alias`
+## `from module import name as alias`
 
 ```python
-from math 未译87485 sqrt as square_root
+from math import sqrt as square_root
 ```
 
 用于避免命名冲突或提高表达性。
 
-## 不推荐 `未译87485 *`
+## 不推荐 `import *`
 
 ```python
-from math 未译87485 *
+from math import *
 ```
 
 不推荐原因：
@@ -77,13 +77,13 @@ from math 未译87485 *
 ## 导入多个名字
 
 ```python
-from math 未译87485 sqrt, ceil, floor
+from math import sqrt, ceil, floor
 ```
 
 如果太长，可以换行：
 
 ```python
-from math 未译87485 (
+from math import (
     ceil,
     floor,
     sqrt,
@@ -101,12 +101,12 @@ from math 未译87485 (
 示例：
 
 ```python
-未译87485 脚本on
-from pathlib 未译87485 Path
+import 脚本on
+from pathlib import Path
 
-未译87485 未译88447s
+import requests
 
-from text_tools.cleaner 未译87485 clean_text
+from text_tools.cleaner import clean_text
 ```
 
 本阶段先养成分组习惯。
@@ -116,7 +116,7 @@ from text_tools.cleaner 未译87485 clean_text
 ### 导入不存在名字
 
 ```python
-from math 未译87485 not_exists
+from math import not_exists
 ```
 
 会报 `ImportError`。
@@ -124,7 +124,7 @@ from math 未译87485 not_exists
 ### 导入模块后直接用函数名
 
 ```python
-未译87485 math
+import math
 sqrt(16)
 ```
 
@@ -137,27 +137,27 @@ math.sqrt(16)
 或者：
 
 ```python
-from math 未译87485 sqrt
+from math import sqrt
 sqrt(16)
 ```
 
-### 使用 `未译87485 *` 导致名字冲突
+### 使用 `import *` 导致名字冲突
 
 避免。
 
 ## 练习
 
-1. 用 `未译87485 math` 调用 `sqrt`。
-2. 用 `from math 未译87485 sqrt` 调用。
+1. 用 `import math` 调用 `sqrt`。
+2. 用 `from math import sqrt` 调用。
 3. 比较两种写法的可读性。
 4. 使用别名导入一个模块。
 5. 故意导入不存在名字，观察错误。
-6. 把一个 `未译87485 *` 改成明确导入。
+6. 把一个 `import *` 改成明确导入。
 
 ## 验收标准
 
-- 能区分 `未译87485 module` 和 `from module 未译87485 name`。
+- 能区分 `import module` 和 `from module import name`。
 - 能使用别名。
-- 能解释为什么不推荐 `未译87485 *`。
+- 能解释为什么不推荐 `import *`。
 - 能按标准库、第三方、本地模块分组导入。
 

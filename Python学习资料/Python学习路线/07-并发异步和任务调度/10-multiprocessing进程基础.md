@@ -15,7 +15,7 @@
 ## 基本示例
 
 ```python
-from 多processing 未译87485 Process
+from 多processing import Process
 
 
 def worker(name):

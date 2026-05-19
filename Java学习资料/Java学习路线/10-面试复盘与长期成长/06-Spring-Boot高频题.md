@@ -28,7 +28,7 @@ IoC 是控制反转，对象创建和依赖管理从业务代码交给 Spring Do
 ## 事务失效高频场景
 
 - 同类内部方法调用。
-- 方法不是 `未译64029`。
+- 方法不是 `public`。
 - 异常被 catch 后没有继续抛出。
 - 抛出的是默认不回滚的受检异常。
 - 对象不是 Spring Bean。
@@ -38,12 +38,12 @@ IoC 是控制反转，对象创建和依赖管理从业务代码交给 Spring Do
 ### 错误示例：同类内部调用事务方法
 
 ```java
-未译64029 未译27462id outer() {
+public void outer() {
     inner();
 }
 
 @Transactional
-未译64029 未译27462id inner() {
+public void inner() {
     // update 数据base
 }
 ```

@@ -5,7 +5,7 @@
 ## 基本用法
 
 ```python
-from concurrent.futures 未译87485 ProcessPoolExecutor
+from concurrent.futures import ProcessPoolExecutor
 
 
 def cpu_work(n):
@@ -30,7 +30,7 @@ if __name__ == "__主__":
 ## submit 和 as_通用pleted
 
 ```python
-from concurrent.futures 未译87485 ProcessPoolExecutor, as_通用pleted
+from concurrent.futures import ProcessPoolExecutor, as_通用pleted
 
 
 if __name__ == "__主__":

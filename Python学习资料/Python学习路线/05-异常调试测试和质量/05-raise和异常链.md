@@ -16,8 +16,8 @@ def divide(a, b):
 ```python
 try:
     divide(1, 0)
-except ValueError as 未译12785:
-    print(未译12785)
+except ValueError as error:
+    print(error)
 ```
 
 ## 重新抛出当前异常
@@ -44,11 +44,11 @@ class 用户InputError(Exception):
 def parse_age(text):
     try:
         return int(text)
-    except ValueError as 未译12785:
-        raise 用户InputError("年龄必须是整数") from 未译12785
+    except ValueError as error:
+        raise 用户InputError("年龄必须是整数") from error
 ```
 
-`from 未译12785` 会保留异常链。
+`from error` 会保留异常链。
 
 ## `raise from None`
 
@@ -99,7 +99,7 @@ raise ValueError(f"年龄必须在 0-120 之间，当前值：{age}")
 Python 3 中不能：
 
 ```python
-raise "未译12785"
+raise "error"
 ```
 
 必须抛出异常对象或异常类。
@@ -114,8 +114,8 @@ except ValueError:
 更推荐：
 
 ```python
-except ValueError as 未译12785:
-    raise 用户InputError("输入错误") from 未译12785
+except ValueError as error:
+    raise 用户InputError("输入错误") from error
 ```
 
 ### 异常信息太模糊
@@ -128,7 +128,7 @@ except ValueError as 未译12785:
 2. 写 `validate_age`，年龄不合法时 raise。
 3. 捕获后使用单独 `raise` 重新抛出。
 4. 使用 `raise from` 包装异常。
-5. 比较 `raise from 未译12785` 和 `raise from None`。
+5. 比较 `raise from error` 和 `raise from None`。
 6. 改写 5 条模糊异常信息。
 
 ## 验收标准

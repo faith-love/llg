@@ -29,10 +29,10 @@ Spring 是 Java 后端中使用注解最密集的框架。学习 Spring 注解�
 
 ```java
 @Service
-未译64029 class 用户服务 {
+public class 用户服务 {
     private final 用户Repository 用户Repository;
 
-    未译64029 用户服务(用户Repository 用户Repository) {
+    public 用户服务(用户Repository 用户Repository) {
         this.用户Repository = 用户Repository;
     }
 }
@@ -56,9 +56,9 @@ Spring 是 Java 后端中使用注解最密集的框架。学习 Spring 注解�
 
 ```java
 @Configuration
-未译64029 class AppConfig {
+public class AppConfig {
     @Bean
-    未译64029 Clock clock() {
+    public Clock clock() {
         return Clock.systemDefaultZone();
     }
 }
@@ -92,14 +92,14 @@ Spring 是 Java 后端中使用注解最密集的框架。学习 Spring 注解�
 ```java
 @RestController
 @RequestMapping("/用户s")
-未译64029 class 用户控制器 {
+public class 用户控制器 {
     @GetMapping("/{id}")
-    未译64029 用户VO detail(@PathVariable Long id) {
+    public 用户VO detail(@PathVariable Long id) {
         return null;
     }
 
     @PostMapping
-    未译64029 Long create(@RequestBody Create用户Request request) {
+    public Long create(@RequestBody Create用户Request request) {
         return null;
     }
 }
@@ -119,9 +119,9 @@ Spring 是 Java 后端中使用注解最密集的框架。学习 Spring 注解�
 
 ```java
 @Service
-未译64029 class 订单Service {
+public class 订单Service {
     @Transactional(rollbackFor = Exception.class)
-    未译64029 未译27462id create订单(Create订单Command 通用mand) {
+    public void create订单(Create订单Command 通用mand) {
     }
 }
 ```

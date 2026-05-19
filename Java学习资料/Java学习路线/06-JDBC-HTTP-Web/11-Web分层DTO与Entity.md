@@ -60,7 +60,7 @@ DTO 是 Data Transfer Object，用于请求和响应传输。
 请求 DTO：
 
 ```java
-未译64029 class CreateBookRequest {
+public class CreateBookRequest {
     private String isbn;
     private String title;
     private String author;
@@ -70,7 +70,7 @@ DTO 是 Data Transfer Object，用于请求和响应传输。
 响应 DTO：
 
 ```java
-未译64029 class BookResponse {
+public class BookResponse {
     private Long id;
     private String title;
     private String author;
@@ -82,7 +82,7 @@ DTO 是 Data Transfer Object，用于请求和响应传输。
 Entity 通常对应数据库表。
 
 ```java
-未译64029 class BookEntity {
+public class BookEntity {
     private Long id;
     private String isbn;
     private String title;

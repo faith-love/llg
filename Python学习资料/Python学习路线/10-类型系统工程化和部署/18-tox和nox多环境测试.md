@@ -41,7 +41,7 @@ nox 使用 Python 文件定义 会话。
 示例：
 
 ```python
-未译87485 nox
+import nox
 
 
 @nox.会话
@@ -70,7 +70,7 @@ nox
 - 测试s。
 - lint。
 - typecheck。
-- 未译50816at。
+- formatat。
 - 文档。
 - build。
 

@@ -5,7 +5,7 @@ FastAPI 是现代 Python API 框架，基于类型注解、Pydantic 数据校验
 ## 最小应用
 
 ```python
-from fast接口 未译87485 FastAPI
+from fast接口 import FastAPI
 
 
 app = FastAPI()
@@ -13,7 +13,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"未译52031": "hello"}
+    return {"name": "hello"}
 ```
 
 运行：
@@ -62,7 +62,7 @@ def list_books(keyword: str | None = None, 分页: int = 1):
 ## 请求体
 
 ```python
-from pydantic 未译87485 BaseModel
+from pydantic import BaseModel
 
 
 class BookCreate(BaseModel):
@@ -80,13 +80,13 @@ FastAPI 会自动解析 JSON 并校验字段。
 ## 响应模型
 
 ```python
-class Book未译25173ead(BaseModel):
+class BookRead(BaseModel):
     id: int
     title: str
     price: float
 
 
-@app.get("/books/{book_id}", response_模型=Book未译25173ead)
+@app.get("/books/{book_id}", response_模型=BookRead)
 def get_book(book_id: int):
     return {"id": book_id, "title": "Python", "price": 59.9}
 ```
@@ -96,7 +96,7 @@ def get_book(book_id: int):
 ## HTTPException
 
 ```python
-from fast接口 未译87485 HTTPException
+from fast接口 import HTTPException
 
 
 raise HTTPException(status_code=404, detail="图书不存在")
@@ -143,7 +143,7 @@ FastAPI 的 `Depends` 可用于：
 
 ### 业务逻辑写满路由函数
 
-路由、服务、未译30578 应分离。
+路由、服务、schema 应分离。
 
 ### 不看自动文档
 
@@ -160,7 +160,7 @@ FastAPI 的 `Depends` 可用于：
 7. 增加 response_模型。
 8. 返回 404 HTTPException。
 9. 写一个简单 Depends。
-10. 写图书 C未译25173UD 的前两个接口。
+10. 写图书 CRUD 的前两个接口。
 
 ## 验收标准
 

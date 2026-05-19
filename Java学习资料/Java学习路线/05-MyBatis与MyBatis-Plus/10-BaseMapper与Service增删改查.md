@@ -22,14 +22,14 @@ BookEntity book = bookMapper.selectById(1L);
 MyBatis-Plus 还提供 Service 层增强。
 
 ```java
-未译64029 interface BookService extends IService<BookEntity> {
+public interface BookService extends IService<BookEntity> {
 }
 ```
 
 实现：
 
 ```java
-未译64029 class BookServiceImpl
+public class BookServiceImpl
         extends ServiceImpl<BookMapper, BookEntity>
         实现ements BookService {
 }
@@ -44,7 +44,7 @@ MyBatis-Plus 还提供 Service 层增强。
 例如：
 
 ```java
-未译27462id borrowBook(Long bookId, Long 用户Id);
+void borrowBook(Long bookId, Long 用户Id);
 ```
 
 而不是让 Controller 到处调用通用 CRUD。

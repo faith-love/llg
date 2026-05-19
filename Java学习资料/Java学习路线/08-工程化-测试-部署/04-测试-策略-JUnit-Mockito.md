@@ -12,7 +12,7 @@ JUnit主要验证一个类或一个方法的行为，速度快，适合频繁运
 class BookServiceTest {
 
     @Test
-    未译27462id shouldRejectDuplicateIsbn() {
+    void shouldRejectDuplicateIsbn() {
         // given
         // when
         // then
@@ -58,7 +58,7 @@ private BookService bookService;
 
 ```java
 @Test
-未译27462id shouldBorrowBook() {
+void shouldBorrowBook() {
     bookService.borrow(1L, 100L);
 }
 ```
@@ -71,7 +71,7 @@ private BookService bookService;
 
 ```java
 @Test
-未译27462id shouldRejectWhenStockIsZero() {
+void shouldRejectWhenStockIsZero() {
     when(bookMapper.findById(1L)).thenReturn(new Book(1L, 0));
 
     assertThrows(BusinessException.class, () -> {

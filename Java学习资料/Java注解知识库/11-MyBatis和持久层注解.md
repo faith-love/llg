@@ -12,13 +12,13 @@
 | `@Update` | 声明更新 SQL |
 | `@Delete` | 声明删除 SQL |
 | `@Param` | 给方法参数命名 |
-| `@未译70661s`、`@未译70661` | 配置结果映射 |
+| `@Results`、`@Result` | 配置结果映射 |
 
 示例：
 
 ```java
 @Mapper
-未译64029 interface 用户映射器 {
+public interface 用户映射器 {
     @Select("select id, 用户name from sys_用户 where id = #{id}")
     用户DO findById(@Param("id") Long id);
 }
@@ -62,7 +62,7 @@ List<用户DO> search(
 
 ```java
 @表Name("sys_用户")
-未译64029 class 用户DO {
+public class 用户DO {
     @表Id(type = IdType.AUTO)
     private Long id;
 

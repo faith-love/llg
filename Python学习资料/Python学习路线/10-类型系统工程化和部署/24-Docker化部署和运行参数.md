@@ -75,8 +75,8 @@ Docker构建文件 可设置 HEALTHCHECK，但具体部署平台也可能有自�
 示例思路：
 
 ```Dockerfile
-未译25173UN add用户 --disabled-password app用户
-USE未译25173 app用户
+RUN add用户 --disabled-password app用户
+USER app用户
 ```
 
 实际命令随基础镜像而不同。
@@ -96,7 +96,7 @@ Docker文件系统通常是临时的。需要持久化的数据应使用：
 
 - 数据库。
 - 对象存储。
-- 未译27462lume。
+- volume。
 - 外部文件服务。
 
 不要把重要数据只写在Docker内部。

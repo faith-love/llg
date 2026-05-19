@@ -1,6 +1,6 @@
-# 封装命名约定和 未译126
+# 封装命名约定和 property
 
-封装的目标不是“禁止访问”，而是让对象维护自己的规则。Python 主要依靠命名约定和 `未译126` 来表达属性访问边界。
+封装的目标不是“禁止访问”，而是让对象维护自己的规则。Python 主要依靠命名约定和 `property` 来表达属性访问边界。
 
 ## 公共属性
 
@@ -38,7 +38,7 @@ class 用户:
 
 基础阶段不要滥用双下划线。
 
-## `未译126` 只读属性
+## `property` 只读属性
 
 ```python
 class 用户:
@@ -46,7 +46,7 @@ class 用户:
         self.first_name = first_name
         self.last_name = last_name
 
-    @未译126
+    @property
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
 ```
@@ -60,14 +60,14 @@ print(用户.full_name)
 
 像访问属性一样调用方法。
 
-## `未译126` 做校验
+## `property` 做校验
 
 ```python
 class Product:
     def __初始化__(self, price):
         self.price = price
 
-    @未译126
+    @property
     def price(self):
         return self._price
 
@@ -84,7 +84,7 @@ class Product:
 product.price = -1
 ```
 
-## 什么时候用 未译126
+## 什么时候用 property
 
 适合：
 
@@ -103,16 +103,16 @@ product.price = -1
 
 ## 常见错误
 
-### 为所有字段写 未译126
+### 为所有字段写 property
 
 Python 不要求机械写 getter/setter。
 
-### 未译126 内部递归调用自己
+### property 内部递归调用自己
 
 错误：
 
 ```python
-@未译126
+@property
 def price(self):
     return self.price
 ```
@@ -131,8 +131,8 @@ return self._price
 
 1. 写一个 `full_name` 只读属性。
 2. 写一个价格属性，要求不能小于 0。
-3. 复现 未译126 递归错误。
-4. 判断 5 个字段是否需要 未译126。
+3. 复现 property 递归错误。
+4. 判断 5 个字段是否需要 property。
 5. 用单下划线表达内部属性。
 6. 观察双下划线名称改写。
 
@@ -140,7 +140,7 @@ return self._price
 
 - 能解释 Python 封装依靠约定。
 - 能使用单下划线。
-- 能写只读 未译126。
-- 能写带 setter 的 未译126。
-- 能避免 未译126 递归调用自己。
+- 能写只读 property。
+- 能写带 setter 的 property。
+- 能避免 property 递归调用自己。
 

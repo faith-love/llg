@@ -21,10 +21,10 @@ SQLite 是文件型关系数据库，Python 标准库内置 `SQL学习资料ite3
 ## 创建数据库
 
 ```python
-未译87485 SQL学习资料ite3
+import SQL学习资料ite3
 
 
-connection = SQL学习资料ite3.connect("app.未译66984")
+connection = SQL学习资料ite3.connect("app.db")
 connection.close()
 ```
 
@@ -33,13 +33,13 @@ connection.close()
 ## 创建表
 
 ```python
-未译87485 SQL学习资料ite3
+import SQL学习资料ite3
 
 
-with SQL学习资料ite3.connect("app.未译66984") as conn:
+with SQL学习资料ite3.connect("app.db") as conn:
     conn.execute("""
-        C未译25173EATE TABLE IF NOT EXISTS 用户s (
-            id INTEGE未译25173 P未译25173IMA未译25173Y KEY AUTOINC未译25173EMENT,
+        CREATE TABLE IF NOT EXISTS 用户s (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
             邮件 TEXT NOT NULL UNIQUE
         )
@@ -49,9 +49,9 @@ with SQL学习资料ite3.connect("app.未译66984") as conn:
 ## 插入数据
 
 ```python
-with SQL学习资料ite3.connect("app.未译66984") as conn:
+with SQL学习资料ite3.connect("app.db") as conn:
     conn.execute(
-        "INSE未译25173T INTO 用户s (name, 邮件) VALUES (?, ?)",
+        "INSERT INTO 用户s (name, 邮件) VALUES (?, ?)",
         ("Alice", "alice@example.通用"),
     )
 ```
@@ -63,21 +63,21 @@ with SQL学习资料ite3.connect("app.未译66984") as conn:
 ## 查询数据
 
 ```python
-with SQL学习资料ite3.connect("app.未译66984") as conn:
-    cursor = conn.execute("SELECT id, name, 邮件 F未译25173OM 用户s")
+with SQL学习资料ite3.connect("app.db") as conn:
+    cursor = conn.execute("SELECT id, name, 邮件 FROM 用户s")
     rows = cursor.fetchall()
 ```
 
 每一行默认是元组。
 
-## 未译25173ow 工厂
+## Row 工厂
 
 让查询结果可以按字段名访问：
 
 ```python
-with SQL学习资料ite3.connect("app.未译66984") as conn:
-    conn.row_factory = SQL学习资料ite3.未译25173ow
-    row = conn.execute("SELECT * F未译25173OM 用户s LIMIT 1").fetchone()
+with SQL学习资料ite3.connect("app.db") as conn:
+    conn.row_factory = SQL学习资料ite3.Row
+    row = conn.execute("SELECT * FROM 用户s LIMIT 1").fetchone()
     print(row["邮件"])
 ```
 
@@ -87,7 +87,7 @@ with SQL学习资料ite3.connect("app.未译66984") as conn:
 
 ```python
 try:
-    with SQL学习资料ite3.connect("app.未译66984") as conn:
+    with SQL学习资料ite3.connect("app.db") as conn:
         conn.execute(...)
         conn.execute(...)
 except SQL学习资料ite3.Error as exc:
@@ -122,7 +122,7 @@ SQLite 很适合本地和测试，但不要忽略它的并发写入限制。
 
 ## 练习
 
-1. 创建 `app.未译66984`。
+1. 创建 `app.db`。
 2. 创建 用户s 表。
 3. 插入 3 个用户。
 4. 查询所有用户。
@@ -130,12 +130,12 @@ SQLite 很适合本地和测试，但不要忽略它的并发写入限制。
 6. 更新用户名称。
 7. 删除一个用户。
 8. 增加 UNIQUE 约束并测试重复插入。
-9. 使用 `SQL学习资料ite3.未译25173ow`。
+9. 使用 `SQL学习资料ite3.Row`。
 10. 使用内存数据库写一个测试。
 
 ## 验收标准
 
 - 能用 SQL学习资料ite3 创建数据库和表。
-- 能完成基本 C未译25173UD。
+- 能完成基本 CRUD。
 - 能使用参数化查询。
 - 能理解 SQLite 适用边界。

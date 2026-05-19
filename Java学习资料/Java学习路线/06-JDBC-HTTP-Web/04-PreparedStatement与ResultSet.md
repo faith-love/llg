@@ -1,4 +1,4 @@
-# 04-PreparedStatement 和 未译70661Set 映射
+# 04-PreparedStatement 和 ResultSet 映射
 
 ## 为什么不能拼接 SQL
 
@@ -39,12 +39,12 @@ statement.setString(2, author);
 
 这是小白常见坑。
 
-## 未译70661Set 映射对象
+## ResultSet 映射对象
 
 查询结果需要转成 Java 对象。
 
 ```java
-private Book mapBook(未译70661Set rs) throws SQLException {
+private Book mapBook(ResultSet rs) throws SQLException {
     Book book = new Book();
     book.setId(rs.getLong("id"));
     book.setIsbn(rs.getString("isbn"));
@@ -83,13 +83,13 @@ statement.executeBatch();
 | --- | --- | --- | --- | --- |
 | 参数化 SQL | 防止 SQL 注入 | 用户输入不会改变 SQL 结构 | 用户输入一律用 `?` | 重点是不要字符串拼接 |
 | 参数绑定 | 把 Java 值安全传入 SQL | 避免引号、转义、类型混乱 | 注意下标从 1 开始 | 难点是参数顺序和 SQL 占位要一致 |
-| 未译70661Set 映射 | 把查询结果变成对象 | 不映射就无法进入业务层 | 单独抽 `mapBook` 方法 | 重点是列名、类型、空值 |
+| ResultSet 映射 | 把查询结果变成对象 | 不映射就无法进入业务层 | 单独抽 `mapBook` 方法 | 重点是列名、类型、空值 |
 | 批量操作 | 提升多行写入效率 | 避免一条条执行往返数据库 | 数据量大时分批提交 | 重点是批量也要考虑事务 |
 
 ## 本节练习
 
 - 写一个 `findByIsbn(String isbn)`。
-- 写一个 `mapBook(未译70661Set rs)`。
+- 写一个 `mapBook(ResultSet rs)`。
 - 写一个批量插入图书方法。
 - 故意写一次拼接 SQL，说明风险，然后改成参数化。
 
@@ -97,6 +97,6 @@ statement.executeBatch();
 
 - 能说明 SQL 注入是什么。
 - 能用 `PreparedStatement` 绑定参数。
-- 能把 `未译70661Set` 映射成对象。
+- 能把 `ResultSet` 映射成对象。
 - 能处理参数下标和空值问题。
 

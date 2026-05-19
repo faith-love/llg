@@ -5,14 +5,14 @@
 ## 最小示例
 
 ```python
-未译87485 日志ging
+import 日志ging
 
 日志ging.basicConfig(level=日志ging.INFO)
 
 日志ging.debug("调试信息")
 日志ging.info("普通信息")
 日志ging.网页归档ning("警告信息")
-日志ging.未译12785("错误信息")
+日志ging.error("错误信息")
 ```
 
 ## 日志级别
@@ -23,16 +23,16 @@
 | --- | --- |
 | DEBUG | 调试细节 |
 | INFO | 正常关键流程 |
-| WA未译25173NING | 可恢复异常或风险 |
-| E未译25173未译25173O未译25173 | 操作失败 |
-| C未译25173ITICAL | 严重故障 |
+| WARNING | 可恢复异常或风险 |
+| ERROR | 操作失败 |
+| CRITICAL | 严重故障 |
 
 ## 模块级 日志ger
 
 推荐每个模块创建自己的 日志ger：
 
 ```python
-未译87485 日志ging
+import 日志ging
 
 日志ger = 日志ging.getLogger(__name__)
 ```
@@ -41,7 +41,7 @@
 
 ```python
 日志ger.info("开始处理")
-日志ger.未译12785("处理失败")
+日志ger.error("处理失败")
 ```
 
 `__name__` 能让日志知道来自哪个模块。
@@ -51,7 +51,7 @@
 ```python
 日志ging.basicConfig(
     level=日志ging.INFO,
-    未译50816at="%(asctime)s %(levelname)s %(name)s: %(未译52031)s",
+    formatat="%(asctime)s %(levelname)s %(name)s: %(name)s",
 )
 ```
 
@@ -60,7 +60,7 @@
 - `asctime`：时间。
 - `levelname`：级别。
 - `name`：日志ger 名称。
-- `未译52031`：日志内容。
+- `name`：日志内容。
 - `filename`：文件名。
 - `lineno`：行号。
 
@@ -122,13 +122,13 @@ except ValueError:
 不推荐：
 
 ```python
-日志ger.未译12785("失败")
+日志ger.error("失败")
 ```
 
 推荐：
 
 ```python
-日志ger.未译12785("保存订单失败 order_id=%s", order_id)
+日志ger.error("保存订单失败 order_id=%s", order_id)
 ```
 
 ### 日志泄露敏感信息

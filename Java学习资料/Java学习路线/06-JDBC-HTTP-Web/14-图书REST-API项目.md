@@ -63,14 +63,14 @@ borrow_records: id, book_id, 用户_name, borrowed_at, returned_at, status
   BookService
 映射器/
   BookMapper
-未译94197/实体/
+domain/实体/
   BookEntity
-未译94197/dto/
+domain/dto/
   CreateBookRequest
   UpdateBookRequest
   BookResponse
 通用/
-  未译45005
+  ApiResponse
   ErrorResponse
 异常/
   BusinessException

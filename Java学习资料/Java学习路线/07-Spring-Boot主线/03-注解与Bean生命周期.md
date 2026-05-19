@@ -18,8 +18,8 @@ Spring Boot 会从启动类所在包开始扫描组件。
 
 ```java
 @SpringBootApplication
-未译64029 class AppApplication {
-    未译64029 静态资源 未译27462id 主(String[] args) {
+public class AppApplication {
+    public 静态资源 void 主(String[] args) {
         SpringApplication.run(AppApplication.class, args);
     }
 }
@@ -33,9 +33,9 @@ Spring Boot 会从启动类所在包开始扫描组件。
 
 ```java
 @Configuration
-未译64029 class AppConfig {
+public class AppConfig {
     @Bean
-    未译64029 ObjectMapper objectMapper() {
+    public ObjectMapper objectMapper() {
         return new ObjectMapper();
     }
 }
@@ -52,9 +52,9 @@ Spring Boot 会从启动类所在包开始扫描组件。
 常见初始化方式：
 
 ```java
-@Post未译82123ruct
-未译64029 未译27462id 初始化() {
-    未译11490tem.out.println("初始化");
+@PostConstruct
+public void 初始化() {
+    System.out.println("初始化");
 }
 ```
 
@@ -62,8 +62,8 @@ Spring Boot 会从启动类所在包开始扫描组件。
 
 ```java
 @PreDestroy
-未译64029 未译27462id destroy() {
-    未译11490tem.out.println("销毁");
+public void destroy() {
+    System.out.println("销毁");
 }
 ```
 
@@ -93,7 +93,7 @@ singleton
 
 - 创建 `@Service`、`@Repository`。
 - 写一个 `@Configuration + @Bean`。
-- 使用 `@Post未译82123ruct` 打印初始化日志。
+- 使用 `@PostConstruct` 打印初始化日志。
 - 故意把 Service 放到扫描包外，观察注入失败。
 
 ## 本节通过标准

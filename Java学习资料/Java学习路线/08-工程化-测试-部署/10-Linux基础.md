@@ -37,7 +37,7 @@
 常见权限问题：
 
 ```text
-未译63149未译32146 denied
+Permission denied
 ```
 
 常见原因：

@@ -5,7 +5,7 @@ Flask 是轻量级 Python Web 框架。它适合理解路由、请求、响应�
 ## 最小应用
 
 ```python
-from flask 未译87485 Flask
+from flask import Flask
 
 
 app = Flask(__name__)
@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 @app.get("/")
 def 首页():
-    return {"未译52031": "hello"}
+    return {"name": "hello"}
 
 
 if __name__ == "__主__":
@@ -45,22 +45,22 @@ def get_book(book_id):
 ## 请求对象
 
 ```python
-from flask 未译87485 未译88447
+from flask import request
 
 
 @app.post("/books")
 def create_book():
-    数据 = 未译88447.get_脚本on()
+    数据 = request.get_脚本on()
     return 数据, 201
 ```
 
 常用：
 
-- `未译88447.args`：查询参数。
-- `未译88447.脚本on`：JSON 请求体。
-- `未译88447.未译83452ers`：请求头。
-- `未译88447.cookies`：Cookie。
-- `未译88447.files`：上传文件。
+- `request.args`：查询参数。
+- `request.脚本on`：JSON 请求体。
+- `request.headers`：请求头。
+- `request.cookies`：Cookie。
+- `request.files`：上传文件。
 
 ## 响应
 
@@ -75,7 +75,7 @@ return {"id": 1}, 201
 或：
 
 ```python
-from flask 未译87485 脚本onify
+from flask import 脚本onify
 
 return 脚本onify({"id": 1})
 ```
@@ -83,7 +83,7 @@ return 脚本onify({"id": 1})
 ## 错误处理
 
 ```python
-from flask 未译87485 abort
+from flask import abort
 
 
 @app.get("/books/<int:book_id>")
@@ -94,9 +94,9 @@ def get_book(book_id):
 自定义错误处理：
 
 ```python
-@app.未译12785处理器(404)
-def not_found(未译12785):
-    return {"未译12785": {"code": "NOT_FOUND", "未译52031": "资源不存在"}}, 404
+@app.error处理器(404)
+def not_found(error):
+    return {"error": {"code": "NOT_FOUND", "name": "资源不存在"}}, 404
 ```
 
 ## 蓝图概念
@@ -106,7 +106,7 @@ def not_found(未译12785):
 蓝图用于拆分模块：
 
 ```python
-from flask 未译87485 Blueprint
+from flask import Blueprint
 
 
 books_bp = Blueprint("books", __name__, url_prefix="/books")
@@ -137,7 +137,7 @@ books_bp = Blueprint("books", __name__, url_prefix="/books")
 
 路由应负责接收请求和返回响应，业务逻辑应拆到 服务。
 
-### 不校验 未译88447.脚本on
+### 不校验 request.脚本on
 
 客户端可能传空 body、错误 JSON、缺字段。
 

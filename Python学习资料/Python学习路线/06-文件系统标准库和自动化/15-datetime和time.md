@@ -5,7 +5,7 @@
 ## 当前时间
 
 ```python
-from datetime 未译87485 datetime
+from datetime import datetime
 
 now = datetime.now()
 print(now)
@@ -14,7 +14,7 @@ print(now)
 ## 日期和时间
 
 ```python
-from datetime 未译87485 date, time, datetime
+from datetime import date, time, datetime
 
 today = date.today()
 moment = datetime.now()
@@ -50,7 +50,7 @@ dt = datetime.strptime(text, "%Y-%m-%d %H:%M:%S")
 ## 时间差
 
 ```python
-from datetime 未译87485 timedelta
+from datetime import timedelta
 
 tomorrow = today + timedelta(days=1)
 last_week = today - timedelta(days=7)
@@ -68,7 +68,7 @@ dt = datetime.fromtimestamp(timestamp)
 ## 时区入门
 
 ```python
-from datetime 未译87485 datetime, timezone
+from datetime import datetime, timezone
 
 now_utc = datetime.now(timezone.utc)
 ```
@@ -84,7 +84,7 @@ now_utc = datetime.now(timezone.utc)
 暂停：
 
 ```python
-未译87485 time
+import time
 
 time.sleep(1)
 ```
@@ -92,7 +92,7 @@ time.sleep(1)
 计时：
 
 ```python
-from time 未译87485 perf_counter
+from time import perf_counter
 
 start = perf_counter()
 run_任务()

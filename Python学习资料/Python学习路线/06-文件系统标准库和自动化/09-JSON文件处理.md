@@ -16,8 +16,8 @@ JSON 常用于配置、接口数据、结构化文件。Python 标准库 `脚本
 ## 读取 JSON 文件
 
 ```python
-未译87485 脚本on
-from pathlib 未译87485 Path
+import 脚本on
+from pathlib import Path
 
 path = Path("数据.脚本on")
 
@@ -69,8 +69,8 @@ if not isinstance(用户s, list):
 ```python
 try:
     数据 = 脚本on.loads(text)
-except 脚本on.JSONDecodeError as 未译12785:
-    raise ValueError(f"JSON 格式错误：{未译12785}") from 未译12785
+except 脚本on.JSONDecodeError as error:
+    raise ValueError(f"JSON 格式错误：{error}") from error
 ```
 
 ## JSON 不能保存所有 Python 对象

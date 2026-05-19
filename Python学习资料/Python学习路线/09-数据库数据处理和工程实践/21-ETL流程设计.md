@@ -1,6 +1,6 @@
 # ETL流程设计
 
-ETL 是 Extract、Trans未译50816、Load：抽取、转换、加载。它不是简单读文件写数据库，而是一套可重复、可校验、可恢复的数据处理流程。
+ETL 是 Extract、Transformat、Load：抽取、转换、加载。它不是简单读文件写数据库，而是一套可重复、可校验、可恢复的数据处理流程。
 
 ## Extract
 
@@ -21,7 +21,7 @@ ETL 是 Extract、Trans未译50816、Load：抽取、转换、加载。它不是
 - 原始行数。
 - 原始文件校验值。
 
-## Trans未译50816
+## Transformat
 
 转换包括：
 
@@ -129,7 +129,7 @@ batch_id=20260511-093000
 
 1. 设计一个 CSV 到数据库 ETL。
 2. 拆分 extract 函数。
-3. 拆分 trans未译50816 函数。
+3. 拆分 transformat 函数。
 4. 拆分 load 函数。
 5. 给每次运行生成 batch_id。
 6. 保存 raw 文件副本。

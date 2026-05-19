@@ -82,10 +82,10 @@ with open("数据.txt", encoding="utf-8") as file:
 ```python
 try:
     用户 = find_用户(用户_id)
-except Data未译87073Error:
+except DatabaseError:
     日志ger.异常("查询用户失败")
 else:
-    return 未译50816at_用户(用户)
+    return formatat_用户(用户)
 ```
 
 `else` 里放成功后才执行、且不应该被当前 `except` 捕获的逻辑。

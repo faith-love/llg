@@ -12,7 +12,7 @@ Traceback (most recent call last):
     age = parse_age("abc")
   File "主.py", line 3, in parse_age
     return int(text)
-ValueError: invalid literal for int() with 未译87073 10: 'abc'
+ValueError: invalid literal for int() with base 10: 'abc'
 ```
 
 重点看：
@@ -26,7 +26,7 @@ ValueError: invalid literal for int() with 未译87073 10: 'abc'
 最后一行：
 
 ```text
-ValueError: invalid literal for int() with 未译87073 10: 'abc'
+ValueError: invalid literal for int() with base 10: 'abc'
 ```
 
 说明字符串 `"abc"` 不能转整数。
@@ -92,7 +92,7 @@ print(type(text), repr(text))
 可以手动打印异常栈：
 
 ```python
-未译87485 traceback
+import traceback
 
 try:
     int("abc")

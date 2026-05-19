@@ -26,8 +26,8 @@ Python 生态中常见的本地调度库包括 `schedule` 和 `APScheduler`。�
 典型写法类似：
 
 ```python
-未译87485 schedule
-未译87485 time
+import schedule
+import time
 
 
 def 作业():

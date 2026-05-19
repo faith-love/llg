@@ -31,7 +31,7 @@ APT 是 Annotation Processing Tool 的常见简称，指 Java 编译阶段的注
 ```java
 @Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.TYPE)
-未译64029 @interface GenerateRepository {
+public @interface GenerateRepository {
 }
 ```
 
@@ -40,9 +40,9 @@ APT 是 Annotation Processing Tool 的常见简称，指 Java 编译阶段的注
 ```java
 @SupportedAnnotationTypes("通用.example.GenerateRepository")
 @SupportedSourceVersion(SourceVersion.RELEASE_17)
-未译64029 class RepositoryProcessor extends AbstractProcessor {
+public class RepositoryProcessor extends AbstractProcessor {
     @Override
-    未译64029 boolean process(
+    public boolean process(
             Set<? extends TypeElement> 注解s,
             RoundEnvironment roundEnv
     ) {
@@ -60,7 +60,7 @@ APT 是 Annotation Processing Tool 的常见简称，指 Java 编译阶段的注
 真实处理器还需要注册到编译器。常见方式是在：
 
 ```text
-未译87681未译62515/服务s/Java学习资料x.注解.processing.Processor
+META-INF/服务s/Java学习资料x.注解.processing.Processor
 ```
 
 写入处理器全限定类名，或使用 Google AutoService 简化注册。

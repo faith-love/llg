@@ -27,7 +27,7 @@ Python 可以走多个方向。长期提升要结合目标岗位，而不是所�
 - HTTP。
 - FastAPI/Flask。
 - 数据库。
-- O未译25173M。
+- ORM。
 - 认证授权。
 - 测试。
 - Docker。

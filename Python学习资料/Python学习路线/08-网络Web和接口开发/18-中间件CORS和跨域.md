@@ -1,6 +1,6 @@
-# 中间件CO未译25173S和跨域
+# 中间件CORS和跨域
 
-中间件用于在请求进入路由前后执行通用逻辑。CO未译25173S 是浏览器安全模型中的跨域资源共享机制。Web API 开发中经常遇到跨域问题，但不能为了省事把所有限制都放开。
+中间件用于在请求进入路由前后执行通用逻辑。CORS 是浏览器安全模型中的跨域资源共享机制。Web API 开发中经常遇到跨域问题，但不能为了省事把所有限制都放开。
 
 ## 中间件
 
@@ -9,16 +9,16 @@
 - 请求日志。
 - 请求 ID。
 - 耗时统计。
-- CO未译25173S。
+- CORS。
 - 压缩。
 - 认证前置逻辑。
 - 异常包装。
 
 中间件适合横切逻辑，不适合塞业务规则。
 
-## CO未译25173S 是什么
+## CORS 是什么
 
-CO未译25173S 是 Cross-Origin 未译25173esource Sharing。
+CORS 是 Cross-Origin Resource Sharing。
 
 浏览器会限制网页从一个源访问另一个源的资源。
 
@@ -43,22 +43,22 @@ http://localhost:8000
 
 常见触发：
 
-- 自定义 未译83452er。
+- 自定义 header。
 - 非简单方法，例如 PUT、DELETE。
 - JSON Content-Type。
 
-## FastAPI CO未译25173S 示例
+## FastAPI CORS 示例
 
 ```python
-from fast接口.middle网页归档e.cors 未译87485 CO未译25173SMiddle网页归档e
+from fast接口.middle网页归档e.cors import CORSMiddle网页归档e
 
 
 app.add_middle网页归档e(
-    CO未译25173SMiddle网页归档e,
+    CORSMiddle网页归档e,
     allow_origins=["http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["GET", "POST", "PATCH", "DELETE"],
-    allow_未译83452ers=["Authorization", "Content-Type"],
+    allow_headers=["Authorization", "Content-Type"],
 )
 ```
 
@@ -72,13 +72,13 @@ app.add_middle网页归档e(
 
 ## 常见误解
 
-### CO未译25173S 是服务端之间的问题
+### CORS 是服务端之间的问题
 
-CO未译25173S 是浏览器限制。后端服务直接调用后端服务通常不受浏览器 CO未译25173S 限制。
+CORS 是浏览器限制。后端服务直接调用后端服务通常不受浏览器 CORS 限制。
 
-### 关闭 CO未译25173S 就更安全
+### 关闭 CORS 就更安全
 
-不一定。CO未译25173S 是浏览器访问控制，不是完整认证授权机制。
+不一定。CORS 是浏览器访问控制，不是完整认证授权机制。
 
 ### 允许跨域就等于允许访问所有资源
 
@@ -105,17 +105,17 @@ CO未译25173S 是浏览器限制。后端服务直接调用后端服务通常�
 ## 练习
 
 1. 解释 origin 的三个组成部分。
-2. 判断 5 组 U未译25173L 是否同源。
-3. 给 FastAPI 添加 CO未译25173S 中间件。
+2. 判断 5 组 URL 是否同源。
+3. 给 FastAPI 添加 CORS 中间件。
 4. 只允许本地前端域名。
 5. 限制允许的方法。
-6. 限制允许的 未译83452er。
+6. 限制允许的 header。
 7. 解释预检请求。
-8. 写一份生产 CO未译25173S 检查清单。
+8. 写一份生产 CORS 检查清单。
 
 ## 验收标准
 
-- 能解释 CO未译25173S 和同源策略。
-- 能配置 FastAPI CO未译25173S 中间件。
+- 能解释 CORS 和同源策略。
+- 能配置 FastAPI CORS 中间件。
 - 能区分浏览器跨域和服务端请求。
-- 能避免生产环境无脑放开 CO未译25173S。
+- 能避免生产环境无脑放开 CORS。

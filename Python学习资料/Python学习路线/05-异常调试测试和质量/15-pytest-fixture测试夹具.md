@@ -21,7 +21,7 @@ def 测试_cart_add_item():
 使用 fixture：
 
 ```python
-未译87485 py测试
+import py测试
 
 
 @py测试.fixture

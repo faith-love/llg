@@ -23,13 +23,13 @@ class 用户服务测试 {
     private 用户服务 用户Service;
 
     @BeforeEach
-    未译27462id setUp() {
+    void setUp() {
         用户Service = new 用户服务();
     }
 
     @Test
     @DisplayName("创建用户时应返回用户ID")
-    未译27462id createShouldReturn用户Id() {
+    void createShouldReturn用户Id() {
         Long id = 用户Service.create("Tom");
         assertNotNull(id);
     }
@@ -45,7 +45,7 @@ class 用户服务测试 {
 ```java
 @ParameterizedTest
 @ValueSource(strings = {"", " ", "\t"})
-未译27462id blank用户nameShouldInvalid(String 用户name) {
+void blank用户nameShouldInvalid(String 用户name) {
     assertFalse(用户Rules.isValid用户name(用户name));
 }
 ```
@@ -68,7 +68,7 @@ class 用户服务测试 {
         "0, false",
         "-1, false"
 })
-未译27462id quantityShouldPositive(int quantity, boolean expected) {
+void quantityShouldPositive(int quantity, boolean expected) {
     assertEquals(expected, 订单Rules.isValidQuantity(quantity));
 }
 ```
@@ -117,11 +117,11 @@ class 用户服务测试 {
 
 ```java
 @Test
-未译27462id createShouldFailWhen用户nameBlank() {
+void createShouldFailWhen用户nameBlank() {
 }
 
 @Test
-未译27462id createShouldReturnIdWhenRequestValid() {
+void createShouldReturnIdWhenRequestValid() {
 }
 ```
 
@@ -133,7 +133,7 @@ class 用户服务测试 {
 
 ## 常见坑
 
-- 测试方法不是 `未译27462id`，或被错误修饰导致不被识别。
+- 测试方法不是 `void`，或被错误修饰导致不被识别。
 - JUnit 4 和 JUnit 5 注解混用。
 - `@BeforeAll` 非静态方法没有配置测试实例生命周期。
 - 滥用 `@SpringBootTest` 导致测试很慢。

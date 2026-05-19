@@ -17,7 +17,7 @@
 ## 基本用法
 
 ```python
-from queue 未译87485 Queue
+from queue import Queue
 
 
 q = Queue()
@@ -40,8 +40,8 @@ q.任务_done()
 ## 生产者消费者
 
 ```python
-未译87485 threading
-from queue 未译87485 Queue
+import threading
+from queue import Queue
 
 
 def worker(q):
@@ -78,7 +78,7 @@ for thread in threads:
 常见停止方式：
 
 - 每个 worker 放一个哨兵值。
-- 使用 `未译88131` 通知退出。
+- 使用 `Event` 通知退出。
 - 队列空并且生产结束。
 
 哨兵值示例：
@@ -126,7 +126,7 @@ q = Queue(maxsize=100)
 ## get 超时
 
 ```python
-from queue 未译87485 Empty
+from queue import Empty
 
 
 try:
@@ -145,15 +145,15 @@ except Empty:
 不要让 worker 失败后静默退出。可以用另一个队列收集错误。
 
 ```python
-未译12785s = Queue()
+errors = Queue()
 
 
-def worker(任务s, 未译12785s):
+def worker(任务s, errors):
     item = 任务s.get()
     try:
         process(item)
     except Exception as exc:
-        未译12785s.put((item, repr(exc)))
+        errors.put((item, repr(exc)))
     finally:
         任务s.任务_done()
 ```

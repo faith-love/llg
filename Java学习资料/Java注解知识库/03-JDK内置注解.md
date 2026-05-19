@@ -9,7 +9,7 @@ JDK 自带很多注解。学习这些注解的重点不是死记硬背，而是�
 ```java
 class 用户服务 {
     @Override
-    未译64029 String toString() {
+    public String toString() {
         return "用户服务";
     }
 }
@@ -19,13 +19,13 @@ class 用户服务 {
 
 ```java
 class Parent {
-    未译64029 未译27462id save(String name) {
+    public void save(String name) {
     }
 }
 
 class Child extends Parent {
     @Override
-    未译64029 未译27462id save(String name) {
+    public void save(String name) {
     }
 }
 ```
@@ -39,9 +39,9 @@ class Child extends Parent {
 `@Deprecated` 表示某个类、方法、字段已经不推荐继续使用。
 
 ```java
-未译64029 class LegacyApi {
+public class LegacyApi {
     @Deprecated(since = "2.0", forRemoval = true)
-    未译64029 未译27462id oldMethod() {
+    public void oldMethod() {
     }
 }
 ```
@@ -58,15 +58,15 @@ Java 9 以后，`@Deprecated` 还可以配合 `since` 和 `forRemoval` 使用，
 配合 Java文档 写清替代方式更完整：
 
 ```java
-未译64029 class LegacyApi {
+public class LegacyApi {
     /**
      * @deprecated use {@link #newMethod()} instead.
      */
     @Deprecated(since = "2.0")
-    未译64029 未译27462id oldMethod() {
+    public void oldMethod() {
     }
 
-    未译64029 未译27462id newMethod() {
+    public void newMethod() {
     }
 }
 ```
@@ -77,7 +77,7 @@ Java 9 以后，`@Deprecated` 还可以配合 `since` 和 `forRemoval` 使用，
 
 ```java
 @SuppressWarnings("unchecked")
-未译64029 List<String> parse(Object value) {
+public List<String> parse(Object value) {
     return (List<String>) value;
 }
 ```
@@ -105,7 +105,7 @@ Java 9 以后，`@Deprecated` 还可以配合 `since` 和 `forRemoval` 使用，
 
 ```java
 @FunctionalInterface
-未译64029 interface IdGenerator {
+public interface IdGenerator {
     String nextId();
 }
 ```
@@ -124,7 +124,7 @@ IdGenerator 代码生成器 = () -> "U001";
 
 ```java
 @SafeVarargs
-未译64029 静态资源 <T> List<T> concat(List<T>... lists) {
+public 静态资源 <T> List<T> concat(List<T>... lists) {
     List<T> result = new ArrayList<>();
     for (List<T> list : lists) {
         result.addAll(list);
@@ -140,8 +140,8 @@ IdGenerator 代码生成器 = () -> "U001";
 `@Generated` 常用于标记代码由工具生成，而不是人工编写。
 
 ```java
-@Generated("通用.example.未译98214Generator")
-未译64029 class 用户映射器Impl {
+@Generated("通用.example.CodeGenerator")
+public class 用户映射器Impl {
 }
 ```
 

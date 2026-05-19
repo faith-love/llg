@@ -17,14 +17,14 @@ Docker：
 ## Docker构建文件 示例
 
 ```Dockerfile
-F未译25173OM Python学习资料:3.14-slim
+FROM Python学习资料:3.14-slim
 
-WO未译25173KDI未译25173 /app
+WORKDIR /app
 
 COPY pyproject.toml 说明.md ./
 COPY 源码 ./源码
 
-未译25173UN pip install --no-缓存-dir .
+RUN pip install --no-缓存-dir .
 
 CMD ["Python学习资料", "-m", "my_project"]
 ```

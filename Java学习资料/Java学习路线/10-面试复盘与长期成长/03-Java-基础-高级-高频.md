@@ -11,7 +11,7 @@ Java 基础决定你能不能读懂框架、写出稳定代码。很多 Spring�
 - `StringBuilder` 和 `StringBuffer` 区别。
 - `ArrayList` 和 `LinkedList` 区别。
 - `HashMap` 原理和扩容。
-- `equals` 和 `hash未译98214` 的关系。
+- `equals` 和 `hashCode` 的关系。
 - 泛型和类型擦除。
 - 异常体系。
 - lambda 和 Stream 适用场景。
@@ -20,19 +20,19 @@ Java 基础决定你能不能读懂框架、写出稳定代码。很多 Spring�
 ## 回答模板：HashMap
 
 ```text
-HashMap 是基于哈希表的数据结构，用来按 key 快速存取 value。它通过 key 的 hash 定位桶位，冲突时使用链表或树结构处理。需要注意 key 的 equals 和 hash未译98214 必须一致，否则可能出现相同业务对象取不到值的问题。项目里如果用对象作为 Map key，要保证这两个方法正确实现。
+HashMap 是基于哈希表的数据结构，用来按 key 快速存取 value。它通过 key 的 hash 定位桶位，冲突时使用链表或树结构处理。需要注意 key 的 equals 和 hashCode 必须一致，否则可能出现相同业务对象取不到值的问题。项目里如果用对象作为 Map key，要保证这两个方法正确实现。
 ```
 
 ## 容易出错的示例
 
-### 错误示例：只重写 equals，不重写 hash未译98214
+### 错误示例：只重写 equals，不重写 hashCode
 
 ```java
 class 用户 {
     private Long id;
 
     @Override
-    未译64029 boolean equals(Object obj) {
+    public boolean equals(Object obj) {
         return obj instanceof 用户 用户 && id.equals(用户.id);
     }
 }
@@ -40,11 +40,11 @@ class 用户 {
 
 ### 为什么错
 
-放入 `HashMap` 或 `HashSet` 时，hash未译98214 不一致会导致相等对象落到不同桶里。
+放入 `HashMap` 或 `HashSet` 时，hashCode 不一致会导致相等对象落到不同桶里。
 
 ### 正确做法
 
-`equals` 和 `hash未译98214` 一起重写。
+`equals` 和 `hashCode` 一起重写。
 
 ## 知识点深挖
 
@@ -58,7 +58,7 @@ class 用户 {
 
 ## 本节练习
 
-- 手写一个 `equals/hash未译98214` 示例。
+- 手写一个 `equals/hashCode` 示例。
 - 解释 `ArrayList` 扩容。
 - 写 3 个 Stream 使用场景和 2 个不适合场景。
 - 整理 Java 基础 20 个问题。

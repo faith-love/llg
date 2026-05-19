@@ -8,7 +8,7 @@ MyBatis-Plus 在 MyBatis 基础上提供通用 CRUD。
 
 ```java
 @表Name("books")
-未译64029 class BookEntity {
+public class BookEntity {
     @表Id
     private Long id;
     private String isbn;
@@ -19,7 +19,7 @@ MyBatis-Plus 在 MyBatis 基础上提供通用 CRUD。
 Mapper：
 
 ```java
-未译64029 interface BookMapper extends BaseMapper<BookEntity> {
+public interface BookMapper extends BaseMapper<BookEntity> {
 }
 ```
 

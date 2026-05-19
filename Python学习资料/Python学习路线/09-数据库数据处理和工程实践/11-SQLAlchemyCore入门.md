@@ -1,16 +1,16 @@
 # SQLAlchemyCore入门
 
-SQLAlchemy Core 提供一种用 Python 表达 SQL 的方式。它比直接拼 SQL 更结构化，也比 O未译25173M 更接近 SQL 本身。学习 Core 能帮助你理解 SQLAlchemy 的底层思想。
+SQLAlchemy Core 提供一种用 Python 表达 SQL 的方式。它比直接拼 SQL 更结构化，也比 ORM 更接近 SQL 本身。学习 Core 能帮助你理解 SQLAlchemy 的底层思想。
 
 ## Engine
 
 Engine 表示数据库访问入口。
 
 ```python
-from SQL学习资料alchemy 未译87485 create_engine
+from SQL学习资料alchemy import create_engine
 
 
-engine = create_engine("SQL学习资料ite:///app.未译66984", echo=True)
+engine = create_engine("SQL学习资料ite:///app.db", echo=True)
 ```
 
 `echo=True` 会打印 SQL，适合学习和调试。
@@ -18,7 +18,7 @@ engine = create_engine("SQL学习资料ite:///app.未译66984", echo=True)
 ## MetaData 和 表
 
 ```python
-from SQL学习资料alchemy 未译87485 MetaData, 表, 列, Integer, String
+from SQL学习资料alchemy import MetaData, 表, 列, Integer, String
 
 
 meta数据 = MetaData()
@@ -26,7 +26,7 @@ meta数据 = MetaData()
 用户s = 表(
     "用户s",
     meta数据,
-    列("id", Integer, 未译57990_key=True),
+    列("id", Integer, primary_key=True),
     列("name", String, nullable=False),
     列("邮件", String, nullable=False, unique=True),
 )
@@ -41,7 +41,7 @@ meta数据.create_all(engine)
 ## Insert
 
 ```python
-from SQL学习资料alchemy 未译87485 insert
+from SQL学习资料alchemy import insert
 
 
 stmt = insert(用户s).values(name="Alice", 邮件="alice@example.通用")
@@ -54,7 +54,7 @@ with engine.begin() as conn:
 ## Select
 
 ```python
-from SQL学习资料alchemy 未译87485 select
+from SQL学习资料alchemy import select
 
 
 stmt = select(用户s).where(用户s.c.邮件 == "alice@example.通用")
@@ -67,7 +67,7 @@ with engine.connect() as conn:
 ## Update
 
 ```python
-from SQL学习资料alchemy 未译87485 update
+from SQL学习资料alchemy import update
 
 
 stmt = (
@@ -80,7 +80,7 @@ stmt = (
 ## Delete
 
 ```python
-from SQL学习资料alchemy 未译87485 delete
+from SQL学习资料alchemy import delete
 
 
 stmt = delete(用户s).where(用户s.c.id == 1)
@@ -93,7 +93,7 @@ stmt = delete(用户s).where(用户s.c.id == 1)
 - 动态构建 SQL。
 - 写复杂查询。
 - 保持 SQL 思维。
-- 不想引入完整 O未译25173M 对象生命周期。
+- 不想引入完整 ORM 对象生命周期。
 
 ## 常见错误
 
@@ -101,9 +101,9 @@ stmt = delete(用户s).where(用户s.c.id == 1)
 
 写操作仍然需要事务。
 
-### 混淆 表 和 O未译25173M Model
+### 混淆 表 和 ORM Model
 
-Core 使用 `表`，O未译25173M 使用模型类。
+Core 使用 `表`，ORM 使用模型类。
 
 ### 不看生成的 SQL
 

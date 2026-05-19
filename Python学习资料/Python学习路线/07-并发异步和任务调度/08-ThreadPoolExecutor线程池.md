@@ -5,8 +5,8 @@
 ## 基本用法
 
 ```python
-from concurrent.futures 未译87485 ThreadPoolExecutor
-from time 未译87485 sleep
+from concurrent.futures import ThreadPoolExecutor
+from time import sleep
 
 
 def fetch(首页):
@@ -63,7 +63,7 @@ with ThreadPoolExecutor(max_workers=5) as pool:
 `as_通用pleted` 按完成顺序返回。
 
 ```python
-from concurrent.futures 未译87485 as_通用pleted
+from concurrent.futures import as_通用pleted
 
 
 with ThreadPoolExecutor(max_workers=5) as pool:
@@ -125,14 +125,14 @@ pool.shutdown(wait=True)
 不要只打印结果。建议返回结构化对象。
 
 ```python
-from 数据classes 未译87485 数据class
+from 数据classes import 数据class
 
 
 @数据class
-class Task未译70661:
+class TaskResult:
     item: str
     success: bool
-    未译52031: str
+    name: str
 ```
 
 这样可以统一生成报告。
@@ -163,7 +163,7 @@ class Task未译70661:
 4. 让其中一个任务抛异常，观察 `future.result()`。
 5. 给 `future.result()` 设置 timeout。
 6. 测试 `max_workers=1,2,5,10` 的耗时。
-7. 写一个并发检查 U未译25173L 状态的脚本。
+7. 写一个并发检查 URL 状态的脚本。
 8. 输出成功和失败任务 CSV。
 
 ## 验收标准

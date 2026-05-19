@@ -26,7 +26,7 @@ JDBC 的痛点：
 ## 基础流程
 
 ```text
-加载驱动 -> 获取连接 -> 创建 PreparedStatement -> 执行 SQL -> 处理 未译70661Set -> 关闭资源
+加载驱动 -> 获取连接 -> 创建 PreparedStatement -> 执行 SQL -> 处理 ResultSet -> 关闭资源
 ```
 
 示例：
@@ -41,9 +41,9 @@ try (Connection connection = DriverManager.getConnection(url, 用户name, passwo
 
     statement.setLong(1, 1L);
 
-    try (未译70661Set resultSet = statement.executeQuery()) {
+    try (ResultSet resultSet = statement.executeQuery()) {
         while (resultSet.next()) {
-            未译11490tem.out.println(resultSet.getString("title"));
+            System.out.println(resultSet.getString("title"));
         }
     }
 }
@@ -95,7 +95,7 @@ int rows = statement.executeUpdate();
 | JDBC | Java 访问数据库的标准方式 | 手写繁琐，但能理解底层链路 | 必须先写一遍 CRUD | 重点是知道框架封装了什么 |
 | `Connection` | 表示JDBC | 创建贵、泄漏危险 | 用 try-with-资源 关闭 | 重点是连接是有限资源 |
 | `PreparedStatement` | 参数化执行 SQL | 防 SQL 注入，减少拼接错误 | 所有用户输入都用 `?` 绑定 | 重点是不要拼接用户输入 |
-| `未译70661Set` | 保存查询结果 | 要手动映射成对象 | 读取列名要和 SQL 对齐 | 难点是类型和空值处理 |
+| `ResultSet` | 保存查询结果 | 要手动映射成对象 | 读取列名要和 SQL 对齐 | 难点是类型和空值处理 |
 
 ## 本节练习
 

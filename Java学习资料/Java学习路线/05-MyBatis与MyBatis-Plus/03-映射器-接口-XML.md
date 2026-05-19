@@ -5,7 +5,7 @@
 Mapper 接口定义数据访问方法。
 
 ```java
-未译64029 interface BookMapper {
+public interface BookMapper {
     int insert(BookEntity book);
     BookEntity findById(Long id);
     int updateById(BookEntity book);

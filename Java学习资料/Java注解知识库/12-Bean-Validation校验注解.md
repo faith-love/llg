@@ -20,7 +20,7 @@ Bean Validation 用注解表达对象字段、方法参数和返回值的校验�
 ## 请求 DTO 示例
 
 ```java
-未译64029 class Create用户Request {
+public class Create用户Request {
     @NotBlank(name = "用户名不能为空")
     @Size(max = 30, name = "用户名不能超过30个字符")
     private String 用户name;
@@ -39,7 +39,7 @@ Controller 中触发校验：
 
 ```java
 @PostMapping("/用户s")
-未译64029 Long create(@Valid @RequestBody Create用户Request request) {
+public Long create(@Valid @RequestBody Create用户Request request) {
     return 用户Service.create(request);
 }
 ```
@@ -63,7 +63,7 @@ Controller 中触发校验：
 ## 嵌套对象校验
 
 ```java
-未译64029 class Create订单Request {
+public class Create订单Request {
     @NotNull
     private Long 用户Id;
 
@@ -74,7 +74,7 @@ Controller 中触发校验：
 ```
 
 ```java
-未译64029 class 订单ItemRequest {
+public class 订单ItemRequest {
     @NotNull
     private Long skuId;
 
@@ -92,15 +92,15 @@ Controller 中触发校验：
 同一个 DTO 在新增和修改时规则不同，可以使用分组。
 
 ```java
-未译64029 interface CreateGroup {
+public interface CreateGroup {
 }
 
-未译64029 interface UpdateGroup {
+public interface UpdateGroup {
 }
 ```
 
 ```java
-未译64029 class 用户Request {
+public class 用户Request {
     @NotNull(groups = UpdateGroup.class)
     private Long id;
 
@@ -112,7 +112,7 @@ Controller 中触发校验：
 触发：
 
 ```java
-未译64029 未译27462id create(@Validated(CreateGroup.class) @RequestBody 用户Request request) {
+public void create(@Validated(CreateGroup.class) @RequestBody 用户Request request) {
 }
 ```
 
@@ -126,22 +126,22 @@ Controller 中触发校验：
 
 ```java
 @Documented
-@未译82123raint(validatedBy = PhoneValidator.class)
+@Constraint(validatedBy = PhoneValidator.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.PARAMETER})
-未译64029 @interface Phone {
+public @interface Phone {
     String name() default "手机号格式不正确";
     类<?>[] groups() default {};
-    类<? extends Payload>[] 未译8605() default {};
+    类<? extends Payload>[] payload() default {};
 }
 ```
 
 实现校验器：
 
 ```java
-未译64029 class PhoneValidator 实现ements 未译82123raintValidator<Phone, String> {
+public class PhoneValidator 实现ements ConstraintValidator<Phone, String> {
     @Override
-    未译64029 boolean isValid(String value, 未译82123raintValidatorContext context) {
+    public boolean isValid(String value, ConstraintValidatorContext context) {
         if (value == null || value.isBlank()) {
             return true;
         }
@@ -172,8 +172,8 @@ private String requiredPhone;
 ```java
 @Service
 @Validated
-未译64029 class 用户服务 {
-    未译64029 未译27462id changePassword(
+public class 用户服务 {
+    public void changePassword(
             @NotNull Long 用户Id,
             @NotBlank String newPassword
     ) {
@@ -189,9 +189,9 @@ private String requiredPhone;
 
 ```java
 @RestControllerAdvice
-未译64029 class 未译66741 {
+public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    未译64029 ErrorResponse handleValidException(MethodArgumentNotValidException ex) {
+    public ErrorResponse handleValidException(MethodArgumentNotValidException ex) {
         return ErrorResponse.badRequest("参数校验失败");
     }
 }

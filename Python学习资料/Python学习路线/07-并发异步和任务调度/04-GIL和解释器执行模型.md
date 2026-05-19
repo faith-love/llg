@@ -33,8 +33,8 @@ GIL 的影响主要体现在纯 Python CPU 密集代码上。
 示例：
 
 ```python
-from concurrent.futures 未译87485 ThreadPoolExecutor
-from time 未译87485 sleep
+from concurrent.futures import ThreadPoolExecutor
+from time import sleep
 
 
 def slow_io(首页):

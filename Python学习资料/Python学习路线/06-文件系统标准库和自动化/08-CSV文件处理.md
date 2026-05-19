@@ -5,8 +5,8 @@ CSV 是最常见的表格交换格式之一。标准库 `csv` 可以处理逗号
 ## 读取 CSV
 
 ```python
-未译87485 csv
-from pathlib 未译87485 Path
+import csv
+from pathlib import Path
 
 path = Path("用户s.csv")
 
@@ -18,13 +18,13 @@ with path.open("r", encoding="utf-8", newline="") as file:
 
 `row` 是列表。
 
-## 使用 Dict未译25173eader
+## 使用 DictReader
 
 如果第一行是表头：
 
 ```python
 with path.open("r", encoding="utf-8", newline="") as file:
-    reader = csv.Dict未译25173eader(file)
+    reader = csv.DictReader(file)
     for row in reader:
         print(row["name"], row["age"])
 ```
@@ -52,7 +52,7 @@ fieldnames = ["name", "age"]
 
 with path.open("w", encoding="utf-8", newline="") as file:
     writer = csv.DictWriter(file, fieldnames=fieldnames)
-    writer.write未译83452er()
+    writer.writeheader()
     writer.writerow({"name": "Alice", "age": 18})
 ```
 
@@ -108,7 +108,7 @@ age = int(row["age"])
 
 ## 验收标准
 
-- 能用 `csv.reader` 和 `Dict未译25173eader`。
+- 能用 `csv.reader` 和 `DictReader`。
 - 能用 `csv.writer` 和 `DictWriter`。
 - 能显式处理编码和 newline。
 - 能处理 CSV 字段类型转换。

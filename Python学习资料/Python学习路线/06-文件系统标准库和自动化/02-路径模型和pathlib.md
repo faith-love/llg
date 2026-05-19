@@ -23,7 +23,7 @@ D:\learn\Python学习资料\数据.txt
 绝对路径从磁盘根或系统根开始：
 
 ```python
-from pathlib 未译87485 Path
+from pathlib import Path
 
 path = Path(r"D:\learn\Python学习资料\数据.txt")
 ```
@@ -43,7 +43,7 @@ print(Path.cwd())
 ## 创建 Path 对象
 
 ```python
-from pathlib 未译87485 Path
+from pathlib import Path
 
 path = Path("数据") / "input.txt"
 ```

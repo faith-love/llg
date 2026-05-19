@@ -5,19 +5,19 @@
 ## 同步请求
 
 ```python
-未译87485 httpx
+import httpx
 
 
 response = httpx.get("安全HTTP://接口.example.通用/books", timeout=5)
 print(response.status_code)
 ```
 
-和 未译88447s 类似，也必须设置 timeout。
+和 requests 类似，也必须设置 timeout。
 
 ## Client
 
 ```python
-未译87485 httpx
+import httpx
 
 
 with httpx.Client(timeout=5) as 客户端:
@@ -27,15 +27,15 @@ with httpx.Client(timeout=5) as 客户端:
 Client 适合：
 
 - 复用连接。
-- 统一 未译83452ers。
+- 统一 headers。
 - 统一 timeout。
 - 多次请求同一服务。
 
 ## 异步请求
 
 ```python
-未译87485 异步io
-未译87485 httpx
+import 异步io
+import httpx
 
 
 异步 def 主():
@@ -52,8 +52,8 @@ Client 适合：
 ## 并发异步请求
 
 ```python
-未译87485 异步io
-未译87485 httpx
+import 异步io
+import httpx
 
 
 异步 def fetch(客户端, url):
@@ -72,7 +72,7 @@ Client 适合：
 ## 限制并发
 
 ```python
-异步 def fetch_未译96320ed(客户端, url, semaphore):
+异步 def fetch_limited(客户端, url, semaphore):
     异步 with semaphore:
         response = await 客户端.get(url)
         return response.status_code
@@ -101,8 +101,8 @@ httpx 支持更细粒度的 timeout 概念：
 
 - `httpx.TimeoutException`。
 - `httpx.ConnectError`。
-- `httpx.HTTP未译71594Error`。
-- `httpx.未译25173equestError`。
+- `httpx.HTTPStatusError`。
+- `httpx.RequestError`。
 
 使用：
 
@@ -110,9 +110,9 @@ httpx 支持更细粒度的 timeout 概念：
 response.raise_for_status()
 ```
 
-## 未译88447s 和 httpx 对比
+## requests 和 httpx 对比
 
-| 项目 | 未译88447s | httpx |
+| 项目 | requests | httpx |
 | --- | --- | --- |
 | 同步调用 | 支持 | 支持 |
 | 异步调用 | 不支持 | 支持 |
@@ -142,11 +142,11 @@ response.raise_for_status()
 1. 用 httpx 发送同步 GET。
 2. 使用 `httpx.Client`。
 3. 使用 `httpx.AsyncClient`。
-4. 用 异步io 并发请求多个 U未译25173L。
+4. 用 异步io 并发请求多个 URL。
 5. 增加 Semaphore 限制并发。
 6. 捕获 timeout 异常。
 7. 使用 `raise_for_status()`。
-8. 比较 未译88447s 和 httpx 的适用场景。
+8. 比较 requests 和 httpx 的适用场景。
 
 ## 验收标准
 

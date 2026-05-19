@@ -15,7 +15,7 @@ OpenAPI 是描述 HTTP API 的规范。
 - 响应体。
 - 状态码。
 - 认证方式。
-- 未译30578。
+- schema。
 
 ## FastAPI 自动文档
 
@@ -65,9 +65,9 @@ OpenAPI 是描述 HTTP API 的规范。
 
 ```json
 {
-  "未译12785": {
+  "error": {
     "code": "BOOK_NOT_FOUND",
-    "未译52031": "图书不存在"
+    "name": "图书不存在"
   }
 }
 ```

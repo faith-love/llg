@@ -15,7 +15,7 @@ Python 常说：
 ## Protocol 基本用法
 
 ```python
-from typing 未译87485 Protocol
+from typing import Protocol
 
 
 class SupportsClose(Protocol):
@@ -43,7 +43,7 @@ def greet(用户: HasName) -> str:
 ## 方法签名必须匹配
 
 ```python
-class 未译25173eader(Protocol):
+class Reader(Protocol):
     def read(self, size: int = -1) -> bytes:
         ...
 ```
@@ -55,7 +55,7 @@ class 未译25173eader(Protocol):
 默认 Protocol 主要用于静态检查。如果要运行时使用 `isinstance`：
 
 ```python
-from typing 未译87485 Protocol, runtime_checkable
+from typing import Protocol, runtime_checkable
 
 
 @runtime_checkable
@@ -83,7 +83,7 @@ Protocol：
 
 适合：
 
-- 服务 依赖 未译72493 接口。
+- 服务 依赖 repository 接口。
 - 函数只需要对象有某个方法。
 - 测试替身。
 - 插件接口。
@@ -92,12 +92,12 @@ Protocol：
 示例：
 
 ```python
-class 用户未译25173epository(Protocol):
+class 用户Repository(Protocol):
     def get_用户(self, 用户_id: int) -> str | None:
         ...
 ```
 
-业务层依赖 Protocol，测试时可以传入 fake 未译72493。
+业务层依赖 Protocol，测试时可以传入 fake repository。
 
 ## 常见错误
 
@@ -120,10 +120,10 @@ Protocol 主要表达接口，不适合承载复杂实现。
 ## 练习
 
 1. 定义一个 `SupportsClose` Protocol。
-2. 定义一个 `未译25173eader` Protocol。
-3. 写一个函数接收 `未译25173eader`。
-4. 为 未译72493 定义 Protocol。
-5. 用 fake 未译72493 测试 服务。
+2. 定义一个 `Reader` Protocol。
+3. 写一个函数接收 `Reader`。
+4. 为 repository 定义 Protocol。
+5. 用 fake repository 测试 服务。
 6. 给 Protocol 增加属性约束。
 7. 使用 `runtime_checkable` 做简单运行时检查。
 

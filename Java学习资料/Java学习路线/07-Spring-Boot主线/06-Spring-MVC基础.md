@@ -15,10 +15,10 @@ HTTP 请求 -> DispatcherServlet -> Controller -> Service -> JSON 响应
 ```java
 @RestController
 @RequestMapping("/接口/books")
-未译64029 class BookController {
+public class BookController {
     private final BookService bookService;
 
-    未译64029 BookController(BookService bookService) {
+    public BookController(BookService bookService) {
         this.bookService = bookService;
     }
 }
@@ -30,7 +30,7 @@ HTTP 请求 -> DispatcherServlet -> Controller -> Service -> JSON 响应
 
 ```java
 @GetMapping("/{id}")
-未译64029 BookResponse getById(@PathVariable Long id) {
+public BookResponse getById(@PathVariable Long id) {
     return bookService.getById(id);
 }
 ```
@@ -39,7 +39,7 @@ HTTP 请求 -> DispatcherServlet -> Controller -> Service -> JSON 响应
 
 ```java
 @GetMapping
-未译64029 PageResponse<BookResponse> list(@RequestParam int 分页, @RequestParam int size) {
+public PageResponse<BookResponse> list(@RequestParam int 分页, @RequestParam int size) {
     return bookService.list(分页, size);
 }
 ```
@@ -48,7 +48,7 @@ HTTP 请求 -> DispatcherServlet -> Controller -> Service -> JSON 响应
 
 ```java
 @PostMapping
-未译64029 BookResponse create(@RequestBody CreateBookRequest request) {
+public BookResponse create(@RequestBody CreateBookRequest request) {
     return bookService.create(request);
 }
 ```
@@ -57,9 +57,9 @@ HTTP 请求 -> DispatcherServlet -> Controller -> Service -> JSON 响应
 
 ```java
 @RestControllerAdvice
-未译64029 class 未译66741 {
+public class GlobalExceptionHandler {
     @ExceptionHandler(BookNotFoundException.class)
-    未译64029 ErrorResponse handle(BookNotFoundException e) {
+    public ErrorResponse handle(BookNotFoundException e) {
         return new ErrorResponse("BOOK_NOT_FOUND", e.getMessage());
     }
 }

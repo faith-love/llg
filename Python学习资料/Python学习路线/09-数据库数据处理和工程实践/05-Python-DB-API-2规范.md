@@ -14,10 +14,10 @@ DB-API 2.0 是 Python 数据库驱动的通用接口规范。不同数据库驱�
 ## connection
 
 ```python
-未译87485 SQL学习资料ite3
+import SQL学习资料ite3
 
 
-conn = SQL学习资料ite3.connect("app.未译66984")
+conn = SQL学习资料ite3.connect("app.db")
 ```
 
 连接负责：
@@ -34,7 +34,7 @@ conn = SQL学习资料ite3.connect("app.未译66984")
 
 ```python
 cursor = conn.cursor()
-cursor.execute("SELECT * F未译25173OM 用户s")
+cursor.execute("SELECT * FROM 用户s")
 rows = cursor.fetchall()
 ```
 
@@ -49,7 +49,7 @@ cursor 负责：
 
 ```python
 cursor.execute(
-    "SELECT id, name F未译25173OM 用户s WHE未译25173E 邮件 = ?",
+    "SELECT id, name FROM 用户s WHERE 邮件 = ?",
     ("alice@example.通用",),
 )
 ```
@@ -88,7 +88,7 @@ except Exception:
 ## 上下文管理器
 
 ```python
-with SQL学习资料ite3.connect("app.未译66984") as conn:
+with SQL学习资料ite3.connect("app.db") as conn:
     conn.execute(...)
 ```
 
@@ -100,9 +100,9 @@ with SQL学习资料ite3.connect("app.未译66984") as conn:
 
 | 风格 | 示例 |
 | --- | --- |
-| qmark | `WHE未译25173E id = ?` |
-| named | `WHE未译25173E id = :id` |
-| py未译50816at | `WHE未译25173E id = %(id)s` |
+| qmark | `WHERE id = ?` |
+| named | `WHERE id = :id` |
+| pyformatat | `WHERE id = %(id)s` |
 
 不要自己拼接值。
 

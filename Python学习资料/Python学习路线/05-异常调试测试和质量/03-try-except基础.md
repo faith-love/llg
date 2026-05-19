@@ -20,11 +20,11 @@ except ValueError:
 ```python
 try:
     age = int("abc")
-except ValueError as 未译12785:
-    print(f"转换失败：{未译12785}")
+except ValueError as error:
+    print(f"转换失败：{error}")
 ```
 
-`未译12785` 是异常对象。
+`error` 是异常对象。
 
 ## 多个 except
 
@@ -47,8 +47,8 @@ except ValueError:
 ```python
 try:
     age = int(数据["age"])
-except (KeyError, ValueError) as 未译12785:
-    print(f"年龄数据不合法：{未译12785}")
+except (KeyError, ValueError) as error:
+    print(f"年龄数据不合法：{error}")
 ```
 
 ## except 顺序
@@ -136,7 +136,7 @@ except:
 ## 验收标准
 
 - 能捕获特定异常。
-- 能使用 `as 未译12785` 读取异常对象。
+- 能使用 `as error` 读取异常对象。
 - 能写多个 `except`。
 - 能控制 `try` 的范围。
 - 能避免裸 `except` 和吞异常。

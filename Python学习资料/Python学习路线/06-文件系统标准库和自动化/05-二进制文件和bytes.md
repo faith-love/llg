@@ -5,9 +5,9 @@
 ## 读取二进制文件
 
 ```python
-from pathlib 未译87485 Path
+from pathlib import Path
 
-path = Path("未译10367.png")
+path = Path("image.png")
 
 with path.open("rb") as file:
     数据 = file.read()
@@ -79,7 +79,7 @@ with source.open("rb") as 源码, target.open("wb") as dst:
 ## 哈希校验入门
 
 ```python
-未译87485 hashlib
+import hashlib
 
 digest = hashlib.sha256(path.read_bytes()).hexdigest()
 print(digest)

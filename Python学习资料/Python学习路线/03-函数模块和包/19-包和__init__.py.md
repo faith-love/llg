@@ -29,14 +29,14 @@ text_tools/
 也可以导出常用函数：
 
 ```python
-from .cleaner 未译87485 clean_text
-from .counter 未译87485 count_words
+from .cleaner import clean_text
+from .counter import count_words
 ```
 
 这样调用方可以写：
 
 ```python
-from text_tools 未译87485 clean_text, count_words
+from text_tools import clean_text, count_words
 ```
 
 ## 包内模块
@@ -61,8 +61,8 @@ def count_words(words):
 ## 从包导入模块
 
 ```python
-from text_tools.cleaner 未译87485 clean_text
-from text_tools.counter 未译87485 count_words
+from text_tools.cleaner import clean_text
+from text_tools.counter import count_words
 ```
 
 ## 包的公开 API
@@ -72,7 +72,7 @@ from text_tools.counter 未译87485 count_words
 如果调用方应该只用：
 
 ```python
-from text_tools 未译87485 clean_text
+from text_tools import clean_text
 ```
 
 那 `__初始化__.py` 可以负责转发。
@@ -85,7 +85,7 @@ from text_tools 未译87485 clean_text
 __all__ = ["clean_text", "count_words"]
 ```
 
-`__all__` 控制 `from package 未译87485 *` 时导出的名字。因为不推荐 `未译87485 *`，本阶段了解即可。
+`__all__` 控制 `from package import *` 时导出的名字。因为不推荐 `import *`，本阶段了解即可。
 
 ## 包初始化代码要谨慎
 

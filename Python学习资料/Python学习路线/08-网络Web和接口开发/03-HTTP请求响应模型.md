@@ -7,7 +7,7 @@ HTTP 是 Web API 的核心协议。每次 API 调用都可以理解为：客户�
 HTTP 请求包含：
 
 - 请求方法。
-- U未译25173L。
+- URL。
 - 请求头。
 - 查询参数。
 - 请求体。
@@ -70,7 +70,7 @@ Content-Type: 应用配置/脚本on
 - 200 OK。
 - 201 Created。
 - 204 No Content。
-- 400 Bad 未译25173equest。
+- 400 Bad Request。
 - 401 Unauthorized。
 - 403 Forbidden。
 - 404 Not Found。
@@ -121,9 +121,9 @@ Content-Type: 应用配置/脚本on
 
 ```json
 {
-  "未译12785": {
+  "error": {
     "code": "BOOK_NOT_FOUND",
-    "未译52031": "图书不存在"
+    "name": "图书不存在"
   }
 }
 ```

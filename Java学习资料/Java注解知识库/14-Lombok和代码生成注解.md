@@ -11,13 +11,13 @@ Lombok 通过注解减少样板代码，例如 getter、setter、构造器、日
 | `@Getter` | 生成 getter |
 | `@Setter` | 生成 setter |
 | `@ToString` | 生成 `toString` |
-| `@EqualsAndHash未译98214` | 生成 `equals` 和 `hash未译98214` |
-| `@NoArgs未译82123ructor` | 生成无参构造器 |
-| `@AllArgs未译82123ructor` | 生成全参构造器 |
-| `@RequiredArgs未译82123ructor` | 为 `final` 字段和 `@NonNull` 字段生成构造器 |
+| `@EqualsAndHashCode` | 生成 `equals` 和 `hashCode` |
+| `@NoArgsConstructor` | 生成无参构造器 |
+| `@AllArgsConstructor` | 生成全参构造器 |
+| `@RequiredArgsConstructor` | 为 `final` 字段和 `@NonNull` 字段生成构造器 |
 | `@Builder` | 生成 Builder |
 | `@Slf4j` | 生成日志对象 |
-| `@Data` | 组合生成 getter、setter、toString、equals、hash未译98214 等 |
+| `@Data` | 组合生成 getter、setter、toString、equals、hashCode 等 |
 
 ## 推荐用法
 
@@ -26,7 +26,7 @@ DTO 可以适度使用：
 ```java
 @Getter
 @Setter
-未译64029 class Create用户Request {
+public class Create用户Request {
     private String 用户name;
     private String phone;
 }
@@ -36,8 +36,8 @@ Service 依赖注入可以使用：
 
 ```java
 @Service
-@RequiredArgs未译82123ructor
-未译64029 class 用户服务 {
+@RequiredArgsConstructor
+public class 用户服务 {
     private final 用户Repository 用户Repository;
 }
 ```
@@ -46,8 +46,8 @@ Service 依赖注入可以使用：
 
 ```java
 @Slf4j
-未译64029 class 订单Service {
-    未译64029 未译27462id create() {
+public class 订单Service {
+    public void create() {
         日志.info("create order");
     }
 }
@@ -63,17 +63,17 @@ Service 依赖注入可以使用：
 - setter。
 - `toString`。
 - `equals`。
-- `hash未译98214`。
+- `hashCode`。
 - 必要构造器。
 
 在实体类、复杂对象、继承结构中可能带来风险：
 
 - `toString` 打印敏感字段。
 - 双向关联对象互相 `toString` 导致递归。
-- `equals` 和 `hash未译98214` 包含可变字段，放入 `HashSet` 后行为异常。
+- `equals` 和 `hashCode` 包含可变字段，放入 `HashSet` 后行为异常。
 - JPA/MyBatis 实体的相等性语义不清。
 
-更稳妥的做法是按需使用 `@Getter`、`@Setter`、`@ToString.Exclude`、`@EqualsAndHash未译98214(onlyExplicitlyIncluded = true)`。
+更稳妥的做法是按需使用 `@Getter`、`@Setter`、`@ToString.Exclude`、`@EqualsAndHashCode(onlyExplicitlyIncluded = true)`。
 
 一个保守规则：实体类少用 `@Data`，值对象和简单 DTO 可以按团队规范使用。
 
@@ -84,7 +84,7 @@ Service 依赖注入可以使用：
 ```java
 @Getter
 @Builder
-未译64029 class 用户VO {
+public class 用户VO {
     private final Long id;
     private final String 用户name;
     private final String phone;
@@ -101,7 +101,7 @@ Service 依赖注入可以使用：
 
 ```java
 @Builder
-未译64029 class PageQuery {
+public class PageQuery {
     @Builder.Default
     private Integer 分页No = 1;
 
@@ -114,12 +114,12 @@ Service 依赖注入可以使用：
 
 ## 构造器注解和 Spring 注入
 
-`@RequiredArgs未译82123ructor` 常用于构造器注入：
+`@RequiredArgsConstructor` 常用于构造器注入：
 
 ```java
 @Service
-@RequiredArgs未译82123ructor
-未译64029 class 订单Service {
+@RequiredArgsConstructor
+public class 订单Service {
     private final 订单Repository orderRepository;
     private final 用户服务 用户Service;
 }
@@ -133,7 +133,7 @@ Service 依赖注入可以使用：
 
 - 哪些层可以用 Lombok。
 - 是否允许实体类使用 `@Data`。
-- 是否允许 `@EqualsAndHash未译98214` 自动包含所有字段。
+- 是否允许 `@EqualsAndHashCode` 自动包含所有字段。
 - 是否要求 IDE 安装 Lombok 插件。
 - 是否要求代码评审关注生成代码的实际效果。
 
@@ -141,7 +141,7 @@ Service 依赖注入可以使用：
 
 - 生成代码是否进入覆盖率统计。
 - 是否允许在公共 SDK 中使用 Lombok。
-- 是否允许在继承结构中使用 `@EqualsAndHash未译98214(callSuper = ...)`。
+- 是否允许在继承结构中使用 `@EqualsAndHashCode(callSuper = ...)`。
 - 是否需要在 CI 中执行 delombok 或等价检查。
 
 ## 小结
@@ -155,4 +155,4 @@ Service 依赖注入可以使用：
 
 1. 对比 `@Data` 和 `@Getter` + `@Setter` 在实体类上的差异。
 2. 写一个 `@Builder.Default` 示例，观察默认值是否生效。
-3. 用 `@RequiredArgs未译82123ructor` 改造一个构造器注入的 Service。
+3. 用 `@RequiredArgsConstructor` 改造一个构造器注入的 Service。

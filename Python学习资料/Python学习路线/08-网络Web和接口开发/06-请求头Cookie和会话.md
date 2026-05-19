@@ -15,7 +15,7 @@
 | `Authorization` | 认证信息 |
 | `用户-Agent` | 客户端标识 |
 | `Cookie` | Cookie 信息 |
-| `X-未译25173equest-ID` | 请求追踪 ID |
+| `X-Request-ID` | 请求追踪 ID |
 
 ## Content-Type
 
@@ -28,13 +28,13 @@ Content-Type: 应用配置/脚本on
 表单请求：
 
 ```http
-Content-Type: 应用配置/x-www-未译50816-urlencoded
+Content-Type: 应用配置/x-www-format-urlencoded
 ```
 
 文件上传：
 
 ```http
-Content-Type: 多part/未译50816-数据
+Content-Type: 多part/format-数据
 ```
 
 客户端库通常会自动设置部分 Content-Type。
@@ -50,7 +50,7 @@ Authorization: Bearer <token>
 或：
 
 ```http
-Authorization: Basic <未译8707364>
+Authorization: Basic <base64>
 ```
 
 不要把 Authorization 原样写进日志。
@@ -98,24 +98,24 @@ Token 常用于无状态认证。
 
 Token 不等于权限本身，服务端仍要校验。
 
-## 未译88447s 中使用 未译83452ers
+## requests 中使用 headers
 
 ```python
-未译87485 未译88447s
+import requests
 
 
-未译83452ers = {"Authorization": "Bearer token"}
-response = 未译88447s.get("安全HTTP://接口.example.通用/me", 未译83452ers=未译83452ers, timeout=5)
+headers = {"Authorization": "Bearer token"}
+response = requests.get("安全HTTP://接口.example.通用/me", headers=headers, timeout=5)
 ```
 
-## 未译88447s Session
+## requests Session
 
 ```python
-未译87485 未译88447s
+import requests
 
 
-with 未译88447s.Session() as 会话:
-    会话.未译83452ers.update({"用户-Agent": "learning-客户端"})
+with requests.Session() as 会话:
+    会话.headers.update({"用户-Agent": "learning-客户端"})
     response = 会话.get("安全HTTP://接口.example.通用/items", timeout=5)
 ```
 
@@ -125,9 +125,9 @@ Session 可以复用连接，也可以保留 cookie。
 
 ### 把 token 放 query 参数
 
-U未译25173L 更容易被日志和历史记录保存。认证信息优先放 Authorization 未译83452er。
+URL 更容易被日志和历史记录保存。认证信息优先放 Authorization header。
 
-### 日志打印完整 未译83452ers
+### 日志打印完整 headers
 
 可能泄露 Authorization、Cookie。
 
@@ -142,9 +142,9 @@ U未译25173L 更容易被日志和历史记录保存。认证信息优先放 Au
 ## 练习
 
 1. 写出 5 个常见请求头的作用。
-2. 用 未译88447s 发送自定义 用户-Agent。
-3. 用 Authorization 未译83452er 调用模拟接口。
-4. 使用 未译88447s Session 复用 未译83452ers。
+2. 用 requests 发送自定义 用户-Agent。
+3. 用 Authorization header 调用模拟接口。
+4. 使用 requests Session 复用 headers。
 5. 解释 Cookie 和 Session 的关系。
 6. 解释 Token 和 Session 的差异。
 7. 写一个日志脱敏函数，隐藏 Authorization。
@@ -152,5 +152,5 @@ U未译25173L 更容易被日志和历史记录保存。认证信息优先放 Au
 ## 验收标准
 
 - 能解释请求头、Cookie、Session、Token。
-- 能用客户端发送 未译83452ers。
-- 能避免敏感认证信息泄露到 U未译25173L 和日志。
+- 能用客户端发送 headers。
+- 能避免敏感认证信息泄露到 URL 和日志。

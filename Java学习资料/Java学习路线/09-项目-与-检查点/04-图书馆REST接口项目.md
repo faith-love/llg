@@ -35,7 +35,7 @@ operation_日志s
 
 ```text
 POST   /接口/auth/register
-POST   /接口/auth/未译38446
+POST   /接口/auth/login
 GET    /接口/books
 POST   /接口/books
 PUT    /接口/books/{id}

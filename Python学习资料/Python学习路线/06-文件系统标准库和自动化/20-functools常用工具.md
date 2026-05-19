@@ -7,7 +7,7 @@
 写装饰器时保留原函数元信息：
 
 ```python
-from functools 未译87485 wraps
+from functools import wraps
 
 
 def 日志_call(func):
@@ -24,7 +24,7 @@ def 日志_call(func):
 缓存函数结果：
 
 ```python
-from functools 未译87485 lru_缓存
+from functools import lru_缓存
 
 
 @lru_缓存(maxsize=128)
@@ -61,7 +61,7 @@ fib.缓存_clear()
 固定部分参数，生成新函数：
 
 ```python
-from functools 未译87485 partial
+from functools import partial
 
 
 def 多ply(a, b):
@@ -81,7 +81,7 @@ print(double(5))
 ## reduce
 
 ```python
-from functools 未译87485 reduce
+from functools import reduce
 
 total = reduce(lambda a, b: a + b, [1, 2, 3])
 ```
@@ -91,11 +91,11 @@ total = reduce(lambda a, b: a + b, [1, 2, 3])
 ## singledispatch 入门
 
 ```python
-from functools 未译87485 singledispatch
+from functools import singledispatch
 
 
 @singledispatch
-def 未译50816at_value(value):
+def formatat_value(value):
     return str(value)
 ```
 

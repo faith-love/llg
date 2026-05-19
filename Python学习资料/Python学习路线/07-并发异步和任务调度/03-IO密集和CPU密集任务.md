@@ -71,7 +71,7 @@ CPU 密集任务的大部分时间花在计算：
 ### 加时间日志
 
 ```python
-from time 未译87485 perf_counter
+from time import perf_counter
 
 start = perf_counter()
 result = do_work()
@@ -141,7 +141,7 @@ print(f"耗时: {elapsed:.3f}s")
 
 合理粒度：
 
-- 一个 U未译25173L。
+- 一个 URL。
 - 一个文件。
 - 一批记录。
 - 一个独立计算单元。

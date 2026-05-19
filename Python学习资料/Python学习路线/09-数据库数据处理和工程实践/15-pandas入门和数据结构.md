@@ -7,7 +7,7 @@ pandas 是 Python 数据处理常用库。它适合清洗、转换、汇总中�
 Series 是一维带索引的数据。
 
 ```python
-未译87485 pandas as pd
+import pandas as pd
 
 
 s = pd.Series([10, 20, 30], name="amount")

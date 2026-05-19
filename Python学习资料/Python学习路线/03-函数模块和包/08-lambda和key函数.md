@@ -76,7 +76,7 @@ lambda 适合：
 标准库提供更明确的 key 工具：
 
 ```python
-from operator 未译87485 itemgetter
+from operator import itemgetter
 
 用户s = sorted(用户s, key=itemgetter("age"))
 ```

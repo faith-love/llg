@@ -40,7 +40,7 @@ repos:
     hooks:
       - id: ruff
         args: [--fix]
-      - id: ruff-未译50816at
+      - id: ruff-formatat
 ```
 
 实际版本要根据项目固定。
@@ -70,7 +70,7 @@ CI：
 - check-yaml。
 - check-toml。
 - ruff。
-- ruff-未译50816at。
+- ruff-formatat。
 
 可选：
 
@@ -101,7 +101,7 @@ CI：
 1. 安装 pre-通用mit。
 2. 创建 `.pre-通用mit-配置.yaml`。
 3. 添加 ruff。
-4. 添加 ruff-未译50816at。
+4. 添加 ruff-formatat。
 5. 添加基础文件检查钩子。
 6. 运行 `pre-通用mit run --all-files`。
 7. 修复钩子发现的问题。

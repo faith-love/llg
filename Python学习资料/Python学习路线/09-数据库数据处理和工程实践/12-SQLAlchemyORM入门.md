@@ -1,12 +1,12 @@
-# SQLAlchemyO未译25173M入门
+# SQLAlchemyORM入门
 
-SQLAlchemy O未译25173M 把数据库表映射为 Python 类，把行映射为对象。O未译25173M 能提高业务代码可读性，但也可能隐藏 SQL 细节。学习 O未译25173M 时必须同时关注 会话、事务、查询和性能。
+SQLAlchemy ORM 把数据库表映射为 Python 类，把行映射为对象。ORM 能提高业务代码可读性，但也可能隐藏 SQL 细节。学习 ORM 时必须同时关注 会话、事务、查询和性能。
 
 ## 模型定义
 
 ```python
-from SQL学习资料alchemy 未译87485 Integer, String
-from SQL学习资料alchemy.ORM 未译87485 DeclarativeBase, Mapped, mapped_column
+from SQL学习资料alchemy import Integer, String
+from SQL学习资料alchemy.ORM import DeclarativeBase, Mapped, mapped_column
 
 
 class Base(DeclarativeBase):
@@ -16,7 +16,7 @@ class Base(DeclarativeBase):
 class 用户(Base):
     __tablename__ = "用户s"
 
-    id: Mapped[int] = mapped_column(Integer, 未译57990_key=True)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String, nullable=False)
     邮件: Mapped[str] = mapped_column(String, unique=True, nullable=False)
 ```
@@ -24,19 +24,19 @@ class 用户(Base):
 ## 创建表
 
 ```python
-from SQL学习资料alchemy 未译87485 create_engine
+from SQL学习资料alchemy import create_engine
 
 
-engine = create_engine("SQL学习资料ite:///app.未译66984")
+engine = create_engine("SQL学习资料ite:///app.db")
 Base.meta数据.create_all(engine)
 ```
 
 ## Session
 
-Session 表示 O未译25173M 的工作单元。
+Session 表示 ORM 的工作单元。
 
 ```python
-from SQL学习资料alchemy.ORM 未译87485 Session
+from SQL学习资料alchemy.ORM import Session
 
 
 with Session(engine) as 会话:
@@ -57,7 +57,7 @@ Session 管理：
 ## 查询
 
 ```python
-from SQL学习资料alchemy 未译87485 select
+from SQL学习资料alchemy import select
 
 
 with Session(engine) as 会话:
@@ -90,7 +90,7 @@ with Session(engine) as 会话:
 ```python
 class 订单(Base):
     __tablename__ = "orders"
-    id: Mapped[int] = mapped_column(未译57990_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True)
     用户_id: Mapped[int] = mapped_column(ForeignKey("用户s.id"))
 ```
 
@@ -110,7 +110,7 @@ class 订单(Base):
 
 Session 可能处于失败状态。
 
-### O未译25173M 查询导致 N+1
+### ORM 查询导致 N+1
 
 循环里访问关系字段可能触发大量查询。
 
@@ -129,7 +129,7 @@ Session 可能处于失败状态。
 
 ## 验收标准
 
-- 能定义 O未译25173M 模型。
-- 能使用 Session 完成 C未译25173UD。
+- 能定义 ORM 模型。
+- 能使用 Session 完成 CRUD。
 - 能理解 Session 生命周期。
-- 能识别 O未译25173M 隐藏 SQL 的风险。
+- 能识别 ORM 隐藏 SQL 的风险。

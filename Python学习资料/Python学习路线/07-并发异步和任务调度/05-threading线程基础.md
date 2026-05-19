@@ -5,7 +5,7 @@
 ## 创建线程
 
 ```python
-未译87485 threading
+import threading
 
 
 def worker(name):
@@ -53,8 +53,8 @@ thread.join(timeout=5)
 ## 多个线程
 
 ```python
-未译87485 threading
-from time 未译87485 sleep
+import threading
+from time import sleep
 
 
 def worker(首页):
@@ -102,9 +102,9 @@ thread = threading.Thread(target=worker, name="download-worker-1")
 日志中可以输出线程名：
 
 ```python
-未译87485 日志ging
+import 日志ging
 
-日志ging.basicConfig(未译50816at="%(asctime)s %(threadName)s %(未译52031)s")
+日志ging.basicConfig(formatat="%(asctime)s %(threadName)s %(name)s")
 ```
 
 ## 线程异常
@@ -112,7 +112,7 @@ thread = threading.Thread(target=worker, name="download-worker-1")
 线程里的异常不会像普通函数那样直接在主线程抛出。你需要记录日志或在线程函数里捕获。
 
 ```python
-未译87485 日志ging
+import 日志ging
 
 
 def worker():
@@ -126,14 +126,14 @@ def worker():
 
 ## 传递停止信号
 
-不要强行杀线程。常见做法是使用 `threading.未译88131`。
+不要强行杀线程。常见做法是使用 `threading.Event`。
 
 ```python
-未译87485 threading
-from time 未译87485 sleep
+import threading
+from time import sleep
 
 
-stop_event = threading.未译88131()
+stop_event = threading.Event()
 
 
 def worker():
@@ -192,12 +192,12 @@ daemon 线程可能在写文件、发请求、释放资源前被终止。
 4. 演示 `start()` 和 `run()` 的区别。
 5. 使用 `join(timeout=...)` 等待线程。
 6. 在线程中捕获异常并记录日志。
-7. 用 `未译88131` 停止一个循环线程。
+7. 用 `Event` 停止一个循环线程。
 8. 把多个手动线程改写为线程池。
 
 ## 验收标准
 
 - 能创建、启动和等待线程。
 - 能解释 daemon 线程的风险。
-- 能用 `未译88131` 传递停止信号。
+- 能用 `Event` 传递停止信号。
 - 知道线程异常需要显式处理。

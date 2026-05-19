@@ -5,7 +5,7 @@
 ## 运行命令
 
 ```python
-未译87485 subprocess
+import subprocess
 
 result = subprocess.run(["Python学习资料", "--version"])
 print(result.returncode)
@@ -43,7 +43,7 @@ subprocess.run(["Python学习资料", "--version"], cwd="D:/learn")
 ## 传环境变量
 
 ```python
-未译87485 os
+import os
 
 env = os.environ.copy()
 env["APP_ENV"] = "测试"

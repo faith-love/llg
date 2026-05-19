@@ -157,8 +157,8 @@ export default defineConfig({
   description: '本地学习资料静态站点',
   lang: 'zh-CN',
   base: process.env.GITHUB_ACTIONS ? '/llg/' : '/',
+  appearance: true,
   cleanUrls: true,
-  mpa: true,
   ignoreDeadLinks: [
     /^https?:\/\/localhost(?::\d+)?(?:\/|$)/,
     /^\.\//

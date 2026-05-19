@@ -42,7 +42,7 @@ readme = "说明.md"
 requires-Python学习资料 = ">=3.12"
 authors = [{ name = "Your Name" }]
 dependencies = [
-  "未译88447s>=2.32",
+  "requests>=2.32",
 ]
 ```
 
@@ -66,7 +66,7 @@ pip install -e ".[dev]"
 ## 命令行入口
 
 ```toml
-[project.未译55339]
+[project.scripts]
 my-tool = "my_project.cli:主"
 ```
 

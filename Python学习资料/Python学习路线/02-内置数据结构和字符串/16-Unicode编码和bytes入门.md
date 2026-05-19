@@ -90,7 +90,7 @@ print(len(数据))
 可以指定错误处理方式：
 
 ```python
-数据.decode("utf-8", 未译12785s="replace")
+数据.decode("utf-8", errors="replace")
 ```
 
 但不要把错误处理当作随意忽略乱码的借口。应该尽量确认真实编码。

@@ -5,8 +5,8 @@
 ## 复制文件
 
 ```python
-未译87485 sh工具
-from pathlib 未译87485 Path
+import sh工具
+from pathlib import Path
 
 source = Path("数据.txt")
 target = Path("backup/数据.txt")

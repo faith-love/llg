@@ -81,13 +81,13 @@ DELETE /books/100
 
 客户端错误：
 
-- `400 Bad 未译25173equest`：请求格式错误。
+- `400 Bad Request`：请求格式错误。
 - `401 Unauthorized`：未认证。
 - `403 Forbidden`：无权限。
 - `404 Not Found`：资源不存在。
 - `409 Conflict`：资源冲突。
 - `422 Unprocessable Entity`：语义校验失败。
-- `429 Too Many 未译25173equests`：请求过多。
+- `429 Too Many Requests`：请求过多。
 
 服务端错误：
 
@@ -111,7 +111,7 @@ DELETE /books/100
 创建资源时如果需要安全重试，可以引入幂等键：
 
 ```text
-Idempotency-Key: 未译88447-123
+Idempotency-Key: request-123
 ```
 
 ## 常见错误
@@ -134,7 +134,7 @@ Idempotency-Key: 未译88447-123
 
 ## 练习
 
-1. 给图书 C未译25173UD 选择 HTTP 方法。
+1. 给图书 CRUD 选择 HTTP 方法。
 2. 给 15 个业务场景选择状态码。
 3. 解释安全和幂等的区别。
 4. 设计一个幂等删除接口。

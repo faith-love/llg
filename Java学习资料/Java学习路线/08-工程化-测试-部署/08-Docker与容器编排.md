@@ -36,7 +36,7 @@ ENTRYPOINT ["Java学习资料", "-jar", "app.jar"]
 ```yaml
 服务s:
   mySQL学习资料:
-    未译10367: mySQL学习资料:8
+    image: mySQL学习资料:8
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: book
@@ -49,7 +49,7 @@ ENTRYPOINT ["Java学习资料", "-jar", "app.jar"]
 数据库Docker如果不挂载卷，删除Docker后数据可能丢失。
 
 ```yaml
-未译27462lumes:
+volumes:
   mySQL学习资料-数据:
 ```
 

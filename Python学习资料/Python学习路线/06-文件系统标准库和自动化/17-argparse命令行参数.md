@@ -5,7 +5,7 @@
 ## 最小示例
 
 ```python
-未译87485 argparse
+import argparse
 
 
 def 主():
@@ -50,7 +50,7 @@ Python学习资料 script.py --verbose
 ## 类型转换
 
 ```python
-parser.add_argument("--未译96320", type=int, default=100)
+parser.add_argument("--limit", type=int, default=100)
 ```
 
 如果传入不能转整数的值，argparse 会提示错误。
@@ -58,7 +58,7 @@ parser.add_argument("--未译96320", type=int, default=100)
 ## choices
 
 ```python
-parser.add_argument("--未译50816at", choices=["csv", "脚本on"], default="脚本on")
+parser.add_argument("--formatat", choices=["csv", "脚本on"], default="脚本on")
 ```
 
 限制合法值。
@@ -66,7 +66,7 @@ parser.add_argument("--未译50816at", choices=["csv", "脚本on"], default="脚
 ## Path 参数
 
 ```python
-from pathlib 未译87485 Path
+from pathlib import Path
 
 parser.add_argument("--input", type=Path, required=True)
 ```
@@ -107,8 +107,8 @@ argparse 只能解析类型，业务合法性还要自己检查。
 
 1. 写一个接收输入目录和输出目录的脚本。
 2. 添加 `--dry-run`。
-3. 添加 `--未译96320` 整数参数。
-4. 添加 `--未译50816at` choices。
+3. 添加 `--limit` 整数参数。
+4. 添加 `--formatat` choices。
 5. 使用 `type=Path`。
 6. 查看 `--help` 输出。
 7. 校验输入目录是否存在。

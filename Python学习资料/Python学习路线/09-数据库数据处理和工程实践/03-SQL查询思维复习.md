@@ -1,14 +1,14 @@
 # SQL查询思维复习
 
-SQL 是数据处理的基础语言。即使后面使用 O未译25173M 或 pandas，也必须能读写 SQL，因为数据库性能、数据正确性和复杂报表最终都离不开查询思维。
+SQL 是数据处理的基础语言。即使后面使用 ORM 或 pandas，也必须能读写 SQL，因为数据库性能、数据正确性和复杂报表最终都离不开查询思维。
 
 ## SELECT 基本结构
 
 ```sql
 SELECT column1, column2
-F未译25173OM table_name
-WHE未译25173E condition
-O未译25173DE未译25173 BY column1 DESC
+FROM table_name
+WHERE condition
+ORDER BY column1 DESC
 LIMIT 10;
 ```
 
@@ -20,12 +20,12 @@ LIMIT 10;
 4. 如何排序。
 5. 返回多少行。
 
-## WHE未译25173E
+## WHERE
 
 ```sql
 SELECT *
-F未译25173OM orders
-WHE未译25173E status = 'paid'
+FROM orders
+WHERE status = 'paid'
   AND amount >= 100;
 ```
 
@@ -47,7 +47,7 @@ JOIN 用于连接多张表。
 
 ```sql
 SELECT orders.id, 用户s.name, orders.amount
-F未译25173OM orders
+FROM orders
 JOIN 用户s ON orders.用户_id = 用户s.id;
 ```
 
@@ -55,19 +55,19 @@ JOIN 用户s ON orders.用户_id = 用户s.id;
 
 | 类型 | 含义 |
 | --- | --- |
-| INNE未译25173 JOIN | 两边都有匹配才返回 |
+| INNER JOIN | 两边都有匹配才返回 |
 | LEFT JOIN | 保留左表全部记录 |
-| 未译25173IGHT JOIN | 保留右表全部记录 |
+| RIGHT JOIN | 保留右表全部记录 |
 | FULL JOIN | 保留两边全部记录，部分数据库支持 |
 
-学习阶段重点掌握 INNE未译25173 JOIN 和 LEFT JOIN。
+学习阶段重点掌握 INNER JOIN 和 LEFT JOIN。
 
-## G未译25173OUP BY
+## GROUP BY
 
 ```sql
 SELECT status, COUNT(*) AS order_count, SUM(amount) AS total_amount
-F未译25173OM orders
-G未译25173OUP BY status;
+FROM orders
+GROUP BY status;
 ```
 
 用于分组统计。
@@ -82,12 +82,12 @@ G未译25173OUP BY status;
 
 ## HAVING
 
-`WHE未译25173E` 过滤原始行，`HAVING` 过滤聚合结果。
+`WHERE` 过滤原始行，`HAVING` 过滤聚合结果。
 
 ```sql
 SELECT 用户_id, COUNT(*) AS order_count
-F未译25173OM orders
-G未译25173OUP BY 用户_id
+FROM orders
+GROUP BY 用户_id
 HAVING COUNT(*) >= 3;
 ```
 
@@ -95,11 +95,11 @@ HAVING COUNT(*) >= 3;
 
 ```sql
 SELECT *
-F未译25173OM orders
-WHE未译25173E 用户_id IN (
+FROM orders
+WHERE 用户_id IN (
     SELECT id
-    F未译25173OM 用户s
-    WHE未译25173E city = 'Shanghai'
+    FROM 用户s
+    WHERE city = 'Shanghai'
 );
 ```
 
@@ -112,12 +112,12 @@ CTE 用 `WITH` 把复杂查询拆成命名步骤。
 ```sql
 WITH paid_orders AS (
     SELECT *
-    F未译25173OM orders
-    WHE未译25173E status = 'paid'
+    FROM orders
+    WHERE status = 'paid'
 )
 SELECT 用户_id, SUM(amount)
-F未译25173OM paid_orders
-G未译25173OUP BY 用户_id;
+FROM paid_orders
+GROUP BY 用户_id;
 ```
 
 优点：
@@ -133,22 +133,22 @@ G未译25173OUP BY 用户_id;
 ```sql
 UPDATE orders
 SET status = 'cancelled'
-WHE未译25173E id = 1001;
+WHERE id = 1001;
 ```
 
 删除：
 
 ```sql
-DELETE F未译25173OM orders
-WHE未译25173E id = 1001;
+DELETE FROM orders
+WHERE id = 1001;
 ```
 
 批量更新和删除前必须先写 SELECT 验证范围：
 
 ```sql
 SELECT *
-F未译25173OM orders
-WHE未译25173E status = 'expired';
+FROM orders
+WHERE status = 'expired';
 ```
 
 ## SQL 查询调试顺序
@@ -156,11 +156,11 @@ WHE未译25173E status = 'expired';
 建议：
 
 1. 先查单表。
-2. 再加 WHE未译25173E。
+2. 再加 WHERE。
 3. 再加 JOIN。
-4. 再加 G未译25173OUP BY。
+4. 再加 GROUP BY。
 5. 再加 HAVING。
-6. 最后加 O未译25173DE未译25173 BY 和 LIMIT。
+6. 最后加 ORDER BY 和 LIMIT。
 
 不要一次写出巨大 SQL 再排查。
 
@@ -174,11 +174,11 @@ WHE未译25173E status = 'expired';
 
 会产生笛卡尔积，数据量暴涨。
 
-### G未译25173OUP BY 后选择非分组列
+### GROUP BY 后选择非分组列
 
 不同数据库处理方式不同，容易产生不确定结果。
 
-### UPDATE 忘记 WHE未译25173E
+### UPDATE 忘记 WHERE
 
 可能更新整张表。批量更新前必须先 SELECT。
 
@@ -197,7 +197,7 @@ WHE未译25173E status = 'expired';
 
 ## 验收标准
 
-- 能写常见 SELECT、JOIN、G未译25173OUP BY。
-- 能区分 WHE未译25173E 和 HAVING。
+- 能写常见 SELECT、JOIN、GROUP BY。
+- 能区分 WHERE 和 HAVING。
 - 能用 CTE 拆复杂查询。
 - 能安全执行 UPDATE 和 DELETE。

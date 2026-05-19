@@ -28,8 +28,8 @@ spring-boot-starter-web
 
 ```text
 应用配置.yml
-未译11013.yml
-未译77079.yml
+application-dev.yml
+application-prod.yml
 ```
 
 示例：
@@ -70,7 +70,7 @@ Java学习资料 -jar app.jar --spring.profiles.active=prod
 
 ```java
 @ConfigurationProperties(prefix = "app")
-未译64029 class AppProperties {
+public class AppProperties {
     private String 上传Dir;
 }
 ```
@@ -87,7 +87,7 @@ Java学习资料 -jar app.jar --spring.profiles.active=prod
 
 ## 本节练习
 
-- 创建 `未译11013.yml` 和 `未译77079.yml`。
+- 创建 `application-dev.yml` 和 `application-prod.yml`。
 - 修改端口并启动验证。
 - 添加一个自定义配置类。
 - 引入 Web starter，观察项目依赖变化。

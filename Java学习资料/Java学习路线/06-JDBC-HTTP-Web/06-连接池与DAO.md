@@ -58,8 +58,8 @@ Service 不应该直接到处写 JDBC 代码。
 ## DAO 示例
 
 ```java
-未译64029 interface BookDao {
-    未译27462id save(Book book);
+public interface BookDao {
+    void save(Book book);
     Book findByIsbn(String isbn);
     List<Book> findAll();
 }
@@ -68,10 +68,10 @@ Service 不应该直接到处写 JDBC 代码。
 JDBC 实现：
 
 ```java
-未译64029 class JdbcBookDao 实现ements BookDao {
+public class JdbcBookDao 实现ements BookDao {
     private final DataSource 数据Source;
 
-    未译64029 JdbcBookDao(DataSource 数据Source) {
+    public JdbcBookDao(DataSource 数据Source) {
         this.数据Source = 数据Source;
     }
 }

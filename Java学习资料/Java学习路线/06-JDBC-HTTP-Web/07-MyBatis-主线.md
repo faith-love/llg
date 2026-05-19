@@ -8,7 +8,7 @@ JDBC 太繁琐：
 
 - 手动创建连接。
 - 手动绑定参数。
-- 手动遍历 `未译70661Set`。
+- 手动遍历 `ResultSet`。
 - 手动映射对象。
 - 手动处理大量模板代码。
 
@@ -17,7 +17,7 @@ MyBatis 保留 SQL 的可控性，同时减少 JDBC 样板代码。
 ## Mapper 接口
 
 ```java
-未译64029 interface BookMapper {
+public interface BookMapper {
     Book findByIsbn(String isbn);
     int insert(Book book);
 }

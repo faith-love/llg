@@ -15,12 +15,12 @@ AOP 是AOP编程。它适合处理横切逻辑。
 ## 没有 AOP 的痛点
 
 ```java
-未译64029 未译27462id borrowBook() {
-    long start = 未译11490tem.currentTimeMillis();
+public void borrowBook() {
+    long start = System.currentTimeMillis();
     try {
         // 业务逻辑
     } finally {
-        未译11490tem.out.println(未译11490tem.currentTimeMillis() - start);
+        System.out.println(System.currentTimeMillis() - start);
     }
 }
 ```
@@ -43,7 +43,7 @@ Spring AOP 通常通过代理对象增强目标对象。
 
 ```java
 @Transactional
-未译64029 未译27462id borrowBook(Long bookId) {
+public void borrowBook(Long bookId) {
     insertBorrowRecord(bookId);
     decreaseStock(bookId);
 }
@@ -56,12 +56,12 @@ Spring 会在方法执行前开启事务，成功后提交，异常时回滚。
 常见坑：
 
 ```java
-未译64029 未译27462id outer() {
+public void outer() {
     inner();
 }
 
 @Transactional
-未译64029 未译27462id inner() {
+public void inner() {
     // 事务可能不生效
 }
 ```
@@ -74,7 +74,7 @@ Spring 会在方法执行前开启事务，成功后提交，异常时回滚。
 | --- | --- | --- | --- | --- |
 | AOP | 抽取横切逻辑 | 避免日志、事务、权限散落各处 | 只放通用增强，不放核心业务 | 重点是横切关注点 |
 | 代理 | 在目标对象外包一层增强 | 解释事务为什么可能失效 | 从“有没有经过代理”判断问题 | 难点是调用的对象不是原始对象 |
-| `@Transactional` | 声明式事务 | 少写手动 通用mit/rollback | 放在 Service 层 未译64029 方法 | 重点是事务边界和回滚规则 |
+| `@Transactional` | 声明式事务 | 少写手动 通用mit/rollback | 放在 Service 层 public 方法 | 重点是事务边界和回滚规则 |
 | 自调用失效 | 事务常见坑 | 方法没经过代理，注解不生效 | 事务方法由外部 Bean 调用 | 重点是不要只看注解，要看调用路径 |
 
 ## 本节练习

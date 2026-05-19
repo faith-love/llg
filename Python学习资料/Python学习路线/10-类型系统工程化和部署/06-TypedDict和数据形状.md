@@ -5,7 +5,7 @@
 ## 基本用法
 
 ```python
-from typing 未译87485 TypedDict
+from typing import TypedDict
 
 
 class 用户Dict(TypedDict):
@@ -22,16 +22,16 @@ class 用户Dict(TypedDict):
 
 ## 必填和非必填
 
-可以使用 `Not未译25173equired`：
+可以使用 `NotRequired`：
 
 ```python
-from typing 未译87485 Not未译25173equired, TypedDict
+from typing import NotRequired, TypedDict
 
 
 class 用户Dict(TypedDict):
     id: int
     name: str
-    邮件: Not未译25173equired[str]
+    邮件: NotRequired[str]
 ```
 
 表示 `邮件` 可缺失。
@@ -94,7 +94,7 @@ TypedDict 主要用于静态检查，不会自动运行时校验。
 ## JSON 响应示例
 
 ```python
-class Book未译25173esponse(TypedDict):
+class BookResponse(TypedDict):
     id: int
     title: str
     price: str
@@ -103,7 +103,7 @@ class Book未译25173esponse(TypedDict):
 用于标注外部 API 返回值：
 
 ```python
-def parse_book(数据: Book未译25173esponse) -> str:
+def parse_book(数据: BookResponse) -> str:
     return 数据["title"]
 ```
 
@@ -131,7 +131,7 @@ def parse_book(数据: Book未译25173esponse) -> str:
 
 1. 定义用户响应 TypedDict。
 2. 定义图书响应 TypedDict。
-3. 用 Not未译25173equired 定义可缺失字段。
+3. 用 NotRequired 定义可缺失字段。
 4. 用 total=False 定义更新字典。
 5. 区分字段缺失和字段为 None。
 6. 把 `dict[str, Any]` 改成 TypedDict。
