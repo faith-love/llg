@@ -10,6 +10,38 @@
   max-width: 920px;
 }
 
+.VPHome .container {
+  max-width: 1280px;
+}
+
+.VPNavBar .content-body {
+  max-width: none;
+}
+
+.VPSidebar {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.VPSidebarItem.level-0 > .item {
+  font-weight: 700;
+}
+
+.vp-doc p,
+.vp-doc li {
+  line-height: 1.8;
+}
+
+.vp-doc table {
+  display: block;
+  overflow: auto;
+  border-collapse: collapse;
+}
+
+.vp-doc pre {
+  border-radius: 12px;
+}
+
 .VPDoc h2 {
   border-top: 1px solid var(--vp-c-divider);
   padding-top: 24px;

@@ -10,7 +10,8 @@ const hiddenDirs = new Set([
   '.vitepress',
   '.workbuddy',
   'node_modules',
-  'dist'
+  'dist',
+  '命名整理记录'
 ])
 
 const topLevelSections = [
@@ -77,7 +78,15 @@ function buildItems(dir: string, depth = 0): any[] {
     fs.readdirSync(dir, { withFileTypes: true }).filter((entry) => {
       if (isHidden(entry.name)) return false
       const full = path.join(dir, entry.name)
-      return entry.isDirectory() || (entry.isFile() && isMarkdown(entry.name))
+      if (entry.isFile() && isMarkdown(entry.name)) {
+        try {
+          const content = fs.readFileSync(full, 'utf8').trim()
+          return Boolean(content)
+        } catch {
+          return false
+        }
+      }
+      return entry.isDirectory()
     })
   )
 
@@ -97,7 +106,7 @@ function buildItems(dir: string, depth = 0): any[] {
           text: titleFromFile(indexFile),
           link: normalizeLink(indexFile),
           collapsed: depth >= 1,
-        items: nested.filter((item) => item.link !== normalizeLink(indexFile))
+          items: nested.filter((item) => item.link !== normalizeLink(indexFile))
         })
       } else if (nested.length) {
         items.push({
@@ -148,6 +157,11 @@ export default defineConfig({
   description: '本地学习资料静态站点',
   lang: 'zh-CN',
   cleanUrls: true,
+  mpa: true,
+  ignoreDeadLinks: [
+    /^https?:\/\/localhost(?::\d+)?(?:\/|$)/,
+    /^\.\//
+  ],
   srcExclude: [
     '**/node_modules/**',
     '**/.git/**',
