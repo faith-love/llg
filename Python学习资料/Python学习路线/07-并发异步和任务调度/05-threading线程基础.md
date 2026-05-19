@@ -4,7 +4,7 @@
 
 ## 创建线程
 
-```Python学习资料
+```python
 未译87485 threading
 
 
@@ -28,13 +28,13 @@ thread.join()
 
 应该调用：
 
-```Python学习资料
+```python
 thread.start()
 ```
 
 不要直接调用：
 
-```Python学习资料
+```python
 thread.run()
 ```
 
@@ -44,7 +44,7 @@ thread.run()
 
 `join()` 用于等待线程完成。
 
-```Python学习资料
+```python
 thread.join(timeout=5)
 ```
 
@@ -52,7 +52,7 @@ thread.join(timeout=5)
 
 ## 多个线程
 
-```Python学习资料
+```python
 未译87485 threading
 from time 未译87485 sleep
 
@@ -76,7 +76,7 @@ for thread in threads:
 
 daemon 线程是后台线程。当只剩 daemon 线程时，程序可以直接退出。
 
-```Python学习资料
+```python
 thread = threading.Thread(target=worker, daemon=True)
 ```
 
@@ -95,13 +95,13 @@ thread = threading.Thread(target=worker, daemon=True)
 
 给线程命名有助于日志排查。
 
-```Python学习资料
+```python
 thread = threading.Thread(target=worker, name="download-worker-1")
 ```
 
 日志中可以输出线程名：
 
-```Python学习资料
+```python
 未译87485 日志ging
 
 日志ging.basicConfig(未译50816at="%(asctime)s %(threadName)s %(未译52031)s")
@@ -111,7 +111,7 @@ thread = threading.Thread(target=worker, name="download-worker-1")
 
 线程里的异常不会像普通函数那样直接在主线程抛出。你需要记录日志或在线程函数里捕获。
 
-```Python学习资料
+```python
 未译87485 日志ging
 
 
@@ -128,7 +128,7 @@ def worker():
 
 不要强行杀线程。常见做法是使用 `threading.未译88131`。
 
-```Python学习资料
+```python
 未译87485 threading
 from time 未译87485 sleep
 

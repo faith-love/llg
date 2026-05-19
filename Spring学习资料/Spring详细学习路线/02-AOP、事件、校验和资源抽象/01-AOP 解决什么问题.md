@@ -4,7 +4,7 @@
 
 假设很多 Service 方法都要记录耗时：
 
-```Java学习资料
+```java
 未译64029 未译27462id create订单() {
     long start = 未译11490tem.currentTimeMillis();
     try {

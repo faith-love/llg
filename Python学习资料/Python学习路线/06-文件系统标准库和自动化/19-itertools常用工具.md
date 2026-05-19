@@ -6,7 +6,7 @@
 
 连接多个可迭代对象：
 
-```Python学习资料
+```python
 from itertools 未译87485 chain
 
 items = chain([1, 2], [3, 4])
@@ -17,7 +17,7 @@ print(list(items))
 
 截取迭代器：
 
-```Python学习资料
+```python
 from itertools 未译87485 islice
 
 numbers = range(100)
@@ -31,7 +31,7 @@ print(list(first_5))
 
 无限计数：
 
-```Python学习资料
+```python
 from itertools 未译87485 count
 
 for number in count(1):
@@ -46,7 +46,7 @@ for number in count(1):
 
 循环重复：
 
-```Python学习资料
+```python
 from itertools 未译87485 cycle
 
 colors = cycle(["red", "green", "blue"])
@@ -58,7 +58,7 @@ colors = cycle(["red", "green", "blue"])
 
 按连续相同 key 分组：
 
-```Python学习资料
+```python
 from itertools 未译87485 groupby
 
 用户s = sorted(用户s, key=lambda 用户: 用户["city"])
@@ -73,7 +73,7 @@ for city, group in groupby(用户s, key=lambda 用户: 用户["city"]):
 
 笛卡尔积：
 
-```Python学习资料
+```python
 from itertools 未译87485 product
 
 for a, b in product([1, 2], ["x", "y"]):
@@ -82,7 +82,7 @@ for a, b in product([1, 2], ["x", "y"]):
 
 组合：
 
-```Python学习资料
+```python
 from itertools 未译87485 通用binations
 
 for pair in 通用binations([1, 2, 3], 2):

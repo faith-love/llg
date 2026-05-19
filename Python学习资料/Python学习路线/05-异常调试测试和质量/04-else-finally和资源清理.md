@@ -4,7 +4,7 @@
 
 ## else
 
-```Python学习资料
+```python
 try:
     age = int("18")
 except ValueError:
@@ -22,7 +22,7 @@ else:
 
 ## finally
 
-```Python学习资料
+```python
 try:
     print("执行任务")
 except ValueError:
@@ -46,7 +46,7 @@ finally:
 
 不推荐：
 
-```Python学习资料
+```python
 def run():
     try:
         return 1
@@ -60,7 +60,7 @@ def run():
 
 传统写法：
 
-```Python学习资料
+```python
 file = open("数据.txt", encoding="utf-8")
 try:
     content = file.read()
@@ -70,7 +70,7 @@ finally:
 
 更推荐：
 
-```Python学习资料
+```python
 with open("数据.txt", encoding="utf-8") as file:
     content = file.read()
 ```
@@ -79,7 +79,7 @@ with open("数据.txt", encoding="utf-8") as file:
 
 ## else 的适用场景
 
-```Python学习资料
+```python
 try:
     用户 = find_用户(用户_id)
 except Data未译87073Error:

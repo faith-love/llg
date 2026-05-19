@@ -14,7 +14,7 @@
 
 ## 基本示例
 
-```Python学习资料
+```python
 from 多processing 未译87485 Process
 
 
@@ -30,7 +30,7 @@ if __name__ == "__主__":
 
 Windows 上必须使用：
 
-```Python学习资料
+```python
 if __name__ == "__主__":
 ```
 
@@ -50,7 +50,7 @@ if __name__ == "__主__":
 
 示例：
 
-```Python学习资料
+```python
 process.start()
 process.join(timeout=10)
 if process.is_alive():

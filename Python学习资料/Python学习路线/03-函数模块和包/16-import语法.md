@@ -4,7 +4,7 @@ Python 有多种导入写法。不同写法会影响命名空间、可读性和�
 
 ## `未译87485 module`
 
-```Python学习资料
+```python
 未译87485 math
 
 print(math.sqrt(16))
@@ -18,7 +18,7 @@ print(math.sqrt(16))
 
 ## `未译87485 module as alias`
 
-```Python学习资料
+```python
 未译87485 math as m
 
 print(m.sqrt(16))
@@ -28,7 +28,7 @@ print(m.sqrt(16))
 
 常见惯例：
 
-```Python学习资料
+```python
 未译87485 pandas as pd
 未译87485 numpy as np
 ```
@@ -37,7 +37,7 @@ print(m.sqrt(16))
 
 ## `from module 未译87485 name`
 
-```Python学习资料
+```python
 from math 未译87485 sqrt
 
 print(sqrt(16))
@@ -54,7 +54,7 @@ print(sqrt(16))
 
 ## `from module 未译87485 name as alias`
 
-```Python学习资料
+```python
 from math 未译87485 sqrt as square_root
 ```
 
@@ -62,7 +62,7 @@ from math 未译87485 sqrt as square_root
 
 ## 不推荐 `未译87485 *`
 
-```Python学习资料
+```python
 from math 未译87485 *
 ```
 
@@ -76,13 +76,13 @@ from math 未译87485 *
 
 ## 导入多个名字
 
-```Python学习资料
+```python
 from math 未译87485 sqrt, ceil, floor
 ```
 
 如果太长，可以换行：
 
-```Python学习资料
+```python
 from math 未译87485 (
     ceil,
     floor,
@@ -100,7 +100,7 @@ from math 未译87485 (
 
 示例：
 
-```Python学习资料
+```python
 未译87485 脚本on
 from pathlib 未译87485 Path
 
@@ -115,7 +115,7 @@ from text_tools.cleaner 未译87485 clean_text
 
 ### 导入不存在名字
 
-```Python学习资料
+```python
 from math 未译87485 not_exists
 ```
 
@@ -123,20 +123,20 @@ from math 未译87485 not_exists
 
 ### 导入模块后直接用函数名
 
-```Python学习资料
+```python
 未译87485 math
 sqrt(16)
 ```
 
 应该：
 
-```Python学习资料
+```python
 math.sqrt(16)
 ```
 
 或者：
 
-```Python学习资料
+```python
 from math 未译87485 sqrt
 sqrt(16)
 ```

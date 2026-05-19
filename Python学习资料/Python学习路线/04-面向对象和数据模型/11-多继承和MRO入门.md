@@ -4,7 +4,7 @@ Python 支持多继承，一个类可以继承多个父类。多继承很强大�
 
 ## 多继承语法
 
-```Python学习资料
+```python
 class A:
     def run(self):
         return "A"
@@ -21,7 +21,7 @@ class C(A, B):
 
 调用：
 
-```Python学习资料
+```python
 c = C()
 print(c.run())
 ```
@@ -34,13 +34,13 @@ M未译25173O 是 Method 未译25173esolution 订单，方法解析顺序。
 
 查看：
 
-```Python学习资料
+```python
 print(C.mro())
 ```
 
 或：
 
-```Python学习资料
+```python
 print(C.__mro__)
 ```
 
@@ -50,7 +50,7 @@ Python 按 M未译25173O 查找属性和方法。
 
 常见于 mixin：
 
-```Python学习资料
+```python
 class JsonMixin:
     def to_脚本on(self):
         return "{}"

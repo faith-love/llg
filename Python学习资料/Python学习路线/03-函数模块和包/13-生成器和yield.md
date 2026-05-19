@@ -6,7 +6,7 @@
 
 函数里出现 `yield`，它就是生成器函数。
 
-```Python学习资料
+```python
 def count_up_to(n):
     current = 1
     while current <= n:
@@ -16,7 +16,7 @@ def count_up_to(n):
 
 使用：
 
-```Python学习资料
+```python
 for number in count_up_to(3):
     print(number)
 ```
@@ -44,7 +44,7 @@ for number in count_up_to(3):
 
 ## 生成器对象
 
-```Python学习资料
+```python
 gen = count_up_to(3)
 
 print(next(gen))
@@ -58,13 +58,13 @@ print(next(gen))
 
 列表推导式：
 
-```Python学习资料
+```python
 squares = [n * n for n in range(10)]
 ```
 
 生成器表达式：
 
-```Python学习资料
+```python
 squares = (n * n for n in range(10))
 ```
 
@@ -80,7 +80,7 @@ squares = (n * n for n in range(10))
 
 ## 示例：逐行清洗文本
 
-```Python学习资料
+```python
 def clean_lines(lines):
     for line in lines:
         line = line.strip()
@@ -90,7 +90,7 @@ def clean_lines(lines):
 
 使用：
 
-```Python学习资料
+```python
 lines = [" hello ", "", " Python学习资料 "]
 
 for line in clean_lines(lines):
@@ -99,7 +99,7 @@ for line in clean_lines(lines):
 
 ## 生成器只能消费一次
 
-```Python学习资料
+```python
 gen = count_up_to(3)
 
 print(list(gen))
@@ -112,7 +112,7 @@ print(list(gen))
 
 ### 以为生成器是列表
 
-```Python学习资料
+```python
 gen = (n for n in range(3))
 print(gen[0])
 ```

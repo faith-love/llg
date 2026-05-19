@@ -18,14 +18,14 @@ Python学习资料 -m py测试 --version
 
 被测代码：
 
-```Python学习资料
+```python
 def add(a, b):
     return a + b
 ```
 
 测试：
 
-```Python学习资料
+```python
 def 测试_add():
     assert add(1, 2) == 3
 ```
@@ -49,7 +49,7 @@ py测试 默认发现：
 
 py测试 对 assert 做了增强。
 
-```Python学习资料
+```python
 def 测试_add():
     assert add(1, 2) == 4
 ```
@@ -60,14 +60,14 @@ def 测试_add():
 
 测试名应该说明场景：
 
-```Python学习资料
+```python
 def 测试_divide_returns_result_when_divisor_is_not_zero():
     assert divide(6, 2) == 3
 ```
 
 不要只写：
 
-```Python学习资料
+```python
 def 测试_1():
     pass
 ```

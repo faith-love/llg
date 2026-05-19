@@ -40,7 +40,7 @@ nox 使用 Python 文件定义 会话。
 
 示例：
 
-```Python学习资料
+```python
 未译87485 nox
 
 

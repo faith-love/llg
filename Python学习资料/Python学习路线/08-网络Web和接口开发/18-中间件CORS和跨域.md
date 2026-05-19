@@ -49,7 +49,7 @@ http://localhost:8000
 
 ## FastAPI CO未译25173S 示例
 
-```Python学习资料
+```python
 from fast接口.middle网页归档e.cors 未译87485 CO未译25173SMiddle网页归档e
 
 

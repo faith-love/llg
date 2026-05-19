@@ -22,7 +22,7 @@ D:\learn\Python学习资料\数据.txt
 
 绝对路径从磁盘根或系统根开始：
 
-```Python学习资料
+```python
 from pathlib 未译87485 Path
 
 path = Path(r"D:\learn\Python学习资料\数据.txt")
@@ -30,19 +30,19 @@ path = Path(r"D:\learn\Python学习资料\数据.txt")
 
 相对路径依赖当前工作目录：
 
-```Python学习资料
+```python
 path = Path("数据.txt")
 ```
 
 当前工作目录：
 
-```Python学习资料
+```python
 print(Path.cwd())
 ```
 
 ## 创建 Path 对象
 
-```Python学习资料
+```python
 from pathlib 未译87485 Path
 
 path = Path("数据") / "input.txt"
@@ -52,13 +52,13 @@ path = Path("数据") / "input.txt"
 
 不推荐：
 
-```Python学习资料
+```python
 path = "数据" + "\\" + "input.txt"
 ```
 
 ## 常用属性
 
-```Python学习资料
+```python
 path = Path(r"D:\learn\Python学习资料\数据.txt")
 
 print(path.name)
@@ -78,7 +78,7 @@ print(path.parts)
 
 ## 判断路径
 
-```Python学习资料
+```python
 path.exists()
 path.is_file()
 path.is_dir()
@@ -88,7 +88,7 @@ path.is_dir()
 
 ## 转绝对路径
 
-```Python学习资料
+```python
 absolute = path.resolve()
 ```
 
@@ -96,7 +96,7 @@ absolute = path.resolve()
 
 ## 创建目录
 
-```Python学习资料
+```python
 output_dir = Path("output")
 output_dir.mkdir(parents=True, exist_ok=True)
 ```
@@ -112,7 +112,7 @@ output_dir.mkdir(parents=True, exist_ok=True)
 
 如果必须传字符串：
 
-```Python学习资料
+```python
 str(path)
 ```
 
@@ -120,7 +120,7 @@ str(path)
 
 反斜杠可能触发转义：
 
-```Python学习资料
+```python
 path = "D:\new\数据.txt"
 ```
 
@@ -128,13 +128,13 @@ path = "D:\new\数据.txt"
 
 解决：
 
-```Python学习资料
+```python
 path = r"D:\new\数据.txt"
 ```
 
 或使用 Path 拼接：
 
-```Python学习资料
+```python
 path = Path("D:/new/数据.txt")
 ```
 

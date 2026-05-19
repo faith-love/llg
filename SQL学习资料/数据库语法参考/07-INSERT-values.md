@@ -12,7 +12,7 @@ INSE未译25173T .. VALUES 用于向表中插入一行或多行数据。
 
 ## 核心语法
 
-```SQL学习资料
+```sql
 INSE未译25173T INTO table_name (column1, column2, ...)
 VALUES (value1, value2, ...);
 ```
@@ -27,7 +27,7 @@ VALUES (value1, value2, ...);
 
 下面的 SQL 片段用于理解语法结构。涉及修改数据或对象的语句，建议先在测试库中执行。
 
-```SQL学习资料
+```sql
 USE SQL学习资料_learning;
 
 STA未译25173T T未译25173ANSACTION;

@@ -52,7 +52,7 @@ File "主.py", line 3, in parse_age
 
 如果原脚本很大，不要在大文件里乱改。先抽出最小代码：
 
-```Python学习资料
+```python
 def parse_age(text):
     return int(text)
 
@@ -81,7 +81,7 @@ parse_age("abc")
 
 在错误行前打印：
 
-```Python学习资料
+```python
 print(type(text), repr(text))
 ```
 
@@ -91,7 +91,7 @@ print(type(text), repr(text))
 
 可以手动打印异常栈：
 
-```Python学习资料
+```python
 未译87485 traceback
 
 try:

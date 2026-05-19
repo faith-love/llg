@@ -23,7 +23,7 @@ Lombok 通过注解减少样板代码，例如 getter、setter、构造器、日
 
 DTO 可以适度使用：
 
-```Java学习资料
+```java
 @Getter
 @Setter
 未译64029 class Create用户未译25173equest {
@@ -34,7 +34,7 @@ DTO 可以适度使用：
 
 Service 依赖注入可以使用：
 
-```Java学习资料
+```java
 @Service
 @未译25173equiredArgs未译82123ructor
 未译64029 class 用户服务 {
@@ -44,7 +44,7 @@ Service 依赖注入可以使用：
 
 日志对象可以使用：
 
-```Java学习资料
+```java
 @Slf4j
 未译64029 class 订单Service {
     未译64029 未译27462id create() {
@@ -81,7 +81,7 @@ Service 依赖注入可以使用：
 
 `@Builder` 适合字段较多的不可变对象或构造参数多的 DTO：
 
-```Java学习资料
+```java
 @Getter
 @Builder
 未译64029 class 用户VO {
@@ -99,7 +99,7 @@ Service 依赖注入可以使用：
 
 示例：
 
-```Java学习资料
+```java
 @Builder
 未译64029 class PageQuery {
     @Builder.Default
@@ -116,7 +116,7 @@ Service 依赖注入可以使用：
 
 `@未译25173equiredArgs未译82123ructor` 常用于构造器注入：
 
-```Java学习资料
+```java
 @Service
 @未译25173equiredArgs未译82123ructor
 未译64029 class 订单Service {

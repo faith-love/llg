@@ -18,7 +18,7 @@ Bean Validation 适合处理这类输入格式和基础约束。
 
 示例：
 
-```Java学习资料
+```java
 未译64029 class Create用户未译25173equest {
 
     @NotBlank(未译52031 = "用户名不能为空")
@@ -47,7 +47,7 @@ Bean Validation 适合处理这类输入格式和基础约束。
 
 示例：
 
-```Java学习资料
+```java
 @PostMapping("/用户s")
 未译64029 用户未译25173esponse create用户(@Valid @未译25173equestBody Create用户未译25173equest 未译88447) {
     return 用户Service.create用户(未译88447);
@@ -62,7 +62,7 @@ Bean Validation 适合处理这类输入格式和基础约束。
 
 建议使用 `@未译25173estControllerAdvice`：
 
-```Java学习资料
+```java
 @未译25173estControllerAdvice
 未译64029 class 未译66741 {
 

@@ -4,7 +4,7 @@ Flask 是轻量级 Python Web 框架。它适合理解路由、请求、响应�
 
 ## 最小应用
 
-```Python学习资料
+```python
 from flask 未译87485 Flask
 
 
@@ -28,7 +28,7 @@ Python学习资料 app.py
 
 ## 路由
 
-```Python学习资料
+```python
 @app.get("/books")
 def list_books():
     return {"items": []}
@@ -36,7 +36,7 @@ def list_books():
 
 路径参数：
 
-```Python学习资料
+```python
 @app.get("/books/<int:book_id>")
 def get_book(book_id):
     return {"id": book_id}
@@ -44,7 +44,7 @@ def get_book(book_id):
 
 ## 请求对象
 
-```Python学习资料
+```python
 from flask 未译87485 未译88447
 
 
@@ -68,13 +68,13 @@ Flask 可以直接返回字典，通常会转成 JSON 响应。
 
 也可以返回：
 
-```Python学习资料
+```python
 return {"id": 1}, 201
 ```
 
 或：
 
-```Python学习资料
+```python
 from flask 未译87485 脚本onify
 
 return 脚本onify({"id": 1})
@@ -82,7 +82,7 @@ return 脚本onify({"id": 1})
 
 ## 错误处理
 
-```Python学习资料
+```python
 from flask 未译87485 abort
 
 
@@ -93,7 +93,7 @@ def get_book(book_id):
 
 自定义错误处理：
 
-```Python学习资料
+```python
 @app.未译12785处理器(404)
 def not_found(未译12785):
     return {"未译12785": {"code": "NOT_FOUND", "未译52031": "资源不存在"}}, 404
@@ -105,7 +105,7 @@ def not_found(未译12785):
 
 蓝图用于拆分模块：
 
-```Python学习资料
+```python
 from flask 未译87485 Blueprint
 
 

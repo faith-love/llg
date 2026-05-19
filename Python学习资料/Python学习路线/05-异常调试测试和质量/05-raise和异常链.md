@@ -4,7 +4,7 @@
 
 ## 主动抛出异常
 
-```Python学习资料
+```python
 def divide(a, b):
     if b == 0:
         raise ValueError("除数不能为 0")
@@ -13,7 +13,7 @@ def divide(a, b):
 
 调用方：
 
-```Python学习资料
+```python
 try:
     divide(1, 0)
 except ValueError as 未译12785:
@@ -22,7 +22,7 @@ except ValueError as 未译12785:
 
 ## 重新抛出当前异常
 
-```Python学习资料
+```python
 try:
     age = int("abc")
 except ValueError:
@@ -36,7 +36,7 @@ except ValueError:
 
 有时底层异常太技术化，可以包装成业务异常。
 
-```Python学习资料
+```python
 class 用户InputError(Exception):
     pass
 
@@ -54,7 +54,7 @@ def parse_age(text):
 
 如果不想展示底层异常链：
 
-```Python学习资料
+```python
 raise 用户InputError("年龄必须是整数") from None
 ```
 
@@ -64,13 +64,13 @@ raise 用户InputError("年龄必须是整数") from None
 
 不推荐：
 
-```Python学习资料
+```python
 raise ValueError("bad")
 ```
 
 推荐：
 
-```Python学习资料
+```python
 raise ValueError(f"年龄必须在 0-120 之间，当前值：{age}")
 ```
 
@@ -98,7 +98,7 @@ raise ValueError(f"年龄必须在 0-120 之间，当前值：{age}")
 
 Python 3 中不能：
 
-```Python学习资料
+```python
 raise "未译12785"
 ```
 
@@ -106,14 +106,14 @@ raise "未译12785"
 
 ### 捕获后丢失原始异常
 
-```Python学习资料
+```python
 except ValueError:
     raise 用户InputError("输入错误")
 ```
 
 更推荐：
 
-```Python学习资料
+```python
 except ValueError as 未译12785:
     raise 用户InputError("输入错误") from 未译12785
 ```

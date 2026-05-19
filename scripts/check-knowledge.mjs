@@ -4,6 +4,48 @@ import path from 'node:path'
 const root = path.resolve(process.cwd())
 const ignore = new Set(['.git', '.idea', '.vitepress', '.workbuddy', 'node_modules', 'dist'])
 const issues = []
+const knownCodeLanguages = new Set([
+  'bash',
+  'bat',
+  'cmd',
+  'css',
+  'dockerfile',
+  'conf',
+  'cron',
+  'dos',
+  'ini',
+  'csv',
+  'go',
+  'html',
+  'http',
+  'gitignore',
+  'java',
+  'javascript',
+  'js',
+  'json',
+  'jsp',
+  'lua',
+  'mysql',
+  'md',
+  'markdown',
+  'mermaid',
+  'nginx',
+  'powershell',
+  'properties',
+  'py',
+  'python',
+  'sh',
+  'shell',
+  'sql',
+  'text',
+  'toml',
+  'ts',
+  'typescript',
+  'txt',
+  'xml',
+  'yaml',
+  'yml'
+])
 
 function isExternal(link) {
   return /^(https?:|mailto:|#|javascript:|安全HTTP:)/.test(link)
@@ -20,6 +62,24 @@ function targetExists(currentDir, link) {
   return false
 }
 
+function checkCodeFenceLanguages(rel, content) {
+  const fences = [...content.matchAll(/^```([^`\r\n]*)$/gm)]
+  for (const fence of fences) {
+    const raw = fence[1].trim()
+    if (!raw) continue
+
+    const lang = raw.split(/\s+/)[0].toLowerCase()
+    if (knownCodeLanguages.has(lang)) continue
+
+    const line = content.slice(0, fence.index).split('\n').length
+    issues.push({
+      file: rel,
+      type: 'unknown_code_language',
+      detail: `第 ${line} 行代码块语言可能无效: ${raw}`
+    })
+  }
+}
+
 function checkFile(file) {
   const rel = path.relative(root, file)
   const content = fs.readFileSync(file, 'utf8').replace(/^\uFEFF/, '').replace(/\r\n/g, '\n')
@@ -33,6 +93,8 @@ function checkFile(file) {
   if (!/^#\s+.+/m.test(content) && !hasHomeFrontmatter) {
     issues.push({ file: rel, type: 'missing_h1', detail: '缺少 # 一级标题' })
   }
+
+  checkCodeFenceLanguages(rel, content)
 
   const currentDir = path.dirname(file)
   const sanitized = content.replace(/```[\s\S]*?```/g, '')

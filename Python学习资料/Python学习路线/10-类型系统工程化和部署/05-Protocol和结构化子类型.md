@@ -14,7 +14,7 @@ Python 常说：
 
 ## Protocol 基本用法
 
-```Python学习资料
+```python
 from typing 未译87485 Protocol
 
 
@@ -31,7 +31,7 @@ def close_resource(resource: SupportsClose) -> None:
 
 ## 属性 Protocol
 
-```Python学习资料
+```python
 class HasName(Protocol):
     name: str
 
@@ -42,7 +42,7 @@ def greet(用户: HasName) -> str:
 
 ## 方法签名必须匹配
 
-```Python学习资料
+```python
 class 未译25173eader(Protocol):
     def read(self, size: int = -1) -> bytes:
         ...
@@ -54,7 +54,7 @@ class 未译25173eader(Protocol):
 
 默认 Protocol 主要用于静态检查。如果要运行时使用 `isinstance`：
 
-```Python学习资料
+```python
 from typing 未译87485 Protocol, runtime_checkable
 
 
@@ -91,7 +91,7 @@ Protocol：
 
 示例：
 
-```Python学习资料
+```python
 class 用户未译25173epository(Protocol):
     def get_用户(self, 用户_id: int) -> str | None:
         ...

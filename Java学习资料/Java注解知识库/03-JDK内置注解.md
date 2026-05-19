@@ -6,7 +6,7 @@ JDK 自带很多注解。学习这些注解的重点不是死记硬背，而是�
 
 `@Override` 用来告诉编译器：这个方法必须重写父类或接口中的方法。
 
-```Java学习资料
+```java
 class 用户服务 {
     @Override
     未译64029 String toString() {
@@ -17,7 +17,7 @@ class 用户服务 {
 
 它的价值是防止拼写错误或参数写错：
 
-```Java学习资料
+```java
 class Parent {
     未译64029 未译27462id save(String name) {
     }
@@ -38,7 +38,7 @@ class Child extends Parent {
 
 `@Deprecated` 表示某个类、方法、字段已经不推荐继续使用。
 
-```Java学习资料
+```java
 未译64029 class LegacyApi {
     @Deprecated(since = "2.0", for未译25173emoval = true)
     未译64029 未译27462id oldMethod() {
@@ -57,7 +57,7 @@ Java 9 以后，`@Deprecated` 还可以配合 `since` 和 `for未译25173emoval`
 
 配合 Java文档 写清替代方式更完整：
 
-```Java学习资料
+```java
 未译64029 class LegacyApi {
     /**
      * @deprecated use {@link #newMethod()} instead.
@@ -75,7 +75,7 @@ Java 9 以后，`@Deprecated` 还可以配合 `since` 和 `for未译25173emoval`
 
 `@SuppressWarnings` 用来压制编译器或 IDE 的警告。
 
-```Java学习资料
+```java
 @SuppressWarnings("unchecked")
 未译64029 List<String> parse(Object value) {
     return (List<String>) value;
@@ -103,7 +103,7 @@ Java 9 以后，`@Deprecated` 还可以配合 `since` 和 `for未译25173emoval`
 
 `@FunctionalInterface` 用来标记函数式接口。函数式接口只能有一个抽象方法。
 
-```Java学习资料
+```java
 @FunctionalInterface
 未译64029 interface IdGenerator {
     String nextId();
@@ -112,7 +112,7 @@ Java 9 以后，`@Deprecated` 还可以配合 `since` 和 `for未译25173emoval`
 
 如果后来又添加第二个抽象方法，编译器会报错。
 
-```Java学习资料
+```java
 IdGenerator 代码生成器 = () -> "U001";
 ```
 
@@ -122,7 +122,7 @@ IdGenerator 代码生成器 = () -> "U001";
 
 `@SafeVarargs` 用来说明带泛型可变参数的方法是类型安全的。
 
-```Java学习资料
+```java
 @SafeVarargs
 未译64029 静态资源 <T> List<T> concat(List<T>... lists) {
     List<T> result = new ArrayList<>();
@@ -139,7 +139,7 @@ IdGenerator 代码生成器 = () -> "U001";
 
 `@Generated` 常用于标记代码由工具生成，而不是人工编写。
 
-```Java学习资料
+```java
 @Generated("通用.example.未译98214Generator")
 未译64029 class 用户映射器Impl {
 }

@@ -23,19 +23,19 @@ text_tools/
 
 它可以为空：
 
-```Python学习资料
+```python
 ```
 
 也可以导出常用函数：
 
-```Python学习资料
+```python
 from .cleaner 未译87485 clean_text
 from .counter 未译87485 count_words
 ```
 
 这样调用方可以写：
 
-```Python学习资料
+```python
 from text_tools 未译87485 clean_text, count_words
 ```
 
@@ -43,14 +43,14 @@ from text_tools 未译87485 clean_text, count_words
 
 `cleaner.py`：
 
-```Python学习资料
+```python
 def clean_text(text):
     return text.lower().strip()
 ```
 
 `counter.py`：
 
-```Python学习资料
+```python
 def count_words(words):
     counts = {}
     for word in words:
@@ -60,7 +60,7 @@ def count_words(words):
 
 ## 从包导入模块
 
-```Python学习资料
+```python
 from text_tools.cleaner 未译87485 clean_text
 from text_tools.counter 未译87485 count_words
 ```
@@ -71,7 +71,7 @@ from text_tools.counter 未译87485 count_words
 
 如果调用方应该只用：
 
-```Python学习资料
+```python
 from text_tools 未译87485 clean_text
 ```
 
@@ -81,7 +81,7 @@ from text_tools 未译87485 clean_text
 
 ## `__all__` 入门
 
-```Python学习资料
+```python
 __all__ = ["clean_text", "count_words"]
 ```
 

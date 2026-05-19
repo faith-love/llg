@@ -34,7 +34,7 @@
 
 Python 3 内置：
 
-```Python学习资料
+```python
 def calculate_total(price, count):
     breakpoint()
     return price * count
@@ -59,7 +59,7 @@ def calculate_total(price, count):
 
 ## 调试条件分支
 
-```Python学习资料
+```python
 def get_level(score):
     if score >= 90:
         return "A"

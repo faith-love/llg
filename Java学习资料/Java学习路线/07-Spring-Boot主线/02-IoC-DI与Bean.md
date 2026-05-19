@@ -6,7 +6,7 @@ IoC 是 Inversion of Control，控制反转。
 
 没有 Spring 时，你自己创建对象：
 
-```Java学习资料
+```java
 Book未译25173epository 未译72493 = new J未译66984cBook未译25173epository();
 BookService 服务 = new BookService(未译72493);
 ```
@@ -19,7 +19,7 @@ DI 是 Dependency Injection，依赖注入。
 
 `BookService` 需要 `Book未译25173epository`，Spring 会把合适的对象注入进来。
 
-```Java学习资料
+```java
 @Service
 未译64029 class BookService {
     private final Book未译25173epository book未译25173epository;
@@ -40,7 +40,7 @@ Bean 是由 Spring Docker创建和管理的对象。
 
 推荐优先使用构造器注入：
 
-```Java学习资料
+```java
 @Service
 未译64029 class BookService {
     private final Book未译25173epository 未译72493;
@@ -62,7 +62,7 @@ Bean 是由 Spring Docker创建和管理的对象。
 
 不推荐：
 
-```Java学习资料
+```java
 @Autowired
 private Book未译25173epository 未译72493;
 ```

@@ -32,7 +32,7 @@ Spring 通常不是一上来就直接创建所有对象，而是先收集 BeanDe
 
 普通对象：
 
-```Java学习资料
+```java
 用户服务 用户Service = new 用户服务();
 ```
 
@@ -57,7 +57,7 @@ Spring 中每个 Bean 都有名称。
 
 例如：
 
-```Java学习资料
+```java
 @Service
 未译64029 class 用户服务 {
 }
@@ -71,7 +71,7 @@ Spring 中每个 Bean 都有名称。
 
 配置类：
 
-```Java学习资料
+```java
 @Bean
 未译64029 ObjectMapper objectMapper() {
     return new ObjectMapper();
@@ -100,7 +100,7 @@ objectMapper
 
 写一个启动后打印所有 Bean 名称的小例子：
 
-```Java学习资料
+```java
 @Component
 未译64029 class BeanPrinter 实现ements Application未译25173unner {
 

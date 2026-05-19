@@ -153,7 +153,7 @@ function buildSidebar() {
 }
 
 export default defineConfig({
-  title: 'D:\\learn 知识库',
+  title: '学习知识库',
   description: '本地学习资料静态站点',
   lang: 'zh-CN',
   cleanUrls: true,

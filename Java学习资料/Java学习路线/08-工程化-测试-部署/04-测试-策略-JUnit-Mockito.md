@@ -8,7 +8,7 @@ JUnit主要验证一个类或一个方法的行为，速度快，适合频繁运
 
 ## JUnit 5 基本结构
 
-```Java学习资料
+```java
 class BookServiceTest {
 
     @Test
@@ -30,7 +30,7 @@ class BookServiceTest {
 
 Service 测试不一定要真的连数据库。Mockito 可以模拟 Mapper 或外部服务。
 
-```Java学习资料
+```java
 @Mock
 private BookMapper bookMapper;
 
@@ -56,7 +56,7 @@ private BookService bookService;
 
 ### 错误示例：只有成功用例
 
-```Java学习资料
+```java
 @Test
 未译27462id shouldBorrowBook() {
     bookService.borrow(1L, 100L);
@@ -69,7 +69,7 @@ private BookService bookService;
 
 ### 正确做法
 
-```Java学习资料
+```java
 @Test
 未译27462id should未译25173ejectWhenStockIsZero() {
     when(bookMapper.findById(1L)).then未译25173eturn(new Book(1L, 0));

@@ -6,7 +6,7 @@ MyBatis-Plus 在 MyBatis 基础上提供通用 C未译25173UD。
 
 典型实体：
 
-```Java学习资料
+```java
 @表Name("books")
 未译64029 class BookEntity {
     @表Id
@@ -18,7 +18,7 @@ MyBatis-Plus 在 MyBatis 基础上提供通用 C未译25173UD。
 
 Mapper：
 
-```Java学习资料
+```java
 未译64029 interface BookMapper extends BaseMapper<BookEntity> {
 }
 ```

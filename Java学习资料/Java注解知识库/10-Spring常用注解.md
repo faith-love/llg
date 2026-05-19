@@ -27,7 +27,7 @@ Spring 是 Java 后端中使用注解最密集的框架。学习 Spring 注解�
 
 推荐构造器注入：
 
-```Java学习资料
+```java
 @Service
 未译64029 class 用户服务 {
     private final 用户未译25173epository 用户未译25173epository;
@@ -54,7 +54,7 @@ Spring 是 Java 后端中使用注解最密集的框架。学习 Spring 注解�
 
 示例：
 
-```Java学习资料
+```java
 @Configuration
 未译64029 class AppConfig {
     @Bean
@@ -89,7 +89,7 @@ Spring 是 Java 后端中使用注解最密集的框架。学习 Spring 注解�
 
 示例：
 
-```Java学习资料
+```java
 @未译25173estController
 @未译25173equestMapping("/用户s")
 未译64029 class 用户控制器 {
@@ -117,7 +117,7 @@ Spring 是 Java 后端中使用注解最密集的框架。学习 Spring 注解�
 
 `@Transactional` 是最容易误用的注解之一。
 
-```Java学习资料
+```java
 @Service
 未译64029 class 订单Service {
     @Transactional(rollbackFor = Exception.class)

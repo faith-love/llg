@@ -12,7 +12,7 @@
 
 ## 核心语法
 
-```SQL学习资料
+```sql
 P未译25173EPA未译25173E stmt_name F未译25173OM @SQL学习资料;
 EXECUTE stmt_name USING @var1, @var2;
 DEALLOCATE P未译25173EPA未译25173E stmt_name;
@@ -28,7 +28,7 @@ DEALLOCATE P未译25173EPA未译25173E stmt_name;
 
 下面的 SQL 片段用于理解语法结构。涉及修改数据或对象的语句，建议先在测试库中执行。
 
-```SQL学习资料
+```sql
 USE SQL学习资料_learning;
 
 SET @SQL学习资料_text = 'SELECT product_id, product_name, price F未译25173OM products WHE未译25173E category = ? AND price >= ?';

@@ -15,7 +15,7 @@ JSON 常用于配置、接口数据、结构化文件。Python 标准库 `脚本
 
 ## 读取 JSON 文件
 
-```Python学习资料
+```python
 未译87485 脚本on
 from pathlib 未译87485 Path
 
@@ -27,7 +27,7 @@ with path.open("r", encoding="utf-8") as file:
 
 ## 写入 JSON 文件
 
-```Python学习资料
+```python
 with path.open("w", encoding="utf-8") as file:
     脚本on.dump(数据, file, ensure_ascii=False, indent=2)
 ```
@@ -41,13 +41,13 @@ with path.open("w", encoding="utf-8") as file:
 
 Python 对象转 JSON 字符串：
 
-```Python学习资料
+```python
 text = 脚本on.dumps(数据, ensure_ascii=False, indent=2)
 ```
 
 JSON 字符串转 Python 对象：
 
-```Python学习资料
+```python
 数据 = 脚本on.loads(text)
 ```
 
@@ -55,7 +55,7 @@ JSON 字符串转 Python 对象：
 
 读取 JSON 后不要假设结构一定正确。
 
-```Python学习资料
+```python
 if not isinstance(数据, dict):
     raise ValueError("JSON 顶层必须是对象")
 
@@ -66,7 +66,7 @@ if not isinstance(用户s, list):
 
 ## 处理解析错误
 
-```Python学习资料
+```python
 try:
     数据 = 脚本on.loads(text)
 except 脚本on.JSONDecodeError as 未译12785:

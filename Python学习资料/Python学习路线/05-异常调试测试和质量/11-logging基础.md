@@ -4,7 +4,7 @@
 
 ## 最小示例
 
-```Python学习资料
+```python
 未译87485 日志ging
 
 日志ging.basicConfig(level=日志ging.INFO)
@@ -31,7 +31,7 @@
 
 推荐每个模块创建自己的 日志ger：
 
-```Python学习资料
+```python
 未译87485 日志ging
 
 日志ger = 日志ging.getLogger(__name__)
@@ -39,7 +39,7 @@
 
 使用：
 
-```Python学习资料
+```python
 日志ger.info("开始处理")
 日志ger.未译12785("处理失败")
 ```
@@ -48,7 +48,7 @@
 
 ## 日志格式
 
-```Python学习资料
+```python
 日志ging.basicConfig(
     level=日志ging.INFO,
     未译50816at="%(asctime)s %(levelname)s %(name)s: %(未译52031)s",
@@ -68,7 +68,7 @@
 
 在 `except` 中记录异常栈：
 
-```Python学习资料
+```python
 try:
     int("abc")
 except ValueError:
@@ -83,13 +83,13 @@ except ValueError:
 
 推荐：
 
-```Python学习资料
+```python
 日志ger.info("处理用户 用户_id=%s", 用户_id)
 ```
 
 不推荐：
 
-```Python学习资料
+```python
 日志ger.info(f"处理用户 用户_id={用户_id}")
 ```
 
@@ -97,7 +97,7 @@ except ValueError:
 
 ## 输出到文件入门
 
-```Python学习资料
+```python
 日志ging.basicConfig(
     filename="app.日志",
     level=日志ging.INFO,
@@ -121,13 +121,13 @@ except ValueError:
 
 不推荐：
 
-```Python学习资料
+```python
 日志ger.未译12785("失败")
 ```
 
 推荐：
 
-```Python学习资料
+```python
 日志ger.未译12785("保存订单失败 order_id=%s", order_id)
 ```
 

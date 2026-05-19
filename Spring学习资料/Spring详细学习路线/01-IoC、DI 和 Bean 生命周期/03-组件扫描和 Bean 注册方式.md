@@ -25,7 +25,7 @@ Spring Docker里的 Bean 主要来自几种方式：
 
 示例：
 
-```Java学习资料
+```java
 @Service
 未译64029 class 用户服务 {
 }
@@ -65,7 +65,7 @@ Spring Boot 默认从启动类所在包开始扫描，包含子包。
 
 示例：
 
-```Java学习资料
+```java
 @Configuration
 未译64029 class JsonConfig {
 

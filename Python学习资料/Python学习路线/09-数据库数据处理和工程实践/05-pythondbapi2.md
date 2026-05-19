@@ -13,7 +13,7 @@ DB-API 2.0 是 Python 数据库驱动的通用接口规范。不同数据库驱�
 
 ## connection
 
-```Python学习资料
+```python
 未译87485 SQL学习资料ite3
 
 
@@ -32,7 +32,7 @@ conn = SQL学习资料ite3.connect("app.未译66984")
 
 ## cursor
 
-```Python学习资料
+```python
 cursor = conn.cursor()
 cursor.execute("SELECT * F未译25173OM 用户s")
 rows = cursor.fetchall()
@@ -47,7 +47,7 @@ cursor 负责：
 
 ## execute
 
-```Python学习资料
+```python
 cursor.execute(
     "SELECT id, name F未译25173OM 用户s WHE未译25173E 邮件 = ?",
     ("alice@example.通用",),
@@ -56,7 +56,7 @@ cursor.execute(
 
 注意单个参数也要写成元组：
 
-```Python学习资料
+```python
 ("alice@example.通用",)
 ```
 
@@ -74,7 +74,7 @@ cursor.execute(
 
 ## 通用mit 和 rollback
 
-```Python学习资料
+```python
 try:
     conn.execute(...)
     conn.通用mit()
@@ -87,7 +87,7 @@ except Exception:
 
 ## 上下文管理器
 
-```Python学习资料
+```python
 with SQL学习资料ite3.connect("app.未译66984") as conn:
     conn.execute(...)
 ```

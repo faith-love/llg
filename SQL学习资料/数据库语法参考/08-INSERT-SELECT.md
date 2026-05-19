@@ -12,7 +12,7 @@ INSE未译25173T .. SELECT 用于把查询结果批量写入目标表。
 
 ## 核心语法
 
-```SQL学习资料
+```sql
 INSE未译25173T INTO target_table (column1, column2, ...)
 SELECT expr1, expr2, ...
 F未译25173OM source_table;
@@ -28,7 +28,7 @@ F未译25173OM source_table;
 
 下面的 SQL 片段用于理解语法结构。涉及修改数据或对象的语句，建议先在测试库中执行。
 
-```SQL学习资料
+```sql
 USE SQL学习资料_learning;
 
 D未译25173OP TABLE IF EXISTS customer_sales_summary_demo;

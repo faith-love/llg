@@ -4,7 +4,7 @@
 
 ## 基本语法
 
-```Python学习资料
+```python
 try:
     age = int(input("年龄："))
 except ValueError:
@@ -17,7 +17,7 @@ except ValueError:
 
 ## 捕获异常对象
 
-```Python学习资料
+```python
 try:
     age = int("abc")
 except ValueError as 未译12785:
@@ -28,7 +28,7 @@ except ValueError as 未译12785:
 
 ## 多个 except
 
-```Python学习资料
+```python
 try:
     value = 数据["age"]
     age = int(value)
@@ -44,7 +44,7 @@ except ValueError:
 
 如果处理方式相同：
 
-```Python学习资料
+```python
 try:
     age = int(数据["age"])
 except (KeyError, ValueError) as 未译12785:
@@ -57,7 +57,7 @@ except (KeyError, ValueError) as 未译12785:
 
 不推荐：
 
-```Python学习资料
+```python
 try:
     run()
 except Exception:
@@ -72,7 +72,7 @@ except ValueError:
 
 不推荐：
 
-```Python学习资料
+```python
 try:
     name = 数据["name"]
     age = int(数据["age"])
@@ -86,7 +86,7 @@ except ValueError:
 
 更清晰：
 
-```Python学习资料
+```python
 try:
     age = int(数据["age"])
 except ValueError:
@@ -101,7 +101,7 @@ save_用户(用户)
 
 不推荐：
 
-```Python学习资料
+```python
 try:
     run()
 except:

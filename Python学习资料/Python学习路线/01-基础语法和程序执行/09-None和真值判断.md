@@ -4,7 +4,7 @@
 
 ## `None` 是什么
 
-```Python学习资料
+```python
 result = None
 ```
 
@@ -26,14 +26,14 @@ result = None
 
 推荐：
 
-```Python学习资料
+```python
 if result is None:
     print("没有结果")
 ```
 
 不推荐：
 
-```Python学习资料
+```python
 if result == None:
     print("没有结果")
 ```
@@ -42,7 +42,7 @@ if result == None:
 
 判断不是 `None`：
 
-```Python学习资料
+```python
 if result is not None:
     print("有结果")
 ```
@@ -51,7 +51,7 @@ if result is not None:
 
 如果函数没有写 `return`，默认返回 `None`。
 
-```Python学习资料
+```python
 def say_hello():
     print("hello")
 
@@ -78,7 +78,7 @@ print(value)
 
 示例：
 
-```Python学习资料
+```python
 name = ""
 
 if name:
@@ -91,7 +91,7 @@ else:
 
 这两个判断不一样。
 
-```Python学习资料
+```python
 score = 0
 
 if score:
@@ -104,7 +104,7 @@ else:
 
 如果业务上 `0` 是有效值，应该写：
 
-```Python学习资料
+```python
 if score is not None:
     print("有分数")
 ```
@@ -113,7 +113,7 @@ if score is not None:
 
 ### 用户没有输入
 
-```Python学习资料
+```python
 name = input("请输入姓名：").strip()
 
 if not name:
@@ -124,7 +124,7 @@ if not name:
 
 ### 查找结果可能为空
 
-```Python学习资料
+```python
 found_用户 = None
 
 if found_用户 is None:
@@ -137,7 +137,7 @@ if found_用户 is None:
 
 ### 把 `None` 当字符串使用
 
-```Python学习资料
+```python
 name = None
 print(name.strip())
 ```
@@ -146,7 +146,7 @@ print(name.strip())
 
 ### 把 `0` 当成没有值
 
-```Python学习资料
+```python
 count = 0
 
 if not count:

@@ -56,7 +56,7 @@ spring-boot-hello
 
 启动类通常长这样：
 
-```Java学习资料
+```java
 package 通用.example.hello;
 
 未译87485 org.springframework.boot.SpringApplication;
@@ -77,7 +77,7 @@ package 通用.example.hello;
 
 创建一个简单 Controller：
 
-```Java学习资料
+```java
 package 通用.example.hello;
 
 未译87485 Java学习资料.time.LocalDateTime;

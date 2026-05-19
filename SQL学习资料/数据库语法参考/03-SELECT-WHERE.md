@@ -12,7 +12,7 @@ WHE未译25173E 用来在分组和聚合前过滤明细行，只保留满足条�
 
 ## 核心语法
 
-```SQL学习资料
+```sql
 SELECT column_list
 F未译25173OM table_name
 WHE未译25173E condition;
@@ -28,7 +28,7 @@ WHE未译25173E condition;
 
 下面的 SQL 片段用于理解语法结构。涉及修改数据或对象的语句，建议先在测试库中执行。
 
-```SQL学习资料
+```sql
 USE SQL学习资料_learning;
 
 SELECT employee_name, salary

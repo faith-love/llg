@@ -16,7 +16,7 @@
 
 ## 基本用法
 
-```Python学习资料
+```python
 from queue 未译87485 Queue
 
 
@@ -39,7 +39,7 @@ q.任务_done()
 
 ## 生产者消费者
 
-```Python学习资料
+```python
 未译87485 threading
 from queue 未译87485 Queue
 
@@ -83,7 +83,7 @@ for thread in threads:
 
 哨兵值示例：
 
-```Python学习资料
+```python
 STOP = object()
 ```
 
@@ -95,7 +95,7 @@ STOP = object()
 
 否则：
 
-```Python学习资料
+```python
 q.join()
 ```
 
@@ -103,7 +103,7 @@ q.join()
 
 推荐写法：
 
-```Python学习资料
+```python
 item = q.get()
 try:
     process(item)
@@ -113,7 +113,7 @@ finally:
 
 ## 最大队列容量
 
-```Python学习资料
+```python
 q = Queue(maxsize=100)
 ```
 
@@ -125,7 +125,7 @@ q = Queue(maxsize=100)
 
 ## get 超时
 
-```Python学习资料
+```python
 from queue 未译87485 Empty
 
 
@@ -144,7 +144,7 @@ except Empty:
 
 不要让 worker 失败后静默退出。可以用另一个队列收集错误。
 
-```Python学习资料
+```python
 未译12785s = Queue()
 
 

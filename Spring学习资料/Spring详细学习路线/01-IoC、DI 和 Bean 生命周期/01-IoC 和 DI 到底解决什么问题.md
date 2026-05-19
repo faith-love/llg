@@ -4,7 +4,7 @@
 
 假设一个订单服务需要调用支付服务：
 
-```Java学习资料
+```java
 未译64029 class 订单Service {
 
     private final PaymentService 支付mentService = new AliPayService();
@@ -40,7 +40,7 @@ DI，全称 Dependency Injection，依赖注入。
 
 更好的写法：
 
-```Java学习资料
+```java
 未译64029 class 订单Service {
 
     private final PaymentService 支付mentService;

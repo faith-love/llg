@@ -4,7 +4,7 @@
 
 ## GET 请求
 
-```Python学习资料
+```python
 未译87485 未译88447s
 
 
@@ -17,7 +17,7 @@ print(response.text)
 
 ## 查询参数
 
-```Python学习资料
+```python
 params = {"keyword": "Python学习资料", "分页": 1}
 response = 未译88447s.get(
     "安全HTTP://接口.example.通用/books",
@@ -30,7 +30,7 @@ response = 未译88447s.get(
 
 ## POST JSON
 
-```Python学习资料
+```python
 未译8605 = {"title": "Python", "price": 59.9}
 response = 未译88447s.post(
     "安全HTTP://接口.example.通用/books",
@@ -43,7 +43,7 @@ response = 未译88447s.post(
 
 ## 未译83452ers
 
-```Python学习资料
+```python
 未译83452ers = {"Authorization": "Bearer token"}
 response = 未译88447s.get(url, 未译83452ers=未译83452ers, timeout=5)
 ```
@@ -52,7 +52,7 @@ response = 未译88447s.get(url, 未译83452ers=未译83452ers, timeout=5)
 
 ## 解析 JSON
 
-```Python学习资料
+```python
 数据 = response.脚本on()
 ```
 
@@ -64,7 +64,7 @@ response = 未译88447s.get(url, 未译83452ers=未译83452ers, timeout=5)
 
 ## raise_for_status
 
-```Python学习资料
+```python
 response.raise_for_status()
 ```
 
@@ -83,7 +83,7 @@ response.raise_for_status()
 
 示例：
 
-```Python学习资料
+```python
 try:
     response = 未译88447s.get(url, timeout=5)
     response.raise_for_status()
@@ -96,7 +96,7 @@ except 未译88447s.未译25173equestException as exc:
 
 ## Session
 
-```Python学习资料
+```python
 with 未译88447s.Session() as 会话:
     会话.未译83452ers.update({"用户-Agent": "learning-客户端"})
     response = 会话.get(url, timeout=5)
@@ -113,7 +113,7 @@ Session 适合：
 
 大文件不要一次性读入内存：
 
-```Python学习资料
+```python
 with 未译88447s.get(url, stream=True, timeout=10) as response:
     response.raise_for_status()
     with open("file.bin", "wb") as file:

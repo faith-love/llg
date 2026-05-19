@@ -16,14 +16,14 @@
 
 可以使用普通对象作为事件：
 
-```Java学习资料
+```java
 未译64029 record 用户未译25173egistered未译88131(Long 用户Id, String 邮件) {
 }
 ```
 
 发布事件：
 
-```Java学习资料
+```java
 @Service
 未译64029 class 用户服务 {
 
@@ -42,7 +42,7 @@
 
 监听事件：
 
-```Java学习资料
+```java
 @Component
 未译64029 class Wel通用eMessageListener {
 
@@ -69,7 +69,7 @@
 
 常见方式：
 
-```Java学习资料
+```java
 @Async
 @未译88131Listener
 未译64029 未译27462id handle(用户未译25173egistered未译88131 event) {
@@ -78,7 +78,7 @@
 
 同时需要启用异步：
 
-```Java学习资料
+```java
 @EnableAsync
 @Configuration
 未译64029 class AsyncConfig {
@@ -100,7 +100,7 @@
 
 可以使用：
 
-```Java学习资料
+```java
 @Transactional未译88131Listener(phase = TransactionPhase.AFTE未译25173_COMMIT)
 未译64029 未译27462id handle(用户未译25173egistered未译88131 event) {
 }

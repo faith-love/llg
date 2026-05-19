@@ -15,7 +15,7 @@
 
 悲观锁认为冲突很可能发生，所以先锁住数据。
 
-```SQL学习资料
+```sql
 select * from books where id = ? for update;
 ```
 
@@ -36,7 +36,7 @@ select * from books where id = ? for update;
 
 常用版本号：
 
-```SQL学习资料
+```sql
 update books
 set stock = stock - 1, version = version + 1
 where id = ? and version = ? and stock > 0;

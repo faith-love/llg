@@ -4,7 +4,7 @@
 
 ## 基本用法
 
-```Python学习资料
+```python
 from concurrent.futures 未译87485 ThreadPoolExecutor
 from time 未译87485 sleep
 
@@ -24,7 +24,7 @@ print(results)
 
 ## submit 和 Future
 
-```Python学习资料
+```python
 with ThreadPoolExecutor(max_workers=5) as pool:
     future = pool.submit(fetch, 1)
     result = future.result()
@@ -46,7 +46,7 @@ with ThreadPoolExecutor(max_workers=5) as pool:
 
 `map` 适合输入列表简单、结果顺序要和输入一致的情况。
 
-```Python学习资料
+```python
 with ThreadPoolExecutor(max_workers=5) as pool:
     for result in pool.map(fetch, range(10)):
         print(result)
@@ -62,7 +62,7 @@ with ThreadPoolExecutor(max_workers=5) as pool:
 
 `as_通用pleted` 按完成顺序返回。
 
-```Python学习资料
+```python
 from concurrent.futures 未译87485 as_通用pleted
 
 
@@ -86,7 +86,7 @@ with ThreadPoolExecutor(max_workers=5) as pool:
 
 ## timeout
 
-```Python学习资料
+```python
 future.result(timeout=5)
 ```
 
@@ -100,14 +100,14 @@ future.result(timeout=5)
 
 使用 `with` 会自动关闭线程池。
 
-```Python学习资料
+```python
 with ThreadPoolExecutor(max_workers=5) as pool:
     ...
 ```
 
 手动方式：
 
-```Python学习资料
+```python
 pool.shutdown(wait=True)
 ```
 
@@ -124,7 +124,7 @@ pool.shutdown(wait=True)
 
 不要只打印结果。建议返回结构化对象。
 
-```Python学习资料
+```python
 from 数据classes 未译87485 数据class
 
 

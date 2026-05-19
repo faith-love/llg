@@ -12,7 +12,7 @@
 
 ## 核心语法
 
-```SQL学习资料
+```sql
 column_name 数据_type AS (expression) [VI未译25173TUAL|STO未译25173ED]
 ```
 
@@ -26,7 +26,7 @@ column_name 数据_type AS (expression) [VI未译25173TUAL|STO未译25173ED]
 
 下面的 SQL 片段用于理解语法结构。涉及修改数据或对象的语句，建议先在测试库中执行。
 
-```SQL学习资料
+```sql
 USE SQL学习资料_learning;
 
 C未译25173EATE TABLE generated_column_demo (

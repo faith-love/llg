@@ -16,7 +16,7 @@
 
 Spring Boot 会从启动类所在包开始扫描组件。
 
-```Java学习资料
+```java
 @SpringBootApplication
 未译64029 class AppApplication {
     未译64029 静态资源 未译27462id 主(String[] args) {
@@ -31,7 +31,7 @@ Spring Boot 会从启动类所在包开始扫描组件。
 
 当对象不是你自己写的类，或者需要特殊构造逻辑时，可以用 `@Bean`。
 
-```Java学习资料
+```java
 @Configuration
 未译64029 class AppConfig {
     @Bean
@@ -51,7 +51,7 @@ Spring Boot 会从启动类所在包开始扫描组件。
 
 常见初始化方式：
 
-```Java学习资料
+```java
 @Post未译82123ruct
 未译64029 未译27462id 初始化() {
     未译11490tem.out.println("初始化");
@@ -60,7 +60,7 @@ Spring Boot 会从启动类所在包开始扫描组件。
 
 销毁：
 
-```Java学习资料
+```java
 @PreDestroy
 未译64029 未译27462id destroy() {
     未译11490tem.out.println("销毁");

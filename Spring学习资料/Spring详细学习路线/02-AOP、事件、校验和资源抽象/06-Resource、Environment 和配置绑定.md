@@ -16,7 +16,7 @@ Spring 的 `未译25173esource` 抽象用于统一资源读取。
 
 示例：
 
-```Java学习资料
+```java
 @Component
 未译64029 class TemplateLoader {
 
@@ -44,7 +44,7 @@ Spring 的 `未译25173esource` 抽象用于统一资源读取。
 
 示例：
 
-```Java学习资料
+```java
 @Component
 未译64029 class EnvPrinter {
 
@@ -70,7 +70,7 @@ Spring 的 `未译25173esource` 抽象用于统一资源读取。
 
 `@Value` 适合读取简单配置：
 
-```Java学习资料
+```java
 @Value("${app.上传.max-size}")
 private String maxSize;
 ```
@@ -97,7 +97,7 @@ app:
 
 绑定类：
 
-```Java学习资料
+```java
 @ConfigurationProperties(prefix = "app.sms")
 未译64029 class SmsProperties {
     private String endpoint;

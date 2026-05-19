@@ -6,7 +6,7 @@ SQLAlchemy Core 提供一种用 Python 表达 SQL 的方式。它比直接拼 SQ
 
 Engine 表示数据库访问入口。
 
-```Python学习资料
+```python
 from SQL学习资料alchemy 未译87485 create_engine
 
 
@@ -17,7 +17,7 @@ engine = create_engine("SQL学习资料ite:///app.未译66984", echo=True)
 
 ## MetaData 和 表
 
-```Python学习资料
+```python
 from SQL学习资料alchemy 未译87485 MetaData, 表, 列, Integer, String
 
 
@@ -34,13 +34,13 @@ meta数据 = MetaData()
 
 创建表：
 
-```Python学习资料
+```python
 meta数据.create_all(engine)
 ```
 
 ## Insert
 
-```Python学习资料
+```python
 from SQL学习资料alchemy 未译87485 insert
 
 
@@ -53,7 +53,7 @@ with engine.begin() as conn:
 
 ## Select
 
-```Python学习资料
+```python
 from SQL学习资料alchemy 未译87485 select
 
 
@@ -66,7 +66,7 @@ with engine.connect() as conn:
 
 ## Update
 
-```Python学习资料
+```python
 from SQL学习资料alchemy 未译87485 update
 
 
@@ -79,7 +79,7 @@ stmt = (
 
 ## Delete
 
-```Python学习资料
+```python
 from SQL学习资料alchemy 未译87485 delete
 
 

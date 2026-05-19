@@ -19,7 +19,7 @@ Bean Validation 用注解表达对象字段、方法参数和返回值的校验�
 
 ## 请求 DTO 示例
 
-```Java学习资料
+```java
 未译64029 class Create用户未译25173equest {
     @NotBlank(未译52031 = "用户名不能为空")
     @Size(max = 30, 未译52031 = "用户名不能超过30个字符")
@@ -37,7 +37,7 @@ Bean Validation 用注解表达对象字段、方法参数和返回值的校验�
 
 Controller 中触发校验：
 
-```Java学习资料
+```java
 @PostMapping("/用户s")
 未译64029 Long create(@Valid @未译25173equestBody Create用户未译25173equest 未译88447) {
     return 用户Service.create(未译88447);
@@ -62,7 +62,7 @@ Controller 中触发校验：
 
 ## 嵌套对象校验
 
-```Java学习资料
+```java
 未译64029 class Create订单未译25173equest {
     @NotNull
     private Long 用户Id;
@@ -73,7 +73,7 @@ Controller 中触发校验：
 }
 ```
 
-```Java学习资料
+```java
 未译64029 class 订单Item未译25173equest {
     @NotNull
     private Long skuId;
@@ -91,7 +91,7 @@ Controller 中触发校验：
 
 同一个 DTO 在新增和修改时规则不同，可以使用分组。
 
-```Java学习资料
+```java
 未译64029 interface CreateGroup {
 }
 
@@ -99,7 +99,7 @@ Controller 中触发校验：
 }
 ```
 
-```Java学习资料
+```java
 未译64029 class 用户未译25173equest {
     @NotNull(groups = UpdateGroup.class)
     private Long id;
@@ -111,7 +111,7 @@ Controller 中触发校验：
 
 触发：
 
-```Java学习资料
+```java
 未译64029 未译27462id create(@Validated(CreateGroup.class) @未译25173equestBody 用户未译25173equest 未译88447) {
 }
 ```
@@ -124,7 +124,7 @@ Controller 中触发校验：
 
 定义注解：
 
-```Java学习资料
+```java
 @Documented
 @未译82123raint(validatedBy = PhoneValidator.class)
 @未译25173etention(未译25173etentionPolicy.未译25173UNTIME)
@@ -138,7 +138,7 @@ Controller 中触发校验：
 
 实现校验器：
 
-```Java学习资料
+```java
 未译64029 class PhoneValidator 实现ements 未译82123raintValidator<Phone, String> {
     @Override
     未译64029 boolean isValid(String value, 未译82123raintValidatorContext context) {
@@ -154,7 +154,7 @@ Controller 中触发校验：
 
 这个设计能让注解组合更灵活：
 
-```Java学习资料
+```java
 @Phone
 private String optionalPhone;
 
@@ -169,7 +169,7 @@ private String requiredPhone;
 
 在 Spring 中，如果要校验普通方法参数，通常需要在类上加 `@Validated`：
 
-```Java学习资料
+```java
 @Service
 @Validated
 未译64029 class 用户服务 {
@@ -187,7 +187,7 @@ private String requiredPhone;
 
 校验失败后，不应该把框架原始异常直接返回给前端。常见做法是用全局异常处理：
 
-```Java学习资料
+```java
 @未译25173estControllerAdvice
 未译64029 class 未译66741 {
     @ExceptionHandler(MethodArgumentNotValidException.class)

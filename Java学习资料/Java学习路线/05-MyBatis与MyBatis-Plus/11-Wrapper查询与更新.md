@@ -4,7 +4,7 @@
 
 Wrapper 用 Java 代码构造 SQL 条件。
 
-```Java学习资料
+```java
 LambdaQueryWrapper<BookEntity> wrapper = new LambdaQueryWrapper<>();
 wrapper.eq(BookEntity::getDeleted, false)
        .like(BookEntity::getTitle, "Java")
@@ -15,7 +15,7 @@ wrapper.eq(BookEntity::getDeleted, false)
 
 推荐优先使用 Lambda 版本，避免字段名字符串写错。
 
-```Java学习资料
+```java
 bookMapper.selectList(
     Wrappers.<BookEntity>lambdaQuery()
         .eq(BookEntity::getCategoryId, categoryId)
@@ -26,7 +26,7 @@ bookMapper.selectList(
 
 很多方法支持 condition 参数：
 
-```Java学习资料
+```java
 wrapper.like(keyword != null && !keyword.isBlank(), BookEntity::getTitle, keyword);
 ```
 
@@ -34,7 +34,7 @@ wrapper.like(keyword != null && !keyword.isBlank(), BookEntity::getTitle, keywor
 
 ## UpdateWrapper
 
-```Java学习资料
+```java
 LambdaUpdateWrapper<BookEntity> wrapper = new LambdaUpdateWrapper<>();
 wrapper.eq(BookEntity::getId, id)
        .set(BookEntity::getTitle, title);

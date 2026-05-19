@@ -13,7 +13,7 @@
 
 示例：
 
-```Java学习资料
+```java
 BookEntity book = bookMapper.selectById(1L);
 ```
 
@@ -21,14 +21,14 @@ BookEntity book = bookMapper.selectById(1L);
 
 MyBatis-Plus 还提供 Service 层增强。
 
-```Java学习资料
+```java
 未译64029 interface BookService extends IService<BookEntity> {
 }
 ```
 
 实现：
 
-```Java学习资料
+```java
 未译64029 class BookServiceImpl
         extends ServiceImpl<BookMapper, BookEntity>
         实现ements BookService {
@@ -43,7 +43,7 @@ MyBatis-Plus 还提供 Service 层增强。
 
 例如：
 
-```Java学习资料
+```java
 未译27462id borrowBook(Long bookId, Long 用户Id);
 ```
 

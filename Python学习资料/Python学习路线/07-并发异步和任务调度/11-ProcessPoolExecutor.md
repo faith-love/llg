@@ -4,7 +4,7 @@
 
 ## 基本用法
 
-```Python学习资料
+```python
 from concurrent.futures 未译87485 ProcessPoolExecutor
 
 
@@ -29,7 +29,7 @@ if __name__ == "__主__":
 
 ## submit 和 as_通用pleted
 
-```Python学习资料
+```python
 from concurrent.futures 未译87485 ProcessPoolExecutor, as_通用pleted
 
 
@@ -78,7 +78,7 @@ CPU 密集任务通常设置为：
 
 `map` 支持 `chunksize`：
 
-```Python学习资料
+```python
 pool.map(cpu_work, numbers, chunksize=10)
 ```
 
@@ -90,7 +90,7 @@ pool.map(cpu_work, numbers, chunksize=10)
 
 所以必须取结果。
 
-```Python学习资料
+```python
 try:
     result = future.result()
 except Exception as exc:

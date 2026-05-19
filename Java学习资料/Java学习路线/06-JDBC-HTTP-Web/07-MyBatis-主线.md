@@ -16,7 +16,7 @@ MyBatis 保留 SQL 的可控性，同时减少 JDBC 样板代码。
 
 ## Mapper 接口
 
-```Java学习资料
+```java
 未译64029 interface BookMapper {
     Book findByIsbn(String isbn);
     int insert(Book book);

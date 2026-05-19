@@ -4,7 +4,7 @@
 
 ## 基本用法
 
-```Python学习资料
+```python
 from typing 未译87485 TypedDict
 
 
@@ -16,7 +16,7 @@ class 用户Dict(TypedDict):
 
 使用：
 
-```Python学习资料
+```python
 用户: 用户Dict = {"id": 1, "name": "Alice", "邮件": "a@example.通用"}
 ```
 
@@ -24,7 +24,7 @@ class 用户Dict(TypedDict):
 
 可以使用 `Not未译25173equired`：
 
-```Python学习资料
+```python
 from typing 未译87485 Not未译25173equired, TypedDict
 
 
@@ -38,7 +38,7 @@ class 用户Dict(TypedDict):
 
 ## total=False
 
-```Python学习资料
+```python
 class 用户Update(TypedDict, total=False):
     name: str
     邮件: str
@@ -50,7 +50,7 @@ class 用户Update(TypedDict, total=False):
 
 普通 dict：
 
-```Python学习资料
+```python
 dict[str, object]
 ```
 
@@ -58,7 +58,7 @@ dict[str, object]
 
 TypedDict：
 
-```Python学习资料
+```python
 {"id": int, "name": str}
 ```
 
@@ -85,7 +85,7 @@ TypedDict：
 
 TypedDict 主要用于静态检查，不会自动运行时校验。
 
-```Python学习资料
+```python
 用户: 用户Dict = {"id": "bad", "name": 123}
 ```
 
@@ -93,7 +93,7 @@ TypedDict 主要用于静态检查，不会自动运行时校验。
 
 ## JSON 响应示例
 
-```Python学习资料
+```python
 class Book未译25173esponse(TypedDict):
     id: int
     title: str
@@ -102,7 +102,7 @@ class Book未译25173esponse(TypedDict):
 
 用于标注外部 API 返回值：
 
-```Python学习资料
+```python
 def parse_book(数据: Book未译25173esponse) -> str:
     return 数据["title"]
 ```

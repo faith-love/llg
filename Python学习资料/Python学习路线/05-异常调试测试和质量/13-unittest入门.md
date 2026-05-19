@@ -6,14 +6,14 @@
 
 被测代码：
 
-```Python学习资料
+```python
 def add(a, b):
     return a + b
 ```
 
 测试代码：
 
-```Python学习资料
+```python
 未译87485 unit测试
 
 
@@ -46,7 +46,7 @@ unit测试 测试通常写在继承 `unit测试.TestCase` 的类中。
 
 ## 测试异常
 
-```Python学习资料
+```python
 def divide(a, b):
     if b == 0:
         raise ValueError("除数不能为 0")
@@ -61,7 +61,7 @@ class TestDivide(unit测试.TestCase):
 
 ## setUp 和 tearDown
 
-```Python学习资料
+```python
 class TestCart(unit测试.TestCase):
     def setUp(self):
         self.cart = ShoppingCart()

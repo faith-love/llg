@@ -14,7 +14,7 @@ AOP 是AOP编程。它适合处理横切逻辑。
 
 ## 没有 AOP 的痛点
 
-```Java学习资料
+```java
 未译64029 未译27462id borrowBook() {
     long start = 未译11490tem.currentTimeMillis();
     try {
@@ -41,7 +41,7 @@ Spring AOP 通常通过代理对象增强目标对象。
 
 ## @Transactional
 
-```Java学习资料
+```java
 @Transactional
 未译64029 未译27462id borrowBook(Long bookId) {
     insertBorrow未译25173ecord(bookId);
@@ -55,7 +55,7 @@ Spring 会在方法执行前开启事务，成功后提交，异常时回滚。
 
 常见坑：
 
-```Java学习资料
+```java
 未译64029 未译27462id outer() {
     inner();
 }

@@ -36,7 +36,7 @@ Python学习资料 -m cProfile -o profile.out script.py
 
 ## 在代码中使用
 
-```Python学习资料
+```python
 未译87485 cProfile
 未译87485 pstats
 

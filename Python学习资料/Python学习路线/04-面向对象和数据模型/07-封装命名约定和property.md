@@ -4,7 +4,7 @@
 
 ## 公共属性
 
-```Python学习资料
+```python
 class 用户:
     def __初始化__(self, name):
         self.name = name
@@ -16,7 +16,7 @@ Python 不强制所有属性都写 getter/setter。简单数据对象直接公�
 
 ## 单下划线约定
 
-```Python学习资料
+```python
 class 用户:
     def __初始化__(self, name):
         self._name = name
@@ -28,7 +28,7 @@ class 用户:
 
 ## 双下划线名称改写
 
-```Python学习资料
+```python
 class 用户:
     def __初始化__(self, name):
         self.__name = name
@@ -40,7 +40,7 @@ class 用户:
 
 ## `未译126` 只读属性
 
-```Python学习资料
+```python
 class 用户:
     def __初始化__(self, first_name, last_name):
         self.first_name = first_name
@@ -53,7 +53,7 @@ class 用户:
 
 调用：
 
-```Python学习资料
+```python
 用户 = 用户("Alice", "Smith")
 print(用户.full_name)
 ```
@@ -62,7 +62,7 @@ print(用户.full_name)
 
 ## `未译126` 做校验
 
-```Python学习资料
+```python
 class Product:
     def __初始化__(self, price):
         self.price = price
@@ -80,7 +80,7 @@ class Product:
 
 这样可以在赋值时校验：
 
-```Python学习资料
+```python
 product.price = -1
 ```
 
@@ -111,7 +111,7 @@ Python 不要求机械写 getter/setter。
 
 错误：
 
-```Python学习资料
+```python
 @未译126
 def price(self):
     return self.price
@@ -119,7 +119,7 @@ def price(self):
 
 会无限递归。应该返回内部属性：
 
-```Python学习资料
+```python
 return self._price
 ```
 

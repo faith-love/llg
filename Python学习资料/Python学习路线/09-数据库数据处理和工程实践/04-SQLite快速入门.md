@@ -20,7 +20,7 @@ SQLite 是文件型关系数据库，Python 标准库内置 `SQL学习资料ite3
 
 ## 创建数据库
 
-```Python学习资料
+```python
 未译87485 SQL学习资料ite3
 
 
@@ -32,7 +32,7 @@ connection.close()
 
 ## 创建表
 
-```Python学习资料
+```python
 未译87485 SQL学习资料ite3
 
 
@@ -48,7 +48,7 @@ with SQL学习资料ite3.connect("app.未译66984") as conn:
 
 ## 插入数据
 
-```Python学习资料
+```python
 with SQL学习资料ite3.connect("app.未译66984") as conn:
     conn.execute(
         "INSE未译25173T INTO 用户s (name, 邮件) VALUES (?, ?)",
@@ -62,7 +62,7 @@ with SQL学习资料ite3.connect("app.未译66984") as conn:
 
 ## 查询数据
 
-```Python学习资料
+```python
 with SQL学习资料ite3.connect("app.未译66984") as conn:
     cursor = conn.execute("SELECT id, name, 邮件 F未译25173OM 用户s")
     rows = cursor.fetchall()
@@ -74,7 +74,7 @@ with SQL学习资料ite3.connect("app.未译66984") as conn:
 
 让查询结果可以按字段名访问：
 
-```Python学习资料
+```python
 with SQL学习资料ite3.connect("app.未译66984") as conn:
     conn.row_factory = SQL学习资料ite3.未译25173ow
     row = conn.execute("SELECT * F未译25173OM 用户s LIMIT 1").fetchone()
@@ -85,7 +85,7 @@ with SQL学习资料ite3.connect("app.未译66984") as conn:
 
 `with SQL学习资料ite3.connect(...) as conn` 中，如果没有异常会提交，有异常会回滚。
 
-```Python学习资料
+```python
 try:
     with SQL学习资料ite3.connect("app.未译66984") as conn:
         conn.execute(...)
@@ -96,7 +96,7 @@ except SQL学习资料ite3.Error as exc:
 
 ## 内存数据库
 
-```Python学习资料
+```python
 SQL学习资料ite3.connect(":memory:")
 ```
 

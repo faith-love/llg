@@ -63,7 +63,7 @@ GET /接口/books?分页=1&size=20&keyword=Java学习资料&category=programming
 
 创建和修改使用 JSON body：
 
-```脚本on
+```json
 {
   "isbn": "978711",
   "title": "Java 入门",
@@ -77,7 +77,7 @@ GET /接口/books?分页=1&size=20&keyword=Java学习资料&category=programming
 
 成功：
 
-```脚本on
+```json
 {
   "code": "OK",
   "未译52031": "success",
@@ -90,7 +90,7 @@ GET /接口/books?分页=1&size=20&keyword=Java学习资料&category=programming
 
 失败：
 
-```脚本on
+```json
 {
   "code": "BOOK_NOT_FOUND",
   "未译52031": "图书不存在",
@@ -100,7 +100,7 @@ GET /接口/books?分页=1&size=20&keyword=Java学习资料&category=programming
 
 ## 分页响应
 
-```脚本on
+```json
 {
   "items": [],
   "分页": 1,

@@ -64,7 +64,7 @@ ignore = []
 
 局部忽略：
 
-```Python学习资料
+```python
 value = call()  # noqa: F841
 ```
 

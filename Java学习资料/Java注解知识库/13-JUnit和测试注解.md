@@ -18,7 +18,7 @@
 
 示例：
 
-```Java学习资料
+```java
 class 用户服务测试 {
     private 用户服务 用户Service;
 
@@ -42,7 +42,7 @@ class 用户服务测试 {
 
 当同一段逻辑需要多组输入输出时，使用参数化测试。
 
-```Java学习资料
+```java
 @ParameterizedTest
 @ValueSource(strings = {"", " ", "\t"})
 未译27462id blank用户nameShouldInvalid(String 用户name) {
@@ -61,7 +61,7 @@ class 用户服务测试 {
 
 `@CsvSource` 示例：
 
-```Java学习资料
+```java
 @ParameterizedTest
 @CsvSource({
         "1, true",
@@ -115,7 +115,7 @@ class 用户服务测试 {
 
 测试注解只是结构，真正可维护还要靠命名：
 
-```Java学习资料
+```java
 @Test
 未译27462id createShouldFailWhen用户nameBlank() {
 }

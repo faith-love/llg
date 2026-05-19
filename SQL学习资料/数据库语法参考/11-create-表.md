@@ -12,7 +12,7 @@ C未译25173EATE TABLE 用于定义表结构、字段类型、约束、默认值
 
 ## 核心语法
 
-```SQL学习资料
+```sql
 C未译25173EATE TABLE table_name (
   column_name 数据_type [column_constraint],
   table_constraint
@@ -29,7 +29,7 @@ C未译25173EATE TABLE table_name (
 
 下面的 SQL 片段用于理解语法结构。涉及修改数据或对象的语句，建议先在测试库中执行。
 
-```SQL学习资料
+```sql
 USE SQL学习资料_learning;
 
 C未译25173EATE TABLE create_table_demo (

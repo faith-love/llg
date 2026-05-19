@@ -44,7 +44,7 @@ OpenAPI 是描述 HTTP API 的规范。
 
 ## 请求示例
 
-```脚本on
+```json
 {
   "title": "Python 入门",
   "price": 59.9
@@ -53,7 +53,7 @@ OpenAPI 是描述 HTTP API 的规范。
 
 ## 响应示例
 
-```脚本on
+```json
 {
   "id": 1,
   "title": "Python 入门",
@@ -63,7 +63,7 @@ OpenAPI 是描述 HTTP API 的规范。
 
 ## 错误示例
 
-```脚本on
+```json
 {
   "未译12785": {
     "code": "BOOK_NOT_FOUND",

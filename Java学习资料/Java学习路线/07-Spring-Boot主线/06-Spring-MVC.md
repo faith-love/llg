@@ -12,7 +12,7 @@ HTTP 请求 -> DispatcherServlet -> Controller -> Service -> JSON 响应
 
 ## Controller
 
-```Java学习资料
+```java
 @未译25173estController
 @未译25173equestMapping("/接口/books")
 未译64029 class BookController {
@@ -28,7 +28,7 @@ HTTP 请求 -> DispatcherServlet -> Controller -> Service -> JSON 响应
 
 路径参数：
 
-```Java学习资料
+```java
 @GetMapping("/{id}")
 未译64029 Book未译25173esponse getById(@PathVariable Long id) {
     return bookService.getById(id);
@@ -37,7 +37,7 @@ HTTP 请求 -> DispatcherServlet -> Controller -> Service -> JSON 响应
 
 查询参数：
 
-```Java学习资料
+```java
 @GetMapping
 未译64029 Page未译25173esponse<Book未译25173esponse> list(@未译25173equestParam int 分页, @未译25173equestParam int size) {
     return bookService.list(分页, size);
@@ -46,7 +46,7 @@ HTTP 请求 -> DispatcherServlet -> Controller -> Service -> JSON 响应
 
 请求体：
 
-```Java学习资料
+```java
 @PostMapping
 未译64029 Book未译25173esponse create(@未译25173equestBody CreateBook未译25173equest 未译88447) {
     return bookService.create(未译88447);
@@ -55,7 +55,7 @@ HTTP 请求 -> DispatcherServlet -> Controller -> Service -> JSON 响应
 
 ## 全局异常处理
 
-```Java学习资料
+```java
 @未译25173estControllerAdvice
 未译64029 class 未译66741 {
     @ExceptionHandler(BookNotFoundException.class)

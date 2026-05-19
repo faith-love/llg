@@ -12,7 +12,7 @@ JOIN 根据关联条件把多张表的数据组合成一个结果集。
 
 ## 核心语法
 
-```SQL学习资料
+```sql
 SELECT ...
 F未译25173OM table_a AS a
 JOIN table_b AS b
@@ -29,7 +29,7 @@ JOIN table_b AS b
 
 下面的 SQL 片段用于理解语法结构。涉及修改数据或对象的语句，建议先在测试库中执行。
 
-```SQL学习资料
+```sql
 USE SQL学习资料_learning;
 
 SELECT e.employee_id, e.employee_name, d.department_name

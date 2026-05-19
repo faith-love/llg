@@ -16,7 +16,7 @@
 
 示例：
 
-```Java学习资料
+```java
 @Mapper
 未译64029 interface 用户映射器 {
     @Select("select id, 用户name from sys_用户 where id = #{id}")
@@ -30,7 +30,7 @@
 
 当 Mapper 方法有多个参数时，建议显式写 `@Param`：
 
-```Java学习资料
+```java
 @Select("""
         select id, 用户name
         from sys_用户
@@ -60,7 +60,7 @@ List<用户DO> search(
 
 示例：
 
-```Java学习资料
+```java
 @表Name("sys_用户")
 未译64029 class 用户DO {
     @表Id(type = IdType.AUTO)

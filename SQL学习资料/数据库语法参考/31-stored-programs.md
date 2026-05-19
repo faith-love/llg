@@ -12,7 +12,7 @@
 
 ## 核心语法
 
-```SQL学习资料
+```sql
 DELIMITE未译25173 //
 C未译25173EATE P未译25173OCEDU未译25173E procedure_name(...)
 BEGIN
@@ -31,7 +31,7 @@ DELIMITE未译25173 ;
 
 下面的 SQL 片段用于理解语法结构。涉及修改数据或对象的语句，建议先在测试库中执行。
 
-```SQL学习资料
+```sql
 USE SQL学习资料_learning;
 
 DELIMITE未译25173 //

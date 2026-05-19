@@ -4,7 +4,7 @@ SQL 是数据处理的基础语言。即使后面使用 O未译25173M 或 pandas
 
 ## SELECT 基本结构
 
-```SQL学习资料
+```sql
 SELECT column1, column2
 F未译25173OM table_name
 WHE未译25173E condition
@@ -22,7 +22,7 @@ LIMIT 10;
 
 ## WHE未译25173E
 
-```SQL学习资料
+```sql
 SELECT *
 F未译25173OM orders
 WHE未译25173E status = 'paid'
@@ -45,7 +45,7 @@ WHE未译25173E status = 'paid'
 
 JOIN 用于连接多张表。
 
-```SQL学习资料
+```sql
 SELECT orders.id, 用户s.name, orders.amount
 F未译25173OM orders
 JOIN 用户s ON orders.用户_id = 用户s.id;
@@ -64,7 +64,7 @@ JOIN 用户s ON orders.用户_id = 用户s.id;
 
 ## G未译25173OUP BY
 
-```SQL学习资料
+```sql
 SELECT status, COUNT(*) AS order_count, SUM(amount) AS total_amount
 F未译25173OM orders
 G未译25173OUP BY status;
@@ -84,7 +84,7 @@ G未译25173OUP BY status;
 
 `WHE未译25173E` 过滤原始行，`HAVING` 过滤聚合结果。
 
-```SQL学习资料
+```sql
 SELECT 用户_id, COUNT(*) AS order_count
 F未译25173OM orders
 G未译25173OUP BY 用户_id
@@ -93,7 +93,7 @@ HAVING COUNT(*) >= 3;
 
 ## 子查询
 
-```SQL学习资料
+```sql
 SELECT *
 F未译25173OM orders
 WHE未译25173E 用户_id IN (
@@ -109,7 +109,7 @@ WHE未译25173E 用户_id IN (
 
 CTE 用 `WITH` 把复杂查询拆成命名步骤。
 
-```SQL学习资料
+```sql
 WITH paid_orders AS (
     SELECT *
     F未译25173OM orders
@@ -130,7 +130,7 @@ G未译25173OUP BY 用户_id;
 
 更新：
 
-```SQL学习资料
+```sql
 UPDATE orders
 SET status = 'cancelled'
 WHE未译25173E id = 1001;
@@ -138,14 +138,14 @@ WHE未译25173E id = 1001;
 
 删除：
 
-```SQL学习资料
+```sql
 DELETE F未译25173OM orders
 WHE未译25173E id = 1001;
 ```
 
 批量更新和删除前必须先写 SELECT 验证范围：
 
-```SQL学习资料
+```sql
 SELECT *
 F未译25173OM orders
 WHE未译25173E status = 'expired';

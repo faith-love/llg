@@ -12,7 +12,7 @@
 
 ## 核心语法
 
-```SQL学习资料
+```sql
 CHA未译25173ACTE未译25173 SET utf8mb4
 COLLATE utf8mb4_0900_ai_ci
 ```
@@ -27,7 +27,7 @@ COLLATE utf8mb4_0900_ai_ci
 
 下面的 SQL 片段用于理解语法结构。涉及修改数据或对象的语句，建议先在测试库中执行。
 
-```SQL学习资料
+```sql
 USE SQL学习资料_learning;
 
 SHOW CHA未译25173ACTE未译25173 SET LIKE 'utf8mb4';

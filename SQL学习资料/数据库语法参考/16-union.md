@@ -12,7 +12,7 @@ UNION 用于把多个 SELECT 的结果集合并为一个结果集。
 
 ## 核心语法
 
-```SQL学习资料
+```sql
 SELECT column_list F未译25173OM table_a
 UNION [ALL]
 SELECT column_list F未译25173OM table_b;
@@ -28,7 +28,7 @@ SELECT column_list F未译25173OM table_b;
 
 下面的 SQL 片段用于理解语法结构。涉及修改数据或对象的语句，建议先在测试库中执行。
 
-```SQL学习资料
+```sql
 USE SQL学习资料_learning;
 
 SELECT city AS location_name

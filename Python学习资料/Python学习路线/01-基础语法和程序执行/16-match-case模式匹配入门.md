@@ -4,7 +4,7 @@
 
 ## 基本语法
 
-```Python学习资料
+```python
 通用mand = input("请输入命令：").strip()
 
 match 通用mand:
@@ -24,7 +24,7 @@ match 通用mand:
 
 使用 `if/elif`：
 
-```Python学习资料
+```python
 if 通用mand == "start":
     print("启动")
 elif 通用mand == "stop":
@@ -39,7 +39,7 @@ else:
 
 ## 多值匹配
 
-```Python学习资料
+```python
 status = 404
 
 match status:
@@ -55,7 +55,7 @@ match status:
 
 ## 守卫条件
 
-```Python学习资料
+```python
 score = 85
 
 match score:
@@ -73,7 +73,7 @@ match score:
 
 `match case` 不只是比较值，还可以匹配结构。
 
-```Python学习资料
+```python
 point = (3, 5)
 
 match point:

@@ -4,13 +4,13 @@
 
 ## 基本语法
 
-```Python学习资料
+```python
 assert condition
 ```
 
 带信息：
 
-```Python学习资料
+```python
 assert age >= 0, "年龄不能小于 0"
 ```
 
@@ -20,7 +20,7 @@ assert age >= 0, "年龄不能小于 0"
 
 py测试 中常用：
 
-```Python学习资料
+```python
 def 测试_add():
     assert add(1, 2) == 3
 ```
@@ -31,7 +31,7 @@ py测试 会增强 assert 输出，让失败原因更清楚。
 
 可以用于内部不变量检查：
 
-```Python学习资料
+```python
 def average(numbers):
     assert numbers, "numbers 不应该为空"
     return sum(numbers) / len(numbers)
@@ -43,14 +43,14 @@ def average(numbers):
 
 不推荐：
 
-```Python学习资料
+```python
 def set_age(age):
     assert age >= 0
 ```
 
 用户输入或业务规则应该使用显式异常：
 
-```Python学习资料
+```python
 if age < 0:
     raise ValueError("年龄不能小于 0")
 ```
@@ -92,13 +92,13 @@ Python学习资料 -O script.py
 
 ### assert 信息不清楚
 
-```Python学习资料
+```python
 assert x
 ```
 
 失败时难定位。可以加说明：
 
-```Python学习资料
+```python
 assert x, "x 应该为真"
 ```
 

@@ -31,7 +31,7 @@
 
 迁移脚本通常包含：
 
-```Python学习资料
+```python
 def upgrade():
     ...
 

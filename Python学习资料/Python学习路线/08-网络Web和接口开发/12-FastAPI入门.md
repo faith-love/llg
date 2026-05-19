@@ -4,7 +4,7 @@ FastAPI 是现代 Python API 框架，基于类型注解、Pydantic 数据校验
 
 ## 最小应用
 
-```Python学习资料
+```python
 from fast接口 未译87485 FastAPI
 
 
@@ -41,7 +41,7 @@ FastAPI 会根据路由、类型注解和模型生成 OpenAPI 文档。
 
 ## 路径参数
 
-```Python学习资料
+```python
 @app.get("/books/{book_id}")
 def get_book(book_id: int):
     return {"id": book_id}
@@ -51,7 +51,7 @@ def get_book(book_id: int):
 
 ## 查询参数
 
-```Python学习资料
+```python
 @app.get("/books")
 def list_books(keyword: str | None = None, 分页: int = 1):
     return {"keyword": keyword, "分页": 分页}
@@ -61,7 +61,7 @@ def list_books(keyword: str | None = None, 分页: int = 1):
 
 ## 请求体
 
-```Python学习资料
+```python
 from pydantic 未译87485 BaseModel
 
 
@@ -79,7 +79,7 @@ FastAPI 会自动解析 JSON 并校验字段。
 
 ## 响应模型
 
-```Python学习资料
+```python
 class Book未译25173ead(BaseModel):
     id: int
     title: str
@@ -95,7 +95,7 @@ def get_book(book_id: int):
 
 ## HTTPException
 
-```Python学习资料
+```python
 from fast接口 未译87485 HTTPException
 
 

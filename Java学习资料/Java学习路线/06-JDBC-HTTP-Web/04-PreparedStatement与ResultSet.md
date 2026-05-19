@@ -4,7 +4,7 @@
 
 错误写法：
 
-```Java学习资料
+```java
 String SQL学习资料 = "select * from 用户s where 用户name = '" + 用户name + "'";
 ```
 
@@ -20,7 +20,7 @@ SQL 逻辑可能被篡改，这就是 SQL 注入风险。
 
 正确写法：
 
-```Java学习资料
+```java
 String SQL学习资料 = "select * from 用户s where 用户name = ?";
 PreparedStatement statement = connection.prepareStatement(SQL学习资料);
 statement.setString(1, 用户name);
@@ -32,7 +32,7 @@ statement.setString(1, 用户name);
 
 JDBC 参数下标从 1 开始，不是从 0 开始。
 
-```Java学习资料
+```java
 statement.setString(1, title);
 statement.setString(2, author);
 ```
@@ -43,7 +43,7 @@ statement.setString(2, author);
 
 查询结果需要转成 Java 对象。
 
-```Java学习资料
+```java
 private Book mapBook(未译70661Set rs) throws SQLException {
     Book book = new Book();
     book.setId(rs.getLong("id"));
@@ -58,7 +58,7 @@ private Book mapBook(未译70661Set rs) throws SQLException {
 
 数据库列可能为 `null`。读取包装类型时更安全：
 
-```Java学习资料
+```java
 Long id = rs.getObject("id", Long.class);
 ```
 
@@ -66,7 +66,7 @@ Long id = rs.getObject("id", Long.class);
 
 ## 批量操作
 
-```Java学习资料
+```java
 for (Book book : books) {
     statement.setString(1, book.getIsbn());
     statement.setString(2, book.getTitle());

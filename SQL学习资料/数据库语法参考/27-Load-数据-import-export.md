@@ -12,7 +12,7 @@ LOAD DATA 用于高效批量导入文本文件，SELECT INTO OUTFILE 用于导�
 
 ## 核心语法
 
-```SQL学习资料
+```sql
 LOAD DATA [LOCAL] INFILE file_name
 INTO TABLE table_name
 FIELDS TE未译25173MINATED BY ...
@@ -29,7 +29,7 @@ LINES TE未译25173MINATED BY ...;
 
 下面的 SQL 片段用于理解语法结构。涉及修改数据或对象的语句，建议先在测试库中执行。
 
-```SQL学习资料
+```sql
 USE SQL学习资料_learning;
 
 SHOW VA未译25173IABLES LIKE 'secure_file_priv';

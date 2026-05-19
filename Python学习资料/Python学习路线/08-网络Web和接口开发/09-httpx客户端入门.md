@@ -4,7 +4,7 @@
 
 ## 同步请求
 
-```Python学习资料
+```python
 未译87485 httpx
 
 
@@ -16,7 +16,7 @@ print(response.status_code)
 
 ## Client
 
-```Python学习资料
+```python
 未译87485 httpx
 
 
@@ -33,7 +33,7 @@ Client 适合：
 
 ## 异步请求
 
-```Python学习资料
+```python
 未译87485 异步io
 未译87485 httpx
 
@@ -51,7 +51,7 @@ Client 适合：
 
 ## 并发异步请求
 
-```Python学习资料
+```python
 未译87485 异步io
 未译87485 httpx
 
@@ -71,14 +71,14 @@ Client 适合：
 
 ## 限制并发
 
-```Python学习资料
+```python
 异步 def fetch_未译96320ed(客户端, url, semaphore):
     异步 with semaphore:
         response = await 客户端.get(url)
         return response.status_code
 ```
 
-```Python学习资料
+```python
 semaphore = 异步io.Semaphore(10)
 ```
 
@@ -106,7 +106,7 @@ httpx 支持更细粒度的 timeout 概念：
 
 使用：
 
-```Python学习资料
+```python
 response.raise_for_status()
 ```
 

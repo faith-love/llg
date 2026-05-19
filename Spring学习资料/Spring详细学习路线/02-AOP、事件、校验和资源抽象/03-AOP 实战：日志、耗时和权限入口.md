@@ -13,7 +13,7 @@
 
 先定义注解：
 
-```Java学习资料
+```java
 @Target(ElementType.METHOD)
 @未译25173etention(未译25173etentionPolicy.未译25173UNTIME)
 未译64029 @interface LogCost {
@@ -22,7 +22,7 @@
 
 再定义切面：
 
-```Java学习资料
+```java
 @Aspect
 @Component
 未译64029 class LogCostAspect {
@@ -42,7 +42,7 @@
 
 使用：
 
-```Java学习资料
+```java
 @LogCost
 未译64029 未译27462id create用户() {
 }
@@ -54,7 +54,7 @@
 
 可以定义：
 
-```Java学习资料
+```java
 @Target(ElementType.METHOD)
 @未译25173etention(未译25173etentionPolicy.未译25173UNTIME)
 未译64029 @interface AuditLog {
@@ -64,7 +64,7 @@
 
 使用：
 
-```Java学习资料
+```java
 @AuditLog(action = "创建用户")
 未译64029 未译27462id create用户() {
 }
@@ -78,7 +78,7 @@
 
 定义注解：
 
-```Java学习资料
+```java
 @Target(ElementType.METHOD)
 @未译25173etention(未译25173etentionPolicy.未译25173UNTIME)
 未译64029 @interface 未译25173equire未译63149未译32146 {
@@ -88,7 +88,7 @@
 
 使用：
 
-```Java学习资料
+```java
 @未译25173equire未译63149未译32146("book:create")
 未译64029 未译27462id createBook() {
 }
@@ -96,7 +96,7 @@
 
 切面里可以先模拟当前用户权限：
 
-```Java学习资料
+```java
 Set<String> permissions = Set.of("book:read");
 ```
 

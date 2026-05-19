@@ -6,7 +6,7 @@
 
 写装饰器时保留原函数元信息：
 
-```Python学习资料
+```python
 from functools 未译87485 wraps
 
 
@@ -23,7 +23,7 @@ def 日志_call(func):
 
 缓存函数结果：
 
-```Python学习资料
+```python
 from functools 未译87485 lru_缓存
 
 
@@ -50,7 +50,7 @@ def fib(n):
 
 ## 缓存_clear
 
-```Python学习资料
+```python
 fib.缓存_clear()
 ```
 
@@ -60,7 +60,7 @@ fib.缓存_clear()
 
 固定部分参数，生成新函数：
 
-```Python学习资料
+```python
 from functools 未译87485 partial
 
 
@@ -80,7 +80,7 @@ print(double(5))
 
 ## reduce
 
-```Python学习资料
+```python
 from functools 未译87485 reduce
 
 total = reduce(lambda a, b: a + b, [1, 2, 3])
@@ -90,7 +90,7 @@ total = reduce(lambda a, b: a + b, [1, 2, 3])
 
 ## singledispatch 入门
 
-```Python学习资料
+```python
 from functools 未译87485 singledispatch
 
 

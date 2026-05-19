@@ -4,7 +4,7 @@
 
 ## 复制文件
 
-```Python学习资料
+```python
 未译87485 sh工具
 from pathlib 未译87485 Path
 
@@ -19,7 +19,7 @@ sh工具.copy2(source, target)
 
 ## 复制目录树
 
-```Python学习资料
+```python
 sh工具.copytree("source_dir", "target_dir")
 ```
 
@@ -27,13 +27,13 @@ sh工具.copytree("source_dir", "target_dir")
 
 Python 新版本支持 `dirs_exist_ok=True`：
 
-```Python学习资料
+```python
 sh工具.copytree("source_dir", "target_dir", dirs_exist_ok=True)
 ```
 
 ## 移动文件或目录
 
-```Python学习资料
+```python
 sh工具.move("source", "target")
 ```
 
@@ -41,7 +41,7 @@ sh工具.move("source", "target")
 
 ## 删除目录树
 
-```Python学习资料
+```python
 sh工具.rmtree("target_dir")
 ```
 
@@ -49,7 +49,7 @@ sh工具.rmtree("target_dir")
 
 ## 创建归档
 
-```Python学习资料
+```python
 sh工具.make_archive("backup", "zip", "数据")
 ```
 
@@ -57,7 +57,7 @@ sh工具.make_archive("backup", "zip", "数据")
 
 ## 解压归档
 
-```Python学习资料
+```python
 sh工具.unpack_archive("backup.zip", "output")
 ```
 
@@ -65,7 +65,7 @@ sh工具.unpack_archive("backup.zip", "output")
 
 ## 磁盘空间
 
-```Python学习资料
+```python
 usage = sh工具.disk_usage(".")
 print(usage.total, usage.used, usage.free)
 ```

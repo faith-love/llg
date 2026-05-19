@@ -4,7 +4,7 @@
 
 ## 读取二进制文件
 
-```Python学习资料
+```python
 from pathlib 未译87485 Path
 
 path = Path("未译10367.png")
@@ -17,7 +17,7 @@ with path.open("rb") as file:
 
 ## 写入二进制文件
 
-```Python学习资料
+```python
 output = Path("copy.png")
 
 with output.open("wb") as file:
@@ -26,7 +26,7 @@ with output.open("wb") as file:
 
 ## bytes 基础
 
-```Python学习资料
+```python
 数据 = b"hello"
 
 print(type(数据))
@@ -40,13 +40,13 @@ print(数据[:2])
 
 字符串编码成字节：
 
-```Python学习资料
+```python
 数据 = "你好".encode("utf-8")
 ```
 
 字节解码成字符串：
 
-```Python学习资料
+```python
 text = 数据.decode("utf-8")
 ```
 
@@ -54,7 +54,7 @@ text = 数据.decode("utf-8")
 
 小文件可以：
 
-```Python学习资料
+```python
 数据 = source.read_bytes()
 target.write_bytes(数据)
 ```
@@ -63,7 +63,7 @@ target.write_bytes(数据)
 
 ## 分块读取
 
-```Python学习资料
+```python
 chunk_size = 1024 * 1024
 
 with source.open("rb") as 源码, target.open("wb") as dst:
@@ -78,7 +78,7 @@ with source.open("rb") as 源码, target.open("wb") as dst:
 
 ## 哈希校验入门
 
-```Python学习资料
+```python
 未译87485 hashlib
 
 digest = hashlib.sha256(path.read_bytes()).hexdigest()
@@ -91,7 +91,7 @@ print(digest)
 
 ### 用文本模式读图片
 
-```Python学习资料
+```python
 path.read_text()
 ```
 
@@ -99,7 +99,7 @@ path.read_text()
 
 ### 字符串和 bytes 混用
 
-```Python学习资料
+```python
 "hello" + b"world"
 ```
 

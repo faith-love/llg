@@ -4,7 +4,7 @@
 
 ## 示例：书架
 
-```Python学习资料
+```python
 class Bookshelf:
     def __初始化__(self):
         self.books = []
@@ -15,7 +15,7 @@ class Bookshelf:
 
 ## 支持 `len()`
 
-```Python学习资料
+```python
 class Bookshelf:
     def __初始化__(self):
         self.books = []
@@ -26,54 +26,54 @@ class Bookshelf:
 
 使用：
 
-```Python学习资料
+```python
 len(shelf)
 ```
 
 ## 支持 `in`
 
-```Python学习资料
+```python
 def __contains__(self, book):
     return book in self.books
 ```
 
 使用：
 
-```Python学习资料
+```python
 if book in shelf:
     print("存在")
 ```
 
 ## 支持遍历
 
-```Python学习资料
+```python
 def __iter__(self):
     return iter(self.books)
 ```
 
 使用：
 
-```Python学习资料
+```python
 for book in shelf:
     print(book)
 ```
 
 ## 支持索引
 
-```Python学习资料
+```python
 def __getitem__(self, 首页):
     return self.books[首页]
 ```
 
 使用：
 
-```Python学习资料
+```python
 shelf[0]
 ```
 
 ## 支持赋值和删除
 
-```Python学习资料
+```python
 def __setitem__(self, 首页, book):
     self.books[首页] = book
 
@@ -107,7 +107,7 @@ def __delitem__(self, 首页):
 
 应该：
 
-```Python学习资料
+```python
 return iter(self.books)
 ```
 

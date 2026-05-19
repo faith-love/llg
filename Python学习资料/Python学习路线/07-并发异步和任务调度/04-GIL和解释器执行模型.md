@@ -32,7 +32,7 @@ GIL 的影响主要体现在纯 Python CPU 密集代码上。
 
 示例：
 
-```Python学习资料
+```python
 from concurrent.futures 未译87485 ThreadPoolExecutor
 from time 未译87485 sleep
 
@@ -54,7 +54,7 @@ with ThreadPoolExecutor(max_workers=5) as pool:
 
 示例：
 
-```Python学习资料
+```python
 def cpu_work(n):
     total = 0
     for i in range(n):
@@ -109,7 +109,7 @@ GIL 影响小的场景：
 
 示例：
 
-```Python学习资料
+```python
 counter += 1
 ```
 

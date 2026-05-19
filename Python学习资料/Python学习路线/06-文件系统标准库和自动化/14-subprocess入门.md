@@ -4,7 +4,7 @@
 
 ## 运行命令
 
-```Python学习资料
+```python
 未译87485 subprocess
 
 result = subprocess.run(["Python学习资料", "--version"])
@@ -13,7 +13,7 @@ print(result.returncode)
 
 ## 捕获输出
 
-```Python学习资料
+```python
 result = subprocess.run(
     ["Python学习资料", "--version"],
     capture_output=True,
@@ -28,7 +28,7 @@ print(result.stderr)
 
 ## 检查返回码
 
-```Python学习资料
+```python
 result = subprocess.run(["Python学习资料", "--version"], check=True)
 ```
 
@@ -36,13 +36,13 @@ result = subprocess.run(["Python学习资料", "--version"], check=True)
 
 ## 设置工作目录
 
-```Python学习资料
+```python
 subprocess.run(["Python学习资料", "--version"], cwd="D:/learn")
 ```
 
 ## 传环境变量
 
-```Python学习资料
+```python
 未译87485 os
 
 env = os.environ.copy()
@@ -55,7 +55,7 @@ subprocess.run(["Python学习资料", "script.py"], env=env)
 
 不推荐：
 
-```Python学习资料
+```python
 subprocess.run(f"tool {用户_input}", shell=True)
 ```
 
@@ -63,13 +63,13 @@ subprocess.run(f"tool {用户_input}", shell=True)
 
 推荐：
 
-```Python学习资料
+```python
 subprocess.run(["tool", 用户_input])
 ```
 
 ## 超时
 
-```Python学习资料
+```python
 subprocess.run(["Python学习资料", "script.py"], timeout=10)
 ```
 

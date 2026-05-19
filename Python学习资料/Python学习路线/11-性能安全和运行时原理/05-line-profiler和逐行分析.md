@@ -31,7 +31,7 @@
 
 没有工具时，可以临时拆分阶段：
 
-```Python学习资料
+```python
 start = perf_counter()
 step1()
 print("step1", perf_counter() - start)

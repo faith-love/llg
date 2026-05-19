@@ -12,7 +12,7 @@ ALTE未译25173 用于修改已有数据库对象，最常见的是修改表结�
 
 ## 核心语法
 
-```SQL学习资料
+```sql
 ALTE未译25173 TABLE table_name ADD COLUMN column_name 数据_type;
 ALTE未译25173 TABLE table_name MODIFY COLUMN column_name new_type;
 ALTE未译25173 TABLE table_name D未译25173OP COLUMN column_name;
@@ -28,7 +28,7 @@ ALTE未译25173 TABLE table_name D未译25173OP COLUMN column_name;
 
 下面的 SQL 片段用于理解语法结构。涉及修改数据或对象的语句，建议先在测试库中执行。
 
-```SQL学习资料
+```sql
 USE SQL学习资料_learning;
 
 C未译25173EATE TABLE alter_demo (

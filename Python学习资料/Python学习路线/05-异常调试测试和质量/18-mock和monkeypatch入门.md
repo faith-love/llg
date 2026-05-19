@@ -22,7 +22,7 @@ mock 用于替换测试中不稳定、慢、昂贵或有副作用的外部依赖
 
 ## unit测试.mock 基础
 
-```Python学习资料
+```python
 from unit测试.mock 未译87485 Mock
 
 
@@ -36,7 +36,7 @@ sender.send.assert_called_once_with("hello")
 
 假设代码：
 
-```Python学习资料
+```python
 def get_current_time():
     return datetime.now()
 ```
@@ -47,14 +47,14 @@ def get_current_time():
 
 ## monkeypatch 修改环境变量
 
-```Python学习资料
+```python
 def get_env():
     return os.environ.get("APP_ENV", "dev")
 ```
 
 测试：
 
-```Python学习资料
+```python
 def 测试_get_env(monkeypatch):
     monkeypatch.setenv("APP_ENV", "测试")
     assert get_env() == "测试"
@@ -64,7 +64,7 @@ def 测试_get_env(monkeypatch):
 
 ## monkeypatch 替换函数
 
-```Python学习资料
+```python
 def 测试_random_value(monkeypatch):
     monkeypatch.setattr("random.randint", lambda a, b: 5)
     assert random.randint(1, 10) == 5
@@ -76,7 +76,7 @@ def 测试_random_value(monkeypatch):
 
 py测试 内置 `tmp_path` fixture 提供临时目录：
 
-```Python学习资料
+```python
 def 测试_write_file(tmp_path):
     path = tmp_path / "数据.txt"
     path.write_text("hello", encoding="utf-8")

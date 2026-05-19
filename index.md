@@ -2,24 +2,27 @@
 layout: home
 
 hero:
-  name: "D:\\learn 知识库"
-  text: "Java、Spring、Python、SQL、Linux、Redis 的学习资料静态站点"
-  tagline: "按主题沉淀，按阶段阅读，按项目和排障场景复盘。"
+  name: "学习知识库"
+  text: "Java / Spring / Python / SQL / Linux / Redis"
+  tagline: "按主题归档，按阶段阅读，需要时快速检索。"
+  image:
+    src: /knowledge-hero.svg
+    alt: 知识库插图
   actions:
     - theme: brand
       text: 开始阅读
       link: /说明
     - theme: alt
-      text: Redis 知识库
-      link: /Redis学习资料/Redis知识库/说明
+      text: 查看索引
+      link: /说明
 
 features:
-  - title: 路线型知识库
-    details: Java、Spring、Python 按阶段拆分，适合从总览进入再逐篇推进。
-  - title: 查阅型手册
-    details: SQL、Redis 命令和 Linux 运维内容适合按问题、命令、场景快速定位。
-  - title: 实战与复盘
-    details: Redis 案例、故障库、面试题库和项目检查清单用于把知识落到真实项目。
+  - title: 分类清晰
+    details: 六个主题统一入口，侧边栏自动按目录展开。
+  - title: 快速检索
+    details: 支持本地搜索，适合查命令、查语法、查排障记录。
+  - title: 持续沉淀
+    details: 新增 Markdown 后自动进入站点导航，方便长期维护。
 ---
 
 ## 知识库入口

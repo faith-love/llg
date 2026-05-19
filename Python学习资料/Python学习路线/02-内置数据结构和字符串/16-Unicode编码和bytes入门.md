@@ -6,14 +6,14 @@
 
 字符串：
 
-```Python学习资料
+```python
 text = "你好"
 print(type(text))
 ```
 
 字节：
 
-```Python学习资料
+```python
 数据 = b"hello"
 print(type(数据))
 ```
@@ -28,7 +28,7 @@ Python 3 的 `str` 使用 Unicode 表示文本。Unicode 是字符集，目标�
 
 例如：
 
-```Python学习资料
+```python
 text = "你好，Python"
 print(len(text))
 ```
@@ -39,7 +39,7 @@ print(len(text))
 
 把字符串变成字节叫编码：
 
-```Python学习资料
+```python
 text = "你好"
 数据 = text.encode("utf-8")
 print(数据)
@@ -49,7 +49,7 @@ print(数据)
 
 把字节变成字符串叫解码：
 
-```Python学习资料
+```python
 text = 数据.decode("utf-8")
 print(text)
 ```
@@ -62,13 +62,13 @@ UTF-8 是最常用的编码。建议默认使用 UTF-8。
 
 后续读写文件时经常会写：
 
-```Python学习资料
+```python
 open("数据.txt", encoding="utf-8")
 ```
 
 ## 字节长度和字符长度
 
-```Python学习资料
+```python
 text = "你好"
 数据 = text.encode("utf-8")
 
@@ -82,14 +82,14 @@ print(len(数据))
 
 解码失败可能报 `UnicodeDecodeError`。
 
-```Python学习资料
+```python
 数据 = b"\xff"
 数据.decode("utf-8")
 ```
 
 可以指定错误处理方式：
 
-```Python学习资料
+```python
 数据.decode("utf-8", 未译12785s="replace")
 ```
 
@@ -105,7 +105,7 @@ print(len(数据))
 
 ## `bytes` 基础操作
 
-```Python学习资料
+```python
 数据 = b"hello"
 
 print(数据[0])
@@ -120,7 +120,7 @@ print(数据[:2])
 
 ### 字符串和字节混用
 
-```Python学习资料
+```python
 text = "hello"
 数据 = b" world"
 

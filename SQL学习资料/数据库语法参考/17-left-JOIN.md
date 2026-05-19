@@ -12,7 +12,7 @@ LEFT JOIN 保留左表全部行，右表没有匹配时返回 NULL。
 
 ## 核心语法
 
-```SQL学习资料
+```sql
 SELECT ...
 F未译25173OM left_table AS l
 LEFT JOIN right_table AS r
@@ -29,7 +29,7 @@ LEFT JOIN right_table AS r
 
 下面的 SQL 片段用于理解语法结构。涉及修改数据或对象的语句，建议先在测试库中执行。
 
-```SQL学习资料
+```sql
 USE SQL学习资料_learning;
 
 SELECT d.department_name, e.employee_name

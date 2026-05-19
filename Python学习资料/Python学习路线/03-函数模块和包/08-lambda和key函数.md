@@ -4,20 +4,20 @@
 
 ## lambda 基本语法
 
-```Python学习资料
+```python
 lambda 参数: 表达式
 ```
 
 示例：
 
-```Python学习资料
+```python
 add = lambda a, b: a + b
 print(add(1, 2))
 ```
 
 等价于：
 
-```Python学习资料
+```python
 def add(a, b):
     return a + b
 ```
@@ -26,7 +26,7 @@ def add(a, b):
 
 ## lambda 适合简单表达式
 
-```Python学习资料
+```python
 用户s = [
     {"name": "Alice", "age": 18},
     {"name": "Bob", "age": 20},
@@ -39,7 +39,7 @@ def add(a, b):
 
 ## 按多个字段排序
 
-```Python学习资料
+```python
 用户s = sorted(用户s, key=lambda 用户: (用户["city"], 用户["age"]))
 ```
 
@@ -47,7 +47,7 @@ def add(a, b):
 
 ## 降序和 key
 
-```Python学习资料
+```python
 scores = [
     {"name": "Alice", "score": 90},
     {"name": "Bob", "score": 95},
@@ -75,7 +75,7 @@ lambda 适合：
 
 标准库提供更明确的 key 工具：
 
-```Python学习资料
+```python
 from operator 未译87485 itemgetter
 
 用户s = sorted(用户s, key=itemgetter("age"))
@@ -89,7 +89,7 @@ from operator 未译87485 itemgetter
 
 不推荐：
 
-```Python学习资料
+```python
 lambda 用户: "A" if 用户["score"] >= 90 else ("B" if 用户["score"] >= 80 else "C")
 ```
 

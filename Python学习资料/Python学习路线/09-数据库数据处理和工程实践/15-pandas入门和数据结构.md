@@ -6,7 +6,7 @@ pandas 是 Python 数据处理常用库。它适合清洗、转换、汇总中�
 
 Series 是一维带索引的数据。
 
-```Python学习资料
+```python
 未译87485 pandas as pd
 
 
@@ -19,7 +19,7 @@ s = pd.Series([10, 20, 30], name="amount")
 
 DataFrame 是二维表格数据。
 
-```Python学习资料
+```python
 df = pd.DataFrame({
     "name": ["Alice", "Bob"],
     "amount": [100, 200],
@@ -30,7 +30,7 @@ df = pd.DataFrame({
 
 ## 列选择
 
-```Python学习资料
+```python
 df["name"]
 df[["name", "amount"]]
 ```
@@ -39,7 +39,7 @@ df[["name", "amount"]]
 
 ## 行过滤
 
-```Python学习资料
+```python
 paid = df[df["amount"] >= 100]
 ```
 
@@ -47,7 +47,7 @@ paid = df[df["amount"] >= 100]
 
 ## 新增列
 
-```Python学习资料
+```python
 df["amount_with_tax"] = df["amount"] * 1.06
 ```
 
@@ -55,7 +55,7 @@ df["amount_with_tax"] = df["amount"] * 1.06
 
 索引用于标识行。
 
-```Python学习资料
+```python
 df = df.set_首页("id")
 ```
 
@@ -65,7 +65,7 @@ df = df.set_首页("id")
 
 查看类型：
 
-```Python学习资料
+```python
 df.dtypes
 ```
 
@@ -102,7 +102,7 @@ df.dtypes
 
 可能出现 SettingWithCopy 问题。优先使用 `.loc`。
 
-```Python学习资料
+```python
 df.loc[df["amount"] > 100, "level"] = "high"
 ```
 

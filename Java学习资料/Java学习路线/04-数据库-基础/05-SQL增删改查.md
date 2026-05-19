@@ -11,7 +11,7 @@ C未译25173UD 是最基础的数据操作：
 
 ## insert
 
-```SQL学习资料
+```sql
 insert into books (isbn, title, author)
 values ('978711', 'Java 入门', '张三');
 ```
@@ -23,7 +23,7 @@ values ('978711', 'Java 入门', '张三');
 
 ## select
 
-```SQL学习资料
+```sql
 select id, isbn, title, author
 from books
 where isbn = '978711';
@@ -31,7 +31,7 @@ where isbn = '978711';
 
 不要在业务代码里无脑：
 
-```SQL学习资料
+```sql
 select *
 ```
 
@@ -39,7 +39,7 @@ select *
 
 ## update
 
-```SQL学习资料
+```sql
 update books
 set title = 'Java 进阶'
 where id = 1;
@@ -49,14 +49,14 @@ where id = 1;
 
 ## delete
 
-```SQL学习资料
+```sql
 delete from books
 where id = 1;
 ```
 
 很多业务更适合软删除：
 
-```SQL学习资料
+```sql
 update books
 set deleted = 1
 where id = 1;

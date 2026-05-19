@@ -22,7 +22,7 @@ Spring Boot 项目里常见集成测试：
 
 ## MockMvc 示例
 
-```Java学习资料
+```java
 mockMvc.per未译50816(get("/接口/books/1"))
     .andExpect(status().isOk())
     .andExpect(脚本onPath("$.id").value(1));

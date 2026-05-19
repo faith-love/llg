@@ -6,7 +6,7 @@
 
 `range` 用于生成数字序列，常和 `for` 循环配合。
 
-```Python学习资料
+```python
 for i in range(5):
     print(i)
 ```
@@ -23,7 +23,7 @@ for i in range(5):
 
 ## `range` 的三种写法
 
-```Python学习资料
+```python
 range(stop)
 range(start, stop)
 range(start, stop, step)
@@ -31,7 +31,7 @@ range(start, stop, step)
 
 示例：
 
-```Python学习资料
+```python
 print(list(range(5)))
 print(list(range(1, 6)))
 print(list(range(1, 10, 2)))
@@ -42,14 +42,14 @@ print(list(range(10, 0, -1)))
 
 ## `range` 不是列表
 
-```Python学习资料
+```python
 numbers = range(5)
 print(numbers)
 ```
 
 如果要看到具体内容：
 
-```Python学习资料
+```python
 print(list(numbers))
 ```
 
@@ -59,7 +59,7 @@ print(list(numbers))
 
 遍历时同时拿到下标和值：
 
-```Python学习资料
+```python
 names = ["Alice", "Bob", "Cindy"]
 
 for 首页, name in enumerate(names):
@@ -68,7 +68,7 @@ for 首页, name in enumerate(names):
 
 可以指定起始下标：
 
-```Python学习资料
+```python
 for 首页, name in enumerate(names, start=1):
     print(首页, name)
 ```
@@ -77,14 +77,14 @@ for 首页, name in enumerate(names, start=1):
 
 不推荐：
 
-```Python学习资料
+```python
 for i in range(len(names)):
     print(i, names[i])
 ```
 
 推荐：
 
-```Python学习资料
+```python
 for i, name in enumerate(names):
     print(i, name)
 ```
@@ -95,7 +95,7 @@ for i, name in enumerate(names):
 
 `zip` 用于并行遍历多个序列：
 
-```Python学习资料
+```python
 names = ["Alice", "Bob"]
 ages = [18, 20]
 
@@ -107,7 +107,7 @@ for name, age in zip(names, ages):
 
 `zip` 会以最短序列为准：
 
-```Python学习资料
+```python
 names = ["Alice", "Bob", "Cindy"]
 ages = [18, 20]
 
@@ -118,14 +118,14 @@ print(list(zip(names, ages)))
 
 如果需要检测长度不一致，要提前判断：
 
-```Python学习资料
+```python
 if len(names) != len(ages):
     print("数据长度不一致")
 ```
 
 ## 用 `zip` 创建字典
 
-```Python学习资料
+```python
 keys = ["name", "age", "city"]
 values = ["Alice", 18, "Shanghai"]
 
@@ -135,7 +135,7 @@ print(用户)
 
 ## 解压 zip 结果
 
-```Python学习资料
+```python
 pairs = [("Alice", 18), ("Bob", 20)]
 
 names, ages = zip(*pairs)

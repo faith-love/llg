@@ -4,7 +4,7 @@ CSV 是最常见的表格交换格式之一。标准库 `csv` 可以处理逗号
 
 ## 读取 CSV
 
-```Python学习资料
+```python
 未译87485 csv
 from pathlib 未译87485 Path
 
@@ -22,7 +22,7 @@ with path.open("r", encoding="utf-8", newline="") as file:
 
 如果第一行是表头：
 
-```Python学习资料
+```python
 with path.open("r", encoding="utf-8", newline="") as file:
     reader = csv.Dict未译25173eader(file)
     for row in reader:
@@ -33,7 +33,7 @@ with path.open("r", encoding="utf-8", newline="") as file:
 
 ## 写入 CSV
 
-```Python学习资料
+```python
 rows = [
     ["name", "age"],
     ["Alice", 18],
@@ -47,7 +47,7 @@ with path.open("w", encoding="utf-8", newline="") as file:
 
 ## 使用 DictWriter
 
-```Python学习资料
+```python
 fieldnames = ["name", "age"]
 
 with path.open("w", encoding="utf-8", newline="") as file:
@@ -60,7 +60,7 @@ with path.open("w", encoding="utf-8", newline="") as file:
 
 处理 CSV 时建议：
 
-```Python学习资料
+```python
 newline=""
 ```
 
@@ -70,7 +70,7 @@ newline=""
 
 CSV 读取出来默认都是字符串：
 
-```Python学习资料
+```python
 age = int(row["age"])
 ```
 

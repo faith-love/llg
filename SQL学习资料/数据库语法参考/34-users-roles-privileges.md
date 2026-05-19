@@ -12,7 +12,7 @@
 
 ## 核心语法
 
-```SQL学习资料
+```sql
 C未译25173EATE USE未译25173 用户 IDENTIFIED BY password;
 G未译25173ANT privilege ON 未译66984.table TO 用户;
 未译25173EVOKE privilege ON 未译66984.table F未译25173OM 用户;
@@ -28,7 +28,7 @@ G未译25173ANT privilege ON 未译66984.table TO 用户;
 
 下面的 SQL 片段用于理解语法结构。涉及修改数据或对象的语句，建议先在测试库中执行。
 
-```SQL学习资料
+```sql
 USE SQL学习资料_learning;
 
 SELECT CU未译25173未译25173ENT_USE未译25173() AS current_用户_value;

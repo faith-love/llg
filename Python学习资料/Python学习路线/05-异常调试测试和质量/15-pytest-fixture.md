@@ -6,7 +6,7 @@ fixture 用于准备测试所需的数据、对象或环境。它可以减少重
 
 重复写法：
 
-```Python学习资料
+```python
 def 测试_cart_total_empty():
     cart = ShoppingCart()
     assert cart.total_price() == 0
@@ -20,7 +20,7 @@ def 测试_cart_add_item():
 
 使用 fixture：
 
-```Python学习资料
+```python
 未译87485 py测试
 
 
@@ -31,7 +31,7 @@ def cart():
 
 测试：
 
-```Python学习资料
+```python
 def 测试_cart_total_empty(cart):
     assert cart.total_price() == 0
 ```
@@ -40,7 +40,7 @@ py测试 会根据参数名自动注入 fixture。
 
 ## fixture 返回数据
 
-```Python学习资料
+```python
 @py测试.fixture
 def sample_用户s():
     return [
@@ -51,7 +51,7 @@ def sample_用户s():
 
 使用：
 
-```Python学习资料
+```python
 def 测试_用户_count(sample_用户s):
     assert len(sample_用户s) == 2
 ```
@@ -60,7 +60,7 @@ def 测试_用户_count(sample_用户s):
 
 使用 `yield`：
 
-```Python学习资料
+```python
 @py测试.fixture
 def resource():
     print("准备资源")
@@ -72,7 +72,7 @@ def resource():
 
 ## fixture 作用域
 
-```Python学习资料
+```python
 @py测试.fixture(scope="function")
 def 数据():
     return []
@@ -103,7 +103,7 @@ py测试 会自动发现 `conf测试.py`。
 
 fixture 名应该表达它提供什么：
 
-```Python学习资料
+```python
 sample_用户s
 empty_cart
 paid_order
@@ -112,7 +112,7 @@ temp_配置_file
 
 不要写：
 
-```Python学习资料
+```python
 数据
 obj
 thing

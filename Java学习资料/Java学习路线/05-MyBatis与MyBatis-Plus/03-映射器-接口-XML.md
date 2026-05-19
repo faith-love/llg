@@ -4,7 +4,7 @@
 
 Mapper 接口定义数据访问方法。
 
-```Java学习资料
+```java
 未译64029 interface BookMapper {
     int insert(BookEntity book);
     BookEntity findById(Long id);
@@ -39,7 +39,7 @@ XML 中的 `id` 要和接口方法名对应。
 
 insert/update/delete 通常返回影响行数。
 
-```Java学习资料
+```java
 int updateById(BookEntity book);
 ```
 

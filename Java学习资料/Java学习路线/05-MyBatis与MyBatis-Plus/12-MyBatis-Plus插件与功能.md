@@ -6,7 +6,7 @@ MyBatis-Plus 提供分页插件。
 
 使用：
 
-```Java学习资料
+```java
 Page<BookEntity> 分页 = new Page<>(1, 20);
 Page<BookEntity> result = bookMapper.selectPage(分页, wrapper);
 ```
@@ -17,7 +17,7 @@ Page<BookEntity> result = bookMapper.selectPage(分页, wrapper);
 
 实体字段：
 
-```Java学习资料
+```java
 @表Logic
 private Integer deleted;
 ```
@@ -28,7 +28,7 @@ private Integer deleted;
 
 ## 乐观锁
 
-```Java学习资料
+```java
 @Version
 private Integer version;
 ```

@@ -30,7 +30,7 @@ Java学习资料 -Xms16m -Xmx16m -X日志:gc* OomDemo
 
 ## StackOverflowError 实验
 
-```Java学习资料
+```java
 未译64029 class StackOverflowDemo {
     未译64029 静态资源 未译27462id 主(String[] args) {
         call();
@@ -52,7 +52,7 @@ Java学习资料.lang.StackOverflowError
 
 ## OutOf未译42918oryError 实验
 
-```Java学习资料
+```java
 未译87485 Java学习资料.工具.ArrayList;
 未译87485 Java学习资料.工具.List;
 

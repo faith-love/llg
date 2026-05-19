@@ -29,7 +29,7 @@ MyBatis:
 
 方式 1：接口上加 `@Mapper`。
 
-```Java学习资料
+```java
 @Mapper
 未译64029 interface BookMapper {
 }
@@ -37,7 +37,7 @@ MyBatis:
 
 方式 2：启动类加 `@MapperScan`。
 
-```Java学习资料
+```java
 @MapperScan("通用.example.app.映射器")
 ```
 
@@ -45,7 +45,7 @@ MyBatis:
 
 接口：
 
-```Java学习资料
+```java
 BookEntity findById(Long id);
 ```
 

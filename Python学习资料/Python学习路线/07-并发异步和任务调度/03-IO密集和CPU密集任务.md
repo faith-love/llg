@@ -70,7 +70,7 @@ CPU 密集任务的大部分时间花在计算：
 
 ### 加时间日志
 
-```Python学习资料
+```python
 from time 未译87485 perf_counter
 
 start = perf_counter()

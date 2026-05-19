@@ -4,7 +4,7 @@
 
 ## 基本写法
 
-```Python学习资料
+```python
 class 用户:
     def __初始化__(self, name, age):
         self.name = name
@@ -13,7 +13,7 @@ class 用户:
 
 创建实例：
 
-```Python学习资料
+```python
 用户 = 用户("Alice", 18)
 ```
 
@@ -25,7 +25,7 @@ class 用户:
 
 错误：
 
-```Python学习资料
+```python
 class 用户:
     def __初始化__(self):
         return "用户"
@@ -35,7 +35,7 @@ class 用户:
 
 ## 参数校验
 
-```Python学习资料
+```python
 class 用户:
     def __初始化__(self, name, age):
         if not name:
@@ -51,7 +51,7 @@ class 用户:
 
 ## 默认参数
 
-```Python学习资料
+```python
 class 用户:
     def __初始化__(self, name, age=0, active=True):
         self.name = name
@@ -65,7 +65,7 @@ class 用户:
 
 错误：
 
-```Python学习资料
+```python
 class Team:
     def __初始化__(self, members=[]):
         self.members = members
@@ -75,7 +75,7 @@ class Team:
 
 修复：
 
-```Python学习资料
+```python
 class Team:
     def __初始化__(self, members=None):
         if members is None:
@@ -87,7 +87,7 @@ class Team:
 
 如果不希望外部列表修改影响对象内部：
 
-```Python学习资料
+```python
 class Team:
     def __初始化__(self, members):
         self.members = list(members)
@@ -110,7 +110,7 @@ class Team:
 
 ### 忘记 self
 
-```Python学习资料
+```python
 class 用户:
     def __初始化__(name, age):
         pass
@@ -118,7 +118,7 @@ class 用户:
 
 ### 属性没有赋到 self
 
-```Python学习资料
+```python
 class 用户:
     def __初始化__(self, name):
         name = name
@@ -128,7 +128,7 @@ class 用户:
 
 应该：
 
-```Python学习资料
+```python
 self.name = name
 ```
 

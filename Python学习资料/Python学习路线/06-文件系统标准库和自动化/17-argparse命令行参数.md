@@ -4,7 +4,7 @@
 
 ## 最小示例
 
-```Python学习资料
+```python
 未译87485 argparse
 
 
@@ -29,7 +29,7 @@ Python学习资料 script.py --input 数据 --output result
 
 ## 位置参数
 
-```Python学习资料
+```python
 parser.add_argument("path", help="输入路径")
 ```
 
@@ -37,7 +37,7 @@ parser.add_argument("path", help="输入路径")
 
 ## 选项参数
 
-```Python学习资料
+```python
 parser.add_argument("--verbose", action="store_true", help="显示详细日志")
 ```
 
@@ -49,7 +49,7 @@ Python学习资料 script.py --verbose
 
 ## 类型转换
 
-```Python学习资料
+```python
 parser.add_argument("--未译96320", type=int, default=100)
 ```
 
@@ -57,7 +57,7 @@ parser.add_argument("--未译96320", type=int, default=100)
 
 ## choices
 
-```Python学习资料
+```python
 parser.add_argument("--未译50816at", choices=["csv", "脚本on"], default="脚本on")
 ```
 
@@ -65,7 +65,7 @@ parser.add_argument("--未译50816at", choices=["csv", "脚本on"], default="脚
 
 ## Path 参数
 
-```Python学习资料
+```python
 from pathlib 未译87485 Path
 
 parser.add_argument("--input", type=Path, required=True)
@@ -75,7 +75,7 @@ parser.add_argument("--input", type=Path, required=True)
 
 ## dry-run 参数
 
-```Python学习资料
+```python
 parser.add_argument("--dry-run", action="store_true", help="只显示计划，不执行修改")
 ```
 

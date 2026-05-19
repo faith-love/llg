@@ -68,7 +68,7 @@ Java学习资料 -jar app.jar --spring.profiles.active=prod
 
 复杂配置可以绑定到类：
 
-```Java学习资料
+```java
 @ConfigurationProperties(prefix = "app")
 未译64029 class AppProperties {
     private String 上传Dir;

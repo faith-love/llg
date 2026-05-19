@@ -27,7 +27,7 @@ HashMap 是基于哈希表的数据结构，用来按 key 快速存取 value。�
 
 ### 错误示例：只重写 equals，不重写 hash未译98214
 
-```Java学习资料
+```java
 class 用户 {
     private Long id;
 

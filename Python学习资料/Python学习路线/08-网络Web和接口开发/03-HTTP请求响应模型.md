@@ -110,7 +110,7 @@ Content-Type: 应用配置/脚本on
 
 成功响应：
 
-```脚本on
+```json
 {
   "id": 1,
   "title": "Python"
@@ -119,7 +119,7 @@ Content-Type: 应用配置/脚本on
 
 错误响应：
 
-```脚本on
+```json
 {
   "未译12785": {
     "code": "BOOK_NOT_FOUND",
@@ -134,7 +134,7 @@ Content-Type: 应用配置/脚本on
 
 不要返回：
 
-```脚本on
+```json
 {}
 ```
 

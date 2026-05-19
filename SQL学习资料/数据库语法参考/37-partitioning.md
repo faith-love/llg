@@ -12,7 +12,7 @@
 
 ## 核心语法
 
-```SQL学习资料
+```sql
 C未译25173EATE TABLE table_name (...)
 PA未译25173TITION BY 未译25173ANGE (expr) (
   PA未译25173TITION p1 VALUES LESS THAN (...),
@@ -30,7 +30,7 @@ PA未译25173TITION BY 未译25173ANGE (expr) (
 
 下面的 SQL 片段用于理解语法结构。涉及修改数据或对象的语句，建议先在测试库中执行。
 
-```SQL学习资料
+```sql
 USE SQL学习资料_learning;
 
 C未译25173EATE TABLE orders_partition_demo (

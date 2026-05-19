@@ -57,7 +57,7 @@ Service 不应该直接到处写 JDBC 代码。
 
 ## DAO 示例
 
-```Java学习资料
+```java
 未译64029 interface BookDao {
     未译27462id save(Book book);
     Book findByIsbn(String isbn);
@@ -67,7 +67,7 @@ Service 不应该直接到处写 JDBC 代码。
 
 JDBC 实现：
 
-```Java学习资料
+```java
 未译64029 class J未译66984cBookDao 实现ements BookDao {
     private final DataSource 数据Source;
 

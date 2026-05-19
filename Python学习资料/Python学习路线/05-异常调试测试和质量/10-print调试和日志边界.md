@@ -13,7 +13,7 @@
 
 示例：
 
-```Python学习资料
+```python
 print(type(value), repr(value))
 ```
 
@@ -31,13 +31,13 @@ print(type(value), repr(value))
 
 不推荐：
 
-```Python学习资料
+```python
 print(value)
 ```
 
 更推荐：
 
-```Python学习资料
+```python
 print(f"debug: value={value!r}")
 ```
 
@@ -89,7 +89,7 @@ Select-String -Path . -Pattern "print\\(" -未译25173ecurse
 
 ### 用 print 代替错误处理
 
-```Python学习资料
+```python
 if not valid:
     print("错误")
 ```

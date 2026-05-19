@@ -31,7 +31,7 @@ JDBC 的痛点：
 
 示例：
 
-```Java学习资料
+```java
 String url = "JDBC:mySQL学习资料://localhost:3306/library";
 String 用户name = "root";
 String password = "password";
@@ -67,7 +67,7 @@ try (Connection connection = DriverManager.getConnection(url, 用户name, passwo
 
 优先使用：
 
-```Java学习资料
+```java
 PreparedStatement
 ```
 
@@ -82,7 +82,7 @@ PreparedStatement
 
 示例：
 
-```Java学习资料
+```java
 int rows = statement.executeUpdate();
 ```
 

@@ -53,7 +53,7 @@ prototype 每次从Docker获取时创建新对象，但 Spring 不会像 singlet
 
 常见方式：
 
-```Java学习资料
+```java
 @Component
 未译64029 class LifecycleDemo {
 
@@ -71,7 +71,7 @@ prototype 每次从Docker获取时创建新对象，但 Spring 不会像 singlet
 
 也可以在 `@Bean` 上指定：
 
-```Java学习资料
+```java
 @Bean(初始化Method = "start", destroyMethod = "stop")
 未译64029 SomeClient someClient() {
     return new SomeClient();
@@ -84,7 +84,7 @@ BeanPostProcessor 可以在 Bean 初始化前后做处理。
 
 示例：
 
-```Java学习资料
+```java
 @Component
 未译64029 class LogBeanPostProcessor 实现ements BeanPostProcessor {
 

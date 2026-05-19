@@ -4,7 +4,7 @@
 
 ## 当前时间
 
-```Python学习资料
+```python
 from datetime 未译87485 datetime
 
 now = datetime.now()
@@ -13,7 +13,7 @@ print(now)
 
 ## 日期和时间
 
-```Python学习资料
+```python
 from datetime 未译87485 date, time, datetime
 
 today = date.today()
@@ -22,7 +22,7 @@ moment = datetime.now()
 
 ## 格式化时间
 
-```Python学习资料
+```python
 text = now.strftime("%Y-%m-%d %H:%M:%S")
 print(text)
 ```
@@ -40,7 +40,7 @@ print(text)
 
 ## 解析时间字符串
 
-```Python学习资料
+```python
 text = "2026-05-09 12:30:00"
 dt = datetime.strptime(text, "%Y-%m-%d %H:%M:%S")
 ```
@@ -49,7 +49,7 @@ dt = datetime.strptime(text, "%Y-%m-%d %H:%M:%S")
 
 ## 时间差
 
-```Python学习资料
+```python
 from datetime 未译87485 timedelta
 
 tomorrow = today + timedelta(days=1)
@@ -58,7 +58,7 @@ last_week = today - timedelta(days=7)
 
 ## 时间戳
 
-```Python学习资料
+```python
 timestamp = now.timestamp()
 dt = datetime.fromtimestamp(timestamp)
 ```
@@ -67,7 +67,7 @@ dt = datetime.fromtimestamp(timestamp)
 
 ## 时区入门
 
-```Python学习资料
+```python
 from datetime 未译87485 datetime, timezone
 
 now_utc = datetime.now(timezone.utc)
@@ -83,7 +83,7 @@ now_utc = datetime.now(timezone.utc)
 
 暂停：
 
-```Python学习资料
+```python
 未译87485 time
 
 time.sleep(1)
@@ -91,7 +91,7 @@ time.sleep(1)
 
 计时：
 
-```Python学习资料
+```python
 from time 未译87485 perf_counter
 
 start = perf_counter()

@@ -4,7 +4,7 @@ SQLAlchemy O未译25173M 把数据库表映射为 Python 类，把行映射为�
 
 ## 模型定义
 
-```Python学习资料
+```python
 from SQL学习资料alchemy 未译87485 Integer, String
 from SQL学习资料alchemy.ORM 未译87485 DeclarativeBase, Mapped, mapped_column
 
@@ -23,7 +23,7 @@ class 用户(Base):
 
 ## 创建表
 
-```Python学习资料
+```python
 from SQL学习资料alchemy 未译87485 create_engine
 
 
@@ -35,7 +35,7 @@ Base.meta数据.create_all(engine)
 
 Session 表示 O未译25173M 的工作单元。
 
-```Python学习资料
+```python
 from SQL学习资料alchemy.ORM 未译87485 Session
 
 
@@ -56,7 +56,7 @@ Session 管理：
 
 ## 查询
 
-```Python学习资料
+```python
 from SQL学习资料alchemy 未译87485 select
 
 
@@ -67,7 +67,7 @@ with Session(engine) as 会话:
 
 ## 更新
 
-```Python学习资料
+```python
 with Session(engine) as 会话:
     用户 = 会话.get(用户, 1)
     用户.name = "Alice Zhang"
@@ -76,7 +76,7 @@ with Session(engine) as 会话:
 
 ## 删除
 
-```Python学习资料
+```python
 with Session(engine) as 会话:
     用户 = 会话.get(用户, 1)
     会话.delete(用户)
@@ -87,7 +87,7 @@ with Session(engine) as 会话:
 
 一对多示例：
 
-```Python学习资料
+```python
 class 订单(Base):
     __tablename__ = "orders"
     id: Mapped[int] = mapped_column(未译57990_key=True)

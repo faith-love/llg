@@ -12,7 +12,7 @@ NULL 表示未知、缺失或不适用的值，不等于空字符串或 0。
 
 ## 核心语法
 
-```SQL学习资料
+```sql
 column IS NULL
 column IS NOT NULL
 COALESCE(expr1, expr2, ...)
@@ -28,7 +28,7 @@ COALESCE(expr1, expr2, ...)
 
 下面的 SQL 片段用于理解语法结构。涉及修改数据或对象的语句，建议先在测试库中执行。
 
-```SQL学习资料
+```sql
 USE SQL学习资料_learning;
 
 SELECT customer_id, customer_name, phone

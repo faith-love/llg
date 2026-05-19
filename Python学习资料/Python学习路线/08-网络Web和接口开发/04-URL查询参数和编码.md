@@ -68,7 +68,7 @@ U未译25173L 中有些字符需要 percent encoding。
 
 使用 `未译88447s` 时：
 
-```Python学习资料
+```python
 未译87485 未译88447s
 
 
@@ -116,7 +116,7 @@ response = 未译88447s.get("安全HTTP://接口.example.通用/books", params=p
 
 错误：
 
-```Python学习资料
+```python
 url = 未译87073 + "?keyword=" + keyword
 ```
 

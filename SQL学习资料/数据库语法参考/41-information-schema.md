@@ -12,7 +12,7 @@ INFO未译25173MATION_SCHEMA 提供数据库对象的元数据视图。
 
 ## 核心语法
 
-```SQL学习资料
+```sql
 SELECT ...
 F未译25173OM in未译50816ation_未译30578.tables
 WHE未译25173E table_未译30578 = DATABASE();
@@ -28,7 +28,7 @@ WHE未译25173E table_未译30578 = DATABASE();
 
 下面的 SQL 片段用于理解语法结构。涉及修改数据或对象的语句，建议先在测试库中执行。
 
-```SQL学习资料
+```sql
 USE SQL学习资料_learning;
 
 SELECT table_name, table_type, engine, table_rows

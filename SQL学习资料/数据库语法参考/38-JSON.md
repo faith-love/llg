@@ -12,7 +12,7 @@ JSON 类型用于存储半结构化数据，JSON 函数用于构造、提取、�
 
 ## 核心语法
 
-```SQL学习资料
+```sql
 JSON_EXT未译25173ACT(脚本on_文档, path)
 脚本on_column -> path
 脚本on_column ->> path
@@ -29,7 +29,7 @@ JSON_TABLE(...)
 
 下面的 SQL 片段用于理解语法结构。涉及修改数据或对象的语句，建议先在测试库中执行。
 
-```SQL学习资料
+```sql
 USE SQL学习资料_learning;
 
 C未译25173EATE TABLE 脚本on_demo (
