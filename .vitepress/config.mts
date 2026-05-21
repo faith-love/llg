@@ -15,6 +15,7 @@ const hiddenDirs = new Set([
 ])
 
 const topLevelSections = [
+  '前端学习资料',
   'Java学习资料',
   'Spring学习资料',
   'Python学习资料',
@@ -129,6 +130,47 @@ function buildItems(dir: string, depth = 0): any[] {
   return items
 }
 
+function buildSectionRootItems(dir: string): any[] {
+  const items: any[] = []
+
+  for (const name of ['说明.md', 'README.md', 'index.md']) {
+    const file = path.join(dir, name)
+    if (fs.existsSync(file)) {
+      items.push({
+        text: titleFromFile(file),
+        link: normalizeLink(file)
+      })
+      break
+    }
+  }
+
+  const entries = sortEntries(
+    fs.readdirSync(dir, { withFileTypes: true }).filter((entry) => {
+      if (isHidden(entry.name) || !entry.isDirectory()) return false
+      const full = path.join(dir, entry.name)
+      return ['说明.md', 'README.md', 'index.md'].some((name) =>
+        fs.existsSync(path.join(full, name))
+      )
+    })
+  )
+
+  for (const entry of entries) {
+    const full = path.join(dir, entry.name)
+    const indexFile = ['说明.md', 'README.md', 'index.md']
+      .map((name) => path.join(full, name))
+      .find((candidate) => fs.existsSync(candidate))
+
+    if (!indexFile) continue
+
+    items.push({
+      text: titleFromFile(indexFile),
+      link: normalizeLink(indexFile)
+    })
+  }
+
+  return items
+}
+
 function buildSidebar() {
   const sidebar: Record<string, any[]> = {
     '/': [
@@ -140,6 +182,45 @@ function buildSidebar() {
   for (const section of topLevelSections) {
     const dir = path.join(root, section)
     if (!fs.existsSync(dir)) continue
+
+    if (section === '前端学习资料') {
+      sidebar[`/${section}/`] = [
+        {
+          text: section,
+          collapsed: false,
+          items: buildSectionRootItems(dir)
+        }
+      ]
+
+      const topicDirs = sortEntries(
+        fs.readdirSync(dir, { withFileTypes: true }).filter((entry) => {
+          if (isHidden(entry.name) || !entry.isDirectory()) return false
+          const full = path.join(dir, entry.name)
+          return ['说明.md', 'README.md', 'index.md'].some((name) =>
+            fs.existsSync(path.join(full, name))
+          )
+        })
+      )
+
+      for (const entry of topicDirs) {
+        const full = path.join(dir, entry.name)
+        const indexFile = ['说明.md', 'README.md', 'index.md']
+          .map((name) => path.join(full, name))
+          .find((candidate) => fs.existsSync(candidate))
+
+        if (!indexFile) continue
+
+        sidebar[`/${section}/${entry.name}/`] = [
+          {
+            text: titleFromFile(indexFile),
+            collapsed: false,
+            items: buildItems(full)
+          }
+        ]
+      }
+
+      continue
+    }
 
     sidebar[`/${section}/`] = [
       {
@@ -176,8 +257,18 @@ export default defineConfig({
     nav: [
       { text: '总索引', link: '/说明' },
       {
+        text: '前端专题',
+        items: [
+          { text: '前端学习资料', link: '/前端学习资料/说明' },
+          { text: 'JavaScript Class 类深入理解', link: '/前端学习资料/JavaScript-Class类深入理解/说明' },
+          { text: 'TypeScript 深入理解', link: '/前端学习资料/TypeScript深入理解/说明' },
+          { text: 'Babel 工程化深入理解', link: '/前端学习资料/Babel工程化深入理解/说明' }
+        ]
+      },
+      {
         text: '编程语言',
         items: [
+          { text: '前端学习资料', link: '/前端学习资料/说明' },
           { text: 'Java 学习资料', link: '/Java学习资料/说明' },
           { text: 'Python 学习资料', link: '/Python学习资料/说明' }
         ]
