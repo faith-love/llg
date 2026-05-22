@@ -73,6 +73,46 @@ function sortEntries(entries: fs.Dirent[]) {
   })
 }
 
+function sidebarItemFileName(item: any) {
+  if (!item.link) return ''
+
+  const parts = decodeURIComponent(item.link).split('/')
+  return parts[parts.length - 1] ?? ''
+}
+
+function groupAdvancedEngineeringPracticeItems(items: any[]) {
+  const practiceChildren = items.filter((item) => {
+    const fileName = sidebarItemFileName(item)
+    return (
+      item.link?.startsWith('/前端学习资料/高级前端工程化/') &&
+      fileName.startsWith('23') &&
+      fileName !== '23-练习项目'
+    )
+  })
+
+  if (!practiceChildren.length) return items
+
+  return items.flatMap((item) => {
+    const fileName = sidebarItemFileName(item)
+
+    if (item.link?.startsWith('/前端学习资料/高级前端工程化/') && fileName === '23-练习项目') {
+      return [
+        {
+          text: item.text,
+          collapsed: true,
+          items: [{ ...item, text: '练习项目入口' }, ...practiceChildren]
+        }
+      ]
+    }
+
+    if (item.link?.startsWith('/前端学习资料/高级前端工程化/') && fileName.startsWith('23')) {
+      return []
+    }
+
+    return [item]
+  })
+}
+
 function buildItems(dir: string, depth = 0): any[] {
   if (depth > 4) return []
 
@@ -127,7 +167,7 @@ function buildItems(dir: string, depth = 0): any[] {
     })
   }
 
-  return items
+  return groupAdvancedEngineeringPracticeItems(items)
 }
 
 function buildSectionRootItems(dir: string): any[] {
@@ -261,8 +301,10 @@ export default defineConfig({
         items: [
           { text: '前端学习资料', link: '/前端学习资料/说明' },
           { text: 'JavaScript Class 类深入理解', link: '/前端学习资料/JavaScript-Class类深入理解/说明' },
+          { text: 'JavaScript 库架构设计与编程技巧', link: '/前端学习资料/JavaScript库架构设计与编程技巧/说明' },
           { text: 'TypeScript 深入理解', link: '/前端学习资料/TypeScript深入理解/说明' },
-          { text: 'Babel 工程化深入理解', link: '/前端学习资料/Babel工程化深入理解/说明' }
+          { text: 'Babel 工程化深入理解', link: '/前端学习资料/Babel工程化深入理解/说明' },
+          { text: '高级前端工程化', link: '/前端学习资料/高级前端工程化/说明' }
         ]
       },
       {
